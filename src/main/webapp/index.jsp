@@ -1,3 +1,4 @@
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -14,21 +15,25 @@
             <ul id="ulMenu">
                 <li class="liMenu"><a class="menuElem" href="">ACCEDI</a></li>
                 <li class="liMenu"><a class="menuElem" href="">CARRELLO</a></li>
-                <li class="liMenu"><a class="menuElem" href="">II</a></li>
+                <li class="liMenu"><a class="menuElem" href=""><img src="img/utente.png"></a></li>
             </ul>
         </div>
     </header>
 
     <section id="outer-container">
 
-        <div id="grid-container">
-            <div class="grid-item">1</div>
-            <div class="grid-item">2</div>
-            <div class="grid-item">3</div>
-            <div class="grid-item">4</div>
-            <div class="grid-item">5</div>
-            <div class="grid-item">6</div>
-            <div id="divPlus"><a id="plus" href="">+</a></div>
+        <div id="flex-container">
+
+            <%
+                List<String> lingue = (List<String>) application.getAttribute("lingue");
+
+                for(int i = 0; i < 6; i++) { %>
+
+                <div class="flex-item"><img class="foto-lingue" src="<%=lingue.get(i)%>"></div>
+
+            <%} %>
+
+            <div id="divPlus"><a id="plus" href=""><img src="img/plus.png"></a></div>
         </div>
 
     </section>

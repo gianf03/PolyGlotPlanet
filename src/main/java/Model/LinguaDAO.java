@@ -1,4 +1,121 @@
 package Model;
 
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class LinguaDAO {
+
+    public Lingua doRetrieveById(String codISOLingua) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps =
+                    con.prepareStatement("SELECT codISOLingua, nome, parlanti, fotoStatoOrigine FROM Lingua WHERE id=?");
+            ps.setString(1, codISOLingua);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Lingua p = new Lingua();
+                p.setCodISOLingua(rs.getString(1));
+                p.setNome(rs.getString(2));
+                p.setParlanti(rs.getInt(3));
+                p.setFotoStatoOrigine(rs.getString(4));
+                return p;
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void doSave(Lingua lingua) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "INSERT INTO Lingua (codISOLingua, nome, parlanti, fotoStatoOrigine) VALUES(?,?,?,?)",
+                    Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, lingua.getCodISOLingua());
+            ps.setString(2, lingua.getNome());
+            ps.setInt(3, lingua.getParlanti());
+            ps.setString(4, lingua.getFotoStatoOrigine());
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("INSERT error.");
+            }
+           // ResultSet rs = ps.getGeneratedKeys();
+           // rs.next();
+           // int id = rs.getInt(1);
+           // customer.setId(id);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Lingua> doRetriveAll() {
+        try (Connection con = ConPool.getConnection()) {
+
+            String sql = "SELECT * FROM Lingua";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            List<Lingua> lingue = new ArrayList<>();
+
+            while(rs.next()) {
+                Lingua l = new Lingua();
+
+                l.setCodISOLingua(rs.getString("codISOLingua"));
+                l.setNome(rs.getString("nome"));
+                l.setParlanti(rs.getInt("parlanti"));
+                l.setFotoStatoOrigine(rs.getString("fotoStatoOrigine"));
+
+                lingue.add(l);
+            }
+
+            return lingue;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<String> doRetrieveFoto() {
+        try (Connection con = ConPool.getConnection()) {
+
+            String sql = "SELECT fotoStatoOrigine FROM Lingua order by parlanti DESC";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            List<String> foto = new ArrayList<>();
+
+            while(rs.next()) {
+                foto.add(rs.getString(1));
+            }
+
+            return foto;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+  /*  public void doUpdate(Customer c) {
+
+        try (Connection con = ConPool.getConnection()) {
+
+            String sql = "UPDATE customer SET firstName=?, lastName=?, balance=? WHERE id=?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setString(1, c.getFirstName());
+            ps.setString(2, c.getLastName());
+            ps.setDouble(3, c.getBalance());
+            ps.setInt(4, c.getId());
+
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("UPDATE error.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }*/
 }

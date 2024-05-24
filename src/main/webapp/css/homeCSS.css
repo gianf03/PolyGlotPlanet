@@ -24,7 +24,7 @@ body {
     margin: 0; /* estende il body all'intera pagina sovrascrivendo i margini predefiniti dal browser*/
 }
 
-#grid-container { /* elemento griglia contenente celle */
+#flex-container { /* elemento griglia contenente celle */
     height: 400px; /*altezza del grid-container*/
     width: 800px;
     justify-content: center;
@@ -32,15 +32,9 @@ body {
     border-color: #80B918;
     background-color: #80B918;
     border-radius: 15px; /*raggio della circonferenza per smussare il bordo*/
-   /* margin: 50px 200px 50px 200px; */
 
-    display: grid; /* scelta della modalità di disposizione delle celle */
-    grid-template-columns: 150px 150px 150px; /* significa che ci sono 3 colonne e ciascuna di esse avrà una larghezza di 150px*/
-    grid-template-rows: 75px 75px; /* significa che ci sono 2 righe e ciascuna di esse avrà una altezza di 75px*/
-    column-gap: 60px; /*distanza tra le celle in orizzontale*/
-    row-gap: 35px; /*distanza tra le celle in verticale*/
-
-    align-content: center; /* Per centrare gli item lungo l'asse verticale */
+    display: flex; /*dispone gli elementi in orizzontale*/
+    flex-wrap: wrap; /*sposta a capo gli elementi che non rientrano nello spazio disponibile*/
 }
 
 #outer-container {
@@ -51,39 +45,30 @@ body {
 }
 
 
-.grid-item { /* cella delle griglia */
-    /* visto che non c'è la proprietà border per default non si vedranno i contorni delle celle*/
-    align-content: center;
-    text-align: center;
-    border: solid white;
+.flex-item { /* cella delle griglia */
+
     background-color: white;
+    width: 200px;
+    margin: 30px;
+    text-align: center; /*allinea il testo orizzontalmente nel div*/
+    align-content: center; /*allinea il testo verticalmente nel div*/
+    line-height: 20px;
     border-radius: 10px; /*raggio della circonferenza per smussare il bordo*/
+    font-size: 30px;
+
 }
 
 .logo, .menu {
-    /*display: inline-block;*/
     border: solid;
     width : 50%; /* se aggiungo un solo decimo in piu, verranno disposti uno sopra l'altro i div mentre io li voglio uno dopo l'altro. Questo perché il browser ha dei margini predefiniti*/
     height : 65px;
 }
 
 #divPlus {
-    margin-left: 262px;
-    background-color: darkgreen;
-    border-radius: 50%;
-    border: solid darkgreen;
-    height: 25px;
-    width: 25px;
+    align-content: center;
     text-align: center;
-    align-content: center; /* allinea il testo nel div, l'ordine è importante*/
 }
 
-#plus {
-    text-decoration: none; /*rimuove sottolineatura al link*/
-    color: white;
-    font-size: 20pt;
-    font-weight: bold;
-}
 
 .supporto {
     color: white;
@@ -105,9 +90,13 @@ body {
     display: inline; /*dispone gli elementi della lista in orizzontale*/
     background-color: darkgreen;
     margin-left: 5px;
-    flex: 0 1 80px;
+    flex: 0 1 100px;
+    height: 40px;
+
+    text-align: center;
+    align-content: center;
     /*
-        flex: 0 1 80px; imposta l'elemento per avere una larghezza di base di 80 pixel.
+        flex: 0 1 100px; imposta l'elemento per avere una larghezza di base di 80 pixel.
 
         L'elemento non crescerà mai oltre i 80 pixel, indipendentemente dallo spazio disponibile
         nel contenitore (flex-grow: 0).
@@ -119,7 +108,8 @@ body {
 
 .menuElem {
     color: white;
-    font-size: 10pt;
+    font-size: 15pt;
+    font-style: italic;
     padding: 8px;
     text-decoration: none;  /*rimuove la sottolineatura al link*/
 }
@@ -133,4 +123,9 @@ p {
 a:link, a:visited, a {
     color: white; /*imposta il colore del link bianco per link visitato e non visitato*/
     text-decoration: none; /*rimuove la sottolineatura al link*/
+}
+
+.foto-lingue {
+    height: 80px;
+    width: 200px;
 }
