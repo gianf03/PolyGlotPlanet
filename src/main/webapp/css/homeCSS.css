@@ -4,8 +4,7 @@ html {
 }
 
 header {
-    display: flex; /*dispone i componenti dell'header su un'unica riga*/
-    height: 25%; /*20% rispetto all'altezza totale della pagina*/
+    height: 25%; /*25% rispetto all'altezza totale della pagina*/
 }
 
 section {
@@ -19,6 +18,7 @@ footer {
     padding-left: 5px;
     padding-bottom: 1px;
 }
+
 
 body {
     margin: 0; /* estende il body all'intera pagina sovrascrivendo i margini predefiniti dal browser*/
@@ -58,66 +58,11 @@ body {
 
 }
 
-.logo, .menu {
-    border: solid;
-    width : 50%; /* se aggiungo un solo decimo in piu, verranno disposti uno sopra l'altro i div mentre io li voglio uno dopo l'altro. Questo perché il browser ha dei margini predefiniti*/
-    height : 65px;
-}
+
 
 #divPlus {
     align-content: center;
     text-align: center;
-}
-
-
-.supporto {
-    color: white;
-    text-decoration: none; /*rimuove la sottilineatura del link*/
-    font-size: 12pt;
-    font-weight: bold;
-}
-
-
-#ulMenu{
-    list-style-type: none; /*elimina l'elenco puntato*/
-    margin: 0;
-    padding: 0; /*eliminano la dispozione predefinita del browser*/
-    display: flex;
-    justify-content: flex-end; /* */
-}
-
-.liMenu {
-    display: inline; /*dispone gli elementi della lista in orizzontale*/
-    background-color: darkgreen;
-    margin-left: 5px;
-    flex: 0 1 100px;
-    height: 40px;
-
-    text-align: center;
-    align-content: center;
-    /*
-        flex: 0 1 100px; imposta l'elemento per avere una larghezza di base di 80 pixel.
-
-        L'elemento non crescerà mai oltre i 80 pixel, indipendentemente dallo spazio disponibile
-        nel contenitore (flex-grow: 0).
-
-        L'elemento può ridursi sotto i 80 pixel se lo spazio nel contenitore è
-        insufficiente (flex-shrink: 1).
-    */
-}
-
-.menuElem {
-    color: white;
-    font-size: 15pt;
-    font-style: italic;
-    padding: 8px;
-    text-decoration: none;  /*rimuove la sottolineatura al link*/
-}
-
-p {
-    color: white;
-    font-size: 15pt;
-    font-weight: bold;
 }
 
 a:link, a:visited, a {
@@ -129,3 +74,40 @@ a:link, a:visited, a {
     height: 80px;
     width: 200px;
 }
+
+#userImg, #cartImg {
+    height: 35px;
+    width: 35px;
+}
+
+#div-login {
+    background-color: #80B918;
+    margin: auto;
+    height: 500px;
+    width: 300px;
+    border-radius: 30px;
+    align-content: center;
+}
+
+#form-login input{
+    margin-bottom: 30px;
+}
+
+#tasto-login {
+    background-color: darkgreen;
+    color: white;
+    border-radius: 20px;
+}
+
+
+
+/*quando la larghezza della finestra scende sotto i 650 pixel i bottoni della barra
+di navigazione vengono disposti in verticale */
+@media screen and (max-width: 650px) {
+    #nav-bar .bar-item {
+        float: none;
+        width: 100%;
+
+    }
+}
+

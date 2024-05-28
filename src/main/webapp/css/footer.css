@@ -1,0 +1,12 @@
+.supporto {
+    color: white;
+    text-decoration: none; /*rimuove la sottilineatura del link*/
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+p {
+    color: white;
+    font-size: 15pt;
+    font-weight: bold;
+}
