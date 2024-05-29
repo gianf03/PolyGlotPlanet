@@ -48,10 +48,10 @@ public class LinguaDAO {
         }
     }
 
-    public List<Lingua> doRetriveAll() {
+    public List<Lingua> doRetrieveAll() {
         try (Connection con = ConPool.getConnection()) {
 
-            String sql = "SELECT * FROM Lingua";
+            String sql = "SELECT * FROM Lingua ORDER BY parlanti DESC LIMIT 6";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();

@@ -1,0 +1,58 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+#div-login {
+    background-color: #80B918;
+    margin: 50px auto 50px auto;
+    height: 500px;
+    width: 300px;
+    border-radius: 30px;
+    align-content: center;
+}
+
+#form-login input{
+    margin-bottom: 30px;
+}
+
+#tasto-login {
+    height: 40px;
+    width: 250px;
+    border-radius: 20px;
+    background-color: darkgreen;
+    color: white;
+    font-size: 12pt;
+}
+
+
+#email, #password {
+    height: 40px;
+    width: 250px;
+    border-radius: 20px;
+    align-self: center;
+    text-align: center;
+}
+
+
+.credenziali {
+    padding: 0 25px 0 25px;
+}
+
+#log {
+    width: 100%;
+    text-align: center;
+}
+
+#reg {
+    text-align: center;
+}
+
+#nonUtente {
+    color: black;
+    font-size: 12pt;
+}

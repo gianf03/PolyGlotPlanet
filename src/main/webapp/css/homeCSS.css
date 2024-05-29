@@ -3,21 +3,9 @@ html {
     width : 100%;
 }
 
-header {
-    height: 25%; /*25% rispetto all'altezza totale della pagina*/
-}
-
-section {
+/*section {
     height: 60%;
-}
-
-footer {
-    height: 15%;
-    background-color: darkgreen;
-    padding-top: 1px;
-    padding-left: 5px;
-    padding-bottom: 1px;
-}
+}*/
 
 
 body {
@@ -25,7 +13,7 @@ body {
 }
 
 #flex-container { /* elemento griglia contenente celle */
-    height: 400px; /*altezza del grid-container*/
+    height: 450px; /*altezza del grid-container*/
     width: 800px;
     justify-content: center;
 
@@ -52,15 +40,15 @@ body {
     margin: 30px;
     text-align: center; /*allinea il testo orizzontalmente nel div*/
     align-content: center; /*allinea il testo verticalmente nel div*/
-    line-height: 20px;
+    line-height: 15px;
     border-radius: 10px; /*raggio della circonferenza per smussare il bordo*/
     font-size: 30px;
-
 }
 
 
 
 #divPlus {
+    width: 200px;
     align-content: center;
     text-align: center;
 }
@@ -71,8 +59,13 @@ a:link, a:visited, a {
 }
 
 .foto-lingue {
-    height: 80px;
-    width: 200px;
+    padding-top: 15px;
+    height: 50px;
+    width: 80px;
+}
+
+.nomeLingua {
+    color: black;
 }
 
 #userImg, #cartImg {
@@ -80,34 +73,34 @@ a:link, a:visited, a {
     width: 35px;
 }
 
-#div-login {
-    background-color: #80B918;
-    margin: auto;
-    height: 500px;
-    width: 300px;
-    border-radius: 30px;
-    align-content: center;
-}
 
-#form-login input{
-    margin-bottom: 30px;
-}
-
-#tasto-login {
-    background-color: darkgreen;
+p {
     color: white;
-    border-radius: 20px;
+    font-size: 15pt;
+    font-weight: bold;
 }
 
 
 
-/*quando la larghezza della finestra scende sotto i 650 pixel i bottoni della barra
+/*quando la larghezza della finestra scende sotto i 900 pixel i bottoni della barra
 di navigazione vengono disposti in verticale */
-@media screen and (max-width: 650px) {
-    #nav-bar .bar-item {
-        float: none;
-        width: 100%;
+@media screen and (max-width: 900px) {
 
+    #flex-container {
+        width: 600px;
+        height: 90vh;
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    #flex-container {
+        width: 300px;
+        height: 1500px;
+    }
+
+    body {
+        overflow-y: auto;
     }
 }
 

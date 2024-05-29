@@ -1,4 +1,5 @@
 <%@ page import="java.util.List" %>
+<%@ page import="Model.Lingua" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -11,19 +12,20 @@
 </head>
 <body>
 
-    <header>
-        <%@ include file="header.jsp"%>
-    </header>
+    <%@ include file="header.jsp"%>
 
     <section id="outer-container">
         <div id="flex-container">
 
             <%
-                List<String> lingue = (List<String>) application.getAttribute("lingue");
+                List<Lingua> lingue = (List<Lingua>) application.getAttribute("lingue");
 
                 for(int i = 0; i < 6; i++) { %>
 
-                <div class="flex-item"><img class="foto-lingue" src="<%=lingue.get(i)%>"></div>
+                <div class="flex-item">
+                    <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
+                    <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
+                </div>
 
             <%}%>
 
@@ -32,9 +34,6 @@
     </section>
 
 
-    <footer>
-        <%@ include file="footer.jsp"%>
-    </footer>
-
+    <%@ include file="footer.jsp"%>
 </body>
 </html>

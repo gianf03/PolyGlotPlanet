@@ -13,7 +13,7 @@ public class CaricaLingueServlet extends HttpServlet {
     public void init() throws ServletException {
         LinguaDAO linguaDAO = new LinguaDAO();
 
-        List<String> lingue = linguaDAO.doRetrieveFoto();
+        List<Lingua> lingue = linguaDAO.doRetrieveAll();
 
         getServletContext().setAttribute("lingue", lingue);
     }

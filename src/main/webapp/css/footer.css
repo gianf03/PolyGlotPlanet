@@ -1,3 +1,11 @@
+footer {
+    /*height: 15%;*/
+    background-color: darkgreen;
+    padding-top: 1px;
+    padding-left: 5px;
+    padding-bottom: 1px;
+}
+
 .supporto {
     color: white;
     text-decoration: none; /*rimuove la sottilineatura del link*/
@@ -10,3 +18,5 @@ p {
     font-size: 15pt;
     font-weight: bold;
 }
+
+
