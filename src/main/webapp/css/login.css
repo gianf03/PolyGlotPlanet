@@ -27,6 +27,7 @@ body {
     background-color: darkgreen;
     color: white;
     font-size: 12pt;
+    border-color: darkgreen;
 }
 
 
@@ -36,8 +37,8 @@ body {
     border-radius: 20px;
     align-self: center;
     text-align: center;
+    border-color: white;
 }
-
 
 .credenziali {
     padding: 0 25px 0 25px;

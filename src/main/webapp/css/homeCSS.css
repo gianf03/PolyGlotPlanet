@@ -23,13 +23,15 @@ body {
 
     display: flex; /*dispone gli elementi in orizzontale*/
     flex-wrap: wrap; /*sposta a capo gli elementi che non rientrano nello spazio disponibile*/
+
+    row-gap: 2px;
 }
 
 #outer-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height : 100vh;
+    margin: 60px 0 60px 0;
 }
 
 
@@ -37,12 +39,14 @@ body {
 
     background-color: white;
     width: 200px;
+    height: 110px;
     margin: 30px;
     text-align: center; /*allinea il testo orizzontalmente nel div*/
     align-content: center; /*allinea il testo verticalmente nel div*/
-    line-height: 15px;
     border-radius: 10px; /*raggio della circonferenza per smussare il bordo*/
     font-size: 30px;
+
+    line-height: 15px; /*mette le scritte al posto loro*/
 }
 
 
@@ -66,6 +70,7 @@ a:link, a:visited, a {
 
 .nomeLingua {
     color: black;
+
 }
 
 #userImg, #cartImg {
@@ -88,7 +93,7 @@ di navigazione vengono disposti in verticale */
 
     #flex-container {
         width: 600px;
-        height: 90vh;
+        height: 600px;
     }
 }
 
@@ -96,11 +101,7 @@ di navigazione vengono disposti in verticale */
 
     #flex-container {
         width: 300px;
-        height: 1500px;
-    }
-
-    body {
-        overflow-y: auto;
+        height: 1100px;
     }
 }
 
