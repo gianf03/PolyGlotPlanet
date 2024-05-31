@@ -6,7 +6,8 @@
 </head>
 <body>
     <footer>
-        <p>Supporto</p>
+        <div class="divSupporto"><a href="">Contatti</a></div>
+        <div class="divSupporto"><a href="">FAQ</a></div>
     </footer>
 </body>
 </html>

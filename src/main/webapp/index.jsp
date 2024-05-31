@@ -22,10 +22,10 @@
 
                 for(int i = 0; i < 6; i++) { %>
 
-                <div class="flex-item">
+                <a class="linkLingua" href=""><div class="flex-item">
                     <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
                     <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
-                </div>
+                </div></a>
 
             <%}%>
 

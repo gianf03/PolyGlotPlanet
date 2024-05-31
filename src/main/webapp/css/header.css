@@ -1,5 +1,5 @@
 header {
-    /*height: 25%; 25% rispetto all'altezza totale della pagina*/
+    height: 25%;
 }
 
 ul {
@@ -13,6 +13,20 @@ ul {
 li {
     float: right;
 }
+
+li.logo {
+    float: left;
+}
+
+img.logo {
+    height: 80px;
+    width: 80px;
+}
+
+a.logo {
+    padding: 5px;
+}
+
 
 li a, .dropbtn {
     display: inline-block;
