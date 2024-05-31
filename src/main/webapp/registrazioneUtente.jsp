@@ -12,6 +12,27 @@
 </head>
 <body>
 
+    <div id="div-registrazione">
+        <div id="reg"><h1>Registrazione</h1></div>
+
+        <form id="form-registrazione" action="registrazioneUtente" method="POST">
+            <div class="credenziali"><input type="text" id = "nome" name = "nome" placeholder="nome" required></div>
+            <div class="credenziali"><input type="text" id = "cognome" name = "cognome" placeholder="cognome" required></div>
+            <div class="credenziali"><input type="date" id = "ddn" name = "ddn" placeholder="data di nascita" required></div>
+            <div class="credenziali"><input type="email" id="email" name = "email" placeholder="email" required></div>
+            <div class="credenziali"><input type="password" id="password" name = "password" placeholder="password" required></div>
+
+            <div class="credenziali">
+                <label>Sesso :</label><br>
+                <input type="radio" id="male" name="sesso" value="M">
+                <label for="male">Maschio</label><br>
+                <input type="radio" id="female" name="sesso" value="F">
+                <label for="female">Femmina</label><br><br>
+            </div>
+
+            <div class="credenziali"><input type="submit" value="Registrati" id="tasto-registrazione"></div>
+        </form>
+    </div>
 <footer>
     <%@ include file="footer.jsp"%>
 </footer>

@@ -10,9 +10,9 @@
     <div id="div-login">
         <div id="log"><h1>Login</h1></div>
 
-        <form id="form-login" action="" method="POST">
-            <div class="credenziali"><input type="email" id="email" placeholder="email" required></div>
-            <div class="credenziali"><input type="password" id="password" placeholder="password" required></div>
+        <form id="form-login" action="loginUtente" method="POST">
+            <div class="credenziali"><input type="email" id="email" name = "email" placeholder="email" required></div>
+            <div class="credenziali"><input type="password" id="password" name = "password" placeholder="password" required></div>
             <div class="credenziali"><input type="submit" value="Login" id="tasto-login"></div>
         </form>
 

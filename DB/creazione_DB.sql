@@ -14,7 +14,7 @@ create table Esperto(
     nome varchar(50) not null,
     cognome varchar(50) not null,
     email varchar(50) not null,
-    password varchar(50) not null,
+    passwordHash varchar(50) not null,
     dataNascita date not null,
     genere char(1) not null,
     valutazione int,
@@ -36,7 +36,7 @@ create table Utente(
     cognome varchar(50) not null,
     dataNascita date not null,
     email varchar(50) not null,
-    password varchar(50) not null,
+    passwordHash varchar(50) not null,
     genere char(1) not null,
     admin boolean not null
 );
