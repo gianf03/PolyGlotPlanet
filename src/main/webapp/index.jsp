@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="Model.Lingua" %>
+<%@ page import="com.mysql.cj.xdevapi.JsonArray" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -11,6 +12,7 @@
 
 </head>
 <body>
+<style>.disNone{display: none}</style>
 
     <%@ include file="header.jsp"%>
 
@@ -29,7 +31,7 @@
 
             <%}%>
 
-            <div id="divPlus"><a id="plus" href=""><img src="img/plus.png"></a></div>
+            <div id="divPlus"><button id="plus"><img src="img/plus.png"></button></div>
         </div>
     </section>
 

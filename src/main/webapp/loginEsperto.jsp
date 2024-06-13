@@ -22,8 +22,7 @@
             <div class="credenziali"><input type="password" id="password" placeholder="password" required></div>
             <div class="credenziali"><input type="submit" value="Login" id="tasto-login"></div>
         </form>
-
-
+        
         <div id="reg"><p id="nonUtente">Non hai un account?</p><a href="registrazioneEsperto.jsp">Registrati</a></div>
     </div>
 

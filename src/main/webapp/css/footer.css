@@ -1,5 +1,4 @@
 footer {
-    height: 80px;
     background-color: darkgreen;
     display: flex;
 }
@@ -17,6 +16,11 @@ footer {
 
 .divSupporto:hover {
     background-color: #80B918;
+}
+
+.divSupporto a {
+    color: white;
+    text-decoration: none;
 }
 
 

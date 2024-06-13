@@ -85,6 +85,11 @@ p {
     font-weight: bold;
 }
 
+#plus {
+    background-color: #80B918;
+    border: none;
+}
+
 
 
 /*quando la larghezza della finestra scende sotto i 900 pixel i bottoni della barra

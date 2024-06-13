@@ -10,6 +10,11 @@
     <div id="div-login">
         <div id="log"><h1>Login</h1></div>
 
+        <%
+            if(request.getParameter("error") != null &&
+                    request.getParameter("error").equals("1"))
+        %>
+
         <form id="form-login" action="loginUtente" method="POST">
             <div class="credenziali"><input type="email" id="email" name = "email" placeholder="email" required></div>
             <div class="credenziali"><input type="password" id="password" name = "password" placeholder="password" required></div>
@@ -18,9 +23,7 @@
 
         <div id="reg"><p id="nonUtente">Non hai un account?</p><a href="registrazioneUtente.jsp">Registrati</a></div>
     </div>
-<footer>
-    <%@ include file="footer.jsp"%>
-</footer>
 
+    <%@ include file="footer.jsp"%>
 </body>
 </html>

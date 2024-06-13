@@ -11,8 +11,8 @@
             <li class="dropdown">
                 <a href=""><img src="img/utente.png"></a>
                 <div class="dropdown-content">
-                    <a href="loginUtente.jsp">Utente</a>
-                    <a href="loginEsperto.jsp">Esperto</a>
+                    <a id="utente" href="loginUtente.jsp">Utente</a>
+                    <a id="esperto" href="loginEsperto.jsp">Esperto</a>
                 </div>
             </li>
             <li><a href=""><img src="img/carrello.png"></a></li>

@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 <body>
 
@@ -33,8 +35,7 @@
             <div class="credenziali"><input type="submit" value="Registrati" id="tasto-registrazione"></div>
         </form>
     </div>
-<footer>
+
     <%@ include file="footer.jsp"%>
-</footer>
 </body>
 </html>
