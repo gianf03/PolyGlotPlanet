@@ -8,12 +8,15 @@
 <body>
 
     <div id="div-login">
-        <div id="log"><h1>Login</h1></div>
+        <div id="log"><img id="logoLogin" alt="immagine del globo circondato da bandiere" src="img/logo.jpg"></div>
 
         <%
             if(request.getParameter("error") != null &&
-                    request.getParameter("error").equals("1"))
-        %>
+                    request.getParameter("error").equals("1")) { %>
+
+                <div class="credenziali" id="loginError">Login errato, riprova</div>
+
+        <%}%>
 
         <form id="form-login" action="loginUtente" method="POST">
             <div class="credenziali"><input type="email" id="email" name = "email" placeholder="email" required></div>

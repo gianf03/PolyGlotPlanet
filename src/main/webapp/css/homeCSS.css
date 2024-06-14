@@ -3,9 +3,6 @@ html {
     width : 100%;
 }
 
-/*section {
-    height: 60%;
-}*/
 
 
 body {
@@ -37,7 +34,8 @@ body {
 
 .flex-item { /* cella delle griglia */
 
-    background-color: white;
+    background-color: papayawhip;
+
     width: 200px;
     height: 110px;
     margin: 30px;
@@ -55,6 +53,7 @@ body {
     width: 200px;
     align-content: center;
     text-align: center;
+    display: block;
 }
 
 a:link, a:visited, a {
@@ -90,6 +89,14 @@ p {
     border: none;
 }
 
+#container-of-container {
+    margin: 0;
+    padding: 0;
+    background-image: url("../img/welcome.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 
 
 /*quando la larghezza della finestra scende sotto i 900 pixel i bottoni della barra
@@ -105,8 +112,17 @@ di navigazione vengono disposti in verticale */
 @media screen and (max-width: 650px) {
 
     #flex-container {
-        width: 300px;
-        height: 1100px;
+        width: 230px;
+        height: 850px;
     }
+
+    .flex-item {
+        margin: 5px 15px 5px 15px;
+    }
+
+    .flex-item:first-child {
+        margin-top: 15px;
+    }
+
 }
 

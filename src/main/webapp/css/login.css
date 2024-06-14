@@ -5,6 +5,7 @@ html {
 
 body {
     margin: 0;
+    /*per inserire immagine di sfondo scrivere qua dentro*/
 }
 
 #div-login{
@@ -31,7 +32,7 @@ body {
 }
 
 
-#email, #password, #nome, #cognome, .loginFallito{
+#email, #password, #nome, #cognome, #loginError{
     height: 40px;
     width: 250px;
     border-radius: 20px;
@@ -41,7 +42,6 @@ body {
 }
 
 .credenziali {
-    padding: 0 25px 0 25px;
     margin: 30px auto 30px auto;
     text-align: center;
 }
@@ -60,10 +60,10 @@ body {
     font-size: 12pt;
 }
 
-.loginFallito {
-    background-color: #691911;
-    opacity: 0.3;
-    margin: 25px;
+#loginError {
+    background-color: red;
+    align-content: center;
+    color: white;
 }
 
 
@@ -76,5 +76,9 @@ body {
     align-content: center;
 }
 
+#logoLogin {
+    height: 100px;
+    width: 100px;
+}
 
 
