@@ -10,7 +10,7 @@ body {
 }
 
 #flex-container { /* elemento griglia contenente celle */
-    height: 450px; /*altezza del grid-container*/
+    height: 480px; /*altezza del grid-container*/
     width: 800px;
     justify-content: center;
 
@@ -32,7 +32,7 @@ body {
 }
 
 
-.flex-item { /* cella delle griglia */
+.flex-item{ /* cella delle griglia */
 
     background-color: papayawhip;
 
@@ -47,14 +47,14 @@ body {
     line-height: 15px; /*mette le scritte al posto loro*/
 }
 
-
-
 #divPlus {
+    height: 110px;
     width: 200px;
+    margin: 30px;
     align-content: center;
     text-align: center;
-    display: block;
 }
+
 
 a:link, a:visited, a {
     color: white; /*imposta il colore del link bianco per link visitato e non visitato*/
@@ -89,12 +89,10 @@ p {
     border: none;
 }
 
-#container-of-container {
-    margin: 0;
-    padding: 0;
-    background-image: url("../img/welcome.jpg");
-    background-repeat: no-repeat;
-    background-size: contain;
+
+#imgPlus {
+    height: 48px;
+    width: 48px;
 }
 
 
@@ -105,7 +103,7 @@ di navigazione vengono disposti in verticale */
 
     #flex-container {
         width: 600px;
-        height: 600px;
+        height: 680px;
     }
 }
 
@@ -113,7 +111,7 @@ di navigazione vengono disposti in verticale */
 
     #flex-container {
         width: 230px;
-        height: 850px;
+        height: 910px;
     }
 
     .flex-item {

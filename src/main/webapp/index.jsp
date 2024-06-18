@@ -1,6 +1,5 @@
 <%@ page import="java.util.List" %>
 <%@ page import="Model.Lingua" %>
-<%@ page import="com.mysql.cj.xdevapi.JsonArray" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -16,7 +15,7 @@
     <%@ include file="header.jsp"%>
 
     <section id="outer-container">
-        <div id="flex-container" onchange="chargeAllStates()">
+        <div id="flex-container">
 
             <%
                 List<Lingua> lingue = (List<Lingua>) application.getAttribute("lingue");
@@ -36,7 +35,7 @@
 
             <%}%>
 
-            <div id="divPlus"><button id="plus" onclick="chargeAllStates()"><img src="img/plus.png"></button></div>
+            <div id="divPlus"><button id="plus" onclick="chargeAllStates()"><img id="imgPlus" src="img/plus.png"></button></div>
         </div>
     </section>
 
@@ -47,19 +46,40 @@
             }
 
 
-            //non fare getElementById().getPropertyValue() perchè non funziona, fai cosi
-            var elemento = document.getElementById("flex-container");
-            var height = window.getComputedStyle(elemento).getPropertyValue("height");
+            //ottengo la larghezza corrente della finestra del browser
+            let w = screen.width;
 
-            if(height === "450px") {
-                document.getElementById("flex-container").style.height = "2720px";
-            } else if(height === "600px") {
-                document.getElementById("flex-container").style.height = "8000px";
 
+            let numLingue = <%=lingue.size()%>;
+
+            //calcolo l'altezza del flex-container in base al numero di lingue contenute
+            let flexItem = document.getElementsByClassName("flex-item")[0];
+            let heightFlexItem = window.getComputedStyle(flexItem).getPropertyValue("height");
+            let marginFlexItem = window.getComputedStyle(flexItem).getPropertyValue("margin");
+
+            //elimino l'unita di misura px dalla stringa per usare il valore nella moltiplicazione
+            heightFlexItem = heightFlexItem.replace("px","");
+            marginFlexItem = marginFlexItem.replace("px","");
+
+            let heightFlexContainer = (parseInt(heightFlexItem) + parseInt(marginFlexItem) * 2);
+
+            console.log(numLingue);
+
+            if(w > 900) {
+                if(numLingue % 3 === 0) heightFlexContainer *= (numLingue / 3 + 1);
+                else heightFlexContainer *= (numLingue / 3 + 2);
+                document.getElementById("flex-container").style.height = heightFlexContainer+"px";
+            } else if(w >=650 && w <= 900) {
+                if(numLingue % 2 === 0) heightFlexContainer *= (numLingue / 2 + 1);
+                else heightFlexContainer *= (numLingue / 2 + 2);
+                document.getElementById("flex-container").style.height = heightFlexContainer+"px";
             } else {
-                document.getElementById("flex-container").style.height = "8000px";
+                heightFlexContainer *= numLingue + 1;
+                document.getElementById("flex-container").style.height = heightFlexContainer+"px";
+                console.log(heightFlexContainer);
             }
 
+            document.getElementById("imgPlus").setAttribute("src","img/meno.png");
         }
     </script>
 
