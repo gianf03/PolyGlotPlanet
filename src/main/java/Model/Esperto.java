@@ -6,7 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 
-public class Utente {
+public class Esperto {
     private int ID;
     private String nome;
     private String cognome;
@@ -14,7 +14,9 @@ public class Utente {
     private String email;
     private String password;
     private String genere;
-    private boolean admin;
+    private double valutazione;
+
+    private String fotoRiconoscitiva;
 
 
     public int getID() {
@@ -83,11 +85,19 @@ public class Utente {
         this.genere = genere;
     }
 
-    public boolean isAdmin() {
-        return admin;
+    public double getValutazione() {
+        return valutazione;
     }
 
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
+    public void setValutazione(double valutazione) {
+        this.valutazione = valutazione;
+    }
+
+    public String getFotoRiconoscitiva() {
+        return fotoRiconoscitiva;
+    }
+
+    public void setFotoRiconoscitiva(String fotoRiconoscitiva) {
+        this.fotoRiconoscitiva = fotoRiconoscitiva;
     }
 }

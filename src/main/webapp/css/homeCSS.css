@@ -89,6 +89,7 @@ p {
     border: none;
 }
 
+<<<<<<< HEAD
 
 #imgPlus {
     height: 48px;
@@ -97,6 +98,8 @@ p {
 
 
 
+=======
+>>>>>>> f1feb39ab619e7b9ea24b845234354e3ffefca92
 /*quando la larghezza della finestra scende sotto i 900 pixel i bottoni della barra
 di navigazione vengono disposti in verticale */
 @media screen and (max-width: 900px) {
