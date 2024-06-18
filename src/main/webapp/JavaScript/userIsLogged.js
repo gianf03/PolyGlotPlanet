@@ -1,0 +1,3 @@
+function userIsLogged(){
+    if
+}

@@ -1,3 +1,4 @@
+<%@ page import="Model.Utente" %>
 <html>
 <head>
     <title>Title</title>
@@ -11,11 +12,20 @@
             <li class="dropdown">
                 <a href=""><img src="img/utente.png"></a>
                 <div class="dropdown-content">
-                    <a id="utente" href="loginUtente.jsp">Utente</a>
-                    <a id="esperto" href="loginEsperto.jsp">Esperto</a>
+                    <%  Utente u = (Utente) session.getAttribute("utente");
+                        if(u!=null && !u.isAdmin()){ %>
+                        <a id="impostazioni" href="">Impostazioni</a>
+                        <a id="logout" href="logout">Logout</a>
+                    <%} else { %>
+                        <a id="utente" href="loginUtente.jsp">Utente</a>
+                        <a id="esperto" href="loginEsperto.jsp">Esperto</a>
+                    <%}%>
                 </div>
             </li>
             <li><a href=""><img src="img/carrello.png"></a></li>
+            <%if(u!=null && !u.isAdmin()){ %>
+            <li><p id="benvenuto">Ciao, <%=u.getNome()%> ! </p></li>
+            <%}%>
         </ul>
     </header>
 </body>

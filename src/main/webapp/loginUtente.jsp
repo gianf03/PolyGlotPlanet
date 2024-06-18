@@ -8,7 +8,7 @@
 <body>
 
     <div id="div-login">
-        <div id="log"><img id="logoLogin" alt="immagine del globo circondato da bandiere" src="img/logo.jpg"></div>
+        <div id="log"><a href="index.jsp"><img id="logoLogin" alt="immagine del globo circondato da bandiere" src="img/logo.jpg"></a></div>
 
         <%
             if(request.getParameter("error") != null &&
