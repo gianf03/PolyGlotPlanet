@@ -17,7 +17,15 @@
     <div id="div-login">
         <div id="log"><h1>Login</h1></div>
 
-        <form id="form-login" action="" method="POST">
+        <%
+            if(request.getParameter("error") != null &&
+                    request.getParameter("error").equals("1")) { %>
+
+        <div class="credenziali" id="loginError">Login errato, riprova</div>
+
+        <%}%>
+
+        <form id="form-login" action="loginEsperto" method="POST">
             <div class="credenziali"><input type="email" id="email" placeholder="email" required></div>
             <div class="credenziali"><input type="password" id="password" placeholder="password" required></div>
             <div class="credenziali"><input type="submit" value="Login" id="tasto-login"></div>

@@ -89,16 +89,6 @@ p {
     border: none;
 }
 
-#container-of-container {
-    margin: 0;
-    padding: 0;
-    background-image: url("../img/welcome.jpg");
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-
-
 /*quando la larghezza della finestra scende sotto i 900 pixel i bottoni della barra
 di navigazione vengono disposti in verticale */
 @media screen and (max-width: 900px) {

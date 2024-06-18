@@ -7,7 +7,7 @@
 
     <header>
         <ul>
-            <li class="logo"><a class=logo href=""><img class=logo src="img/logo.jpg"></a></li>
+            <li class="logo"><a class=logo href="index.jsp"><img class=logo src="img/logo.jpg"></a></li>
             <li class="dropdown">
                 <a href=""><img src="img/utente.png"></a>
                 <div class="dropdown-content">

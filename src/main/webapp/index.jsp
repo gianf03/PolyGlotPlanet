@@ -23,7 +23,7 @@
 
                 for(int i = 0; i < 45; i++) { %>
 
-                    <a class="linkLingua" href=""><div class="flex-item" id="<%=i+1%>">
+                    <a class="linkLingua" href="mostraCategorie"><div class="flex-item" id="<%=i+1%>">
                         <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
                         <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
                     </div></a>
