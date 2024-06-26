@@ -16,7 +16,7 @@ body {
 
     border-color: #80B918;
     background-color: #80B918;
-    border-radius: 15px; /*raggio della circonferenza per smussare il bordo*/
+    border-radius: 30px; /*raggio della circonferenza per smussare il bordo*/
 
     display: flex; /*dispone gli elementi in orizzontale*/
     flex-wrap: wrap; /*sposta a capo gli elementi che non rientrano nello spazio disponibile*/

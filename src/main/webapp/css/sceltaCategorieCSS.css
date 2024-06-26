@@ -1,6 +1,60 @@
-section {
+#container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 60px 0 60px 0;
+    /*background-image: url("../img/colosseo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;*/
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
+
+section {
+    align-content: center;
+    align-items: center;
+    margin: auto;
+    background-color: #80B918;
+    width: 350px;
+    height: 350px;
+    border-radius: 30px;
+}
+
+.categoria {
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20pt;
+    margin: 50px auto auto auto;
+}
+
+#divLinkCat {
+    opacity: 1;
+    margin: 50px auto auto auto;
+    width: 60%;
+    height: 10%;
+    background-color: #006400;
+    border-radius: 15px;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+
+    #container {
+        display: block;
+    }
+
+    section {
+        margin: 50px auto 50px auto;
+        width: 250px;
+        height: 250px;
+    }
+
+    .categoria {
+        margin-top: 30px;
+    }
+}
+

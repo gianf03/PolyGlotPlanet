@@ -1,5 +1,4 @@
 header {
-    height: 25%;
 }
 
 ul {
@@ -68,4 +67,11 @@ li.dropdown {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+#benvenuto {
+    text-align: center;
+    padding-top: 5px;
+    color: white;
+    font-size: 18pt;
 }

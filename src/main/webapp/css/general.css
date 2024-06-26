@@ -1,3 +1,54 @@
-body {
+body, html {
+    padding: 0;
     margin : 0;
+}
+
+.containerCorso {
+    display: flex;
+    margin: 50px auto 50px auto;
+    width: 60vw;
+    height: 40vh;
+    border-radius: 30px;
+    background-color: #80B918;
+    box-shadow: 10px 10px 5px #006400;
+}
+
+.corsoItem {
+    height: 80%;
+    width: 30%;
+    margin: auto;
+    align-content: center;
+    text-align: center;
+}
+
+.infoCorso {
+    text-align: justify;
+}
+
+#prezzo {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18pt;
+    height: 70%;
+}
+
+#carrello {
+    text-align: center;
+    height: 30%;
+    align-content: center;
+}
+
+#carrello > button {
+    height: 40%;
+    width: 70%;
+    border-radius: 15px;
+    background-color: darkgreen;
+    color: white;
+    font-size: 12pt;
+}
+
+#imgLinguaCorso {
+
+    height: 80px;
+    width: 130px;
 }
