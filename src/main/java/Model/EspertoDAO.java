@@ -9,15 +9,15 @@ public class EspertoDAO {
     public void doSave(Esperto esperto) {
 
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO esperto (nome, cognome, email, passwordHash, dataNascita, genere, valutazione, fotoRiconoscitiva) VALUES(?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO esperto (nome, cognome, email, passwordHash, dataNascita, genere, fotoRiconoscitiva) VALUES(?,?,?,?,?,?,?)");
             ps.setString(1, esperto.getNome());
             ps.setString(2, esperto.getCognome());
             ps.setString(3, esperto.getEmail());
             ps.setString(4, esperto.getPassword());
             ps.setString(5, esperto.getDataNascita().toString());
             ps.setString(6, esperto.getGenere());
-            ps.setDouble(7, esperto.getValutazione());
-            ps.setString(8, esperto.getFotoRiconoscitiva());
+           // ps.setDouble(7, esperto.getValutazione());
+            ps.setString(7, esperto.getFotoRiconoscitiva());
 
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");

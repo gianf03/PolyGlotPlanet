@@ -1,4 +1,5 @@
 <%@ page import="Model.Utente" %>
+<%@ page session="true"%>
 <html>
 <head>
     <title>Title</title>
@@ -12,8 +13,8 @@
             <li class="dropdown">
                 <a href=""><img src="img/utente.png"></a>
                 <div class="dropdown-content">
-                    <%  Utente u = (Utente) session.getAttribute("utente");
-                        if(u!=null && !u.isAdmin()){ %>
+                    <%!  Utente u = (Utente) session.getAttribute("utente"); %>
+                    <%    if(u!=null && !u.isAdmin()){ %>
                         <a id="impostazioni" href="">Impostazioni</a>
                         <a id="logout" href="logout">Logout</a>
                     <%} else { %>

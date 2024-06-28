@@ -33,6 +33,7 @@ function chargeAllStates(numLingue) {
         console.log(heightFlexContainer);
     }
 
+
     newAnchor = document.createElement("a");
     newAnchor.setAttribute("id", "linkMinus");
     newAnchor.setAttribute("href", "index.jsp");   //creo anchor che conterrà un img

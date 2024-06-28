@@ -7,14 +7,21 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-public class RegistrazioneEsperto extends HttpServlet {
+public class RegistrazioneEspertoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        String address;
+        String nome = req.getParameter("nome");
+        String cognome = req.getParameter("cognome");
+        String ddn = req.getParameter("ddn");
+        String email = req.getParameter("email");
+        String password = req.getParameter("password");
+        String sesso = req.getParameter("sesso");
+        String fotoRiconoscitiva = "";
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        doGet(req, resp);
     }
 }
