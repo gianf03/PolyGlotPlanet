@@ -25,7 +25,6 @@ public class MostraCategorieServlet extends HttpServlet {
 
         List<Categoria> categorie = categoriaDAO.doRetrieveAll();
 
-
         if(categorie != null) {
             address = "/sceltaCategoria.jsp";
             req.setAttribute("categorie", categorie);

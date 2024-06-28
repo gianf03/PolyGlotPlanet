@@ -9,7 +9,7 @@ public class LinguaDAO {
     public Lingua doRetrieveById(String codISOLingua) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
-                    con.prepareStatement("SELECT codISOLingua, nome, parlanti, fotoStatoOrigine FROM Lingua WHERE id=?");
+                    con.prepareStatement("SELECT codISOLingua, nome, parlanti, fotoStatoOrigine FROM Lingua WHERE codISOLingua=?");
             ps.setString(1, codISOLingua);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -96,26 +96,4 @@ public class LinguaDAO {
             throw new RuntimeException(e);
         }
     }
-
-  /*  public void doUpdate(Customer c) {
-
-        try (Connection con = ConPool.getConnection()) {
-
-            String sql = "UPDATE customer SET firstName=?, lastName=?, balance=? WHERE id=?";
-
-            PreparedStatement ps = con.prepareStatement(sql);
-
-            ps.setString(1, c.getFirstName());
-            ps.setString(2, c.getLastName());
-            ps.setDouble(3, c.getBalance());
-            ps.setInt(4, c.getId());
-
-            if (ps.executeUpdate() != 1) {
-                throw new RuntimeException("UPDATE error.");
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
 }

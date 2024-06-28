@@ -71,7 +71,7 @@ create table Ordine(
 );
 
 create table Incontro(
-	IDProdotto int primary key,
+	IDProdotto int not null,
     dataOra datetime not null,
     CAP varchar(20) not null,
     via varchar(50) not null,
@@ -86,7 +86,7 @@ create table Incontro(
 );
 
 create table Colloquio(
-	IDProdotto int primary key,
+	IDProdotto int not null,
     dataOra datetime not null,
     
     prenotato boolean not null,
@@ -99,7 +99,7 @@ create table Colloquio(
 );
 
 create table Corso(
-	IDProdotto int primary key,
+	IDProdotto int not null,
     descrizione varchar(255) not null,
     numeroUnita int not null,
     livello char(2) not null,

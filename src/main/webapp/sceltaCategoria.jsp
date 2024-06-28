@@ -10,9 +10,16 @@
 <body>
     <%@ include file="header.jsp"%>
 
-    <c:forEach items="${categorie}" var="categoria">
-        <section><a href="">${categoria.nome}</a></section>
+    <div id="container">
+    <c:forEach items="${categorie}" var="categoria" >
+        <section>
+            <img class="categoria" src="${categoria.immagine}">
+            <div id="divLinkCat">
+                <a class="categoria" href="${categoria.nome}?lingua=<%=request.getParameter("lingua")%>">${categoria.nome}</a>
+            </div>
+        </section>
     </c:forEach>
+    </div>
 
     <%@ include file="footer.jsp"%>
 </body>

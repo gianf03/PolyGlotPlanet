@@ -3,6 +3,7 @@ package Model;
 public class Categoria {
     private int ID;
     private String nome;
+    private String immagine;
 
     public int getID() {
         return ID;
@@ -18,5 +19,13 @@ public class Categoria {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getImmagine() {
+        return immagine;
+    }
+
+    public void setImmagine(String immagine) {
+        this.immagine = immagine;
     }
 }
