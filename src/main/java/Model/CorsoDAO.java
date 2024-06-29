@@ -44,9 +44,15 @@ public class CorsoDAO {
 
     public List<Corso> doRetrieveByCodISOLingua(String codISOLingua) {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps =
-                    con.prepareStatement("SELECT * FROM Prodotto p JOIN Corso c ON p.ID=c.IDProdotto WHERE codISOLingua=?");
+
+            PreparedStatement ps;
+            if (!codISOLingua.isEmpty()){
+                ps = con.prepareStatement("SELECT * FROM Prodotto p JOIN Corso c ON p.ID=c.IDProdotto WHERE codISOLingua=?");
             ps.setString(1, codISOLingua);
+            } else {
+                ps = con.prepareStatement("SELECT * FROM Prodotto p JOIN Corso c ON p.ID=c.IDProdotto");
+            }
+
 
             ResultSet rs = ps.executeQuery();
 

@@ -50,7 +50,8 @@ create table Carrello(
 
 create table Categoria(
 	ID int auto_increment primary key,
-    nome varchar(50) not null
+    nome varchar(50) not null,
+    foto varchar(50) not null
 );
 
 create table Prodotto(

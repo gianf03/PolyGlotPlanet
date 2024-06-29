@@ -22,7 +22,7 @@
 
             <form onsubmit="filterByLanguage()">
                 <label for="selectLingua">Seleziona una lingua:</label>
-                <select id="selectLingua">
+                <select id="selectLingua" multiple>
                     <%for(Lingua l : lingue) { %>
                         <option value="<%=l.getCodISOLingua()%>"><%=l.getNome()%></option>
                     <%}%>
@@ -31,32 +31,39 @@
             </form>
     <%}%>
 
+
+    <div id="fatherOfCoursesDivs">
     <%
         for(Corso c : corsi) {
+            int i = 0;
     %>
 
         <div class="containerCorso">
-            <div class="corsoItem">
+            <div class="corsoItem" id="c1_"+<%=i%>>
                 <%
                     for(Lingua l : lingue) {
                         if(l.getCodISOLingua().equals(c.getCodISOLingua()))
                             foto = l.getFotoStatoOrigine();
                     }
                 %>
-                <img id="imgLinguaCorso" src="<%=foto%>">
+                <img class="imgLinguaCorso" src="<%=foto%>">
             </div>
-            <div class="corsoItem">
-                <p class="infoCorso">Livello: <%=c.getLivello()%></p>
-                <p class="infoCorso">Numero unità: <%=c.getNumeroUnita()%></p>
-                <p class="infoCorso"><%=c.getDescrizione()%></p>
+            <div class="corsoItem" id="c2_"+<%=i%>>
+                <p class="infoCorso" id="p1_"+<%=i%>>Livello : <%=c.getLivello()%></p>
+                <p class="infoCorso" id="p2_"+<%=i%>>Numero unità : <%=c.getNumeroUnita()%></p>
+                <p class="infoCorso" id="p3_"+<%=i%>><%=c.getDescrizione()%></p>
             </div>
-            <div class="corsoItem">
-                <div id="prezzo"><p><%=c.getPrezzoBase()%> €</p></div>
-                <div id="carrello"><button>Aggiungi al carrello</button></div>
+            <div class="corsoItem" id="c3_"+<%=i%>>
+                <div class="prezzo"><%=c.getPrezzoScontato()%> €</div>
+                <div class="carrello"><button class="bt">Aggiungi al carrello</button></div>
             </div>
         </div>
 
-    <%}%>
+    <%  i++;
+        }%>
+
+    </div>
+
 
     <% if(request.getParameter("lingua") != null) { %>
         <a href="tuttiCorsi">Indeciso su quale lingua apprendere? Vedi tutti i corsi</a>

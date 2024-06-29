@@ -46,3 +46,32 @@ insert into Lingua values
 ("ZH", "cinese", 921.1, "img/stati/cina.png"),
 ("AF", "afrikaans", 6.8, "img/stati/sudafrica.png"),
 ("HI", "hindi", 342.2, "img/stati/india.png");
+
+insert into Categoria (nome, foto) values 
+("corso", "img/categorie/corso.png"), 
+("incontro", "img/categorie/incontro.png"), 
+("colloquio", "img/categorie/colloquio.png");
+
+insert into Utente (nome, cognome, dataNascita, email, passwordHash, genere, admin) values
+("Sebastiano", "Caliendo", "2000-06-22", "sebcal2@gmail.com", SHA1("albicocca41"), "M", false),
+("Gianfranco", "Vitiello", "2003-03-07", "giavit7@gmail.com", SHA1("ananas12"), "M", true);
+
+INSERT INTO Prodotto (prezzoBase, scontoPercentuale, IDCategoria) VALUES
+	(30.5, 2.5, 1),
+    (60.75, 15, 1),
+    (50, 30, 1),
+    (70, 5, 1),
+    (5, 0, 1);
+    
+INSERT INTO Corso (IDProdotto, descrizione, numeroUnita, livello, codISOLingua) VALUES
+	(1, "Impara il portoghese dalle basi! Questo corso ti introduce alla grammatica, vocabolario e pronuncia essenziale. 
+    Perfetto per principianti, migliorerai le tue abilità di conversazione e comprensione.", 11, "A1", "PT"),
+	(2, "Il corso di portoghese intermedio perfeziona le competenze linguistiche con focus su conversazione, grammatica avanzata e cultura lusofona.
+    Ideale per chi vuole migliorare la fluidità e la comprensione scritta/orale.", 15, "B1", "PT"),
+    (3, "Corso avanzato di portoghese: perfeziona la tua fluency, comprensione e abilità comunicative.
+    Approfondisci la grammatica, il vocabolario e la cultura lusofona attraverso conversazioni e letture complesse.", 25, "C1", "PT"),
+    (4, "Impara il cinese dalle basi! Questo corso ti introduce alla grammatica, vocabolario e pronuncia essenziale. 
+    Perfetto per principianti, migliorerai le tue abilità di conversazione e comprensione.", 11, "A1", "ZH"),
+    (5, "Impara lo svedese dalle basi! Questo corso ti introduce alla grammatica, vocabolario e pronuncia essenziale. 
+    Perfetto per principianti, migliorerai le tue abilità di conversazione e comprensione.", 11, "A1", "SV");
+	

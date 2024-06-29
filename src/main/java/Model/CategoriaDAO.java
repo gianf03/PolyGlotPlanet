@@ -18,7 +18,7 @@ public class CategoriaDAO {
 
                 c.setNome(rs.getString("nome"));
                 c.setID(rs.getInt("ID"));
-                c.setImmagine(rs.getString("immagine"));
+                c.setImmagine(rs.getString("foto"));
 
                 categorie.add(c);
             }

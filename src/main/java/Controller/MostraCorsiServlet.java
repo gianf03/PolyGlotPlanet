@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/Corso")
+@WebServlet("/corso")
 public class MostraCorsiServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -24,14 +24,10 @@ public class MostraCorsiServlet extends HttpServlet {
         String codISOLingua = req.getParameter("lingua");
 
         List<Corso> corsi = corsoDAO.doRetrieveByCodISOLingua(codISOLingua);
+
         req.setAttribute("corsi", corsi);
 
         RequestDispatcher rd = req.getRequestDispatcher("/corsi.jsp");
         rd.forward(req, res);
-    }
-
-
-    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        doGet(req, res);
     }
 }
