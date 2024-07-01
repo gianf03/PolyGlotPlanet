@@ -1,16 +1,16 @@
-function filterByLanguage(){
+function filterByLanguagePriceAndLevel(){
     event.preventDefault(); //Questa riga previene l'invio predefinito del form e il conseguente ricaricamento della pagina
 
     let url = "mostraCorsiAjax?";
 
-    let selectLingua = document.getElementById("selectLingua");
+    let languageCheckboxes = document.getElementsByClassName("div-lingua");
     let prezzoMin = document.getElementById("prezzoMin");
     let prezzoMax = document.getElementById("prezzoMax");
-    let checkboxes = document.getElementById("filtroLivello").getElementsByTagName("input");
+    let levelCheckboxes = document.getElementById("filtroLivello").getElementsByTagName("input");
 
-    for (var i = 0; i < selectLingua.options.length; i++) {
-        if (selectLingua.options[i].selected) {
-            url += "codLingua=" + selectLingua.options[i].value + "&";
+    for (var i = 1; i < languageCheckboxes.length; i++) {
+        if (languageCheckboxes[i].getElementsByTagName("input")[0].checked) {
+            url += "codLingua=" + languageCheckboxes[i].getElementsByTagName("input")[0].id + "&";
         }
     }
 
@@ -18,9 +18,9 @@ function filterByLanguage(){
         url += "prezzoMin=" + prezzoMin.value + "&prezzoMax=" + prezzoMax.value + "&";
     }
 
-    for (let j = 0; j<checkboxes.length; j++){
-        if (checkboxes[j].checked){
-            url += checkboxes[j].name + "=" + checkboxes[j].value + "&";
+    for (let j = 0; j<levelCheckboxes.length; j++){
+        if (levelCheckboxes[j].checked){
+            url += levelCheckboxes[j].name + "=" + levelCheckboxes[j].value + "&";
         }
     }
     url = url.substring(0, url.length-1);

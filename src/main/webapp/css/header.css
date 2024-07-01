@@ -1,7 +1,7 @@
 header {
 }
 
-ul {
+#listaHeader {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@ ul {
     background-color: darkgreen;
 }
 
-li {
+li.dropdown, #imgCarrello, #liBenvenuto {
     float: right;
 }
 

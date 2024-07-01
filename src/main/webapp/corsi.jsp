@@ -7,8 +7,9 @@
     <title>Corsi</title>
 
     <link type="text/css" href="css/general.css" rel="stylesheet">
-    <script src="JavaScript/filterByLanguage.js"></script>
+    <script src="JavaScript/filterByLanguagePriceAndLevel.js"></script>
     <script src="JavaScript/checkSelection.js"></script>
+    <script src="JavaScript/showDropdownContent.js"></script>
 </head>
 <body>
 
@@ -22,16 +23,23 @@
         if(request.getParameter("lingua") == null) { %>
 
             <div id="f">
-                <form onsubmit="filterByLanguage()">
+                <form onsubmit="filterByLanguagePriceAndLevel()">
 
-                    <div class=filtro id="filtroLingua">
-                        <label for="selectLingua">Seleziona una lingua:</label>
-                        <select id="selectLingua" multiple>
-                            <option value="tutte">Tutte</option>
-                            <%for(Lingua l : lingue) { %>
-                                <option value="<%=l.getCodISOLingua()%>"><%=l.getNome()%></option>
+                    <div class="filtro" id="filtroLingua">
+                        <input type="checkbox" id="dropcheck-lingue" onchange="showDropdownContent()">
+                        <label id="droplabel-lingue" for="dropcheck-lingue">Scegli lingue</label>
+                        <div class="dropdown-content-lingue">
+                            <div class="div-lingua">
+                                <input type="checkbox" id="all" onchange="selectDeselectAll()">
+                                <label for="all">tutte</label>
+                            </div>
+                            <%for(Lingua l : lingue) {%>
+                                <div class="div-lingua">
+                                    <input type="checkbox" id="<%=l.getCodISOLingua()%>" onclick="deselectTutte(<%=l.getCodISOLingua()%>)">
+                                    <label for="<%=l.getCodISOLingua()%>"><%=l.getNome()%></label>
+                                </div>
                             <%}%>
-                        </select>
+                        </div>
                     </div>
 
                     <div class="filtro" id="filtroPrezzo">
@@ -75,7 +83,7 @@
     %>
 
         <div class="containerCorso">
-            <div class="corsoItem" id="c1_"+<%=i%>>
+            <div class="corsoItem" id="c1_<%=i%>">
                 <%
                     for(Lingua l : lingue) {
                         if(l.getCodISOLingua().equals(c.getCodISOLingua()))
@@ -84,12 +92,12 @@
                 %>
                 <img class="imgLinguaCorso" src="<%=foto%>">
             </div>
-            <div class="corsoItem" id="c2_"+<%=i%>>
-                <p class="infoCorso" id="p1_"+<%=i%>>Livello : <%=c.getLivello()%></p>
-                <p class="infoCorso" id="p2_"+<%=i%>>Numero unità : <%=c.getNumeroUnita()%></p>
-                <p class="infoCorso" id="p3_"+<%=i%>><%=c.getDescrizione()%></p>
+            <div class="corsoItem" id="c2_<%=i%>">
+                <p class="infoCorso" id="p1_<%=i%>">Livello : <%=c.getLivello()%></p>
+                <p class="infoCorso" id="p2_<%=i%>">Numero unità : <%=c.getNumeroUnita()%></p>
+                <p class="infoCorso" id="p3_<%=i%>"><%=c.getDescrizione()%></p>
             </div>
-            <div class="corsoItem" id="c3_"+<%=i%>>
+            <div class="corsoItem" id="c3_<%=i%>">
                 <div class="prezzo"><%=c.getPrezzoAttuale()%> €</div>
                 <div class="carrello"><button class="bt">Aggiungi al carrello</button></div>
             </div>
