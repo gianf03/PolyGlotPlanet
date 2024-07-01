@@ -47,7 +47,4 @@ public class Corso extends Prodotto{
     public void setCodISOLingua(String codISOLingua) {
         this.codISOLingua = codISOLingua;
     }
-    public double getPrezzoScontato(){
-        return Math.round((getPrezzoBase()-(getPrezzoBase()/100 * getScontoPercentuale())) * 100.0) / 100.0;
-    }
 }

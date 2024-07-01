@@ -3,7 +3,8 @@ body, html {
     margin : 0;
 }
 
-.containerCorso {
+.containerCorso, #containerNothing {
+
     display: flex;
     margin: 50px auto 50px auto;
     width: 60vw;
@@ -11,6 +12,7 @@ body, html {
     border-radius: 30px;
     background-color: #80B918;
     box-shadow: 10px 10px 5px #006400;
+    clear:left;
 }
 
 .corsoItem {
@@ -52,3 +54,16 @@ body, html {
     height: 80px;
     width: 130px;
 }
+
+.filtro{
+    float : left;
+    margin : 30px;
+}
+
+/*#filtroIncompleto{
+    background-color: red;
+    align-content: center;
+    color: white;
+    width: 200px;
+    margin : 15px;
+}*/

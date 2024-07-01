@@ -65,13 +65,13 @@ INSERT INTO Prodotto (prezzoBase, scontoPercentuale, IDCategoria) VALUES
     
 INSERT INTO Corso (IDProdotto, descrizione, numeroUnita, livello, codISOLingua) VALUES
 	(1, "Impara il portoghese dalle basi! Questo corso ti introduce alla grammatica, vocabolario e pronuncia essenziale. 
-    Perfetto per principianti, migliorerai le tue abilità di conversazione e comprensione.", 11, "A1", "PT"),
+    Perfetto per principianti, migliorerai le tue abilità di conversazione e comprensione.", 11, "A1-A2", "PT"),
 	(2, "Il corso di portoghese intermedio perfeziona le competenze linguistiche con focus su conversazione, grammatica avanzata e cultura lusofona.
-    Ideale per chi vuole migliorare la fluidità e la comprensione scritta/orale.", 15, "B1", "PT"),
+    Ideale per chi vuole migliorare la fluidità e la comprensione scritta/orale.", 15, "B1-B2", "PT"),
     (3, "Corso avanzato di portoghese: perfeziona la tua fluency, comprensione e abilità comunicative.
-    Approfondisci la grammatica, il vocabolario e la cultura lusofona attraverso conversazioni e letture complesse.", 25, "C1", "PT"),
+    Approfondisci la grammatica, il vocabolario e la cultura lusofona attraverso conversazioni e letture complesse.", 25, "C1-C2", "PT"),
     (4, "Impara il cinese dalle basi! Questo corso ti introduce alla grammatica, vocabolario e pronuncia essenziale. 
-    Perfetto per principianti, migliorerai le tue abilità di conversazione e comprensione.", 11, "A1", "ZH"),
+    Perfetto per principianti, migliorerai le tue abilità di conversazione e comprensione.", 11, "A1-A2", "ZH"),
     (5, "Impara lo svedese dalle basi! Questo corso ti introduce alla grammatica, vocabolario e pronuncia essenziale. 
-    Perfetto per principianti, migliorerai le tue abilità di conversazione e comprensione.", 11, "A1", "SV");
+    Perfetto per principianti, migliorerai le tue abilità di conversazione e comprensione.", 11, "A1-A2", "SV");
 	
