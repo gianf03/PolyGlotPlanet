@@ -7,8 +7,8 @@
 </head>
 <body>
 
-    <header>
-        <ul>
+    <header id="header">
+        <ul id="listaHeader">
             <!--<li class="logo"><a class=logo href="index.jsp"><img class=logo src="img/logo.jpg"></a></li>-->
             <li class="dropdown">
                 <a href=""><img src="img/utente.png"></a>
@@ -23,9 +23,9 @@
                     <%}%>
                 </div>
             </li>
-            <li><a href=""><img src="img/carrello.png"></a></li>
+            <li id="imgCarrello"><a href=""><img src="img/carrello.png"></a></li>
             <%if(u!=null && !u.isAdmin()){ %>
-            <li><p id="benvenuto">Ciao, <%=u.getNome()%> ! </p></li>
+            <li id="liBenvenuto"><p id="benvenuto">Ciao, <%=u.getNome()%> ! </p></li>
             <%}%>
         </ul>
     </header>

@@ -5,22 +5,23 @@
 <head>
     <title>Title</title>
     <link type="text/css" href="css/general.css" rel="stylesheet">
-    <link type="text/css" href="css/sceltaCategorieCSS.css" rel="stylesheet">
+    <link type="text/css" href="css/sceltaCategorie.css" rel="stylesheet">
 </head>
 <body>
-    <%@ include file="header.jsp"%>
-
-    <div id="container">
-    <c:forEach items="${categorie}" var="categoria" >
-        <section>
-            <img class="categoria" src="${categoria.immagine}">
-            <div id="divLinkCat">
-                <a class="categoria" href="${categoria.nome}?lingua=<%=request.getParameter("lingua")%>">${categoria.nome}</a>
-            </div>
-        </section>
-    </c:forEach>
+    <div class="containerOfAll">
+        <%@ include file="header.jsp"%>
+        <div id="containerCategorie">
+            <c:forEach items="${categorie}" var="categoria" >
+                <section>
+                    <img class="categoria" src="${categoria.immagine}">
+                    <div id="divLinkCat">
+                        <a class="categoria" href="${categoria.nome}?lingua=<%=request.getParameter("lingua")%>">${categoria.nome}</a>
+                    </div>
+                </section>
+            </c:forEach>
+        </div>
+        <%@ include file="footer.jsp"%>
     </div>
-
-    <%@ include file="footer.jsp"%>
+    <script src="JavaScript/cambiaAltezza.js"></script>
 </body>
 </html>

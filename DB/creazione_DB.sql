@@ -58,6 +58,7 @@ create table Prodotto(
 	ID int auto_increment primary key,
     prezzoBase double not null,
     scontoPercentuale double not null,
+    prezzoAttuale double not null,
     IDCategoria int not null,
     
     foreign key (IDCategoria) references Categoria(ID)
@@ -103,7 +104,7 @@ create table Corso(
 	IDProdotto int not null,
     descrizione varchar(255) not null,
     numeroUnita int not null,
-    livello char(2) not null,
+    livello char(5) not null,
     codISOLingua char(2) not null,
     
      foreign key (IDProdotto) references Prodotto(ID),
@@ -130,3 +131,30 @@ create table Composizione(
     foreign key (IDOrdine) references Ordine(ID)
 );
 
+
+
+#trigger per calcolare attributo derivabile prezzoAttuale ad ogni inserimento
+DELIMITER //
+
+CREATE TRIGGER calcola_prezzo_attuale BEFORE INSERT ON Prodotto
+FOR EACH ROW
+BEGIN
+    SET NEW.prezzoAttuale = NEW.prezzoBase - (NEW.prezzoBase / 100 * NEW.scontoPercentuale);
+END//
+
+DELIMITER ;
+
+
+#trigger per aggiornare attributo derivabile prezzoAttuale in caso di modifiche a prezzoBase e/o scontoPercentuale
+DELIMITER //
+
+CREATE TRIGGER update_prezzo_attuale
+BEFORE UPDATE ON Prodotto
+FOR EACH ROW
+BEGIN
+    IF NEW.prezzoBase != OLD.prezzoBase OR NEW.scontoPercentuale != OLD.scontoPercentuale THEN
+        SET NEW.prezzoAttuale = NEW.prezzoBase - (NEW.prezzoBase / 100 * NEW.scontoPercentuale);
+    END IF;
+END//
+
+DELIMITER ;
