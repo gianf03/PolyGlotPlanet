@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <header>
+    <header id="header">
         <ul id="listaHeader">
             <!--<li class="logo"><a class=logo href="index.jsp"><img class=logo src="img/logo.jpg"></a></li>-->
             <li class="dropdown">

@@ -6,41 +6,42 @@
 <head>
 
     <title>Home</title>
-    <link type="text/css" href="css/homeCSS.css" rel="stylesheet">
+    <link type="text/css" href="css/home.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="JavaScript/chargeAllStates.js"></script>
 </head>
 <body>
+    <div class="containerOfAll">
+        <%@ include file="header.jsp"%>
+        <section id="outer-container">
+            <div id="flex-container">
 
-    <%@ include file="header.jsp"%>
+                <%
+                    List<Lingua> lingue = (List<Lingua>) application.getAttribute("lingue");
 
-    <section id="outer-container">
-        <div id="flex-container">
+                    for(int i = 0; i < 45; i++) { %>
 
-            <%
-                List<Lingua> lingue = (List<Lingua>) application.getAttribute("lingue");
+                        <div class="flex-item" id="<%=i+1%>">
+                            <a class="linkLingua" href="mostraCategorie?lingua=<%=lingue.get(i).getCodISOLingua()%>">
+                            <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
+                            <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
+                            </a>
+                        </div>
 
-                for(int i = 0; i < 45; i++) { %>
+                        <% if(i >= 6) {%> <!--parentesi graffa obbligatoria altrimenti è come se l'if non ci fosse-->
+                            <script>
+                                document.getElementById("<%=i+1%>").style.display = "none";
+                            </script>
+                        <%}%>
 
-                    <div class="flex-item" id="<%=i+1%>">
-                        <a class="linkLingua" href="mostraCategorie?lingua=<%=lingue.get(i).getCodISOLingua()%>">
-                        <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
-                        <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
-                        </a>
-                    </div>
+                <%}%>
 
-                    <% if(i >= 6) {%> <!--parentesi graffa obbligatoria altrimenti è come se l'if non ci fosse-->
-                        <script>
-                            document.getElementById("<%=i+1%>").style.display = "none";
-                        </script>
-                    <%}%>
+                <div id="divPlus"><button id="plus" onclick="chargeAllStates(<%=lingue.size()%>)"><img id="imgPlus" src="img/plus.png"></button></div>
+            </div>
+        </section>
+        <%@ include file="footer.jsp"%>
+    </div>
 
-            <%}%>
-
-            <div id="divPlus"><button id="plus" onclick="chargeAllStates(<%=lingue.size()%>)"><img id="imgPlus" src="img/plus.png"></button></div>
-        </div>
-    </section>
-
-    <%@ include file="footer.jsp"%>
+    <script src="JavaScript/cambiaAltezza.js"></script>
 </body>
 </html>

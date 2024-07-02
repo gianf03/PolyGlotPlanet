@@ -1,4 +1,5 @@
 function chargeAllStates(numLingue) {
+
     for (let i = 6; i <= 45; i++) {
         document.getElementById(i).style.display = "";
     }

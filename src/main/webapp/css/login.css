@@ -8,7 +8,7 @@ body {
     /*per inserire immagine di sfondo scrivere qua dentro*/
 }
 
-#div-login{
+#div-loginUtente, #div-loginEsperto{
     background-color: #80B918;
     margin: 70px auto 75px auto;
     height: 500px;
@@ -67,7 +67,7 @@ body {
 }
 
 
-#div-registrazione{
+#div-registrazioneUtente, #div-registrazioneEsperto{
     background-color: #80B918;
     margin: 70px auto 75px auto;
     height: 700px;
