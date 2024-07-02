@@ -13,7 +13,7 @@ public class CorsoDAO  extends ProdottoDAO{
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
                     con.prepareStatement("SELECT p.prezzoBase, p.scontoPercentuale, p.IDCategoria, c.descrizione, c.numeroUnita, c.livello, c.codISOLingua " +
-                                                "FROM (Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) JOIN Categoria ca ON p.IDCatgoria=ca.ID" +
+                                                "FROM (Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) JOIN Categoria ca ON p.IDCatgoria=ca.ID " +
                                                 "WHERE id=?");
             ps.setInt(1, IDProdotto);
 
@@ -53,17 +53,8 @@ public class CorsoDAO  extends ProdottoDAO{
         try (Connection con = ConPool.getConnection()) {
 
             PreparedStatement ps;
-
-            if (!codISOLingua.isEmpty()){
-                ps = con.prepareStatement("SELECT * FROM (Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) JOIN Categoria ca ON p.IDCategoria=ca.ID WHERE codISOLingua=?");
-                ps.setString(1, codISOLingua);
-            } else {
-                ps = con.prepareStatement("SELECT * FROM (Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) JOIN Categoria ca ON p.IDCategoria=ca.ID");
-            }
-
-            ps = con.prepareStatement("SELECT * FROM Prodotto p JOIN Corso c ON p.ID=c.IDProdotto WHERE codISOLingua=?");
+            ps = con.prepareStatement("SELECT * FROM (Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) JOIN Categoria ca ON p.IDCategoria=ca.ID WHERE codISOLingua=?");
             ps.setString(1, codISOLingua);
-
 
 
             ResultSet rs = ps.executeQuery();
@@ -101,7 +92,7 @@ public class CorsoDAO  extends ProdottoDAO{
         try (Connection con = ConPool.getConnection()) {
 
             PreparedStatement ps;
-            ps = con.prepareStatement("SELECT * FROM (Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) JOIN Categoria ca ON p.IDCategoria=ca.ID" +
+            ps = con.prepareStatement("SELECT * FROM (Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) JOIN Categoria ca ON p.IDCategoria=ca.ID " +
                                         "WHERE livello=?");
             ps.setString(1, livello);
 
@@ -180,7 +171,7 @@ public class CorsoDAO  extends ProdottoDAO{
 
             PreparedStatement ps;
 
-            ps = con.prepareStatement("SELECT * FROM (Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) JOIN Categoria ca ON p.IDCategoria=ca.ID" +
+            ps = con.prepareStatement("SELECT * FROM (Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) JOIN Categoria ca ON p.IDCategoria=ca.ID " +
                         "WHERE codISOLingua=? AND prezzoAttuale>=? AND prezzoAttuale<? AND livello=?");
             ps.setString(1, codISOLingua);
             ps.setInt(2, prezzoMin);
