@@ -13,7 +13,7 @@ public class CorsoDAO {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
                     con.prepareStatement("SELECT p.prezzoBase, p.scontoPercentuale, p.IDCategoria, c.descrizione, c.numeroUnita, c.livello, c.codISOLingua " +
-                                                "FROM Prodotto p JOIN Corso c ON p.ID=c.IDProdotto" +
+                                                "FROM (Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) JOIN Categoria ca ON p.IDCatgoria=ca.ID" +
                                                 "WHERE id=?");
             ps.setInt(1, IDProdotto);
 
@@ -22,10 +22,14 @@ public class CorsoDAO {
             if(rs.next()) {
                 Corso c = new Corso();
 
+                Categoria cat = new Categoria();
+                cat.setID(rs.getInt("IDCategoria"));
+                cat.setNome(rs.getString("nome"));
+
                 c.setID(IDProdotto);
-                c.setPrezzoBase(rs.getDouble("p.prezzoBase"));
-                c.setScontoPercentuale(rs.getDouble("p.scontoPercentuale"));
-                c.setIDCategoria(rs.getInt("p.IDCategoria"));
+                c.setPrezzoBase(rs.getDouble("prezzoBase"));
+                c.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
+                c.setCategoria(cat);
                 c.setIDProdotto(IDProdotto);
                 c.setDescrizione(rs.getString("descrizione"));
                 c.setNumeroUnita(rs.getInt("numeroUnita"));
@@ -47,10 +51,10 @@ public class CorsoDAO {
 
             PreparedStatement ps;
             if (!codISOLingua.isEmpty()){
-                ps = con.prepareStatement("SELECT * FROM Prodotto p JOIN Corso c ON p.ID=c.IDProdotto WHERE codISOLingua=?");
-            ps.setString(1, codISOLingua);
+                ps = con.prepareStatement("SELECT * FROM (Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) JOIN Categoria ca ON p.IDCategoria=ca.ID WHERE codISOLingua=?");
+                ps.setString(1, codISOLingua);
             } else {
-                ps = con.prepareStatement("SELECT * FROM Prodotto p JOIN Corso c ON p.ID=c.IDProdotto");
+                ps = con.prepareStatement("SELECT * FROM (Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) JOIN Categoria ca ON p.IDCategoria=ca.ID");
             }
 
 
@@ -61,10 +65,14 @@ public class CorsoDAO {
             while(rs.next()) {
                 Corso c = new Corso();
 
+                Categoria cat = new Categoria();
+                cat.setID(rs.getInt("IDCategoria"));
+                cat.setNome(rs.getString("nome"));
+
                 c.setID(rs.getInt("ID"));
                 c.setPrezzoBase(rs.getDouble("prezzoBase"));
                 c.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
-                c.setIDCategoria(rs.getInt("IDCategoria"));
+                c.setCategoria(cat);
                 c.setIDProdotto(rs.getInt("IDProdotto"));
                 c.setDescrizione(rs.getString("descrizione"));
                 c.setNumeroUnita(rs.getInt("numeroUnita"));
@@ -84,7 +92,7 @@ public class CorsoDAO {
     public List<Corso> doRetrieveAll() {
         try (Connection con = ConPool.getConnection()) {
 
-            String sql = "SELECT * FROM Prodotto p JOIN Corso c ON p.ID=c.IDProdotto";
+            String sql = "SELECT * FROM (Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) JOIN Categoria ca ON p.IDCategoria=ca.ID";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -94,10 +102,14 @@ public class CorsoDAO {
             while(rs.next()) {
                 Corso c = new Corso();
 
+                Categoria cat = new Categoria();
+                cat.setID(rs.getInt("IDCategoria"));
+                cat.setNome(rs.getString("nome"));
+
                 c.setID(rs.getInt("ID"));
                 c.setPrezzoBase(rs.getDouble("prezzoBase"));
                 c.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
-                c.setIDCategoria(rs.getInt("IDCategoria"));
+                c.setCategoria(cat);
                 c.setIDProdotto(rs.getInt("IDProdotto"));
                 c.setDescrizione(rs.getString("descrizione"));
                 c.setNumeroUnita(rs.getInt("numeroUnita"));

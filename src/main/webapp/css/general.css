@@ -52,3 +52,51 @@ body, html {
     height: 80px;
     width: 130px;
 }
+
+#mainContainer {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+#topContainer {
+    display: flex;
+
+    width: 80%;
+    height: 20%;
+    margin: auto;
+}
+
+#bottomContainer {
+    width: 80%;
+    height: 70%;
+    margin: auto;
+}
+
+.item {
+    width: 20%;
+    height: 30%;
+    margin: auto;
+    background-color: #006400;
+    border-radius: 10px;
+    align-content: center;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 15pt;
+}
+
+
+.credenziali, #intestazione{
+    align-content: center;
+    text-align: center;
+    width: 50%;
+    height: 10%;
+    margin: auto;
+}
+
+#it1 {
+    background-color: #80B918;
+}
+
+

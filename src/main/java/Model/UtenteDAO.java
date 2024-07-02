@@ -67,4 +67,38 @@ public class UtenteDAO {
 
         return utente;
     }
+
+    public void doUpdate(int IDUtente, String nome, String cognome, String newPassword) {
+
+        try (Connection con = ConPool.getConnection()) {
+
+            String sql = null;
+
+            if(newPassword.isEmpty()) {
+                sql = "UPDATE Utente SET nome=?, cognome=? WHERE id=?";
+            } else {
+                sql = "UPDATE Utente SET nome=?, cognome=?, passwordHash=SHA1(?) WHERE id=?";
+            }
+
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setString(1, nome);
+            ps.setString(2, cognome);
+
+            if(!newPassword.isEmpty()) {
+                ps.setString(3, newPassword);
+                ps.setInt(4, IDUtente);
+            } else {
+                ps.setInt(3, IDUtente);
+            }
+
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("UPDATE error.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
