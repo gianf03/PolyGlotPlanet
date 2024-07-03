@@ -24,12 +24,11 @@ public class ProdottoDAO {
             List<Prodotto> prodotti = new ArrayList<>();
 
             while (rs.next()) {
-                String nomeCat = rs.getString("nome");
-                int idCat = rs.getInt("IDCategoria");
 
                 Categoria cat = new Categoria();
-                cat.setNome(nomeCat);
-                cat.setID(idCat);
+                cat.setNome(rs.getString("nome"));
+                cat.setID(rs.getInt("IDCategoria"));
+                cat.setImmagine(rs.getString("immagine"));
 
             }
 

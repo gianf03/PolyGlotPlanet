@@ -2,9 +2,9 @@ package Model;
 
 import java.time.LocalDateTime;
 
-public class Incontro extends Prodotto{
+public class Incontro{
 
-    private int IDProdotto;
+    private Prodotto prodotto;
     private LocalDateTime dataOra;
     private String CAP;
     private String via;
@@ -14,12 +14,12 @@ public class Incontro extends Prodotto{
     private boolean avvenuto;
     private int votoUtente;
 
-    public int getIDProdotto() {
-        return IDProdotto;
+    public Prodotto getProdotto() {
+        return prodotto;
     }
 
-    public void setIDProdotto(int IDProdotto) {
-        this.IDProdotto = IDProdotto;
+    public void setProdotto(Prodotto prodotto) {
+        this.prodotto = prodotto;
     }
 
     public LocalDateTime getDataOra() {

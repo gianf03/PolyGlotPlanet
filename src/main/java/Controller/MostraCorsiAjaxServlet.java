@@ -78,16 +78,12 @@ public class MostraCorsiAjaxServlet extends HttpServlet {
 
             for (Corso c : corsi) {
                 JSONObject obj = new JSONObject();
-                obj.put("codISOLingua", c.getCodISOLingua());
+                obj.put("codISOLingua", c.getLingua().getCodISOLingua());
                 obj.put("descrizione", c.getDescrizione());
                 obj.put("numeroUnita", c.getNumeroUnita());
                 obj.put("livello", c.getLivello());
-                obj.put("prezzo", c.getPrezzoAttuale());
-
-                for (Lingua l : lingue) {
-                    if (l.getCodISOLingua().equals(c.getCodISOLingua()))
-                        obj.put("foto", l.getFotoStatoOrigine());
-                }
+                obj.put("prezzo", c.getProdotto().getPrezzoAttuale());
+                obj.put("foto", c.getLingua().getFotoStatoOrigine());
 
                 corsiArray.add(obj);
             }

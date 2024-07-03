@@ -12,8 +12,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/mostraOrdiniAjax")
-public class MostraOrdiniAjaxServlet extends HttpServlet {
+@WebServlet("/mostraOrdini")
+public class MostraOrdiniServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,13 +21,6 @@ public class MostraOrdiniAjaxServlet extends HttpServlet {
         resp.setContentType("application/json");
 
         Utente u = (Utente) req.getSession().getAttribute("utente");
-
-        OrdineDAO ordineDAO = new OrdineDAO();
-
-        List<Ordine> ordini = ordineDAO.doRetrieveAllByUtente(u.getID());
-
-
-
     }
 
     @Override

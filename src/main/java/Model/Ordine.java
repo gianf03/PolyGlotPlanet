@@ -1,14 +1,10 @@
 package Model;
 
-import java.util.List;
-
 public class Ordine {
 
     private int ID;
     private double prezzoTotale;
-    private int IDUtente;
-    private List<Prodotto> prodotti;
-
+    private Utente utente;
 
     public int getID() {
         return ID;
@@ -26,11 +22,11 @@ public class Ordine {
         this.prezzoTotale = prezzoTotale;
     }
 
-    public int getIDUtente() {
-        return IDUtente;
+    public Utente getUtente() {
+        return utente;
     }
 
-    public void setIDUtente(int IDUtente) {
-        this.IDUtente = IDUtente;
+    public void setUtente(Utente utente) {
+        this.utente = utente;
     }
 }

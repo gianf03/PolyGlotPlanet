@@ -25,7 +25,7 @@ public class OrdineDAO {
                 Ordine o = new Ordine();
 
                 o.setID(rs.getInt("ID"));
-                o.setIDUtente(IDUtente);
+                //o.setIDUtente(IDUtente);
                 o.setPrezzoTotale(rs.getDouble("prezzoTotale"));
             }
 

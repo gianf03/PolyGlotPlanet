@@ -1,19 +1,20 @@
 package Model;
 
-public class Corso extends Prodotto{
+public class Corso{
 
-    private int IDProdotto;
+    private Prodotto prodotto;
     private String descrizione;
     private int numeroUnita;
     private String livello;
-    private String codISOLingua;
+    private Lingua lingua;
 
-    public int getIDProdotto() {
-        return IDProdotto;
+
+    public Prodotto getProdotto() {
+        return prodotto;
     }
 
-    public void setIDProdotto(int IDProdotto) {
-        this.IDProdotto = IDProdotto;
+    public void setProdotto(Prodotto prodotto) {
+        this.prodotto = prodotto;
     }
 
     public String getDescrizione() {
@@ -40,11 +41,11 @@ public class Corso extends Prodotto{
         this.livello = livello;
     }
 
-    public String getCodISOLingua() {
-        return codISOLingua;
+    public Lingua getLingua() {
+        return lingua;
     }
 
-    public void setCodISOLingua(String codISOLingua) {
-        this.codISOLingua = codISOLingua;
+    public void setLingua(Lingua lingua) {
+        this.lingua = lingua;
     }
 }

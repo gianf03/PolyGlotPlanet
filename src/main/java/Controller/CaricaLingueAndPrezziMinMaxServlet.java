@@ -1,8 +1,6 @@
 package Controller;
 
-import Model.CorsoDAO;
-import Model.Lingua;
-import Model.LinguaDAO;
+import Model.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,16 +14,16 @@ public class CaricaLingueAndPrezziMinMaxServlet extends HttpServlet {
         List<Lingua> lingue = linguaDAO.doRetrieveAll();
         getServletContext().setAttribute("lingue", lingue);
 
-        CorsoDAO corsoDAO = new CorsoDAO();
-        List<Integer> prezziCorsi = corsoDAO.doRetrievePrezzoMinMax();
+        ProdottoDAO prodottoDAO = new ProdottoDAO();
+        List<Integer> prezziCorsi = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(1);
         getServletContext().setAttribute("prezziCorsi", prezziCorsi);
 
-        //ColloquioDAO colloquioDAO = new ColloquioDAO();
-        //List<Integer> prezziColloqui = colloquioDAO.doRetrievePrezzoMinMax();
+        //ProdottoDAO prodottoDAO = new ProdottoDAO();
+        //List<Integer> prezziColloqui = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(2);
         //getServletContext().setAttribute("prezziColloqui", prezziColloqui);
 
-        //IncontroDAO incontroDAO = new IncontroDAO();
-        //List<Integer> prezziIncontri = incontroDAO.doRetrievePrezzoMinMax();
+        //ProdottoDAO prodottoDAO = new ProdottoDAO();
+        //List<Integer> prezziIncontri = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(3);
         //getServletContext().setAttribute("prezziIncontri", prezziIncontri);
 
         System.out.println(prezziCorsi.get(0));

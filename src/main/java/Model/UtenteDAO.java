@@ -45,7 +45,47 @@ public class UtenteDAO {
                 utente.setNome(resultSet.getString("nome"));
                 utente.setCognome(resultSet.getString("cognome"));
                 utente.setEmail(resultSet.getString("email"));
-                utente.setPassword(password);
+                utente.setPasswordWithEncryption(password);
+                utente.setDataNascita(resultSet.getDate("dataNascita").toLocalDate());
+                utente.setGenere(resultSet.getString("genere"));
+                utente.setAdmin(resultSet.getBoolean("admin"));
+            }
+        }  catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return utente;
+    }
+
+
+    public Utente doRetrieveById(int id){
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Utente utente = null;
+
+        try (Connection connection = ConPool.getConnection()) {
+            statement = connection.prepareStatement("SELECT * FROM utente WHERE ID=?");
+            statement.setInt(1, id);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                utente = new Utente();
+                utente.setID(resultSet.getInt("ID"));
+                utente.setNome(resultSet.getString("nome"));
+                utente.setCognome(resultSet.getString("cognome"));
+                utente.setEmail(resultSet.getString("email"));
+                utente.setPassword(resultSet.getString("passwordHash"));
                 utente.setDataNascita(resultSet.getDate("dataNascita").toLocalDate());
                 utente.setGenere(resultSet.getString("genere"));
                 utente.setAdmin(resultSet.getBoolean("admin"));

@@ -56,8 +56,6 @@ body, html {
 
 #mainContainer {
     margin: auto;
-    width: 100%;
-    height: 100%;
 }
 
 #topContainer {
@@ -171,4 +169,38 @@ body, html {
     justify-content: center;
     text-decoration: none;
 }
+
+
+/*File areaUtente.jsp*/
+#containerAreaUtente {
+    display: flex;
+    height: 100%;
+}
+
+#containerdatiUtente, #containerModificaDati {
+    height: 100%;
+    width: 50vw;
+    align-content: center;
+}
+
+#tableDatiUtente {
+    margin: auto;
+}
+
+#divTastoModifica {
+    text-align: center;
+    margin-top: 100px;
+}
+
+#tastoModifica {
+    width: 40%
+}
+
+.paragrafiRossi {
+    color: red;
+    font-weight: bold;
+}
+
+
+
 
