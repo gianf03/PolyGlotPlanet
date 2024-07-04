@@ -59,7 +59,12 @@ public class MostraCorsiAjaxServlet extends HttpServlet {
 
             }
 
-            if (codiciLingue.get(0).equals("tutte")) {
+            if (prezzi.isEmpty()) {   //uso valori fittizi affinché la query mi restituisca i corsi con tutti i prezzi che soddisfino gli altri 2 criteri (codice e livello)
+                prezzi.add(0);
+                prezzi.add(10000);
+            }
+
+            if (codiciLingue.size() == 1 && codiciLingue.get(0).equals("tutte")) {
                 for (Lingua l : lingue)
                     codiciLingue.add(l.getCodISOLingua());
             }

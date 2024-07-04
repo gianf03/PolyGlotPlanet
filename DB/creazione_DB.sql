@@ -126,7 +126,7 @@ create table Composizione(
     dataOra datetime,
     prezzoAcquisto double not null,
     
-    primary key(IDOrdine, IDProdotto),
+    primary key(IDOrdine, IDProdotto, dataOra),
     foreign key (IDProdotto) references Prodotto(ID),
     foreign key (IDOrdine) references Ordine(ID)
 );
