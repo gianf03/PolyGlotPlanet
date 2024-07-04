@@ -17,7 +17,7 @@
         <div id="div-registrazioneEsperto" class="containerOfAll">
             <div id="reg"><h1>Registrazione</h1></div>
 
-            <form id="form-registrazione" action="registrazioneUtente" method="POST">
+            <form id="form-registrazione" action="registrazioneEsperto" method="POST">
                 <div class="credenziali"><input type="text" id = "nome" name = "nome" placeholder="nome" required></div>
                 <div class="credenziali"><input type="text" id = "cognome" name = "cognome" placeholder="cognome" required></div>
 
