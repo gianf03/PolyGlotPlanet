@@ -20,6 +20,8 @@ public class ModificaDatiUtenteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
 
+        //gdsahgdjasd
+
         String nome = req.getParameter("nome");
         String cognome = req.getParameter("cognome");
         String newPassword = req.getParameter("newPass");
