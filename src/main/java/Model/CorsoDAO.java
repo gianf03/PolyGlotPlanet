@@ -207,8 +207,8 @@ public class CorsoDAO{
             PreparedStatement ps;
 
             ps = con.prepareStatement("SELECT * FROM ((Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) " +
-                                            "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON c.codISOLingua=l.codISOLingua " +
-                                            "WHERE codISOLingua=? AND prezzoAttuale>=? AND prezzoAttuale<? AND livello=?");
+                    "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON c.codISOLingua=l.codISOLingua " +
+                    "WHERE codISOLingua=? AND prezzoAttuale>=? AND prezzoAttuale<? AND livello=?");
             ps.setString(1, codISOLingua);
             ps.setInt(2, prezzoMin);
             ps.setInt(3, prezzoMax);

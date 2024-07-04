@@ -10,4 +10,3 @@ function removeError(error) {
         p.style.display = "none";
     }
 }
-

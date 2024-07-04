@@ -32,8 +32,8 @@ public class MostraCorsiAjaxServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         if(req.getQueryString() == null || req.getQueryString().isEmpty() ||
-                    !req.getQueryString().contains("codLingua") || !req.getQueryString().contains("prezzoMin") ||
-                    !req.getQueryString().contains("prezzoMax") || !req.getQueryString().contains("livello")){
+                !req.getQueryString().contains("codLingua") || !req.getQueryString().contains("prezzoMin") ||
+                !req.getQueryString().contains("prezzoMax") || !req.getQueryString().contains("livello")){
             JSONObject obj = new JSONObject();
             obj.put("filtro", "incompleto");
             out.print(obj.toJSONString());
