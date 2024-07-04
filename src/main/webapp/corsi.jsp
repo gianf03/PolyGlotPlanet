@@ -76,8 +76,8 @@
 
     <div id="fatherOfCoursesDivs">
         <%
+            int i = 1;
             for(Corso c : corsi) {
-                int i = 1;
         %>
 
             <div class="containerCorso">
