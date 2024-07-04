@@ -8,6 +8,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProdottoDAO {
+
+    public List<Prodotto> doRetrieveAllByOrdine(int IDOrdine) {
+        try (Connection con = ConPool.getConnection()) {
+
+            String sql = "SELECT *" +
+                    "FROM (Composizione c JOIN Prodotto p ON c.IDProdotto=p.ID) JOIN Categoria ca ON p.IDCategoria=ca.ID" +
+                    "WHERE c.IDOrdine=?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, IDOrdine);
+
+            ResultSet rs = ps.executeQuery();
+
+            List<Prodotto> prodotti = new ArrayList<>();
+
+            while (rs.next()) {
+
+                Categoria cat = new Categoria();
+                cat.setNome(rs.getString("nome"));
+                cat.setID(rs.getInt("IDCategoria"));
+                cat.setImmagine(rs.getString("immagine"));
+
+            }
+
+            return prodotti;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     public List<Integer> doRetrievePrezzoMinMaxByCategoria(int categoria) {
         try (Connection con = ConPool.getConnection()) {
 
@@ -37,6 +69,7 @@ public class ProdottoDAO {
             prezzi.add(max);
 
             return prezzi;
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

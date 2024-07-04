@@ -7,8 +7,8 @@ public class Prodotto {
     private int ID;
     private double prezzoBase;
     private double scontoPercentuale;
+    private Categoria categoria;
     private double prezzoAttuale;
-    private int IDCategoria;
 
     public int getID() {
         return ID;
@@ -34,12 +34,12 @@ public class Prodotto {
         this.scontoPercentuale = scontoPercentuale;
     }
 
-    public int getIDCategoria() {
-        return IDCategoria;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setIDCategoria(int IDCategoria) {
-        this.IDCategoria = IDCategoria;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public void setPrezzoAttuale(double prezzoAttuale){ this.prezzoAttuale = prezzoAttuale; }

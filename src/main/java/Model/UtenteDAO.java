@@ -45,7 +45,7 @@ public class UtenteDAO {
                 utente.setNome(resultSet.getString("nome"));
                 utente.setCognome(resultSet.getString("cognome"));
                 utente.setEmail(resultSet.getString("email"));
-                utente.setPassword(password);
+                utente.setPasswordWithEncryption(password);
                 utente.setDataNascita(resultSet.getDate("dataNascita").toLocalDate());
                 utente.setGenere(resultSet.getString("genere"));
                 utente.setAdmin(resultSet.getBoolean("admin"));
@@ -66,5 +66,79 @@ public class UtenteDAO {
         }
 
         return utente;
+    }
+
+
+    public Utente doRetrieveById(int id){
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Utente utente = null;
+
+        try (Connection connection = ConPool.getConnection()) {
+            statement = connection.prepareStatement("SELECT * FROM utente WHERE ID=?");
+            statement.setInt(1, id);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                utente = new Utente();
+                utente.setID(resultSet.getInt("ID"));
+                utente.setNome(resultSet.getString("nome"));
+                utente.setCognome(resultSet.getString("cognome"));
+                utente.setEmail(resultSet.getString("email"));
+                utente.setPassword(resultSet.getString("passwordHash"));
+                utente.setDataNascita(resultSet.getDate("dataNascita").toLocalDate());
+                utente.setGenere(resultSet.getString("genere"));
+                utente.setAdmin(resultSet.getBoolean("admin"));
+            }
+        }  catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return utente;
+    }
+
+    public void doUpdate(int IDUtente, String nome, String cognome, String newPassword) {
+
+        try (Connection con = ConPool.getConnection()) {
+
+            String sql = null;
+
+            if(newPassword.isEmpty()) {
+                sql = "UPDATE Utente SET nome=?, cognome=? WHERE id=?";
+            } else {
+                sql = "UPDATE Utente SET nome=?, cognome=?, passwordHash=SHA1(?) WHERE id=?";
+            }
+
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setString(1, nome);
+            ps.setString(2, cognome);
+
+            if(!newPassword.isEmpty()) {
+                ps.setString(3, newPassword);
+                ps.setInt(4, IDUtente);
+            } else {
+                ps.setInt(3, IDUtente);
+            }
+
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("UPDATE error.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

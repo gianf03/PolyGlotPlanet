@@ -14,9 +14,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
-import jakarta.servlet.http.HttpSession;
 import org.json.simple.*;
 @SuppressWarnings("unchecked")
 @WebServlet("/mostraCorsiAjax")
@@ -34,8 +32,8 @@ public class MostraCorsiAjaxServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         if(req.getQueryString() == null || req.getQueryString().isEmpty() ||
-                    !req.getQueryString().contains("codLingua") || !req.getQueryString().contains("prezzoMin") ||
-                    !req.getQueryString().contains("prezzoMax") || !req.getQueryString().contains("livello")){
+                !req.getQueryString().contains("codLingua") || !req.getQueryString().contains("prezzoMin") ||
+                !req.getQueryString().contains("prezzoMax") || !req.getQueryString().contains("livello")){
             JSONObject obj = new JSONObject();
             obj.put("filtro", "incompleto");
             out.print(obj.toJSONString());
@@ -80,16 +78,12 @@ public class MostraCorsiAjaxServlet extends HttpServlet {
 
             for (Corso c : corsi) {
                 JSONObject obj = new JSONObject();
-                obj.put("codISOLingua", c.getCodISOLingua());
+                obj.put("codISOLingua", c.getLingua().getCodISOLingua());
                 obj.put("descrizione", c.getDescrizione());
                 obj.put("numeroUnita", c.getNumeroUnita());
                 obj.put("livello", c.getLivello());
-                obj.put("prezzo", c.getPrezzoAttuale());
-
-                for (Lingua l : lingue) {
-                    if (l.getCodISOLingua().equals(c.getCodISOLingua()))
-                        obj.put("foto", l.getFotoStatoOrigine());
-                }
+                obj.put("prezzo", c.getProdotto().getPrezzoAttuale());
+                obj.put("foto", c.getLingua().getFotoStatoOrigine());
 
                 corsiArray.add(obj);
             }

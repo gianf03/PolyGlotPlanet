@@ -1,74 +1,66 @@
-#listaHeader {
-    list-style-type: none;
+#navBarContainer {
+    background-color: darkgreen;
+    text-align: right;
+}
+
+
+nav ul {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    background-color: darkgreen;
+    list-style: none;
 }
 
-li.dropdown, #imgCarrello, #liBenvenuto {
-    float: right;
-}
-
-li.logo {
-    float: left;
-}
-
-img.logo {
-    height: 80px;
-    width: 80px;
-}
-
-a.logo {
-    padding: 5px;
-}
-
-
-li a, .dropbtn {
+nav .mainMenu > li {
     display: inline-block;
-    color: white;
+    width: 150px;
     text-align: center;
-    padding: 20px 56px;
-    text-decoration: none;
+    align-content: center;
 }
 
-li a:hover, .dropdown:hover .dropbtn {
+nav a {
+    margin: 0;
+    padding: 12px 15px 12px 15px;
+    background-color: darkgreen;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: block;
+}
+
+nav li:hover > a {
     background-color: #80B918;
 }
 
-li.dropdown {
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
+nav .subMenu, nav .superSubMenu{
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    display: none;
 }
 
-.dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
+nav .mainMenu > li:hover .subMenu, nav .subMenu > li:hover > .superSubMenu {
     display: block;
-    text-align: center;
-    background-color: darkgreen;
 }
 
-.dropdown-content a:hover {
-    background-color: #80B918;
+nav .superSubMenu {
+    top: 0;
+    right: 100%;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
+nav .subMenu li {
+    position: relative;
+    width: 150px;
+}
+
+nav .superSubMenu > li {
+    width: 150px;
+}
+
+#liBenvenuto {
+    width: 200px;
 }
 
 #benvenuto {
-    text-align: center;
-    padding-top: 5px;
+    margin: auto;
     color: white;
-    font-size: 18pt;
+    font-size: 16pt;
+    font-weight: bold;
 }

@@ -3,31 +3,46 @@
 <html>
 <head>
     <title>Title</title>
-    <link type="text/css" href="css/header.css" rel="stylesheet">
+    <link title="foglio di stile" type="text/css" href="css/header.css" rel="stylesheet">
 </head>
 <body>
 
-    <header id="header">
-        <ul id="listaHeader">
-            <!--<li class="logo"><a class=logo href="index.jsp"><img class=logo src="img/logo.jpg"></a></li>-->
-            <li class="dropdown">
-                <a href=""><img src="img/utente.png"></a>
-                <div class="dropdown-content">
-                    <% Utente u = (Utente) session.getAttribute("utente");
-                      if(u!=null && !u.isAdmin()){ %>
-                        <a id="impostazioni" href="impostazioniUtente.jsp">Impostazioni</a>
-                        <a id="logout" href="logout">Logout</a>
-                    <%} else { %>
-                        <a id="utente" href="loginUtente.jsp">Utente</a>
-                        <a id="esperto" href="loginEsperto.jsp">Esperto</a>
+<header id="header">
+
+    <%
+        Utente u = (Utente) session.getAttribute("utente");
+    %>
+
+    <div id="navBarContainer">
+        <nav>
+            <ul class="mainMenu">
+                <%if(u!=null && !u.isAdmin()){ %>
+                <li id="liBenvenuto"><p id="benvenuto">Ciao, <%=u.getNome()%> ! </p></li>
+                <%}%>
+                <li><a href=""><img alt="carrello stilizzato" src="img/carrello.png"></a></li>
+                <li>
+                    <a><img alt="utente stilizzato" src="img/utente.png"></a>
+                    <% if(u != null && !u.isAdmin()) {%>
+                    <ul class="subMenu">
+                        <li><a href="logout">Logout</a></li>
+                        <li>
+                            <a href="">Impostazioni</a>
+                            <ul class="superSubMenu">
+                                <li><a href="areaUtente.jsp">Dati personali</a></li>
+                                <li><a href="">Mostra ordini</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <%} else {%>
+                    <ul class="subMenu">
+                        <li><a href="loginUtente.jsp">Utente</a></li>
+                        <li><a href="loginEsperto.jsp">Esperto</a></li>
+                    </ul>
                     <%}%>
-                </div>
-            </li>
-            <li id="imgCarrello"><a href=""><img src="img/carrello.png"></a></li>
-            <%if(u!=null && !u.isAdmin()){ %>
-            <li id="liBenvenuto"><p id="benvenuto">Ciao, <%=u.getNome()%> ! </p></li>
-            <%}%>
-        </ul>
-    </header>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
 </body>
 </html>
