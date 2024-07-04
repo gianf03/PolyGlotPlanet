@@ -85,7 +85,7 @@
                 <div class="corsoItem" id="c1_<%=i%>">
                     <%
                         for(Lingua l : lingue) {
-                            if(l.getCodISOLingua().equals(c.getCodISOLingua()))
+                            if(l.getCodISOLingua().equals(c.getLingua().getCodISOLingua()))
                                 foto = l.getFotoStatoOrigine();
                         }
                     %>
@@ -97,7 +97,7 @@
                     <p class="infoCorso" id="p3_<%=i%>"><%=c.getDescrizione()%></p>
                 </div>
                 <div class="corsoItem" id="c3_<%=i%>">
-                    <div class="prezzo"><%=c.getPrezzoAttuale()%> €</div>
+                    <div class="prezzo"><%=c.getProdotto().getPrezzoAttuale()%> €</div>
                     <div class="carrello"><button class="bt">Aggiungi al carrello</button></div>
                 </div>
             </div>
