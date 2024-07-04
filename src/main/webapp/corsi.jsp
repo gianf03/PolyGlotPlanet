@@ -76,8 +76,9 @@
 
     <div id="fatherOfCoursesDivs">
         <%
+            int i = 1;
+
             for(Corso c : corsi) {
-                int i = 1;
         %>
 
             <div class="containerCorso">
@@ -94,8 +95,7 @@
                     <div class="carrello"><button class="bt">Aggiungi al carrello</button></div>
                 </div>
             </div>
-        <%  i++;
-            }%>
+        <%  i++;}%>
 
     </div>
 
