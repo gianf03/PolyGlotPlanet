@@ -17,7 +17,6 @@
     <%
         List<Corso> corsi = (List<Corso>) request.getAttribute("corsi");
         List<Lingua> lingue = (List<Lingua>) application.getAttribute("lingue");
-        String foto = null;
 
         if(request.getParameter("lingua") == null) { %>
 
@@ -81,16 +80,9 @@
                 int i = 1;
         %>
 
-<<<<<<< HEAD
             <div class="containerCorso">
                 <div class="corsoItem" id="c1_<%=i%>">
-                    <%
-                        for(Lingua l : lingue) {
-                            if(l.getCodISOLingua().equals(c.getLingua().getCodISOLingua()))
-                                foto = l.getFotoStatoOrigine();
-                        }
-                    %>
-                    <img class="imgLinguaCorso" src="<%=foto%>">
+                    <img class="imgLinguaCorso" src="<%=c.getLingua().getFotoStatoOrigine()%>">
                 </div>
                 <div class="corsoItem" id="c2_<%=i%>">
                     <p class="infoCorso" id="p1_<%=i%>">Livello : <%=c.getLivello()%></p>
@@ -101,31 +93,9 @@
                     <div class="prezzo"><%=c.getProdotto().getPrezzoAttuale()%> €</div>
                     <div class="carrello"><button class="bt">Aggiungi al carrello</button></div>
                 </div>
-=======
-        <div class="containerCorso">
-            <div class="corsoItem" id="c1_<%=i%>">
-                <%
-                    for(Lingua l : lingue) {
-                        if(l.getCodISOLingua().equals(c.getLingua().getCodISOLingua()))
-                            foto = l.getFotoStatoOrigine();
-                    }
-                %>
-                <img class="imgLinguaCorso" src="<%=foto%>">
             </div>
-            <div class="corsoItem" id="c2_<%=i%>">
-                <p class="infoCorso" id="p1_<%=i%>">Livello : <%=c.getLivello()%></p>
-                <p class="infoCorso" id="p2_<%=i%>">Numero unità : <%=c.getNumeroUnita()%></p>
-                <p class="infoCorso" id="p3_<%=i%>"><%=c.getDescrizione()%></p>
-            </div>
-            <div class="corsoItem" id="c3_<%=i%>">
-                <div class="prezzo"><%=c.getProdotto().getPrezzoAttuale()%> €</div>
-                <div class="carrello"><button class="bt">Aggiungi al carrello</button></div>
->>>>>>> d298b6d0e7fa419478db4f695bb99c48af2a2965
-            </div>
-        </div>
-
         <%  i++;
-        }%>
+            }%>
 
     </div>
 
