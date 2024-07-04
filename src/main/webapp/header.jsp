@@ -16,6 +16,12 @@
     <div id="navBarContainer">
         <nav>
             <ul class="mainMenu">
+                <li id="logo">
+                    <div>
+                        <a href="index.jsp">PolyGlotPlanet</a>
+                    </div>
+                </li>
+
                 <%if(u!=null && !u.isAdmin()){ %>
                 <li id="liBenvenuto"><p id="benvenuto">Ciao, <%=u.getNome()%> ! </p></li>
                 <%}%>
