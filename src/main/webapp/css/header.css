@@ -68,3 +68,8 @@ nav .superSubMenu > li {
 #logo {
     float: left;
 }
+
+#divLogo {
+    font-weight: bold;
+    font-size: 30pt;
+}

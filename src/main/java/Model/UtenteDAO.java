@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UtenteDAO {
     public void doSave(Utente utente) {
@@ -140,5 +142,39 @@ public class UtenteDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+
+    public List<Utente> doRetrieveAll(){
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Utente> utenti;
+
+        try (Connection connection = ConPool.getConnection()) {
+            String sql = "SELECT * FROM utente WHERE admin=false";
+            statement = connection.prepareStatement(sql);
+            resultSet = statement.executeQuery();
+
+            utenti = new ArrayList<>();
+
+            while (resultSet.next()) {
+                Utente utente = new Utente();
+
+                utente.setID(resultSet.getInt("ID"));
+                utente.setNome(resultSet.getString("nome"));
+                utente.setCognome(resultSet.getString("cognome"));
+                utente.setEmail(resultSet.getString("email"));
+                utente.setPassword(resultSet.getString("passwordHash"));
+                utente.setDataNascita(resultSet.getDate("dataNascita").toLocalDate());
+                utente.setGenere(resultSet.getString("genere"));
+                utente.setAdmin(resultSet.getBoolean("admin"));
+
+                utenti.add(utente);
+            }
+        }  catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return utenti;
     }
 }

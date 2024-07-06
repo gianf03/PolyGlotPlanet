@@ -1,9 +1,5 @@
 #containerCategorie {
     display: flex;
-    /*background-image: url("../img/colosseo.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: scroll;*/
     margin-top: 100px;
     margin-bottom: 100px;
 }

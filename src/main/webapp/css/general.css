@@ -201,3 +201,50 @@ body, html {
     font-weight: bold;
 }
 
+
+/*File areaAdmin.jsp*/
+#leftContainerAdmin {
+    height: 80vh;
+    width: 80vw;
+    margin: auto;
+
+    /*dispone gli elementi del container in modo equidistante verticalmente*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.adminSettings {
+    width: 20%;
+    height: 5%;
+    background-color: darkgreen;
+    border-radius: 30px;
+    align-content: center;
+    text-align: center;
+    margin: auto;
+}
+
+.adminSettings > a {
+    color: white;
+    font-size: 16pt;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#tableUtenti, #tableEsperti, #tableCorsi, #tableOrdini {
+    margin: auto;
+    width: 70%;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #D6EEEE;
+}
+
+#imgLingua {
+    height: 30px;
+    width: 50px;
+}

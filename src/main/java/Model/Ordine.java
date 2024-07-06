@@ -14,13 +14,9 @@ public class Ordine {
         this.ID = ID;
     }
 
-    public double getPrezzoTotale() {
-        return prezzoTotale;
-    }
+    public double getPrezzoTotale() { return prezzoTotale; }
 
-    public void setPrezzoTotale(double prezzoTotale) {
-        this.prezzoTotale = prezzoTotale;
-    }
+    public void setPrezzoTotale(double prezzoTotale) { this.prezzoTotale = prezzoTotale; }
 
     public Utente getUtente() {
         return utente;

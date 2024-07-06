@@ -15,25 +15,23 @@
 <body>
     <div class="containerOfAll">
         <div id="div-loginEsperto">
-            <div id="log"><a href="index.jsp"><img id="logoLogin" alt="immagine del globo circondato da bandiere" src="img/logo.jpg"></a></div>
+            <div id="log"><a href="index.jsp">PolyGlotPlanet</a></div>
 
             <%
-                if(request.getParameter("error") != null &&
-                        request.getParameter("error").equals("1")) { %>
+                String error = request.getParameter("error");
 
-            <div class="credenziali" id="loginError">Login errato, riprova</div>
-
+                if(error != null && error.equals("1")) { %>
+                    <div class="credenziali" id="loginError">Login errato, riprova</div>
             <%}%>
 
             <form id="form-login" action="loginEsperto" method="POST">
-                <div class="credenziali"><input type="email" id="email" placeholder="email" required></div>
-                <div class="credenziali"><input type="password" id="password" placeholder="password" required></div>
+                <div class="credenziali"><input type="email" id="email" name="email" placeholder="email" required></div>
+                <div class="credenziali"><input type="password" id="password" name="password" placeholder="password" required></div>
                 <div class="credenziali"><input type="submit" value="Login" id="tasto-login"></div>
             </form>
 
             <div id="reg"><p id="nonUtente">Non hai un account?</p><a href="registrazioneEsperto.jsp">Registrati</a></div>
         </div>
-        <%@ include file="footer.jsp"%>
     </div>
 
     <script src="JavaScript/cambiaAltezza.js"></script>

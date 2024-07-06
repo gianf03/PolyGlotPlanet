@@ -17,33 +17,56 @@
         <nav>
             <ul class="mainMenu">
                 <li id="logo">
-                    <div>
-                        <a href="index.jsp">PolyGlotPlanet</a>
+                    <div id="divLogo">
+                        <%if(u != null && u.isAdmin()) {%>
+                            <a href="areaAdmin.jsp">PolyGlotPlanet</a>
+                        <%} else {%>
+                            <a href="index.jsp">PolyGlotPlanet</a>
+                        <%}%>
                     </div>
                 </li>
 
                 <%if(u!=null && !u.isAdmin()){ %>
-                <li id="liBenvenuto"><p id="benvenuto">Ciao, <%=u.getNome()%> ! </p></li>
+                    <li id="liBenvenuto">
+                        <div id="divBenvenuto">
+                            <p id="benvenuto">Ciao, <%=u.getNome()%> ! </p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img alt="carrello stilizzato" src="img/carrello.png">
+                        </a>
+                    </li>
+                <%} else if(u == null) {%>
+                    <li>
+                        <a href="">
+                            <img alt="carrello stilizzato" src="img/carrello.png">
+                        </a>
+                    </li>
                 <%}%>
-                <li><a href=""><img alt="carrello stilizzato" src="img/carrello.png"></a></li>
+
                 <li>
                     <a><img alt="utente stilizzato" src="img/utente.png"></a>
                     <% if(u != null && !u.isAdmin()) {%>
-                    <ul class="subMenu">
-                        <li><a href="logout">Logout</a></li>
-                        <li>
-                            <a href="">Impostazioni</a>
-                            <ul class="superSubMenu">
-                                <li><a href="areaUtente.jsp">Dati personali</a></li>
-                                <li><a href="">Mostra ordini</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <%} else {%>
-                    <ul class="subMenu">
-                        <li><a href="loginUtente.jsp">Utente</a></li>
-                        <li><a href="loginEsperto.jsp">Esperto</a></li>
-                    </ul>
+                        <ul class="subMenu">
+                            <li><a href="logout">Logout</a></li>
+                            <li>
+                                <a href="">Impostazioni</a>
+                                <ul class="superSubMenu">
+                                    <li><a href="areaUtente.jsp">Dati personali</a></li>
+                                    <li><a href="mostraOrdiniUtente?IDUtente=<%=u.getID()%>">Mostra ordini</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    <%} else if(u == null){%>
+                        <ul class="subMenu">
+                            <li><a href="loginUtente.jsp">Utente</a></li>
+                            <li><a href="loginEsperto.jsp">Esperto</a></li>
+                        </ul>
+                    <%} else if(u.isAdmin()) {%>
+                        <ul class="subMenu">
+                            <li><a href="logout">Logout</a></li>
+                        </ul>
                     <%}%>
                 </li>
             </ul>

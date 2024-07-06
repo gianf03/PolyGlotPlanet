@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EspertoDAO {
     public void doSave(Esperto esperto) {
@@ -69,5 +71,39 @@ public class EspertoDAO {
         }
 
         return esperto;
+    }
+
+    public List<Esperto> doRetrieveAll(){
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Esperto> esperti;
+
+        try (Connection connection = ConPool.getConnection()) {
+            String sql = "SELECT * FROM Esperto";
+            statement = connection.prepareStatement(sql);
+            resultSet = statement.executeQuery();
+
+            esperti = new ArrayList<>();
+
+            while (resultSet.next()) {
+                Esperto esperto = new Esperto();
+
+                esperto.setID(resultSet.getInt("ID"));
+                esperto.setNome(resultSet.getString("nome"));
+                esperto.setCognome(resultSet.getString("cognome"));
+                esperto.setEmail(resultSet.getString("email"));
+                esperto.setPassword(resultSet.getString("passwordHash"));
+                esperto.setDataNascita(resultSet.getDate("dataNascita").toLocalDate());
+                esperto.setGenere(resultSet.getString("genere"));
+                esperto.setValutazione(resultSet.getDouble("valutazione"));
+                esperto.setFotoRiconoscitiva(resultSet.getString("fotoRiconoscitiva"));
+
+                esperti.add(esperto);
+            }
+        }  catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return esperti;
     }
 }

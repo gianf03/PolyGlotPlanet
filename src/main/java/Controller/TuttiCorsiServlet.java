@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.Corso;
-import Model.CorsoDAO;
-import Model.Lingua;
-import Model.LinguaDAO;
+import Model.*;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -26,7 +23,17 @@ public class TuttiCorsiServlet extends HttpServlet {
         List<Corso> corsi = corsoDAO.doRetrieveAll();
         req.setAttribute("corsi", corsi);
 
-        RequestDispatcher rd = req.getRequestDispatcher("/corsi.jsp");
+        String address;
+
+        Utente u = (Utente) req.getSession().getAttribute("utente");
+
+        if(u.isAdmin()) {
+            address = "WEB-INF/jsp/corsiAdmin.jsp";
+        } else {
+            address = "corsi.jsp";
+        }
+
+        RequestDispatcher rd = req.getRequestDispatcher(address);
         rd.forward(req, resp);
     }
 }

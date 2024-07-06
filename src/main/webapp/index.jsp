@@ -14,6 +14,17 @@
     <div class="containerOfAll">
         <%@ include file="header.jsp"%>
         <section id="outer-container">
+
+            <%
+                String error = request.getParameter("error");
+
+                if(error != null && error.equals("11")) { %>
+
+                    <div id="divErrorePermessi">Non disponi dei permessi necessari</div>
+            <%
+                }
+            %>
+
             <div id="flex-container">
 
                 <%

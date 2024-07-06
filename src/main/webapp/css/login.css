@@ -8,7 +8,7 @@ body {
     /*per inserire immagine di sfondo scrivere qua dentro*/
 }
 
-#div-loginUtente, #div-loginEsperto{
+#div-loginUtente, #div-loginEsperto, #div-loginAdmin{
     background-color: #80B918;
     margin: 70px auto 75px auto;
     height: 500px;
@@ -46,12 +46,19 @@ body {
     text-align: center;
 }
 
-#log {
-    width: 100%;
+
+#log > a {
+    text-decoration: none;
+    color: darkgreen;
+    font-weight: bold;
+    font-size: 30pt;
+}
+
+#reg, #log {
     text-align: center;
 }
 
-#reg {
+#divAdmin {
     text-align: center;
 }
 
