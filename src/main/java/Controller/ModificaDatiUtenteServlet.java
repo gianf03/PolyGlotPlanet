@@ -31,19 +31,19 @@ public class ModificaDatiUtenteServlet extends HttpServlet {
 
         Utente u = (Utente) req.getSession().getAttribute("utente");
 
-        if(nome.isEmpty() || checkEmptyString(nome)) {
+        if(nome.isEmpty() || checkIfStringContainsOnlySpaces(nome)) {
             address = address + "error=1&";
         }
 
-        if (cognome.isEmpty() || checkEmptyString(cognome)) {
+        if (cognome.isEmpty() || checkIfStringContainsOnlySpaces(cognome)) {
             address = address + "error=2&";
         }
 
         //controllo che la nuova password non sia vuota e abbia almeno 8 caratteri
         if (!newPassword.isEmpty() && newPassword.length() < 8) {
-            address = address + "error=3&";
+            address = address + "error=6&";
         } else if (!confNewPassword.equals(newPassword)) { //controllo che la nuova password e la sua conferma siano uguali
-            address = address + "error=4&";
+            address = address + "error=10&"; //password non coincidono
         }
 
 
@@ -72,7 +72,7 @@ public class ModificaDatiUtenteServlet extends HttpServlet {
     }
 
 
-    private boolean checkEmptyString(String s) {
+    private boolean checkIfStringContainsOnlySpaces(String s) {
 
         //restituisce true se la stringa s contiene soltanto spazi vuoti
 

@@ -141,4 +141,36 @@ public class UtenteDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public boolean isExistingEmail(String email){
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        boolean flag = false;
+
+        try (Connection connection = ConPool.getConnection()) {
+            statement = connection.prepareStatement("SELECT * FROM Utente WHERE email=?");
+            statement.setString(1, email);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                flag = true;
+            }
+        }  catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return flag;
+    }
 }
+

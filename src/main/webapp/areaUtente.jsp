@@ -66,7 +66,7 @@
                     <label for="newPass">Nuova password</label>
                     <input type="password" id="newPass" name="newPass" onclick="removeError('error3')">
 
-                    <% if(error != null && error.contains("error=3") ) {%>
+                    <% if(error != null && error.contains("error=6") ) {%>
                     <p id="error3" class="paragrafiRossi">Password troppo corta</p>
                     <%}%>
                 </div>
@@ -74,7 +74,7 @@
                     <label for="confNewPass">Conferma password</label>
                     <input type="password" id="confNewPass" name="confNewPass" onclick="removeError('error4')">
 
-                    <% if(error != null && error.contains("error=4") ) {%>
+                    <% if(error != null && error.contains("error=10") ) {%>
                     <p id="error4" class="paragrafiRossi">Password non coincidenti</p>
                     <%}%>
                 </div>

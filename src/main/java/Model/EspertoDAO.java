@@ -70,4 +70,39 @@ public class EspertoDAO {
 
         return esperto;
     }
+
+    public int getNextId(){
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Esperto esperto = null;
+        int i = 1;
+
+        try (Connection connection = ConPool.getConnection()) {
+            statement = connection.prepareStatement("SELECT * FROM esperto ORDER BY ID", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            //ho bisogno di un ResultSet Type_scroll_insensitive perché quello di default non supporta il metodo last()
+            resultSet = statement.executeQuery();
+
+            //uando eseguo resultSet.last(), il ResultSet si sposta all'ultima riga del set di risultati ottenuto da una query SQL
+            if (resultSet.last()) {
+                if (resultSet.getInt("ID") >= i){
+                    i = resultSet.getInt("ID")+1;
+                }
+            }
+        }  catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return i;
+    }
 }
