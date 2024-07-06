@@ -144,11 +144,10 @@ public class UtenteDAO {
         }
     }
 
-
-    public List<Utente> doRetrieveAll(){
+    public List<Utente> doRetrieveAll() {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-        List<Utente> utenti;
+        List<Utente> utenti;git 
 
         try (Connection connection = ConPool.getConnection()) {
             String sql = "SELECT * FROM utente WHERE admin=false";
@@ -171,10 +170,42 @@ public class UtenteDAO {
 
                 utenti.add(utente);
             }
-        }  catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
         return utenti;
     }
+
+        public boolean isExistingEmail(String email){
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        boolean flag = false;
+
+        try (Connection connection = ConPool.getConnection()) {
+            statement = connection.prepareStatement("SELECT * FROM Utente WHERE email=?");
+            statement.setString(1, email);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                flag = true;
+            }
+        }  catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return flag;
+    }
 }
+

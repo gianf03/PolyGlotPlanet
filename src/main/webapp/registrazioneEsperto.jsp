@@ -14,10 +14,10 @@
 </head>
 <body>
     <div class=containerOfAll">
-        <div id="div-registrazioneEsperto" class="containerOfAll">
+        <div id="div-registrazioneEsperto">
             <div id="reg"><h1>Registrazione</h1></div>
 
-            <form id="form-registrazione" action="registrazioneEsperto" method="POST">
+            <form id="form-registrazione" action="registrazioneEsperto" method="POST" enctype="multipart/form-data">
                 <div class="credenziali"><input type="text" id = "nome" name = "nome" placeholder="nome" required></div>
                 <div class="credenziali"><input type="text" id = "cognome" name = "cognome" placeholder="cognome" required></div>
 
