@@ -27,18 +27,18 @@
                 <th>Valutazione</th>
             </tr>
 
-            <% for(Esperto e : esperti) {%>
+            <% for(Esperto esp : esperti) {%>
             <tr class="rigaEsperti">
-                <td><%=e.getID()%></td>
+                <td><%=esp.getID()%></td>
                 <td>
-                    <img id="imgEsperto" alt="foto esperto" src="<%=e.getFotoRiconoscitiva()%>">
+                    <img id="imgEsperto" alt="foto esperto" src="<%=esp.getFotoRiconoscitiva()%>">
                 </td>
-                <td><%=e.getNome()%></td>
-                <td><%=e.getCognome()%></td>
-                <td><%=e.getDataNascita()%></td>
-                <td><%=e.getEmail()%></td>
-                <td><%=e.getGenere()%></td>
-                <td><%=e.getValutazione()%></td>
+                <td><%=esp.getNome()%></td>
+                <td><%=esp.getCognome()%></td>
+                <td><%=esp.getDataNascita()%></td>
+                <td><%=esp.getEmail()%></td>
+                <td><%=esp.getGenere()%></td>
+                <td><%=esp.getValutazione()%></td>
                 <td><button onclick="">Mostra colloqui</button></td>
                 <td><button onclick="">Mostra incontri</button></td>
             </tr>

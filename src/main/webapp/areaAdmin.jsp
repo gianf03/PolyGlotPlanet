@@ -6,7 +6,6 @@
     if(utente == null || !utente.isAdmin()) {%>
         <script>window.location.href="index.jsp?error=11"</script>
     <%}%>
-%>
 
 <html>
 <head>

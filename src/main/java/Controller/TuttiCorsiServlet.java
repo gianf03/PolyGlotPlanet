@@ -27,7 +27,7 @@ public class TuttiCorsiServlet extends HttpServlet {
 
         Utente u = (Utente) req.getSession().getAttribute("utente");
 
-        if(u.isAdmin()) {
+        if(u!=null && u.isAdmin()) {
             address = "WEB-INF/jsp/corsiAdmin.jsp";
         } else {
             address = "corsi.jsp";
