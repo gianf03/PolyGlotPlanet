@@ -65,26 +65,25 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
         catch (DateTimeParseException e) {
             address += "error=9&";  //non è una data di nascita
         }
-        finally {
 
-            address = address.substring(0, address.length() - 1);
+        address = address.substring(0, address.length() - 1);
 
-            if (!address.contains("error")) {
+        if (!address.contains("error")) {
 
-                Utente utente = new Utente();
+            Utente utente = new Utente();
 
-                utente.setNome(nome);
-                utente.setCognome(cognome);
-                utente.setEmail(email);
-                utente.setPassword(password);
-                utente.setDataNascita(dataNascita);
-                utente.setGenere(sesso);
-                utente.setAdmin(admin);
+            utente.setNome(nome);
+            utente.setCognome(cognome);
+            utente.setEmail(email);
+            utente.setPassword(password);
+            utente.setDataNascita(dataNascita);
+            utente.setGenere(sesso);
+            utente.setAdmin(admin);
 
-                utenteDAO.doSave(utente);
-                address = "index.jsp";
-            }
+            utenteDAO.doSave(utente);
+            address = "index.jsp";
         }
+
 
         resp.sendRedirect(address);
     }

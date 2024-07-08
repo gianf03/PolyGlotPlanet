@@ -13,10 +13,6 @@
     <link type="text/css" href="css/general.css" rel="stylesheet">
 </head>
 <body>
-    <% Esperto esp = (Esperto) session.getAttribute("esperto");
-       if(esp==null){%>
-            <script>window.location.href="index.jsp?error=11"</script>
-    <%}%>
     <div class="containerOfAll">
         <%@include file="header.jsp"%>
         <%@include file="footer.jsp"%>

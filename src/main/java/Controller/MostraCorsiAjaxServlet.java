@@ -82,7 +82,7 @@ public class MostraCorsiAjaxServlet extends HttpServlet {
                 obj.put("descrizione", c.getDescrizione());
                 obj.put("numeroUnita", c.getNumeroUnita());
                 obj.put("livello", c.getLivello());
-                obj.put("prezzo", c.getProdotto().getPrezzoAttuale());
+                obj.put("prezzo", c.getPrezzoAttuale());
                 obj.put("foto", c.getLingua().getFotoStatoOrigine());
 
                 corsiArray.add(obj);

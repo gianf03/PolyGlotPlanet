@@ -1,12 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<%
-    Utente utente = (Utente) session.getAttribute("utente");
-
-    if(utente == null || !utente.isAdmin()) {%>
-        <script>window.location.href="index.jsp?error=11"</script>
-    <%}%>
-
 <html>
 <head>
     <title>Area admin</title>

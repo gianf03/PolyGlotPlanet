@@ -1,7 +1,8 @@
 function filterByLanguagePriceAndLevel(){
+
     event.preventDefault(); //Questa riga previene l'invio predefinito del form e il conseguente ricaricamento della pagina
 
-    let url = "mostraCorsiAjax?";
+    url = "mostraCorsiAjax?";
 
     let languageCheckboxes = document.getElementsByClassName("div-lingua");
     let prezzoMin = document.getElementById("prezzoMin");
@@ -14,16 +15,17 @@ function filterByLanguagePriceAndLevel(){
         }
     }
 
-    if (prezzoMin.value !== "niente"){
+    if (prezzoMin.value !== "niente") {
         url += "prezzoMin=" + prezzoMin.value + "&prezzoMax=" + prezzoMax.value + "&";
     }
 
-    for (let j = 0; j<levelCheckboxes.length; j++){
-        if (levelCheckboxes[j].checked){
+    for (let j = 0; j < levelCheckboxes.length; j++) {
+        if (levelCheckboxes[j].checked) {
             url += levelCheckboxes[j].name + "=" + levelCheckboxes[j].value + "&";
         }
     }
-    url = url.substring(0, url.length-1);
+    url = url.substring(0, url.length - 1);
+
 
     console.log(url);
 

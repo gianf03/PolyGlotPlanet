@@ -124,7 +124,7 @@
                 <div class="credenziali"><input type="submit" value="Registrati" id="tasto-registrazione"></div>
             </form>
         </div>
-        <%@ include file="footer.jsp"%>
+        <%@ include file="WEB-INF/jsp/footer.jsp"%>
     </div>
 
     <script src="JavaScript/cambiaAltezza.js"></script>

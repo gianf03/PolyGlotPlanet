@@ -1,20 +1,25 @@
 package Model;
 
+import Utils.Utility;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ColloquioDAO {
+
     public List<Colloquio> doRetrieveByCodISOLingua(String codISOLingua) {
         try (Connection con = ConPool.getConnection()) {
 
             PreparedStatement ps;
-            ps = con.prepareStatement("SELECT * FROM ((Prodotto p JOIN Colloquio c ON p.ID=c.IDProdotto) " +
-                    "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON c.codISOLingua=l.codISOLingua " +
-                    "WHERE l.codISOLingua=?");
+            ps = con.prepareStatement("SELECT * FROM (((Prodotto p JOIN Colloquio c ON p.ID=c.IDProdotto) " +
+                    "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON p.codISOLingua=l.codISOLingua) " +
+                    "JOIN Esperto e ON c.IDEsperto=e.ID WHERE l.codISOLingua=?");
             ps.setString(1, codISOLingua);
 
 
@@ -35,18 +40,30 @@ public class ColloquioDAO {
                 l.setNome(rs.getString("l.nome"));
                 l.setFotoStatoOrigine(rs.getString("fotoStatoOrigine"));
 
-                Prodotto p = new Prodotto();
-                p.setID(rs.getInt("IDProdotto"));
-                p.setPrezzoBase(rs.getDouble("prezzoBase"));
-                p.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
-                p.setPrezzoAttuale(rs.getDouble("prezzoAttuale"));
-                p.setCategoria(cat);
+                Esperto e = new Esperto();
 
-                /*c.setProdotto(p);
-                c.setDescrizione(rs.getString("descrizione"));
-                c.setNumeroUnita(rs.getInt("numeroUnita"));
-                c.setLivello(rs.getString("livello"));
-                c.setLingua(l);*/
+                e.setID(rs.getInt("ID"));
+                e.setNome(rs.getString("nome"));
+                e.setCognome(rs.getString("cognome"));
+                e.setEmail(rs.getString("email"));
+                e.setPassword(rs.getString("passwordHash"));
+                e.setDataNascita(rs.getDate("dataNascita").toLocalDate());
+                e.setGenere(rs.getString("genere"));
+                e.setValutazione(rs.getDouble("valutazione"));
+                e.setFotoRiconoscitiva(rs.getString("fotoRiconoscitiva"));
+
+
+                c.setID(rs.getInt("IDProdotto"));
+                c.setPrezzoBase(rs.getDouble("prezzoBase"));
+                c.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
+                c.setPrezzoAttuale(rs.getDouble("prezzoAttuale"));
+                c.setCategoria(cat);
+                c.setLingua(l);
+                c.setEsperto(e);
+                c.setDataOra(Utility.sqlDateTimeToLocalDateTime(rs.getString("dataOra")));
+                c.setPrenotato(rs.getBoolean("prenotato"));
+                c.setAvvenuto(rs.getBoolean("avvenuto"));
+                c.setVotoUtente(rs.getInt("votoUtente"));
 
                 colloqui.add(c);
             }

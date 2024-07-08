@@ -13,7 +13,7 @@ public class CorsoDAO{
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
                     con.prepareStatement("SELECT * FROM ((Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) " +
-                            "JOIN Lingua l ON c.codISOLingua=l.codISOLingua) JOIN Categoria ca ON p.IDCategoria=ca.ID " +
+                            "JOIN Lingua l ON p.codISOLingua=l.codISOLingua) JOIN Categoria ca ON p.IDCategoria=ca.ID " +
                             "WHERE id=?");
             ps.setInt(1, IDProdotto);
 
@@ -33,14 +33,11 @@ public class CorsoDAO{
                 cat.setNome(rs.getString("ca.nome"));
                 cat.setImmagine(rs.getString("immagine"));
 
-                Prodotto p = new Prodotto();
-                p.setID(IDProdotto);
-                p.setPrezzoBase(rs.getDouble("prezzoBase"));
-                p.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
-                p.setPrezzoAttuale(rs.getDouble("p.prezzoAttuale"));
-                p.setCategoria(cat);
-
-                c.setProdotto(p);
+                c.setID(rs.getInt("IDProdotto"));
+                c.setPrezzoBase(rs.getDouble("prezzoBase"));
+                c.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
+                c.setPrezzoAttuale(rs.getDouble("p.prezzoAttuale"));
+                c.setCategoria(cat);
                 c.setDescrizione(rs.getString("descrizione"));
                 c.setNumeroUnita(rs.getInt("numeroUnita"));
                 c.setLivello(rs.getString("livello"));
@@ -61,7 +58,7 @@ public class CorsoDAO{
 
             PreparedStatement ps;
             ps = con.prepareStatement("SELECT * FROM ((Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) " +
-                    "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON c.codISOLingua=l.codISOLingua " +
+                    "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON p.codISOLingua=l.codISOLingua " +
                     "WHERE l.codISOLingua=?");
             ps.setString(1, codISOLingua);
 
@@ -83,14 +80,11 @@ public class CorsoDAO{
                 l.setNome(rs.getString("l.nome"));
                 l.setFotoStatoOrigine(rs.getString("fotoStatoOrigine"));
 
-                Prodotto p = new Prodotto();
-                p.setID(rs.getInt("IDProdotto"));
-                p.setPrezzoBase(rs.getDouble("prezzoBase"));
-                p.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
-                p.setPrezzoAttuale(rs.getDouble("prezzoAttuale"));
-                p.setCategoria(cat);
-
-                c.setProdotto(p);
+                c.setID(rs.getInt("IDProdotto"));
+                c.setPrezzoBase(rs.getDouble("prezzoBase"));
+                c.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
+                c.setPrezzoAttuale(rs.getDouble("prezzoAttuale"));
+                c.setCategoria(cat);
                 c.setDescrizione(rs.getString("descrizione"));
                 c.setNumeroUnita(rs.getInt("numeroUnita"));
                 c.setLivello(rs.getString("livello"));
@@ -110,7 +104,7 @@ public class CorsoDAO{
 
             PreparedStatement ps;
             ps = con.prepareStatement("SELECT * FROM ((Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) " +
-                    "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON c.codISOLingua=l.codISOLingua " +
+                    "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON p.codISOLingua=l.codISOLingua " +
                     "WHERE livello=?");
             ps.setString(1, livello);
 
@@ -132,14 +126,11 @@ public class CorsoDAO{
                 l.setNome(rs.getString("l.nome"));
                 l.setFotoStatoOrigine(rs.getString("fotoStatoOrigine"));
 
-                Prodotto p = new Prodotto();
-                p.setID(rs.getInt("IDProdotto"));
-                p.setPrezzoBase(rs.getDouble("prezzoBase"));
-                p.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
-                p.setPrezzoAttuale(rs.getDouble("prezzoAttuale"));
-                p.setCategoria(cat);
-
-                c.setProdotto(p);
+                c.setID(rs.getInt("IDProdotto"));
+                c.setPrezzoBase(rs.getDouble("prezzoBase"));
+                c.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
+                c.setPrezzoAttuale(rs.getDouble("prezzoAttuale"));
+                c.setCategoria(cat);
                 c.setDescrizione(rs.getString("descrizione"));
                 c.setNumeroUnita(rs.getInt("numeroUnita"));
                 c.setLivello(rs.getString("livello"));
@@ -158,7 +149,7 @@ public class CorsoDAO{
         try (Connection con = ConPool.getConnection()) {
 
             String sql = "SELECT * FROM ((Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) " +
-                    "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON c.codISOLingua=l.codISOLingua";
+                    "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON p.codISOLingua=l.codISOLingua";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -178,14 +169,11 @@ public class CorsoDAO{
                 l.setNome(rs.getString("l.nome"));
                 l.setFotoStatoOrigine(rs.getString("fotoStatoOrigine"));
 
-                Prodotto p = new Prodotto();
-                p.setID(rs.getInt("IDProdotto"));
-                p.setPrezzoBase(rs.getDouble("prezzoBase"));
-                p.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
-                p.setPrezzoAttuale(rs.getDouble("prezzoAttuale"));
-                p.setCategoria(cat);
-
-                c.setProdotto(p);
+                c.setID(rs.getInt("IDProdotto"));
+                c.setPrezzoBase(rs.getDouble("prezzoBase"));
+                c.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
+                c.setPrezzoAttuale(rs.getDouble("prezzoAttuale"));
+                c.setCategoria(cat);
                 c.setDescrizione(rs.getString("descrizione"));
                 c.setNumeroUnita(rs.getInt("numeroUnita"));
                 c.setLivello(rs.getString("livello"));
@@ -207,7 +195,7 @@ public class CorsoDAO{
             PreparedStatement ps;
 
             ps = con.prepareStatement("SELECT * FROM ((Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) " +
-                    "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON c.codISOLingua=l.codISOLingua " +
+                    "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON p.codISOLingua=l.codISOLingua " +
                     "WHERE l.codISOLingua=? AND prezzoAttuale>=? AND prezzoAttuale<? AND livello=?");
             ps.setString(1, codISOLingua);
             ps.setInt(2, prezzoMin);
@@ -231,14 +219,11 @@ public class CorsoDAO{
                 l.setNome(rs.getString("l.nome"));
                 l.setFotoStatoOrigine(rs.getString("fotoStatoOrigine"));
 
-                Prodotto p = new Prodotto();
-                p.setID(rs.getInt("IDProdotto"));
-                p.setPrezzoBase(rs.getDouble("prezzoBase"));
-                p.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
-                p.setPrezzoAttuale(rs.getDouble("prezzoAttuale"));
-                p.setCategoria(cat);
-
-                c.setProdotto(p);
+                c.setID(rs.getInt("IDProdotto"));
+                c.setPrezzoBase(rs.getDouble("prezzoBase"));
+                c.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
+                c.setPrezzoAttuale(rs.getDouble("prezzoAttuale"));
+                c.setCategoria(cat);
                 c.setDescrizione(rs.getString("descrizione"));
                 c.setNumeroUnita(rs.getInt("numeroUnita"));
                 c.setLivello(rs.getString("livello"));

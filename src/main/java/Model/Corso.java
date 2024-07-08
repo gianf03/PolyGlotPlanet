@@ -1,21 +1,9 @@
 package Model;
 
-public class Corso{
-
-    private Prodotto prodotto;
+public class Corso extends Prodotto{
     private String descrizione;
     private int numeroUnita;
     private String livello;
-    private Lingua lingua;
-
-
-    public Prodotto getProdotto() {
-        return prodotto;
-    }
-
-    public void setProdotto(Prodotto prodotto) {
-        this.prodotto = prodotto;
-    }
 
     public String getDescrizione() {
         return descrizione;
@@ -39,13 +27,5 @@ public class Corso{
 
     public void setLivello(String livello) {
         this.livello = livello;
-    }
-
-    public Lingua getLingua() {
-        return lingua;
-    }
-
-    public void setLingua(Lingua lingua) {
-        this.lingua = lingua;
     }
 }

@@ -26,8 +26,8 @@ create table Conoscenza(
     IDEsperto int,
     
     primary key(codISOLingua, IDEsperto),
-    foreign key (codISOLingua) references Lingua(codISOLingua),
-    foreign key (IDEsperto) references Esperto(ID)
+    foreign key (codISOLingua) references Lingua(codISOLingua) on delete cascade on update cascade,
+    foreign key (IDEsperto) references Esperto(ID) on delete cascade on update cascade
 );
 
 create table Utente(
@@ -45,7 +45,7 @@ create table Carrello(
 	ID int auto_increment primary key,
     IDUtente int,
     
-    foreign key (IDUtente) references Utente(ID)
+    foreign key (IDUtente) references Utente(ID) on delete cascade on update cascade
 );
 
 create table Categoria(
@@ -60,8 +60,10 @@ create table Prodotto(
     scontoPercentuale double not null,
     prezzoAttuale double not null,
     IDCategoria int not null,
+    codISOLingua char(2) not null,
     
-    foreign key (IDCategoria) references Categoria(ID)
+	foreign key (codISOLingua) references Lingua(codISOLingua) on delete cascade on update cascade,
+    foreign key (IDCategoria) references Categoria(ID) on delete cascade on update cascade
 );
 
 create table Ordine(
@@ -69,7 +71,7 @@ create table Ordine(
     prezzoTotale double not null,
     IDUtente int not null,
     
-    foreign key (IDUtente) references Utente(id)
+    foreign key (IDUtente) references Utente(id) on delete cascade on update cascade
 );
 
 create table Incontro(
@@ -83,8 +85,8 @@ create table Incontro(
     avvenuto boolean not null,
     votoUtente int,
     
-    foreign key (IDProdotto) references Prodotto(ID),
-    foreign key (IDEsperto) references Esperto(ID)
+    foreign key (IDProdotto) references Prodotto(ID) on delete cascade on update cascade,
+    foreign key (IDEsperto) references Esperto(ID) on delete cascade on update cascade
 );
 
 create table Colloquio(
@@ -96,8 +98,8 @@ create table Colloquio(
     avvenuto boolean not null,
     votoUtente int,
     
-    foreign key (IDProdotto) references Prodotto(ID),
-    foreign key (IDEsperto) references Esperto(ID)
+    foreign key (IDProdotto) references Prodotto(ID) on delete cascade on update cascade,
+    foreign key (IDEsperto) references Esperto(ID) on delete cascade on update cascade
 );
 
 create table Corso(
@@ -105,19 +107,16 @@ create table Corso(
     descrizione varchar(255) not null,
     numeroUnita int not null,
     livello char(5) not null,
-    codISOLingua char(2) not null,
     
-     foreign key (IDProdotto) references Prodotto(ID),
-     foreign key (codISOLingua) references Lingua(codISOLingua)
+    foreign key (IDProdotto) references Prodotto(ID) on delete cascade on update cascade
 );
-
 create table Formazione(
 	IDCarrello int,
     IDProdotto int,
     
     primary key(IDCarrello, IDProdotto),
-    foreign key (IDCarrello) references Carrello(ID),
-    foreign key (IDProdotto) references Prodotto(ID)
+    foreign key (IDCarrello) references Carrello(ID) on delete cascade on update cascade,
+    foreign key (IDProdotto) references Prodotto(ID) on delete cascade on update cascade
 );
 
 create table Composizione(
@@ -127,8 +126,8 @@ create table Composizione(
     prezzoAcquisto double not null,
     
     primary key(IDOrdine, IDProdotto),
-    foreign key (IDProdotto) references Prodotto(ID),
-    foreign key (IDOrdine) references Ordine(ID)
+    foreign key (IDProdotto) references Prodotto(ID) on delete cascade on update cascade,
+    foreign key (IDOrdine) references Ordine(ID) on delete cascade on update cascade
 );
 
 

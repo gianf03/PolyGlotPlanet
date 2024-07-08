@@ -37,7 +37,7 @@ function chargeAllStates(numLingue) {
 
     newAnchor = document.createElement("a");
     newAnchor.setAttribute("id", "linkMinus");
-    newAnchor.setAttribute("href", "index.jsp");   //creo anchor che conterrà un img
+    newAnchor.setAttribute("href", "./");   //creo anchor che conterrà un img
 
     minus = document.createElement("img");
     minus.setAttribute("id", "imgMinus");

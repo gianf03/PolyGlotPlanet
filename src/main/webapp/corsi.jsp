@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="containerOfAll">
-    <%@include file="header.jsp"%>
+    <%@include file="WEB-INF/jsp/header.jsp"%>
     <%
         List<Corso> corsi = (List<Corso>) request.getAttribute("corsi");
         List<Lingua> lingue = (List<Lingua>) application.getAttribute("lingue");
@@ -80,22 +80,21 @@
             for(Corso c : corsi) {
         %>
 
-            <div class="containerCorso">
-                <div class="corsoItem" id="c1_<%=i%>">
-                    <img class="imgLinguaCorso" src="<%=c.getLingua().getFotoStatoOrigine()%>">
-                </div>
-                <div class="corsoItem" id="c2_<%=i%>">
-                    <p class="infoCorso" id="p1_<%=i%>">Livello : <%=c.getLivello()%></p>
-                    <p class="infoCorso" id="p2_<%=i%>">Numero unità : <%=c.getNumeroUnita()%></p>
-                    <p class="infoCorso" id="p3_<%=i%>"><%=c.getDescrizione()%></p>
-                </div>
-                <div class="corsoItem" id="c3_<%=i%>">
-                    <div class="prezzo"><%=c.getProdotto().getPrezzoAttuale()%> €</div>
-                    <div class="carrello"><button class="bt">Aggiungi al carrello</button></div>
-                </div>
+        <div class="containerCorso">
+            <div class="corsoItem" id="c1_<%=i%>">
+                <img class="imgLinguaCorso" src="<%=c.getLingua().getFotoStatoOrigine()%>">
             </div>
+            <div class="corsoItem" id="c2_<%=i%>">
+                <p class="infoCorso" id="p1_<%=i%>">Livello : <%=c.getLivello()%></p>
+                <p class="infoCorso" id="p2_<%=i%>">Numero unità : <%=c.getNumeroUnita()%></p>
+                <p class="infoCorso" id="p3_<%=i%>"><%=c.getDescrizione()%></p>
+            </div>
+            <div class="corsoItem" id="c3_<%=i%>">
+                <div class="prezzo"><%=c.getPrezzoAttuale()%> €</div>
+                <div class="carrello"><button class="bt">Aggiungi al carrello</button></div>
+            </div>
+        </div>
         <%  i++;}%>
-
     </div>
 
 
@@ -106,7 +105,7 @@
         </div>
     </a>
     <%}%>
-    <%@include file="footer.jsp"%>
+    <%@include file="WEB-INF/jsp/footer.jsp"%>
 </div>
 
 <script src="JavaScript/cambiaAltezza.js"></script>

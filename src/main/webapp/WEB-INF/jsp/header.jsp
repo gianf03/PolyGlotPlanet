@@ -22,7 +22,7 @@
                 <li id="logo">
                     <div id="divLogo">
                         <%if(u != null && u.isAdmin()) {%>
-                            <a href="areaAdmin.jsp">PolyGlotPlanet</a>
+                            <a href="temporary">PolyGlotPlanet</a>
                         <%} else if (e != null){%>
                             <a href="homeEsperto.jsp">PolyGlotPlanet</a>
                         <%} else {%>

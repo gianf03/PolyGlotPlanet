@@ -3,21 +3,11 @@ package Model;
 import java.time.LocalDateTime;
 
 public class Colloquio extends Prodotto{
-
-    private int IDProdotto;
     private LocalDateTime dataOra;
     private boolean prenotato;
     private Esperto esperto;
     private boolean avvenuto;
     private int votoUtente;
-
-    public int getIDProdotto() {
-        return IDProdotto;
-    }
-
-    public void setIDProdotto(int IDProdotto) {
-        this.IDProdotto = IDProdotto;
-    }
 
     public LocalDateTime getDataOra() {
         return dataOra;
@@ -35,11 +25,11 @@ public class Colloquio extends Prodotto{
         this.prenotato = prenotato;
     }
 
-    public Esperto getIDEsperto() {
+    public Esperto getEsperto() {
         return esperto;
     }
 
-    public void setIDEsperto(Esperto esperto) {
+    public void setEsperto(Esperto esperto) {
         this.esperto = esperto;
     }
 

@@ -20,25 +20,37 @@ public class LoginEspertoServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        if(email==null || !email.contains("@"))    //controllo che l'esperto abbia effettivamente inserito qualcosa nel campo email e che essa presenti la @
-            address = "loginEsperto.jsp?error=1";
-        else {
-
+        if (email==null || email.isEmpty()){
+            address += "error=3&"; /*email assente*/
+        } else if (!email.contains("@")){
+            address += "error=4&"; //email non conforme
+        } else {
             int indexAt = email.indexOf("@");
             String dominio = email.substring(indexAt);
 
-            if (!dominio.contains(".") || password == null || password.length()<8) {          //controllo che il dominio della mail presenti almeno un punto
-                address = "loginEsperto.jsp?error=1";
-            } else {
-                EspertoDAO espertoDAO = new EspertoDAO();
-                Esperto esperto = espertoDAO.doRetrieveByEmailAndPassword(email, password);
-                if (esperto == null)
-                    address = "loginEsperto.jsp?error=1";
-                else {
-                    session = req.getSession();
-                    session.setAttribute("esperto", esperto);
-                }
+            if (!dominio.contains(".")) {
+                address += "error=4&";
             }
+        }
+
+        if (password==null || password.isEmpty()) {
+            address += "error=5&"; //password assente
+        } else if (password.length()<8){
+            address += "error=6&"; //password troppo corta
+        }
+
+        EspertoDAO espertoDAO = new EspertoDAO();
+        Esperto esperto = espertoDAO.doRetrieveByEmailAndPassword(email, password);
+        if (esperto == null)
+            address = "error=15&"; //esperto non registrato
+
+
+        address = address.substring(0, address.length()-1);
+
+        if(!address.contains("error")) {
+            session = req.getSession();
+            session.setAttribute("esperto", esperto);
+            address = "./";
         }
 
         resp.sendRedirect(address);

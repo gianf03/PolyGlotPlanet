@@ -9,6 +9,7 @@ public class Prodotto {
     private double scontoPercentuale;
     private Categoria categoria;
     private double prezzoAttuale;
+    private Lingua lingua;
 
     public int getID() {
         return ID;
@@ -46,5 +47,13 @@ public class Prodotto {
     public String getPrezzoAttuale(){   //la funzione deve restituire per forza una stringa perché se prezzo 10.5 non viene convertito in 10.50 ne con Math.round ne con DecimalFormat
         DecimalFormat df = new DecimalFormat("0.00");
         return df.format(prezzoAttuale);
+    }
+
+    public Lingua getLingua() {
+        return lingua;
+    }
+
+    public void setLingua(Lingua lingua) {
+        this.lingua = lingua;
     }
 }

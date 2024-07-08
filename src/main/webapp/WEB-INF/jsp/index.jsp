@@ -9,15 +9,12 @@
     <link type="text/css" href="css/home.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="JavaScript/chargeAllStates.js"></script>
+
+    <!--anche se sottolineato giallo non modificare-->
 </head>
 <body>
-    <!-- semmai all'esperto venisse l'idea di aprire l'app in un'altra scheda dalla home -->
-    <%Esperto esp = (Esperto) session.getAttribute("esperto");
-        if(esp!=null) {%>
-            <script>window.location.href = "logout" </script>
-    <%}%>
     <div class="containerOfAll">
-        <%@ include file="../../header.jsp"%>
+        <%@ include file="header.jsp"%>
         <section id="outer-container">
 
             <%
@@ -55,9 +52,10 @@
                 <div id="divPlus"><button id="plus" onclick="chargeAllStates(<%=lingue.size()%>)"><img id="imgPlus" src="img/plus.png"></button></div>
             </div>
         </section>
-        <%@ include file="../../footer.jsp"%>
+        <%@ include file="footer.jsp"%>
     </div>
 
+    <!--anche se sottolineato giallo non modificare-->
     <script src="JavaScript/cambiaAltezza.js"></script>
 </body>
 </html>

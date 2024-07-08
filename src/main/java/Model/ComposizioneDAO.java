@@ -1,5 +1,7 @@
 package Model;
 
+import Utils.Utility;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -56,7 +58,7 @@ public class ComposizioneDAO {
                 Composizione c = new Composizione();
                 c.setOrdine(o);
                 c.setProdotto(p);
-                c.setDataOra(sqlDateTimeToLocalDateTime(rs.getString("dataOra")));
+                c.setDataOra(Utility.sqlDateTimeToLocalDateTime(rs.getString("dataOra")));
                 c.setPrezzoAcquisto(rs.getDouble("prezzoAcquisto"));
 
                 composizioni.add(c);
@@ -67,16 +69,5 @@ public class ComposizioneDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-
-    private LocalDateTime sqlDateTimeToLocalDateTime(String dateTime) {
-        // Definisci il formato della stringa di data e ora da convertire
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-        // Converte la stringa in un oggetto LocalDateTime
-        LocalDateTime localDateTime = LocalDateTime.parse(dateTime, formatter);
-
-        return localDateTime;
     }
 }
