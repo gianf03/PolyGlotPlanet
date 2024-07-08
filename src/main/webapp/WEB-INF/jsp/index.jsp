@@ -17,7 +17,7 @@
             <script>window.location.href = "logout" </script>
     <%}%>
     <div class="containerOfAll">
-        <%@ include file="header.jsp"%>
+        <%@ include file="../../header.jsp"%>
         <section id="outer-container">
 
             <%
@@ -55,7 +55,7 @@
                 <div id="divPlus"><button id="plus" onclick="chargeAllStates(<%=lingue.size()%>)"><img id="imgPlus" src="img/plus.png"></button></div>
             </div>
         </section>
-        <%@ include file="footer.jsp"%>
+        <%@ include file="../../footer.jsp"%>
     </div>
 
     <script src="JavaScript/cambiaAltezza.js"></script>

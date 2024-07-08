@@ -26,7 +26,7 @@
                         <%} else if (e != null){%>
                             <a href="homeEsperto.jsp">PolyGlotPlanet</a>
                         <%} else {%>
-                            <a href="index.jsp">PolyGlotPlanet</a>
+                            <a href="./">PolyGlotPlanet</a>
                         <%}%>
                     </div>
                 </li>
