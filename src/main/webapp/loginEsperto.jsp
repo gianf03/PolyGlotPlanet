@@ -11,6 +11,7 @@
     <title>Login</title>
 
     <link rel="stylesheet" type="text/css" href="css/login.css">
+    <script src="JavaScript/logout.js"></script>
 </head>
 <body>
     <div class="containerOfAll">
@@ -30,8 +31,11 @@
                 <div class="credenziali"><input type="submit" value="Login" id="tasto-login"></div>
             </form>
 
-            <div id="reg"><p id="nonUtente">Non hai un account?</p><a href="registrazioneEsperto.jsp">Registrati</a></div>
+            <div id="reg"><p id="nonEsperto">Non hai un account?</p><a href="registrazioneEsperto.jsp">Registrati</a></div>
         </div>
+
+<!--        <form id="logoutForm" action="logout" method="post" style="display:none;"></form>  -->
+        <%@include file="footer.jsp"%>
     </div>
 
     <script src="JavaScript/cambiaAltezza.js"></script>

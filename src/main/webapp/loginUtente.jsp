@@ -30,6 +30,7 @@
 
             <div id="reg"><p id="nonUtente">Non hai un account?</p><a href="registrazioneUtente.jsp">Registrati</a></div>
         </div>
+
         <%@ include file="footer.jsp"%>
     </div>
     <script src="JavaScript/cambiaAltezza.js"></script>

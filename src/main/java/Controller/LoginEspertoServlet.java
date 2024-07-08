@@ -16,7 +16,7 @@ public class LoginEspertoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = null;
-        String address = "index.jsp";
+        String address = "homeEsperto.jsp";
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 

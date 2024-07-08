@@ -11,6 +11,11 @@
     <script src="JavaScript/chargeAllStates.js"></script>
 </head>
 <body>
+    <!-- semmai all'esperto venisse l'idea di aprire l'app in un'altra scheda dalla home -->
+    <%Esperto esp = (Esperto) session.getAttribute("esperto");
+        if(esp!=null) {%>
+            <script>window.location.href = "logout" </script>
+    <%}%>
     <div class="containerOfAll">
         <%@ include file="header.jsp"%>
         <section id="outer-container">

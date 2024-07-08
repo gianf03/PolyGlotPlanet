@@ -58,7 +58,7 @@ nav .superSubMenu > li {
     width: 200px;
 }
 
-#benvenuto {
+#benvenutoEsperto, #benvenutoUtente {
     margin: auto;
     color: white;
     font-size: 16pt;

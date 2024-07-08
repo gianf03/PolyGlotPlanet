@@ -3,9 +3,9 @@
 <%
     Utente utente = (Utente) session.getAttribute("utente");
 
-    if(utente == null || !utente.isAdmin()) {
-        response.sendRedirect("index.jsp?error=11");
-    }
+    if(utente == null || !utente.isAdmin()) {%>
+        <script>window.location.href="index.jsp?error=11"</script>
+    <%}%>
 %>
 
 <html>

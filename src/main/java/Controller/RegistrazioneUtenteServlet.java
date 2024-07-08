@@ -30,8 +30,8 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
 
         UtenteDAO utenteDAO = new UtenteDAO();
 
-        if (nome==null || checkIfStringContainsOnlySpaces(nome)) { address += "error=1&";  /*nome assente*/ }
-        if (cognome==null || checkIfStringContainsOnlySpaces(cognome)){address += "error=2&"; /*cognome assente*/}
+        if (nome==null || nome.isBlank()) { address += "error=1&";  /*nome assente*/ }
+        if (cognome==null || cognome.isBlank()){address += "error=2&"; /*cognome assente*/}
 
         if (utenteDAO.isExistingEmail(email)){
             address += "error=12&";
@@ -92,22 +92,5 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
-    }
-
-    private boolean checkIfStringContainsOnlySpaces(String s) {
-
-        //restituisce true se la stringa s contiene soltanto spazi vuoti
-
-        boolean flag = true;
-
-        for(int i = 0; i < s.length(); i++) {
-
-            if(s.charAt(i) != ' ') {
-                flag = false;
-                break;
-            }
-        }
-
-        return flag;
     }
 }

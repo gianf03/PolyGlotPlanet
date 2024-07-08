@@ -36,7 +36,7 @@ public class UtenteDAO {
         Utente utente = null;
 
         try (Connection connection = ConPool.getConnection()) {
-            statement = connection.prepareStatement("SELECT id, nome, cognome, email, passwordHash, dataNascita, genere, admin FROM utente WHERE email=? AND passwordhash=SHA1(?)");
+            statement = connection.prepareStatement("SELECT * FROM utente WHERE email=? AND passwordhash=SHA1(?)");
             statement.setString(1, email);
             statement.setString(2, password);
             resultSet = statement.executeQuery();
@@ -147,7 +147,7 @@ public class UtenteDAO {
     public List<Utente> doRetrieveAll() {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-        List<Utente> utenti;git 
+        List<Utente> utenti;
 
         try (Connection connection = ConPool.getConnection()) {
             String sql = "SELECT * FROM utente WHERE admin=false";
@@ -177,7 +177,7 @@ public class UtenteDAO {
         return utenti;
     }
 
-        public boolean isExistingEmail(String email){
+    public boolean isExistingEmail(String email){
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         boolean flag = false;

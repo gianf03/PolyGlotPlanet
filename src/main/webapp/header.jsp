@@ -1,4 +1,5 @@
 <%@ page import="Model.Utente" %>
+<%@ page import="Model.Esperto" %>
 <%@ page session="true"%>
 <html>
 <head>
@@ -11,6 +12,8 @@
 
     <%
         Utente u = (Utente) session.getAttribute("utente");
+        Esperto e = (Esperto) session.getAttribute("esperto");
+
     %>
 
     <div id="navBarContainer">
@@ -20,31 +23,32 @@
                     <div id="divLogo">
                         <%if(u != null && u.isAdmin()) {%>
                             <a href="areaAdmin.jsp">PolyGlotPlanet</a>
+                        <%} else if (e != null){%>
+                            <a href="homeEsperto.jsp">PolyGlotPlanet</a>
                         <%} else {%>
                             <a href="index.jsp">PolyGlotPlanet</a>
                         <%}%>
                     </div>
                 </li>
 
-                <%if(u!=null && !u.isAdmin()){ %>
+                <%if((u!=null && !u.isAdmin()) || e!=null){ %>
                     <li id="liBenvenuto">
                         <div id="divBenvenuto">
-                            <p id="benvenuto">Ciao, <%=u.getNome()%> ! </p>
+                            <%if(u!=null) {%>
+                                <p id="benvenutoUtente">Ciao, <%=u.getNome()%> ! </p>
+                            <%} else {%>
+                                <p id="benvenutoEsperto">Ciao, <%=e.getNome()%> ! </p>
+                            <%}%>
                         </div>
                     </li>
-                    <li>
-                        <a href="">
-                            <img alt="carrello stilizzato" src="img/carrello.png">
-                        </a>
-                    </li>
-                <%} else if(u == null) {%>
+                <%}%>
+                <%if (e==null && u==null || (u!=null && !u.isAdmin())) {%>
                     <li>
                         <a href="">
                             <img alt="carrello stilizzato" src="img/carrello.png">
                         </a>
                     </li>
                 <%}%>
-
                 <li>
                     <a><img alt="utente stilizzato" src="img/utente.png"></a>
                     <% if(u != null && !u.isAdmin()) {%>
@@ -58,15 +62,19 @@
                                 </ul>
                             </li>
                         </ul>
-                    <%} else if(u == null){%>
-                        <ul class="subMenu">
-                            <li><a href="loginUtente.jsp">Utente</a></li>
-                            <li><a href="loginEsperto.jsp">Esperto</a></li>
-                        </ul>
-                    <%} else if(u.isAdmin()) {%>
+                    <%} else if(e != null){%>
                         <ul class="subMenu">
                             <li><a href="logout">Logout</a></li>
                         </ul>
+                    <%} else if(u!=null && u.isAdmin()) {%>
+                        <ul class="subMenu">
+                            <li><a href="logout">Logout</a></li>
+                        </ul>
+                    <%} else {%>
+                        <ul class="subMenu">
+                        <li><a href="loginUtente.jsp">Utente</a></li>
+                        <li><a href="loginEsperto.jsp">Esperto</a></li>
+                    </ul>
                     <%}%>
                 </li>
             </ul>

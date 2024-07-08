@@ -11,3 +11,11 @@ function cambiaAltezza() {
 
 window.onload = cambiaAltezza;
 window.onresize = cambiaAltezza;
+
+/*funzione per evitare caricamento delle pagine dalla cache*/
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+        // La pagina è stata ricaricata da una cache del browser (es. pulsante "back")
+        window.location.reload(); // Ricarica la pagina per garantire che non provenga dalla cache
+    }
+});

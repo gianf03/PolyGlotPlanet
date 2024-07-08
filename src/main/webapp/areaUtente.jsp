@@ -96,7 +96,7 @@
     <%@include file="footer.jsp"%>
 </div>
 
-<script src="JavaScript/displayModificaDati.js"></script>
+<script src="JavaScript/mostraModificaDati.js"></script>
 <script src="JavaScript/cambiaAltezza.js"></script>
 </body>
 </html>

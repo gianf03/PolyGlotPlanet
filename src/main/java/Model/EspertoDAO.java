@@ -38,7 +38,7 @@ public class EspertoDAO {
         Esperto esperto = null;
 
         try (Connection connection = ConPool.getConnection()) {
-            statement = connection.prepareStatement("SELECT * FROM esperto WHERE email=? and password=?");
+            statement = connection.prepareStatement("SELECT * FROM esperto WHERE email=? and passwordhash=SHA1(?)");
             statement.setString(1, email);
             statement.setString(2, password);
             resultSet = statement.executeQuery();
@@ -141,5 +141,36 @@ public class EspertoDAO {
         }
 
         return i;
+    }
+
+    public boolean isExistingEmail(String email){
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        boolean flag = false;
+
+        try (Connection connection = ConPool.getConnection()) {
+            statement = connection.prepareStatement("SELECT * FROM Esperto WHERE email=?");
+            statement.setString(1, email);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                flag = true;
+            }
+        }  catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return flag;
     }
 }
