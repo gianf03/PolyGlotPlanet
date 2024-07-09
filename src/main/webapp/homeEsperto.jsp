@@ -14,8 +14,8 @@
 </head>
 <body>
     <div class="containerOfAll">
-        <%@include file="header.jsp"%>
-        <%@include file="footer.jsp"%>
+        <%@include file="WEB-INF/jsp/header.jsp"%>
+        <%@include file="WEB-INF/jsp/footer.jsp"%>
     </div>
     <script src="JavaScript/cambiaAltezza.js"></script>
 </body>

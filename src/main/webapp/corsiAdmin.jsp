@@ -13,7 +13,7 @@
     %>
 
     <div class="containerOfAll">
-        <%@include file="../../header.jsp"%>
+        <%@include file="WEB-INF/jsp/header.jsp"%>
 
         <table id="tableCorsi">
             <tr class="rigaCorsi">
@@ -28,7 +28,7 @@
 
             <% for(Corso c : corsi) {%>
             <tr class="rigaCorsi">
-                <td><%=c.getProdotto().getID()%></td>
+                <td><%=c.getID()%></td>
                 <td>
                     <%=c.getLingua().getNome()%>
                     <img id="imgLingua" alt="immagine stato origine lingua" src="<%=c.getLingua().getFotoStatoOrigine()%>">
@@ -36,8 +36,8 @@
                 <td><%=c.getDescrizione()%></td>
                 <td><%=c.getNumeroUnita()%></td>
                 <td><%=c.getLivello()%></td>
-                <td><%=c.getProdotto().getPrezzoBase()%> €</td>
-                <td><%=c.getProdotto().getScontoPercentuale()%> %</td>
+                <td><%=c.getPrezzoBase()%> €</td>
+                <td><%=c.getScontoPercentuale()%> %</td>
                 <td><button>Modifica</button></td>
             </tr>
             <%}%>

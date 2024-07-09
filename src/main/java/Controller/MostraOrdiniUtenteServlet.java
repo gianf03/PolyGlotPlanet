@@ -29,7 +29,7 @@ public class MostraOrdiniUtenteServlet extends HttpServlet {
 
         req.setAttribute("ordini", ordini);
 
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/jsp/ordiniUtente.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("ordiniUtente.jsp");
         rd.forward(req, resp);
     }
 

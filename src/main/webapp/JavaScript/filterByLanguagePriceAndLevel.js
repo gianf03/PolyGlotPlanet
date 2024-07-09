@@ -58,14 +58,14 @@ function filterByLanguagePriceAndLevel(){
                 }
 
                 if (!corsi.length) {
-                    var nothing = document.createElement("div");
+                    /*var nothing = document.createElement("div");
                     divPadre.appendChild(nothing);
                     nothing.setAttribute("id", "containerNothing");
 
                     var par = document.createElement("p");
                     nothing.appendChild(par);
                     par.setAttribute("id", "nessunRisultato");
-                    par.innerHTML = "Nessun risultato";
+                    par.innerHTML = "Nessun risultato";*/
                 } else {
 
                     for (var i = 0; i < corsi.length; i++) {

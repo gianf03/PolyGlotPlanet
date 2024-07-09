@@ -19,7 +19,7 @@
 
     <div class="containerOfAll">
 
-        <%@include file="../../header.jsp"%>
+        <%@include file="WEB-INF/jsp/header.jsp"%>
 
         <table id="tableOrdini">
             <%

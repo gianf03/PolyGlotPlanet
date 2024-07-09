@@ -25,7 +25,7 @@ public class MostraUtentiServlet extends HttpServlet {
 
         req.setAttribute("utenti", utenti);
 
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/jsp/utentiAdmin.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("utentiAdmin.jsp");
         rd.forward(req, resp);
     }
 

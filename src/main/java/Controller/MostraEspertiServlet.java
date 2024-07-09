@@ -25,7 +25,7 @@ public class MostraEspertiServlet extends HttpServlet {
 
         req.setAttribute("esperti", esperti);
 
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/jsp/espertiAdmin.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("espertiAdmin.jsp");
         rd.forward(req, resp);
     }
 

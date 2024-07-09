@@ -11,7 +11,6 @@
     <title>Login</title>
 
     <link rel="stylesheet" type="text/css" href="css/login.css">
-    <script src="JavaScript/logout.js"></script>
 </head>
 <body>
     <div class="containerOfAll">

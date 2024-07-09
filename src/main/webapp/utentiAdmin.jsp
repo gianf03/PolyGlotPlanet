@@ -10,7 +10,7 @@
     <% List<Utente> utenti = (List<Utente>) request.getAttribute("utenti");%>
 
     <div class="containerOfAll">
-        <%@include file="../../header.jsp"%>
+        <%@include file="WEB-INF/jsp/header.jsp"%>
 
         <table id="tableUtenti">
             <tr class="rigaUtenti">

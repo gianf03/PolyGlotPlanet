@@ -52,8 +52,11 @@ public class LoginUtenteServlet extends HttpServlet {
 
         if(!address.contains("error") && !utente.isAdmin()) {
             session = req.getSession();
+            session.invalidate(); //se mentre mi sono loggato come admin o esperto tento di loggarmi come utente invalido la sessione con admin o esperto
+
+            session = req.getSession();
             session.setAttribute("utente", utente);
-            address = "./";
+            address = "index.jsp";
         }
 
 

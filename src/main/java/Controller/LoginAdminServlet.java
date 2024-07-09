@@ -52,8 +52,11 @@ public class LoginAdminServlet extends HttpServlet {
 
         if(!address.contains("error") && utente.isAdmin()) {
             session = req.getSession();
+            session.invalidate(); //se mentre mi sono loggato come utente o esperto tento di loggarmi come admin invalido la sessione con utente o esperto
+
+            session = req.getSession();
             session.setAttribute("utente", utente);
-            address = "temporary";
+            address = "homeAdmin.jsp";
         }
 
 

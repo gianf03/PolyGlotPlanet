@@ -16,7 +16,7 @@ public class LoginEspertoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = null;
-        String address = "homeEsperto.jsp";
+        String address = "loginEsperto.jsp?";
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
@@ -42,15 +42,18 @@ public class LoginEspertoServlet extends HttpServlet {
         EspertoDAO espertoDAO = new EspertoDAO();
         Esperto esperto = espertoDAO.doRetrieveByEmailAndPassword(email, password);
         if (esperto == null)
-            address = "error=15&"; //esperto non registrato
+            address += "error=15&"; //esperto non registrato
 
 
         address = address.substring(0, address.length()-1);
 
         if(!address.contains("error")) {
             session = req.getSession();
+            session.invalidate(); //se mentre mi sono loggato come utente o admin tento di loggarmi come esperto invalido la sessione con utente o admin
+
+            session = req.getSession();
             session.setAttribute("esperto", esperto);
-            address = "./";
+            address = "homeEsperto.jsp";
         }
 
         resp.sendRedirect(address);

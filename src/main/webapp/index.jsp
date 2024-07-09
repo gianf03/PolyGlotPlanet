@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="containerOfAll">
-        <%@ include file="header.jsp"%>
+        <%@ include file="WEB-INF/jsp/header.jsp"%>
         <section id="outer-container">
 
             <%
@@ -52,7 +52,7 @@
                 <div id="divPlus"><button id="plus" onclick="chargeAllStates(<%=lingue.size()%>)"><img id="imgPlus" src="img/plus_1.png"></button></div>
             </div>
         </section>
-        <%@ include file="footer.jsp"%>
+        <%@ include file="WEB-INF/jsp/footer.jsp"%>
     </div>
 
     <!--anche se sottolineato giallo non modificare-->
