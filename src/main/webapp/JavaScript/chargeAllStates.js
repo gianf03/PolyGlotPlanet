@@ -41,7 +41,7 @@ function chargeAllStates(numLingue) {
 
     minus = document.createElement("img");
     minus.setAttribute("id", "imgMinus");
-    minus.setAttribute("src", "img/meno.png");
+    minus.setAttribute("src", "img/meno_1.png");
 
     newAnchor.appendChild(minus);
 

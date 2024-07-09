@@ -49,7 +49,7 @@
 
                 <%}%>
 
-                <div id="divPlus"><button id="plus" onclick="chargeAllStates(<%=lingue.size()%>)"><img id="imgPlus" src="img/plus.png"></button></div>
+                <div id="divPlus"><button id="plus" onclick="chargeAllStates(<%=lingue.size()%>)"><img id="imgPlus" src="img/plus_1.png"></button></div>
             </div>
         </section>
         <%@ include file="footer.jsp"%>

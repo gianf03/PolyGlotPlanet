@@ -1,5 +1,5 @@
 #navBarContainer {
-    background-color: darkgreen;
+    background-color: #007253;
     text-align: right;
 }
 
@@ -20,7 +20,7 @@ nav .mainMenu > li {
 nav a {
     margin: 0;
     padding: 12px 15px 12px 15px;
-    background-color: darkgreen;
+    background-color: #007253;
     color: white;
     text-decoration: none;
     position: relative;
@@ -28,7 +28,7 @@ nav a {
 }
 
 nav li:hover > a {
-    background-color: #80B918;
+    background-color: mediumaquamarine;/*#80B918;*/
 }
 
 nav .subMenu, nav .superSubMenu{
