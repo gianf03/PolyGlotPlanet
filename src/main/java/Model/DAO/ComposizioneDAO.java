@@ -1,13 +1,17 @@
-package Model;
+package Model.DAO;
 
+import Model.Bean.Categoria;
+import Model.Bean.Composizione;
+import Model.ConPool;
+import Model.Bean.Ordine;
+import Model.Bean.Prodotto;
+import Model.Bean.Utente;
 import Utils.Utility;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 

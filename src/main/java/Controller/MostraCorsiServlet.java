@@ -1,8 +1,7 @@
 package Controller;
 
-import Model.Corso;
-import Model.CorsoDAO;
-import Model.LinguaDAO;
+import Model.Bean.Corso;
+import Model.DAO.CorsoDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

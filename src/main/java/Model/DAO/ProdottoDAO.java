@@ -1,4 +1,6 @@
-package Model;
+package Model.DAO;
+
+import Model.ConPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

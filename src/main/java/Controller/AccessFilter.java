@@ -1,7 +1,7 @@
 package Controller;
 
-import Model.Esperto;
-import Model.Utente;
+import Model.Bean.Esperto;
+import Model.Bean.Utente;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;

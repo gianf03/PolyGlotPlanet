@@ -1,4 +1,4 @@
-package Model;
+package Model.Bean;
 
 public class Categoria {
     private int ID;

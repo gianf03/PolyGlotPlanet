@@ -1,7 +1,7 @@
 package Controller;
 
-import Model.EspertoDAO;
-import Model.Esperto;
+import Model.DAO.EspertoDAO;
+import Model.Bean.Esperto;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

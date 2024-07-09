@@ -1,4 +1,4 @@
-<%@ page import="Model.Composizione" %>
+<%@ page import="Model.Bean.Composizione" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>

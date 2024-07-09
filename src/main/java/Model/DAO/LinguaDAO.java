@@ -1,4 +1,7 @@
-package Model;
+package Model.DAO;
+
+import Model.Bean.Lingua;
+import Model.ConPool;
 
 import java.sql.*;
 import java.util.ArrayList;

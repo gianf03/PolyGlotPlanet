@@ -1,4 +1,4 @@
-<%@ page import="Model.Utente" %>
+<%@ page import="Model.Bean.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

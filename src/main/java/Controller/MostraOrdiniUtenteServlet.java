@@ -1,7 +1,7 @@
 package Controller;
 
-import Model.Composizione;
-import Model.ComposizioneDAO;
+import Model.Bean.Composizione;
+import Model.DAO.ComposizioneDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

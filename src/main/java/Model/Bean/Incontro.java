@@ -1,9 +1,12 @@
-package Model;
+package Model.Bean;
 
 import java.time.LocalDateTime;
 
-public class Colloquio extends Prodotto{
+public class Incontro extends Prodotto {
     private LocalDateTime dataOra;
+    private String CAP;
+    private String via;
+    private String civico;
     private boolean prenotato;
     private Esperto esperto;
     private boolean avvenuto;
@@ -15,6 +18,30 @@ public class Colloquio extends Prodotto{
 
     public void setDataOra(LocalDateTime dataOra) {
         this.dataOra = dataOra;
+    }
+
+    public String getCAP() {
+        return CAP;
+    }
+
+    public void setCAP(String CAP) {
+        this.CAP = CAP;
+    }
+
+    public String getVia() {
+        return via;
+    }
+
+    public void setVia(String via) {
+        this.via = via;
+    }
+
+    public String getCivico() {
+        return civico;
+    }
+
+    public void setCivico(String civico) {
+        this.civico = civico;
     }
 
     public boolean isPrenotato() {

@@ -14,6 +14,8 @@ body {
     width: 800px;
     justify-content: center;
 
+    border-width: 1px;
+    border-style: solid;
     border-color: mediumaquamarine;/*#80B918;*/
     background-color: mediumaquamarine;/*#80B918;*/
     border-radius: 30px; /*raggio della circonferenza per smussare il bordo*/
@@ -34,7 +36,8 @@ body {
 
 
 .flex-item{ /* cella delle griglia */
-    background-color: papayawhip;/*papayawhip;*/
+    /*border : 1px solid black;*/
+    background-color: lightcyan;/*papayawhip;*/
     width: 200px;
     height: 110px;
     margin: 30px;

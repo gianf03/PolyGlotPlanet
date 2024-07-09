@@ -1,6 +1,6 @@
-package Model;
+package Model.Bean;
 
-public class Corso extends Prodotto{
+public class Corso extends Prodotto {
     private String descrizione;
     private int numeroUnita;
     private String livello;

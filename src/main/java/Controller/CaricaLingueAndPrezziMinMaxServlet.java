@@ -1,8 +1,8 @@
 package Controller;
 
-import Model.Lingua;
-import Model.LinguaDAO;
-import Model.ProdottoDAO;
+import Model.Bean.Lingua;
+import Model.DAO.LinguaDAO;
+import Model.DAO.ProdottoDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

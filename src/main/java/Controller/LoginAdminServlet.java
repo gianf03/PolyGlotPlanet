@@ -1,7 +1,7 @@
 package Controller;
 
-import Model.Utente;
-import Model.UtenteDAO;
+import Model.Bean.Utente;
+import Model.DAO.UtenteDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,7 +10,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/loginAdmin")
 public class LoginAdminServlet extends HttpServlet {

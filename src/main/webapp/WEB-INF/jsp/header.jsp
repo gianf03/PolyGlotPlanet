@@ -1,5 +1,5 @@
-<%@ page import="Model.Utente" %>
-<%@ page import="Model.Esperto" %>
+<%@ page import="Model.Bean.Utente" %>
+<%@ page import="Model.Bean.Esperto" %>
 <%@ page session="true"%>
 <html>
 <head>

@@ -1,4 +1,7 @@
-package Model;
+package Model.Bean;
+
+import Model.Bean.Categoria;
+import Model.Bean.Lingua;
 
 import java.text.DecimalFormat;
 

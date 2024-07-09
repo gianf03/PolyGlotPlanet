@@ -1,4 +1,9 @@
-package Model;
+package Model.DAO;
+
+import Model.Bean.Categoria;
+import Model.Bean.Corso;
+import Model.ConPool;
+import Model.Bean.Lingua;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

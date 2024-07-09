@@ -1,9 +1,7 @@
 package Controller;
 
-import Model.Colloquio;
-import Model.ColloquioDAO;
-import Model.Corso;
-import Model.CorsoDAO;
+import Model.Bean.Colloquio;
+import Model.DAO.ColloquioDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;

@@ -1,7 +1,7 @@
 package Controller;
 
-import Model.Utente;
-import Model.UtenteDAO;
+import Model.Bean.Utente;
+import Model.DAO.UtenteDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

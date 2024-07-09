@@ -1,4 +1,4 @@
-package Model;
+package Model.Bean;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -6,7 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 
-public class Utente {
+public class Esperto {
     private int ID;
     private String nome;
     private String cognome;
@@ -14,7 +14,9 @@ public class Utente {
     private String email;
     private String password;
     private String genere;
-    private boolean admin;
+    private double valutazione;
+
+    private String fotoRiconoscitiva;
 
 
     public int getID() {
@@ -61,9 +63,7 @@ public class Utente {
         return password;
     }
 
-    public void setPasswordWithEncryption(String password) {
-
-        //prende la password in chiaro e la memorizza in utente criptata
+    public void setPassword(String password) {
 
         try {
             MessageDigest digest =
@@ -74,10 +74,7 @@ public class Utente {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getGenere() {
@@ -88,11 +85,19 @@ public class Utente {
         this.genere = genere;
     }
 
-    public boolean isAdmin() {
-        return admin;
+    public double getValutazione() {
+        return valutazione;
     }
 
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
+    public void setValutazione(double valutazione) {
+        this.valutazione = valutazione;
+    }
+
+    public String getFotoRiconoscitiva() {
+        return fotoRiconoscitiva;
+    }
+
+    public void setFotoRiconoscitiva(String fotoRiconoscitiva) {
+        this.fotoRiconoscitiva = fotoRiconoscitiva;
     }
 }
