@@ -4,6 +4,10 @@ body, html {
     margin : 0;
 }
 
+.containerOfAll {
+    overflow: auto; /* per non far collassare i margini*/
+}
+
 .containerCorso, #containerNothing {
     display: flex;
     margin: 50px auto 50px auto;

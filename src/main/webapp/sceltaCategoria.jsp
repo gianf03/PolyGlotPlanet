@@ -8,8 +8,8 @@
     <link type="text/css" href="css/sceltaCategorie.css" rel="stylesheet">
 </head>
 <body>
+<%@ include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
-        <%@ include file="WEB-INF/jsp/header.jsp"%>
         <div id="containerCategorie">
             <c:forEach items="${categorie}" var="categoria" >
                 <section>
@@ -20,8 +20,8 @@
                 </section>
             </c:forEach>
         </div>
-        <%@ include file="WEB-INF/jsp/footer.jsp"%>
     </div>
+<%@ include file="WEB-INF/jsp/footer.jsp"%>
     <script src="JavaScript/cambiaAltezza.js"></script>
 </body>
 </html>

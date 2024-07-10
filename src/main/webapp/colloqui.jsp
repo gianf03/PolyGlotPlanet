@@ -9,10 +9,11 @@
 <html>
 <head>
     <title>Colloqui</title>
+    <link type="text/css" href="css/general.css" rel="stylesheet">
 </head>
 <body>
+<%@include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
-        <%@include file="WEB-INF/jsp/header.jsp"%>
 
         <div id="containerColloquio">
             <div id="containerFotoEsperto" class="colloquioItem">
@@ -34,9 +35,8 @@
             </a>
             <%}%>
         </div>
-
-        <%@include file="WEB-INF/jsp/footer.jsp"%>
     </div>
-    <script src="JavaScript/cambiaAltezza.js"></script>
+<%@include file="WEB-INF/jsp/footer.jsp"%>
+<script src="JavaScript/cambiaAltezza.js"></script>
 </body>
 </html>

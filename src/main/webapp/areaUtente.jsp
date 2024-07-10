@@ -6,11 +6,8 @@
     <link type="text/css" href="css/general.css" rel="stylesheet">
 </head>
 <body>
+<%@include file="WEB-INF/jsp/header.jsp"%>
 <div class="containerOfAll">
-
-    <%@include file="WEB-INF/jsp/header.jsp"%>
-
-
     <div id="containerAreaUtente">
         <div id="containerdatiUtente">
 
@@ -91,10 +88,8 @@
         document.getElementById("containerModificaDati").style.display = "none";
     </script>
     <%}%>
-
-
-    <%@include file="WEB-INF/jsp/footer.jsp"%>
 </div>
+<%@include file="WEB-INF/jsp/footer.jsp"%>
 
 <script src="JavaScript/mostraModificaDati.js"></script>
 <script src="JavaScript/cambiaAltezza.js"></script>

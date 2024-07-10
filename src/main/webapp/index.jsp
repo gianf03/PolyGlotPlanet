@@ -13,8 +13,9 @@
     <!--anche se sottolineato giallo non modificare-->
 </head>
 <body>
+<%@ include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
-        <%@ include file="WEB-INF/jsp/header.jsp"%>
+
         <section id="outer-container">
 
             <%
@@ -52,9 +53,8 @@
                 <div id="divPlus"><button id="plus" onclick="chargeAllStates(<%=lingue.size()%>)"><img id="imgPlus" src="img/plus_1.png"></button></div>
             </div>
         </section>
-        <%@ include file="WEB-INF/jsp/footer.jsp"%>
     </div>
-
+<%@ include file="WEB-INF/jsp/footer.jsp"%>
     <!--anche se sottolineato giallo non modificare-->
     <script src="JavaScript/cambiaAltezza.js"></script>
 </body>

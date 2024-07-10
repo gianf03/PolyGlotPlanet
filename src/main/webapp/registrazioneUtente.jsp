@@ -118,9 +118,9 @@
                 <div class="credenziali"><input type="submit" value="Registrati" id="tasto-registrazione"></div>
             </form>
         </div>
-        <%@ include file="WEB-INF/jsp/footer.jsp"%>
     </div>
 
+    <%@ include file="WEB-INF/jsp/footer.jsp"%>
     <script src="JavaScript/cambiaAltezza.js"></script>
 </body>
 </html>

@@ -27,7 +27,6 @@ section {
 }
 
 #divLinkCat {
-    opacity: 1;
     margin: 50px auto auto auto;
     width: 60%;
     height: 10%;
@@ -39,7 +38,7 @@ section {
 
 @media screen and (max-width: 1200px) {
 
-    #container {
+    #containerCategorie {
         display: block;
     }
 

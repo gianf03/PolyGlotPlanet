@@ -12,8 +12,9 @@
     <script src="JavaScript/showDropdownContent.js"></script>
 </head>
 <body>
+<%@include file="WEB-INF/jsp/header.jsp"%>
 <div class="containerOfAll">
-    <%@include file="WEB-INF/jsp/header.jsp"%>
+
     <%
         List<Corso> corsi = (List<Corso>) request.getAttribute("corsi");
         List<Lingua> lingue = (List<Lingua>) application.getAttribute("lingue");
@@ -105,8 +106,8 @@
         </div>
     </a>
     <%}%>
-    <%@include file="WEB-INF/jsp/footer.jsp"%>
 </div>
+<%@include file="WEB-INF/jsp/footer.jsp"%>
 
 <script src="JavaScript/cambiaAltezza.js"></script>
 </body>

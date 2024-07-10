@@ -13,10 +13,11 @@
     <link type="text/css" href="css/general.css" rel="stylesheet">
 </head>
 <body>
+<%@include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
-        <%@include file="WEB-INF/jsp/header.jsp"%>
-        <%@include file="WEB-INF/jsp/footer.jsp"%>
+
     </div>
+<%@include file="WEB-INF/jsp/footer.jsp"%>
     <script src="JavaScript/cambiaAltezza.js"></script>
 </body>
 </html>

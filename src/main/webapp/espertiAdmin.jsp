@@ -12,8 +12,8 @@
         List<Esperto> esperti = (List<Esperto>) request.getAttribute("esperti");
     %>
 
+    <%@include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
-        <%@include file="WEB-INF/jsp/header.jsp"%>
 
         <table id="tableEsperti">
             <tr class="rigaEsperti">

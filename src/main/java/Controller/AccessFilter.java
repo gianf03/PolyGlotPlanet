@@ -74,7 +74,8 @@ public class AccessFilter extends HttpFilter {
             return;
         }
 
-        if((path.contains("colloqui.jsp") || path.contains("corsi.jsp") || path.contains("incontri.jsp")) && !isUser && !isWithoutAccount) {
+        if((path.contains("colloqui.jsp") || path.contains("corsi.jsp") || path.contains("incontri.jsp") ||
+                path.contains("sceltaCategoria.jsp")) && !isUser && !isWithoutAccount) {
 
             if(isAdmin)
                 httpServletResponse.sendRedirect("homeAdmin.jsp?error=11");
@@ -92,6 +93,11 @@ public class AccessFilter extends HttpFilter {
             return;
         }
 
+        /*if(path.contains("loginEsperto.jsp") && httpServletRequest.getSession(false) != null){
+            httpServletRequest.getSession(false).invalidate();
+            httpServletResponse.sendRedirect("loginEsperto.jsp");
+            return;
+        }*/
         chain.doFilter(req, res);
     }
 }

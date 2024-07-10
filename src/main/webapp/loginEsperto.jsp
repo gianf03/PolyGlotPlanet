@@ -34,9 +34,9 @@
         </div>
 
 <!--        <form id="logoutForm" action="logout" method="post" style="display:none;"></form>  -->
-        <%@include file="WEB-INF/jsp/footer.jsp"%>
     </div>
 
+    <%@include file="WEB-INF/jsp/footer.jsp"%>
     <script src="JavaScript/cambiaAltezza.js"></script>
 </body>
 </html>
