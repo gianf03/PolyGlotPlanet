@@ -1,11 +1,7 @@
 package Model.DAO;
 
-import Model.Bean.Categoria;
-import Model.Bean.Composizione;
+import Model.Bean.*;
 import Model.ConPool;
-import Model.Bean.Ordine;
-import Model.Bean.Prodotto;
-import Model.Bean.Utente;
 import Utils.Utility;
 
 import java.sql.Connection;
@@ -20,8 +16,9 @@ public class ComposizioneDAO {
     public List<Composizione> doRetrieveAllByUtente(int IDUtente) {
         try (Connection con = ConPool.getConnection()) {
 
-            String sql = "SELECT * FROM (((Utente u JOIN Ordine o ON o.IDUtente=u.ID) JOIN Composizione c ON c.IDOrdine=o.ID) JOIN " +
-                    "Prodotto p ON c.IDProdotto=p.ID) JOIN Categoria ca ON p.IDCategoria=ca.ID WHERE u.ID=?";
+            String sql = "SELECT * FROM ((((Utente u JOIN Ordine o ON o.IDUtente=u.ID) JOIN Composizione c ON c.IDOrdine=o.ID) JOIN " +
+                    "Prodotto p ON c.IDProdotto=p.ID) JOIN Categoria ca ON p.IDCategoria=ca.ID)" +
+                    " JOIN Lingua l ON p.codISOLingua=l.codISOLingua WHERE u.ID=?";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, IDUtente);
@@ -52,18 +49,27 @@ public class ComposizioneDAO {
                 cat.setNome(rs.getString("ca.nome"));
                 cat.setImmagine(rs.getString("foto"));
 
+                Lingua l = new Lingua();
+                l.setCodISOLingua(rs.getString("codISOLingua"));
+                l.setNome("l.nome");
+                l.setParlanti(rs.getInt("parlanti"));
+                l.setFotoStatoOrigine(rs.getString("fotoStatoOrigine"));
+
                 Prodotto p = new Prodotto();
+
                 p.setID(rs.getInt("IDProdotto"));
                 p.setCategoria(cat);
+                p.setLingua(l);
                 p.setPrezzoAttuale(rs.getDouble("prezzoAttuale"));
                 p.setPrezzoBase(rs.getDouble("prezzoBase"));
                 p.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
 
                 Composizione c = new Composizione();
                 c.setOrdine(o);
-                c.setProdotto(p);
                 c.setDataOra(Utility.sqlDateTimeToLocalDateTime(rs.getString("dataOra")));
                 c.setPrezzoAcquisto(rs.getDouble("prezzoAcquisto"));
+                c.setProdotto(p);
+
 
                 composizioni.add(c);
             }
