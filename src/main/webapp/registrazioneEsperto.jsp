@@ -12,11 +12,12 @@
 
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <script src="JavaScript/registrazione.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <div class="containerOfAll">
         <div id="div-registrazioneEsperto">
-            <div id="reg"><h1>Registrazione</h1></div>
+            <div id="reg"><a href="index.jsp"><img id="logo" src="img/logo.png"></a></div>
 
             <% String queryString = request.getQueryString(); %>
 
@@ -42,7 +43,7 @@
 
                 <!-- l'esperto deve avere almeno 18 anni -->
                 <div class="credenziali">
-                    <label id="labelDdn">Data di nascita : </label>
+                    <label id="labelDdn">Data di nascita : </label><br>
                     <input type="date" id = "ddn" name = "ddn" required onclick="removeError('error8'); removeError('error9')">
 
                     <%if (queryString!=null && (queryString.contains("error=8&") || queryString.endsWith("error=8"))) { %>

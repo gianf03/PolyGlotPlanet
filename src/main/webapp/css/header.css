@@ -69,7 +69,22 @@ nav .superSubMenu > li {
     float: left;
 }
 
-#divLogo {
-    font-weight: bold;
-    font-size: 30pt;
+/* da capire se c'è un modo più generico */
+#logo img {
+    height : 48px;
+}
+
+
+
+@media screen and (max-width: 700px) {
+    #liBenvenuto {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    nav .mainMenu li, .subMenu li, .superSubMenu li { /*se ometto nav media query meno specifica e quindi non applicata perché meno importante*/
+        width: 110px;
+    }
+
 }

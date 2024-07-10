@@ -22,11 +22,11 @@
                 <li id="logo">
                     <div id="divLogo">
                         <%if(u != null && u.isAdmin()) {%>
-                            <a href="homeAdmin.jsp">PolyGlotPlanet</a>
+                            <a href="homeAdmin.jsp"><img alt="globo sorvolato da un aereo" src="img/logo.png"></a>
                         <%} else if (e != null){%>
-                            <a href="homeEsperto.jsp">PolyGlotPlanet</a>
+                            <a href="homeEsperto.jsp"><img alt="globo sorvolato da un aereo" src="img/logo.png"></a>
                         <%} else {%>
-                            <a href="index.jsp">PolyGlotPlanet</a>
+                            <a href="index.jsp"><img alt="globo sorvolato da un aereo" src="img/logo.png"></a>
                         <%}%>
                     </div>
                 </li>

@@ -93,11 +93,9 @@ public class AccessFilter extends HttpFilter {
             return;
         }
 
-        /*if(path.contains("loginEsperto.jsp") && httpServletRequest.getSession(false) != null){
-            httpServletRequest.getSession(false).invalidate();
-            httpServletResponse.sendRedirect("loginEsperto.jsp");
-            return;
-        }*/
-        chain.doFilter(req, res);
+        if(path.contains("login") && httpServletRequest.getSession(false) != null){
+            httpServletRequest.getSession(false).invalidate(); //non ci vuole return perché mi serve che esegua chain.doFilter()
+        }
+        chain.doFilter(req, res); //Se il filtro corrente è l'ultimo nella catena, l'istruzione passa il controllo al servlet o alla risorsa web (come una JSP) designata per gestire la richiesta
     }
 }

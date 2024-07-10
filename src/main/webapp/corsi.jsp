@@ -10,6 +10,7 @@
     <script src="JavaScript/filterByLanguagePriceAndLevel.js"></script>
     <script src="JavaScript/checkSelection.js"></script>
     <script src="JavaScript/showDropdownContent.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <%@include file="WEB-INF/jsp/header.jsp"%>

@@ -57,5 +57,6 @@
 <%@ include file="WEB-INF/jsp/footer.jsp"%>
     <!--anche se sottolineato giallo non modificare-->
     <script src="JavaScript/cambiaAltezza.js"></script>
+    <script src="JavaScript/resizeContainer.js"></script>
 </body>
 </html>

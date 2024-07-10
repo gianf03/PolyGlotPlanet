@@ -10,6 +10,7 @@
 <head>
     <title>Colloqui</title>
     <link type="text/css" href="css/general.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <%@include file="WEB-INF/jsp/header.jsp"%>

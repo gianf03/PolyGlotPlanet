@@ -1,20 +1,18 @@
-html {
+html, body {
     height: 100%;
     width: 100%;
-}
-
-body {
+    padding: 0;
     margin: 0;
-    /*per inserire immagine di sfondo scrivere qua dentro*/
 }
 
 #div-loginUtente, #div-loginEsperto, #div-loginAdmin{
-    background-color: #80B918;
-    margin: 70px auto 75px auto;
-    height: 500px;
+    margin: 70px auto 70px auto;
+    height: 600px;
     width: 300px;
     border-radius: 30px;
     align-content: center;
+    backdrop-filter: blur(5px);
+    border : 2px solid white;
 }
 
 #form-login input{
@@ -25,10 +23,10 @@ body {
     height: 40px;
     width: 250px;
     border-radius: 20px;
-    background-color: darkgreen;
+    background-color: #007253;
     color: white;
     font-size: 12pt;
-    border-color: darkgreen;
+    border-color: #007253;
 }
 
 
@@ -49,7 +47,7 @@ body {
 
 #log > a {
     text-decoration: none;
-    color: darkgreen;
+    color: #007253;
     font-weight: bold;
     font-size: 30pt;
 }
@@ -63,19 +61,13 @@ body {
 }
 
 #nonUtente {
-    color: black;
+    color: white;
     font-size: 12pt;
 }
 
-#loginError {
-    background-color: red;
-    align-content: center;
-    color: white;
-}
-
-
 #div-registrazioneUtente, #div-registrazioneEsperto{
-    background-color: #80B918;
+    /*background-color: #80B918;*/
+    backdrop-filter: blur(5px);
     margin: 70px auto 75px auto;
     height: 900px;
     width: 300px;
@@ -88,7 +80,51 @@ body {
     width: 100px;
 }
 
-.regError {
+.regError, .logError {
     color : red;
     font-weight: bold;
+    align-content: center;
 }
+
+
+/*nuove aggiunte */
+.containerOfAll {
+    background-image: url("../img/login9.jpg");
+    background-size: 100% 100%;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    display: flex; /* Per centrare verticalmente */ /*questo serve per non creare spazi bianchi*/
+    justify-content: center;
+}
+
+#linkAdmin:link , #linkAdmin:visited, #linkAdmin:hover, #linkAdmin:active {
+    color: white;
+}
+#registrazioneUtente:link , #registrazioneUtente:visited, #registrazioneUtente:hover, #registrazioneUtente:active {
+    color: white;
+}
+
+#footer {
+    border-top : 2px solid white;
+}
+
+#tasto-login, #tasto-registrazione {
+    background-color: mediumaquamarine;
+    border-color: mediumaquamarine;
+}
+
+.credenziali label {
+    color: white;
+}
+
+#reg * {
+    color: white;
+}
+
+@media screen and (max-width: 700px) {
+
+    .containerOfAll {
+        background-image: url("../img/login8.avif");
+    }
+}
+

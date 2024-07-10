@@ -11,18 +11,19 @@
     <title>Registrazione utente</title>
 
     <link rel="stylesheet" type="text/css" href="css/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="JavaScript/registrazione.js"></script>
 </head>
 <body>
     <div class="containerOfAll">
         <div id="div-registrazioneUtente">
-            <div id="reg"><h1>Registrazione</h1></div>
+            <div id="reg"><a href="index.jsp"><img id="logo" src="img/logo.png"></a></div>
 
             <% String queryString = request.getQueryString(); %>
 
             <form id="form-registrazione" action="registrazioneUtente" method="POST">
                 <div class="credenziali">
-                    <label id="labelNome" for="nome">Nome : </label>
+                    <label id="labelNome" for="nome">Nome : </label><br>
                     <input type="text" id="nome" name="nome" placeholder="es.:Marco" required onclick="removeError('error1')">
 
                     <!-- contains("error=1") non va bene perché se si verifica solo erro 12 la stringa di errore verrà mostrata comunque -->
@@ -32,7 +33,7 @@
                 </div>
 
                 <div class="credenziali">
-                    <label id="labelCognome" for="cognome">Cognome : </label>
+                    <label id="labelCognome" for="cognome">Cognome : </label><br>
                     <input type="text" id = "cognome" name = "cognome" placeholder="es.:Rossi" required onclick="removeError('error2')">
 
                     <%if (queryString!=null && (queryString.contains("error=2&") || queryString.endsWith("error=2"))) { %>
@@ -41,7 +42,7 @@
                 </div>
 
                 <div class="credenziali">
-                    <label id="labelDdn">Data di nascita : </label>
+                    <label id="labelDdn">Data di nascita : </label><br>
                     <input type="date" id = "ddn" name = "ddn" placeholder="data di nascita" required onclick="removeError('error8'); removeError('error9')">
 
                     <%if (queryString!=null && (queryString.contains("error=8&") || queryString.endsWith("error=8"))) { %>
@@ -72,7 +73,7 @@
                 </script>
 
                 <div class="credenziali">
-                    <label id="labelEmail" for="email">E-mail : </label>
+                    <label id="labelEmail" for="email">E-mail : </label><br>
                     <input type="email" id="email" name = "email" placeholder="es.:marcorossi@gmail.com" required onclick="removeError('error3'); removeError('error4'); removeError('error12')">
 
                     <%if (queryString!=null && (queryString.contains("error=3&") || queryString.endsWith("error=3"))) { %>
@@ -91,7 +92,7 @@
 
 
                 <div class="credenziali">
-                    <label id="labelPassword" for="password">Password : </label>
+                    <label id="labelPassword" for="password">Password : </label><br>
                     <input type="password" id="password" name = "password" placeholder="almeno 8 caratteri" required onclick="removeError('error5'); removeError('error6')">
 
                     <%if (queryString!=null && (queryString.contains("error=5&") || queryString.endsWith("error=5"))) { %>
