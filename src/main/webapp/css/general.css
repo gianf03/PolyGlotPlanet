@@ -14,8 +14,8 @@ body, html {
     width: 60vw;
     height: 40vh;
     border-radius: 30px;
-    background-color: #80B918;
-    box-shadow: 10px 10px 5px #006400;
+    background-color: mediumaquamarine;
+    box-shadow: 10px 10px 5px #007253;
     clear:left;
 }
 
@@ -48,7 +48,7 @@ body, html {
     height: 40%;
     width: 70%;
     border-radius: 15px;
-    background-color: darkgreen;
+    background-color: #007253;
     color: white;
     font-size: 12pt;
 }
@@ -80,7 +80,7 @@ body, html {
     width: 20%;
     height: 30%;
     margin: auto;
-    background-color: #006400;
+    background-color: #007253;
     border-radius: 10px;
     align-content: center;
     text-align: center;
@@ -99,7 +99,7 @@ body, html {
 }
 
 #it1 {
-    background-color: #80B918;
+    background-color: mediumaquamarine;
 }
 
 
@@ -157,7 +157,7 @@ body, html {
 }
 
 #mostraTuttiCorsiContainer {
-    background-color: darkgreen;
+    background-color: #007253;
     margin : 20px;
     display: inline-block;
     padding : 10px;
@@ -220,7 +220,7 @@ body, html {
 .adminSettings {
     width: 20%;
     height: 5%;
-    background-color: darkgreen;
+    background-color: #007253;
     border-radius: 30px;
     align-content: center;
     text-align: center;
@@ -251,4 +251,15 @@ tr:nth-child(even) {
 #imgLingua {
     height: 30px;
     width: 50px;
+}
+
+/*colloqui.jsp*/
+/*#colloqui {
+    display: flex;
+    flex-direction: column;
+}*/
+
+#pagesContainer {
+    display: flex;
+    justify-content: center;
 }

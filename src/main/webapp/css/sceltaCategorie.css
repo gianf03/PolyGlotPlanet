@@ -8,7 +8,7 @@ section {
     align-content: center;
     align-items: center;
     margin: auto;
-    background-color: #80B918;
+    background-color: mediumaquamarine;
     width: 350px;
     height: 350px;
     border-radius: 30px;
@@ -30,7 +30,7 @@ section {
     margin: 50px auto auto auto;
     width: 60%;
     height: 10%;
-    background-color: #006400;
+    background-color: #007253;
     border-radius: 15px;
 }
 

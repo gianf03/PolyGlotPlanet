@@ -1,4 +1,5 @@
-<%--
+<%@ page import="Model.Bean.Colloquio" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: utente
   Date: 07/07/2024
@@ -14,8 +15,8 @@
 </head>
 <body>
 <%@include file="WEB-INF/jsp/header.jsp"%>
-    <div class="containerOfAll">
-
+    <div id="colloqui" class="containerOfAll">
+        <% List<Colloquio> colloqui = (List<Colloquio>) request.getAttribute("colloqui"); %>
         <div id="containerColloquio">
             <div id="containerFotoEsperto" class="colloquioItem">
                 <img src="" alt="foto di <%=1%>">
@@ -31,10 +32,16 @@
             <% if(request.getParameter("lingua") != null) { %>
             <a id="anchorMostraTuttiColloqui" href="">
                 <div id="mostraTuttiColloquiContainer">
-                    <p id="mostraTuttiCorsi">Indeciso su quale lingua apprendere? Vedi tutti i colloqui</p>
+                    <p id="mostraTuttiColloqui">Indeciso su quale lingua apprendere? Vedi tutti i colloqui</p>
                 </div>
             </a>
             <%}%>
+
+            <div id="pagesContainer">
+            <% for (int i = 0, j=0; i<colloqui.size(); i+=10) {%>
+                <a id="page<%=j+1%>" href=""><%=j+1%></a>
+            <%}%>
+            </div>
         </div>
     </div>
 <%@include file="WEB-INF/jsp/footer.jsp"%>

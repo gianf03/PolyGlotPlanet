@@ -93,9 +93,15 @@ public class AccessFilter extends HttpFilter {
             return;
         }
 
+        if(path.contains("mostraCategorie") && !httpServletRequest.getQueryString().contains("lingua")){
+            httpServletResponse.sendRedirect("index.jsp?error=17"); //nessuna lingua selezionata
+            return;
+        }
+
         if(path.contains("login") && httpServletRequest.getSession(false) != null){
             httpServletRequest.getSession(false).invalidate(); //non ci vuole return perché mi serve che esegua chain.doFilter()
         }
+
         chain.doFilter(req, res); //Se il filtro corrente è l'ultimo nella catena, l'istruzione passa il controllo al servlet o alla risorsa web (come una JSP) designata per gestire la richiesta
     }
 }

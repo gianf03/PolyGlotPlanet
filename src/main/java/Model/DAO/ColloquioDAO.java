@@ -76,4 +76,23 @@ public class ColloquioDAO {
             throw new RuntimeException(e);
         }
     }
+
+
+    /*questo metodo usato per paginazione*/
+    public List<Colloquio> doRetrieveByStartAndEnd(List<String> lingue, int start, int end) {
+        List<Colloquio> tuttiColloqui = new ArrayList<>();
+        List<Colloquio> colloquiRichiesti = new ArrayList<>();
+        for (String l : lingue){
+            if(tuttiColloqui.size() < end) {
+                List<Colloquio> c = doRetrieveByCodISOLingua(l);
+                tuttiColloqui.addAll(c);
+            } else break;
+        }
+
+        for (int i = start; i<=end; i++) {
+            colloquiRichiesti.add(tuttiColloqui.get(i));
+        }
+
+        return colloquiRichiesti;
+    }
 }
