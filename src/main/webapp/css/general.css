@@ -234,9 +234,9 @@ body, html {
     text-decoration: none;
 }
 
-#tableUtenti, #tableEsperti, #tableCorsi, #tableOrdini {
+#tableUtenti, #tableEsperti, #tableCorsi, #tableOrdini, #tableColloqui, #tableIncontri {
     margin: auto;
-    width: 70%;
+    width: 80%;
 }
 
 th, td {
