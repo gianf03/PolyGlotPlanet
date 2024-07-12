@@ -217,6 +217,7 @@ body, html {
     flex-direction: column;
     justify-content: space-between;
 }
+
 .adminSettings {
     width: 20%;
     height: 5%;
@@ -234,9 +235,14 @@ body, html {
     text-decoration: none;
 }
 
-#tableUtenti, #tableEsperti, #tableCorsi, #tableOrdini, #tableColloqui, #tableIncontri {
+#tableUtenti, #tableEsperti, #tableCorsi, #tableOrdini, #tableColloqui, #tableIncontri, #divFiltri {
     margin: auto;
     width: 80%;
+}
+
+#divFiltri {
+    height: 20%;
+    align-content: center;
 }
 
 th, td {
@@ -251,4 +257,59 @@ tr:nth-child(even) {
 #imgLingua {
     height: 30px;
     width: 50px;
+}
+
+#divModifica {
+    display: none;
+    position: absolute; /*sovrappone il container al resto della pagina*/
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /*allinea il container al centro della pagina*/
+
+    height: 40vh;
+    width: 25vw;
+    border: solid black;
+    background-color: white;
+
+    border-radius: 30px;
+    text-align: center;
+    align-content: center;
+}
+
+.datiMod {
+    margin-top: 25px;
+}
+
+
+.dropbtn {
+    height: 5vh;
+    width: 15vw;
+    background-color: #007253;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #D6EEEE;
+    border-radius: 15px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }

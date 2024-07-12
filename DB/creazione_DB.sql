@@ -61,6 +61,7 @@ create table Prodotto(
     prezzoAttuale double not null,
     IDCategoria int not null,
     codISOLingua char(2) not null,
+    disponibile boolean default true,
     
 	foreign key (codISOLingua) references Lingua(codISOLingua) on delete cascade on update cascade,
     foreign key (IDCategoria) references Categoria(ID) on delete cascade on update cascade

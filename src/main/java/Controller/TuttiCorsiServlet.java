@@ -23,7 +23,7 @@ public class TuttiCorsiServlet extends HttpServlet {
         CorsoDAO corsoDAO = new CorsoDAO();
 
         List<Corso> corsi = corsoDAO.doRetrieveAll();
-        req.setAttribute("corsi", corsi);
+
 
         String address;
 
@@ -31,9 +31,18 @@ public class TuttiCorsiServlet extends HttpServlet {
 
         if(u!=null && u.isAdmin()) {
             address = "corsiAdmin.jsp";
+
+            String ordPer = req.getParameter("ordPer");
+            String tipo = req.getParameter("tipo");
+
+            if(ordPer != null && tipo != null) {
+                corsi = corsoDAO.doRetrieveAllSorted(ordPer, tipo);
+            }
         } else {
             address = "corsi.jsp";
         }
+
+        req.setAttribute("corsi", corsi);
 
         RequestDispatcher rd = req.getRequestDispatcher(address);
         rd.forward(req, resp);

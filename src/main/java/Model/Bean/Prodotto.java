@@ -13,6 +13,7 @@ public class Prodotto {
     private Categoria categoria;
     private double prezzoAttuale;
     private Lingua lingua;
+    private boolean disponibile;
 
     public int getID() {
         return ID;
@@ -58,5 +59,13 @@ public class Prodotto {
 
     public void setLingua(Lingua lingua) {
         this.lingua = lingua;
+    }
+
+    public boolean isDisponibile() {
+        return disponibile;
+    }
+
+    public void setDisponibile(boolean disponibile) {
+        this.disponibile = disponibile;
     }
 }
