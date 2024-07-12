@@ -67,6 +67,7 @@ public class IncontroDAO {
                 i.setCAP(rs.getString("CAP"));
                 i.setVia(rs.getString("via"));
                 i.setCivico(rs.getString("civico"));
+                i.setDisponibile(rs.getBoolean("disponibile"));
 
                 incontri.add(i);
             }

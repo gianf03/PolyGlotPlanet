@@ -1,5 +1,6 @@
 package Model.DAO;
 
+import Model.Bean.Utente;
 import Model.ConPool;
 
 import java.sql.Connection;
@@ -10,6 +11,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProdottoDAO {
+
+    public void doUpdate(int IDProdotto, boolean disponibile, double prezzoBase, double scontoPercentuale) {
+
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("UPDATE Prodotto " +
+                                                            "SET disponibile=?, prezzoBase=?, scontoPercentuale=? " +
+                                                            "WHERE ID=?");
+
+            ps.setBoolean(1, disponibile);
+            ps.setDouble(2, prezzoBase);
+            ps.setDouble(3, scontoPercentuale);
+            ps.setInt(4, IDProdotto);
+
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("INSERT error.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
     public List<Integer> doRetrievePrezzoMinMaxByCategoria(int categoria) {
         try (Connection con = ConPool.getConnection()) {
 

@@ -47,6 +47,7 @@ public class CorsoDAO{
                 c.setNumeroUnita(rs.getInt("numeroUnita"));
                 c.setLivello(rs.getString("livello"));
                 c.setLingua(l);
+                c.setDisponibile(rs.getBoolean("disponibile"));
 
                 return c;
             }
@@ -94,6 +95,7 @@ public class CorsoDAO{
                 c.setNumeroUnita(rs.getInt("numeroUnita"));
                 c.setLivello(rs.getString("livello"));
                 c.setLingua(l);
+                c.setDisponibile(rs.getBoolean("disponibile"));
 
                 corsi.add(c);
             }
@@ -140,6 +142,7 @@ public class CorsoDAO{
                 c.setNumeroUnita(rs.getInt("numeroUnita"));
                 c.setLivello(rs.getString("livello"));
                 c.setLingua(l);
+                c.setDisponibile(rs.getBoolean("disponibile"));
 
                 corsi.add(c);
             }
@@ -183,6 +186,57 @@ public class CorsoDAO{
                 c.setNumeroUnita(rs.getInt("numeroUnita"));
                 c.setLivello(rs.getString("livello"));
                 c.setLingua(l);
+                c.setDisponibile(rs.getBoolean("disponibile"));
+
+                corsi.add(c);
+            }
+
+            return corsi;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public List<Corso> doRetrieveAllSorted(String ordPer, String tipo) {
+        try (Connection con = ConPool.getConnection()) {
+
+            String sql = "SELECT * FROM ((Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) " +
+                    "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON p.codISOLingua=l.codISOLingua" +
+                    " ORDER BY " + ordPer + " " + tipo;
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+
+
+            ResultSet rs = ps.executeQuery();
+
+            List<Corso> corsi = new ArrayList<>();
+
+            while(rs.next()) {
+                Corso c = new Corso();
+
+                Categoria cat = new Categoria();
+                cat.setID(rs.getInt("IDCategoria"));
+                cat.setNome(rs.getString("nome"));
+
+                Lingua l = new Lingua();
+                l.setCodISOLingua(rs.getString("codISOLingua"));
+                l.setParlanti(rs.getInt("parlanti"));
+                l.setNome(rs.getString("l.nome"));
+                l.setFotoStatoOrigine(rs.getString("fotoStatoOrigine"));
+
+                c.setID(rs.getInt("IDProdotto"));
+                c.setPrezzoBase(rs.getDouble("prezzoBase"));
+                c.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
+                c.setPrezzoAttuale(rs.getDouble("prezzoAttuale"));
+                c.setCategoria(cat);
+                c.setDescrizione(rs.getString("descrizione"));
+                c.setNumeroUnita(rs.getInt("numeroUnita"));
+                c.setLivello(rs.getString("livello"));
+                c.setLingua(l);
+                c.setDisponibile(rs.getBoolean("disponibile"));
 
                 corsi.add(c);
             }
@@ -233,6 +287,7 @@ public class CorsoDAO{
                 c.setNumeroUnita(rs.getInt("numeroUnita"));
                 c.setLivello(rs.getString("livello"));
                 c.setLingua(l);
+                c.setDisponibile(rs.getBoolean("disponibile"));
 
                 corsi.add(c);
             }
