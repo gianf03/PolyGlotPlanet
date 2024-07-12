@@ -1,6 +1,6 @@
-/* problema che risolve questa funzione : apro index.jsp con 3 stati per riga, premo sul +. Dopodiché rimpicciolisco
+/* problema che risolve questa funzione : apro sceltaLingua.jsp con 3 stati per riga, premo sul +. Dopodiché rimpicciolisco
 la finestra fino a 2 stati per riga. Senza questa funzione l'altezza del flex-container non risulterebbe sufficiente.
-apro index.jsp con 1 stato per riga, premo sul +. Dopodiché ingrnadisco la finestra fino a 2 stati per riga.
+apro sceltaLingua.jsp con 1 stato per riga, premo sul +. Dopodiché ingrnadisco la finestra fino a 2 stati per riga.
 Senza questa funzione l'altezza del flex-container sarebbe eccessiva perché uguale al caso in cui ho 1 stato per riga
 sebbene ora ce ne siano 2.
  */

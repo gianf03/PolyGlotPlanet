@@ -75,7 +75,7 @@ public class AccessFilter extends HttpFilter {
         }
 
         if((path.contains("colloqui.jsp") || path.contains("corsi.jsp") || path.contains("incontri.jsp") ||
-                path.contains("sceltaCategoria.jsp")) && !isUser && !isWithoutAccount) {
+                path.contains("index.jsp")) && !isUser && !isWithoutAccount) {
 
             if(isAdmin)
                 httpServletResponse.sendRedirect("homeAdmin.jsp?error=11");
@@ -93,9 +93,17 @@ public class AccessFilter extends HttpFilter {
             return;
         }
 
-        if(path.contains("mostraCategorie") && !httpServletRequest.getQueryString().contains("codLingua")){
-            httpServletResponse.sendRedirect("index.jsp?error=17"); //nessuna lingua selezionata
+        if(path.contains("sceltaLingua.jsp") && (httpServletRequest.getQueryString()==null || !httpServletRequest.getQueryString().contains("categoria"))){
+            httpServletResponse.sendRedirect("index.jsp?error=17"); //nessuna categoria selezionata
             return;
+        }
+
+        if(path.contains("sceltaLingua.jsp") && httpServletRequest.getQueryString().contains("categoria")){
+            String categoria = httpServletRequest.getParameter("categoria");
+            if (!categoria.contains("corso") && !categoria.contains("incontro") && !categoria.contains("colloquio")) {
+                httpServletResponse.sendRedirect("index.jsp?error=17");
+                return;
+            }
         }
 
         if(path.contains("login") && httpServletRequest.getSession(false) != null){

@@ -9,7 +9,7 @@
 <body>
     <div class="containerOfAll">
         <div id="div-loginAdmin">
-            <div id="log"><a href="index.jsp"><img id="logo" src="img/logo.png"></a></div>
+            <div id="log"><a href="sceltaLingua.jsp"><img id="logo" src="img/logo.png"></a></div>
 
             <%String queryString = request.getQueryString();%>
 

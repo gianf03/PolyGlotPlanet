@@ -1,62 +1,36 @@
-<%@ page import="java.util.List" %>
-<%@ page import="Model.Bean.Lingua" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
-
-    <title>Home</title>
-    <link type="text/css" href="css/home.css" rel="stylesheet">
+    <title>Title</title>
+    <link type="text/css" href="css/general.css" rel="stylesheet">
+    <link type="text/css" href="css/index.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="JavaScript/chargeAllStates.js"></script>
-
-    <!--anche se sottolineato giallo non modificare-->
 </head>
 <body>
 <%@ include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
+        <%
+            String error = request.getParameter("error");
 
-        <section id="outer-container">
+            if(error != null && error.equals("11")) { %>
 
-            <%
-                String error = request.getParameter("error");
+                <div id="divErrorePermessi">Non disponi dei permessi necessari</div>
+        <%}%>
 
-                if(error != null && error.equals("11")) { %>
-
-                    <div id="divErrorePermessi">Non disponi dei permessi necessari</div>
-            <%
-                }
-            %>
-
-            <div id="flex-container">
-
-                <%
-                    List<Lingua> lingue = (List<Lingua>) application.getAttribute("lingue");
-
-                    for(int i = 0; i < 45; i++) { %>
-
-                        <div class="flex-item" id="<%=i+1%>">
-                            <a class="linkLingua" href="mostraCategorie?codLingua=<%=lingue.get(i).getCodISOLingua()%>">
-                            <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
-                            <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
-                            </a>
-                        </div>
-
-                        <% if(i >= 6) {%> <!--parentesi graffa obbligatoria altrimenti è come se l'if non ci fosse-->
-                            <script>
-                                document.getElementById("<%=i+1%>").style.display = "none";
-                            </script>
-                        <%}%>
-
-                <%}%>
-
-                <div id="divPlus"><button id="plus" onclick="chargeAllStates(<%=lingue.size()%>)"><img id="imgPlus" src="img/plus_1.png"></button></div>
-            </div>
-        </section>
+        <div id="containerCategorie">
+            <c:forEach items="${categorie}" var="categoria" >
+                <section>
+                    <img class="categoria" src="${categoria.immagine}">
+                    <div id="divLinkCat">
+                        <a class="categoria" href="sceltaLingua.jsp?categoria=${categoria.nome}">${categoria.nome}</a>
+                    </div>
+                </section>
+            </c:forEach>
+        </div>
     </div>
 <%@ include file="WEB-INF/jsp/footer.jsp"%>
-    <!--anche se sottolineato giallo non modificare-->
     <script src="JavaScript/cambiaAltezza.js"></script>
-    <script src="JavaScript/resizeContainer.js"></script>
 </body>
 </html>

@@ -128,7 +128,7 @@
         </div>
 
         <% if(request.getParameter("filtro") == null || !request.getParameter("filtro").equals("true")) { %>
-        <a id="anchorMostraTuttiColloqui" href="colloqui.jsp">
+        <a id="anchorMostraTuttiColloqui" href="colloqui.jsp?filtro=true">
             <div id="mostraTuttiColloquiContainer">
                 <p id="mostraTuttiColloqui">Indeciso su quale lingua apprendere? Vedi tutti i colloqui</p>
             </div>

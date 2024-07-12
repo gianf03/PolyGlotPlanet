@@ -55,7 +55,7 @@ public class LoginUtenteServlet extends HttpServlet {
 
             session = req.getSession();
             session.setAttribute("utente", utente);
-            address = "index.jsp";
+            address = "sceltaLingua.jsp";
         }
 
 

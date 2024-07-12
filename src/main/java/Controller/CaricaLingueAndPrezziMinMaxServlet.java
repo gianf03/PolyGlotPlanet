@@ -1,6 +1,8 @@
 package Controller;
 
+import Model.Bean.Categoria;
 import Model.Bean.Lingua;
+import Model.DAO.CategoriaDAO;
 import Model.DAO.LinguaDAO;
 import Model.DAO.ProdottoDAO;
 import jakarta.servlet.ServletException;
@@ -15,6 +17,10 @@ public class CaricaLingueAndPrezziMinMaxServlet extends HttpServlet {
         LinguaDAO linguaDAO = new LinguaDAO();
         List<Lingua> lingue = linguaDAO.doRetrieveAll();
         getServletContext().setAttribute("lingue", lingue);
+
+        CategoriaDAO categoriaDAO = new CategoriaDAO();
+        List<Categoria> categorie = categoriaDAO.doRetrieveAll();
+        getServletContext().setAttribute("categorie", categorie);
 
         ProdottoDAO prodottoDAO = new ProdottoDAO();
         List<Integer> prezziCorsi = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(1);

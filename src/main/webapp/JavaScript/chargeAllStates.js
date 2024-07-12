@@ -1,4 +1,4 @@
-function chargeAllStates(numLingue) {
+function chargeAllStates(numLingue, categoria) {
 
     for (let i = 6; i <= 45; i++) {
         document.getElementById(i).style.display = "";
@@ -37,7 +37,7 @@ function chargeAllStates(numLingue) {
 
     newAnchor = document.createElement("a");
     newAnchor.setAttribute("id", "linkMinus");
-    newAnchor.setAttribute("href", "./");   //creo anchor che conterrà un img
+    newAnchor.setAttribute("href", "sceltaLingua.jsp?categoria="+categoria);   //creo anchor che conterrà un img
 
     minus = document.createElement("img");
     minus.setAttribute("id", "imgMinus");
