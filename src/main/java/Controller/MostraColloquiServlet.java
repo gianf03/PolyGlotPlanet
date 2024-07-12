@@ -22,7 +22,7 @@ public class MostraColloquiServlet extends HttpServlet {
         List<Colloquio> colloqui = null;
         String address = null;
 
-        String codISOLingua = req.getParameter("lingua");
+        String codISOLingua = req.getParameter("codLingua");
         int IDEsperto = Integer.parseInt(req.getParameter("IDEsperto"));
 
         if(codISOLingua != null) {

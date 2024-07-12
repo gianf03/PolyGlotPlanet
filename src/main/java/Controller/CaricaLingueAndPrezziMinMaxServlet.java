@@ -20,8 +20,8 @@ public class CaricaLingueAndPrezziMinMaxServlet extends HttpServlet {
         List<Integer> prezziCorsi = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(1);
         getServletContext().setAttribute("prezziCorsi", prezziCorsi);
 
-        //List<Integer> prezziColloqui = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(2);
-        //getServletContext().setAttribute("prezziColloqui", prezziColloqui);
+        List<Integer> prezziColloqui = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(3);
+        getServletContext().setAttribute("prezziColloqui", prezziColloqui);
 
         //List<Integer> prezziIncontri = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(3);
         //getServletContext().setAttribute("prezziIncontri", prezziIncontri);

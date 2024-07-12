@@ -93,7 +93,7 @@ public class AccessFilter extends HttpFilter {
             return;
         }
 
-        if(path.contains("mostraCategorie") && !httpServletRequest.getQueryString().contains("lingua")){
+        if(path.contains("mostraCategorie") && !httpServletRequest.getQueryString().contains("codLingua")){
             httpServletResponse.sendRedirect("index.jsp?error=17"); //nessuna lingua selezionata
             return;
         }

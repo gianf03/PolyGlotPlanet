@@ -1,0 +1,265 @@
+/*colloqui.jsp*/
+
+#pagesContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#containerColloqui {
+    clear: both;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.colloquioItem {
+    margin : 30px auto 30px auto;
+    border : 2px solid black;
+    height: 350px;
+    width: 800px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.containerFotoEsperto {
+    height: 175px;
+    width: 175px;
+    margin : 25px 25px 0 25px;
+}
+
+.fotoEsperto {
+    height: inherit;
+    width: inherit;
+    border-radius: 10px;
+}
+
+.containerInfo {
+    height : 300px;
+    width: 350px;  /*stiamo a 575 pixel occupati su 800, margini compresi*/
+    margin : 25px 25px 0 0;
+    border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+}
+
+.nomeCompleto {
+    font-size: 18pt;
+    margin: 0;
+}
+
+.containerPrezzoCarrello {
+    height : 300px;
+    width : 200px;
+    margin: 25px 25px 0 0;
+    border : 2px solid red;
+    display: flex;
+    flex-direction: column;
+}
+
+.prezzoOrario {
+    margin: 0 0 100px 0;
+    font-weight: bold;
+    font-size: 18pt;
+}
+
+.divCarrello {
+    height: 50px;
+    width: 50px;
+    align-self: center;
+    margin-top: auto;
+}
+
+.fotoCarrello {
+    height: 50px;
+    width: 50px;
+    border-radius: 5px;
+}
+
+
+/*filtro lingua*/
+#droplabel-lingue {
+    display: inline-block;
+    cursor: pointer;  /*mostra mano anziché freccia quando mouse ci va sopra*/
+    height: 50px;
+    width: 150px;
+    border : 2px solid darkgrey;
+    border-radius: 5px;
+    align-content: center;
+}
+
+#droplabel-lingue:hover {
+    border-color: black;
+}
+
+#filtroLingua {
+    background-color: white;
+    cursor: pointer;  /*mostra mano anziché freccia quando mouse ci va sopra*/
+    display: flex;
+    align-content: center;
+}
+
+#dropdown-content-lingue {
+    margin-top : 100px;
+}
+
+#droplabel-lingue{
+    padding: 20px;
+    text-align: center;
+}
+
+/*filtro prezzi*/
+#filtroPrezzo {
+    background-color: white;
+    cursor: pointer;  /*mostra mano anziché freccia quando mouse ci va sopra*/
+    display: flex;
+    align-content: center;
+}
+
+#droplabel-prezzi {
+    display: inline-block;
+    cursor: pointer;  /*mostra mano anziché freccia quando mouse ci va sopra*/
+    height: 50px;
+    width: 150px;
+    border : 2px solid darkgrey;
+    border-radius: 5px;
+    align-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+#droplabel-prezzi:hover {
+    border-color: black;
+}
+
+#dropcheck-prezzi{
+    display: none;
+}
+
+#dropdown-content-prezzi {    /*div che contiene tutti i div delle singole lingue*/
+    display: none;
+    position: absolute;
+    font-size:0; /*mi elimina gli spazi bianchi tra div con display:inline-block*/
+    z-index: 1;
+    border : 1px solid black;
+    margin-top: 100px;
+    background-color: white;
+}
+
+.div-prezzo { /*div che contiene la singola lingua*/
+    color: black;
+    font-size: 16px;
+    text-align: left;
+    background-color: white;
+    margin : 10px 10px 10px 10px;
+}
+
+/*filtro orario*/
+#filtroDataOra {
+    background-color: white;
+    cursor: pointer;  /*mostra mano anziché freccia quando mouse ci va sopra*/
+    display: flex;
+    align-content: center;
+}
+
+#droplabel-data {
+    display: inline-block;
+    cursor: pointer;  /*mostra mano anziché freccia quando mouse ci va sopra*/
+    height: 50px;
+    width: 150px;
+    border : 2px solid darkgrey;
+    border-radius: 5px;
+    align-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+#droplabel-data:hover {
+    border-color: black;
+}
+
+#dropcheck-data{
+    display: none;
+}
+
+#dropdown-content-data {    /*div che contiene tutti i div delle singole lingue*/
+    display: none;
+    position: absolute;
+    font-size:0; /*mi elimina gli spazi bianchi tra div con display:inline-block*/
+    z-index: 1;
+    border : 1px solid black;
+    margin-top: 100px;
+    background-color: white;
+}
+
+.div-data { /*div che contiene la singola lingua*/
+    color: black;
+    font-size: 16px;
+    text-align: left;
+    background-color: white;
+    margin : 10px 10px 10px 10px;
+}
+
+#f{
+    margin-left: 30px;
+}
+
+.filtro {
+    margin : 30px 5px 30px 5px;
+}
+
+#submitFiltro {
+    background-color: #007253;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    border-color: #007253;
+    cursor: pointer;
+}
+
+.div-lingua {
+    display: inline-block;
+    border : 1px solid black;
+}
+
+.div-lingua:hover{
+    background-color: aquamarine;
+}
+
+.filtro{
+    float : left;
+}
+
+/*#filtroIncompleto{
+    background-color: red;
+    align-content: center;
+    color: white;
+    width: 200px;
+    margin : 15px;
+}*/
+
+#droplabel-lingue{
+    padding: 20px;
+    text-align: center;
+}
+
+#dropcheck-lingue{
+    display: none;
+}
+
+#dropdown-content-lingue {    /*div che contiene tutti i div delle singole lingue*/
+    display: none;
+    position: absolute;
+    font-size:0; /*mi elimina gli spazi bianchi tra div con display:inline-block*/
+    z-index: 1;
+}
+
+.div-lingua { /*div che contiene la singola lingua*/
+    color: black;
+    font-size: 16px;
+    padding: 12px 16px;
+    text-align: left;
+    background-color: white;
+    width : 130px;
+}

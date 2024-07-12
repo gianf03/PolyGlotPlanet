@@ -18,7 +18,7 @@ create table Esperto(
     dataNascita date not null,
     genere char(1) not null,
     valutazione int,
-    fotoRiconoscitiva varchar(255)
+    fotoRiconoscitiva varchar(255) not null
 );
 
 create table Conoscenza(
@@ -157,3 +157,23 @@ BEGIN
 END//
 
 DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE elimina_colloqui_non_prenotati()
+BEGIN
+    DELETE p
+    FROM prodotto p
+    INNER JOIN colloquio c ON p.ID = c.IDProdotto
+    WHERE c.dataOra < NOW() AND c.prenotato = FALSE;
+END //
+
+DELIMITER ;
+
+CREATE EVENT elimina_colloqui_evento
+ON SCHEDULE
+    EVERY 30 MINUTE
+    STARTS '2024-07-11 10:00:01'
+DO
+    CALL elimina_colloqui_non_prenotati();

@@ -1,10 +1,61 @@
-function showDropdownContent(){
-    var checkbox = document.getElementById("dropcheck-lingue");
+function showDropdownContentLingue(){
+    let dropdowns = document.getElementsByClassName("dropdown");
+    let allCheckboxes = document.getElementsByClassName("dropcheck");
+    let checkbox = document.getElementById("dropcheck-lingue");
     if (checkbox.checked){
-        document.getElementsByClassName("dropdown-content-lingue")[0].style = "display:block;";
+        let currentDropdown = document.getElementById("dropdown-content-lingue");
+        currentDropdown.style.display = "block";
+
+        for (let j = 0; j<dropdowns.length; j++){
+            if (dropdowns[j] !== currentDropdown) {
+                dropdowns[j].style.display = "none";
+                allCheckboxes[j].checked = false;
+            }
+        }
     } else
-        document.getElementsByClassName("dropdown-content-lingue")[0].style = "display:none;";
+        document.getElementById("dropdown-content-lingue").style.display = "none";
 }
+
+
+function showDropdownContentPrezzi() {
+    let checkbox = document.getElementById("dropcheck-prezzi");
+    let allCheckboxes = document.getElementsByClassName("dropcheck");
+    let dropdowns = document.getElementsByClassName("dropdown");
+    if (checkbox.checked){
+        let currentDropdown = document.getElementById("dropdown-content-prezzi");
+        currentDropdown.style.display = "flex";
+        currentDropdown.style.flexDirection = "row";
+
+        for (let j = 0; j<dropdowns.length; j++){
+            if (dropdowns[j] !== currentDropdown) {
+                dropdowns[j].style.display = "none";
+                allCheckboxes[j].checked = false;
+            }
+        }
+    } else
+        document.getElementById("dropdown-content-prezzi").style.display = "none";
+}
+
+
+function showDropdownContentData() {
+    let checkbox = document.getElementById("dropcheck-data");
+    let allCheckboxes = document.getElementsByClassName("dropcheck");
+    let dropdowns = document.getElementsByClassName("dropdown");
+    if (checkbox.checked){
+        let currentDropdown = document.getElementById("dropdown-content-data");
+        currentDropdown.style.display = "block";
+
+        for (let j = 0; j<dropdowns.length; j++){
+            if (dropdowns[j] !== currentDropdown){
+                allCheckboxes[j].checked = false;
+                dropdowns[j].style.display = "none";
+            }
+        }
+    } else
+        document.getElementById("dropdown-content-data").style.display = "none";
+}
+
+/*se visualizzo il dropdown-content di un filtro quello degli altri va chiuso*/
 
 function selectDeselectAll() {
     var allCheckboxes = document.getElementsByClassName("div-lingua");

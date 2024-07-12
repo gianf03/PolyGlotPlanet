@@ -45,15 +45,15 @@ public class ColloquioDAO {
 
                 Esperto e = new Esperto();
 
-                e.setID(rs.getInt("ID"));
-                e.setNome(rs.getString("nome"));
-                e.setCognome(rs.getString("cognome"));
-                e.setEmail(rs.getString("email"));
-                e.setPassword(rs.getString("passwordHash"));
-                e.setDataNascita(rs.getDate("dataNascita").toLocalDate());
-                e.setGenere(rs.getString("genere"));
-                e.setValutazione(rs.getDouble("valutazione"));
-                e.setFotoRiconoscitiva(rs.getString("fotoRiconoscitiva"));
+                e.setID(rs.getInt("e.ID"));
+                e.setNome(rs.getString("e.nome"));
+                e.setCognome(rs.getString("e.cognome"));
+                e.setEmail(rs.getString("e.email"));
+                e.setPassword(rs.getString("e.passwordHash"));
+                e.setDataNascita(rs.getDate("e.dataNascita").toLocalDate());
+                e.setGenere(rs.getString("e.genere"));
+                e.setValutazione(rs.getDouble("e.valutazione"));
+                e.setFotoRiconoscitiva(rs.getString("e.fotoRiconoscitiva"));
 
 
                 c.setID(rs.getInt("IDProdotto"));
@@ -88,13 +88,14 @@ public class ColloquioDAO {
             } else break;
         }
 
-        for (int i = start; i <= end; i++) {
+        int arrivo = Math.min(tuttiColloqui.size(), end);
+        for (int i = start; i<arrivo; i++) {
             colloquiRichiesti.add(tuttiColloqui.get(i));
         }
 
         return colloquiRichiesti;
     }
-    
+
     public List<Colloquio> doRetrieveByEsperto(int IDEsperto) {
         try (Connection con = ConPool.getConnection()) {
 

@@ -6,7 +6,11 @@
 <head>
     <title>Corsi</title>
 
+    <!-- da dividere i css -->
     <link type="text/css" href="css/general.css" rel="stylesheet">
+    <link type="text/css" href="css/corsiColloquiIncontri.css" rel="stylesheet">
+
+
     <script src="JavaScript/filterByLanguagePriceAndLevel.js"></script>
     <script src="JavaScript/checkSelection.js"></script>
     <script src="JavaScript/showDropdownContent.js"></script>
@@ -20,15 +24,15 @@
         List<Corso> corsi = (List<Corso>) request.getAttribute("corsi");
         List<Lingua> lingue = (List<Lingua>) application.getAttribute("lingue");
 
-        if(request.getParameter("lingua") == null) { %>
+        if(request.getParameter("codLingua") == null) { %>
 
     <div id="f">
         <form onsubmit="filterByLanguagePriceAndLevel()">
 
             <div class="filtro" id="filtroLingua">
-                <input type="checkbox" id="dropcheck-lingue" onchange="showDropdownContent()">
+                <input type="checkbox" id="dropcheck-lingue" onchange="showDropdownContentLingue()">
                 <label id="droplabel-lingue" for="dropcheck-lingue">Scegli lingue</label>
-                <div class="dropdown-content-lingue">
+                <div id="dropdown-content-lingue">
                     <div class="div-lingua">
                         <input type="checkbox" id="all" onchange="selectDeselectAll()">
                         <label for="all">tutte</label>

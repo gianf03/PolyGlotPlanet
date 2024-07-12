@@ -36,7 +36,7 @@
                     for(int i = 0; i < 45; i++) { %>
 
                         <div class="flex-item" id="<%=i+1%>">
-                            <a class="linkLingua" href="mostraCategorie?lingua=<%=lingue.get(i).getCodISOLingua()%>">
+                            <a class="linkLingua" href="mostraCategorie?codLingua=<%=lingue.get(i).getCodISOLingua()%>">
                             <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
                             <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
                             </a>

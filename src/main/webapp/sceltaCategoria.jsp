@@ -16,7 +16,7 @@
                 <section>
                     <img class="categoria" src="${categoria.immagine}">
                     <div id="divLinkCat">
-                        <a class="categoria" href="${categoria.nome}?lingua=<%=request.getParameter("lingua")%>">${categoria.nome}</a>
+                        <a class="categoria" href="colloqui.jsp?codLingua=<%=request.getParameter("codLingua")%>">${categoria.nome}</a>
                     </div>
                 </section>
             </c:forEach>

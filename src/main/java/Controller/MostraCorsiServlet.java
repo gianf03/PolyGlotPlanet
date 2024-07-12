@@ -20,7 +20,7 @@ public class MostraCorsiServlet extends HttpServlet {
 
         CorsoDAO corsoDAO = new CorsoDAO();
 
-        String codISOLingua = req.getParameter("lingua");
+        String codISOLingua = req.getParameter("codLingua");
 
         List<Corso> corsi = corsoDAO.doRetrieveByCodISOLingua(codISOLingua);
 
