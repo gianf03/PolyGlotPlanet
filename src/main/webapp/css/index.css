@@ -1,7 +1,7 @@
 #containerCategorie {
     display: flex;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    width: 90%;
+    margin: 100px auto;
 }
 
 section {
@@ -32,6 +32,79 @@ section {
     height: 10%;
     background-color: #007253;
     border-radius: 15px;
+}
+
+#divErrorePermessi {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    width: 18%;
+    text-align: center;
+    padding: 15px;
+    margin: 2% auto;
+    border-radius: 15px;
+}
+
+#selezionaMod {
+    color: #007253;
+    font-size: 18pt;
+    font-weight: bold;
+    width: 30%;
+    text-align: center;
+    padding: 15px;
+    margin: 2% auto;
+}
+
+#divDescrizione {
+    width: 75%;
+    height: auto;
+    margin: auto;
+}
+
+.divTextImg {
+    display: flex;
+    width: 70%;
+    height: 50vh;
+    border: 1px solid #007253;
+    border-radius: 30px;
+    margin: 50px auto 50px auto;
+}
+
+.divTextImg:nth-child(even) {
+    margin-right: 0;
+}
+
+.divTextImg:nth-child(odd) {
+    margin-left: 0;
+}
+
+.divText, .divImg {
+    height: 80%;
+    margin: auto;
+    text-align: justify;
+    font-size: 12pt;
+}
+
+.divImg {
+    text-align: center;
+    align-content: center;
+}
+
+.divText {
+    width: 50%;
+}
+
+#divServizi {
+    width: 80%;
+}
+
+#divBenvenuto {
+    height: 25vh;
+}
+
+.parDesc {
+    font-size: 14pt;
+    font-weight: bold;
 }
 
 

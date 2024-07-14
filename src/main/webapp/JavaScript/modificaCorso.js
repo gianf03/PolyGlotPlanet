@@ -13,3 +13,18 @@ function modificaCorso(idProd, prezzoBase, sconto) {
     let idProdotto = document.getElementById("idProd");
     idProdotto.setAttribute("value", idProd);
 }
+
+function mostraDivAggiungi(divId) {
+
+    let divAggiungi = document.getElementById(divId);
+
+    divAggiungi.style.display = "block";
+}
+
+
+function chiudiDivAggiungi(divId) {
+
+    let divAggiungi = document.getElementById(divId);
+
+    divAggiungi.style.display = "none";
+}

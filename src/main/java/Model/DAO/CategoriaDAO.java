@@ -31,4 +31,31 @@ public class CategoriaDAO {
             throw new RuntimeException();
         }
     }
+
+    public Categoria doRetrieveByName(String name){
+        try (Connection con = ConPool.getConnection()) {
+            String sql = "select * from Categoria where nome=?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, name);
+
+            ResultSet rs = ps.executeQuery();
+
+
+            Categoria cat = null;
+
+            if(rs.next()){
+                cat = new Categoria();
+
+                cat.setNome(rs.getString("nome"));
+                cat.setID(rs.getInt("ID"));
+                cat.setImmagine(rs.getString("foto"));
+            }
+
+            return cat;
+
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        }
+    }
 }

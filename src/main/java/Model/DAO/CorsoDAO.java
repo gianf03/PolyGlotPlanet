@@ -5,10 +5,7 @@ import Model.Bean.Corso;
 import Model.ConPool;
 import Model.Bean.Lingua;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -293,6 +290,25 @@ public class CorsoDAO{
             }
 
             return corsi;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void doSave(Corso corso) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "INSERT INTO Corso (IDprodotto, descrizione, numeroUnita, livello) VALUES(?,?,?,?)");
+
+            ps.setInt(1, corso.getID());
+            ps.setString(2, corso.getDescrizione());
+            ps.setInt(3, corso.getNumeroUnita());
+            ps.setString(4, corso.getLivello());
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("INSERT error.");
+            }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

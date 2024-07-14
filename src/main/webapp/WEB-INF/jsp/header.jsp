@@ -26,7 +26,7 @@
                         <%} else if (e != null){%>
                             <a href="homeEsperto.jsp"><img alt="globo sorvolato da un aereo" src="img/logo.png"></a>
                         <%} else {%>
-                            <a href="../../sceltaLingua.jsp"><img alt="globo sorvolato da un aereo" src="img/logo.png"></a>
+                            <a href="index.jsp"><img alt="globo sorvolato da un aereo" src="img/logo.png"></a>
                         <%}%>
                     </div>
                 </li>

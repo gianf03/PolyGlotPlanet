@@ -36,7 +36,7 @@
                     <input type="text" id = "cognome" name = "cognome" placeholder="es.:Rossi" required onclick="removeError('error2')">
 
                     <%if (queryString!=null && (queryString.contains("error=2&") || queryString.endsWith("error=2"))) { %>
-                        <p id="error2" class="regError">Cogome assente</p>
+                        <p id="error2" class="regError">Cognome assente</p>
                     <%}%>
                 </div>
 

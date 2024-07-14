@@ -4,12 +4,13 @@
     <title>Area admin</title>
     <link type="text/css" href="css/general.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="JavaScript/modificaCorso.js"></script>
 </head>
 <body>
 <%@include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
 
-        <div id="leftContainerAdmin">
+        <div id="containerAdmin">
             <div class="adminSettings">
                 <a href="mostraUtenti">Mostra utenti</a>
             </div>
@@ -19,6 +20,39 @@
             <div class="adminSettings">
                 <a href="tuttiCorsi">Mostra corsi</a>
             </div>
+            <div class="adminSettings">
+                <a href="#" onclick="mostraDivAggiungi('aggiungiLingua')">Aggiungi lingua</a>
+            </div>
+        </div>
+
+        <div id="aggiungiLingua">
+            <form action="aggiungiLingua" method="POST" enctype="multipart/form-data">
+                <div class="aggiungiLinguaItem">
+                    <label for="codISO">Codice ISO</label><br>
+                    <input type="text" name="codISOLingua" id="codISO" required>
+                </div>
+
+                <div class="aggiungiLinguaItem">
+                    <label for="nomeLingua">Nome</label><br>
+                    <input type="text" name="nomeLingua" id="nomeLingua" required>
+                </div>
+
+                <div class="aggiungiLinguaItem">
+                    <label for="numParlanti">Numero parlanti</label><br>
+                    <input type="text" name="parlanti" id="numParlanti" required>
+                </div>
+
+                <div class="aggiungiLinguaItem">
+                    <label for="fotoLingua">Immagine stato origine</label><br>
+                    <input type="file" name="fotoStatoOrigine" id="fotoLingua" required>
+                </div>
+
+                <div class="aggiungiLinguaItem">
+                    <input type="submit" value="Aggiungi">
+                </div>
+            </form>
+
+            <button onclick="chiudiDivAggiungi('aggiungiLingua')">Chiudi</button>
         </div>
     </div>
 </body>

@@ -1,5 +1,6 @@
 <%@ page import="Model.Bean.Corso" %>
 <%@ page import="java.util.List" %>
+<%@ page import="Model.Bean.Lingua" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,6 +13,7 @@
 
     <%
         List<Corso> corsi = (List<Corso>) request.getAttribute("corsi");
+        List<Lingua> lingue = (List<Lingua>) application.getAttribute("lingue");
     %>
     <%@include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
@@ -25,6 +27,8 @@
                     <a href="tuttiCorsi?ordPer=livello&tipo=asc">Livello</a>
                 </div>
             </div>
+
+            <button class="dropbtn" id="btnAggiunta" onclick="mostraDivAggiungi('aggiungiCorso')">Aggiungi corso</button>
         </div>
 
 
@@ -61,7 +65,7 @@
         </table>
 
         <div id="divModifica">
-            <form action="modificaProdotto" method="GET">
+            <form action="modificaProdotto">
                 <div class="datiMod">
                     <input type="hidden" name="IDProdotto" id="idProd">
                 </div>
@@ -70,23 +74,68 @@
                     <label for="disponibile">Si</label>
                     <input type="radio" name="disponibile" id="disponibile" value="true" checked>
                     <label for="nonDisponibile">No</label>
-                    <input type="radio" name="disponibile" id="nonDisponibile" value="false"><br>
+                    <input type="radio" name="disponibile" id="nonDisponibile" value="false">
                 </div>
 
                 <div class="datiMod">
                     <label for="prBase">Prezzo base</label><br>
-                    <input type="text" name="prezzoBase" id="prBase"><br>
+                    <input type="text" name="prezzoBase" id="prBase">
                 </div>
 
                 <div class="datiMod">
                     <label for="sconto">Sconto</label><br>
-                    <input type="text" name="scontoPercentuale" id="sconto"><br>
+                    <input type="text" name="scontoPercentuale" id="sconto">
                 </div>
 
                 <div class="datiMod">
                     <input type="submit" value="Conferma">
                 </div>
             </form>
+        </div>
+
+        <div id="aggiungiCorso">
+            <form action="aggiungiCorso">
+                <div class="aggiungiCorsoItem">
+                    <label for="linguaCorso">Lingua</label><br>
+                    <select id="linguaCorso" name="codISOLingua">
+                        <%
+                            for(Lingua l : lingue) {%>
+                                <option value="<%=l.getCodISOLingua()%>"><%=l.getNome()%></option>
+                        <%}%>
+                    </select>
+                </div>
+
+                <div class="aggiungiCorsoItem">
+                    <label for="descCorso">Descrizione</label><br>
+                    <textarea name="descrizione" id="descCorso"></textarea>
+                </div>
+
+                <div class="aggiungiCorsoItem">
+                    <label for="numUniCorso">Numero unità</label><br>
+                    <input type="text" name="numeroUnita" id="numUniCorso">
+                </div>
+
+                <div class="aggiungiCorsoItem">
+                    <label for="livCorso">Livello</label><br>
+                    <input type="text" name="livello" id="livCorso">
+                </div>
+
+                <div class="aggiungiCorsoItem">
+                    <label for="prBaseCorso">Prezzo base</label><br>
+                    <input type="text" name="prezzoBase" id="prBaseCorso">
+                </div>
+
+                <div class="aggiungiCorsoItem">
+                    <label for="scontoCorso">Sconto</label><br>
+                    <input type="text" name="scontoPercentuale" id="scontoCorso">
+                </div>
+
+                <div class="aggiungiCorsoItem">
+                    <input type="submit" value="Aggiungi">
+                </div>
+            </form>
+
+            <button id="closeBtn" onclick="chiudiDivAggiungi('aggiungiCorso')">Chiudi</button>
         </div>
     </div>
 </body>
