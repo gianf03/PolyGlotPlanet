@@ -44,66 +44,81 @@ public class AccessFilter extends HttpFilter {
         if((path.contains("homeAdmin.jsp") || path.contains("corsiAdmin.jsp") || path.contains("espertiAdmin.jsp") ||
                 path.contains("utentiAdmin.jsp") || path.contains("ordiniUtente.jsp")) && !isAdmin) {
 
-            if(isEsperto)
+            httpServletResponse.sendError(401);
+            /*if(isEsperto)
                 httpServletResponse.sendRedirect("homeEsperto.jsp?error=11");
+
             else
                 httpServletResponse.sendRedirect("index.jsp?error=11");
-
+            */
             return; //interrompe l'esecuzione del filtro
         }
 
         if(path.contains("homeEsperto.jsp") && !isEsperto) {
 
-            if(isAdmin)
+            httpServletResponse.sendError(401);
+            /*if(isAdmin)
                 httpServletResponse.sendRedirect("homeAdmin.jsp?error=11");
             else
                 httpServletResponse.sendRedirect("index.jsp?error=11");
-
+            */
             return;
         }
 
         if(path.contains("areaUtente.jsp") && !isUser) {
 
-            if(isAdmin)
+            httpServletResponse.sendError(401);
+            /*if(isAdmin)
                 httpServletResponse.sendRedirect("homeAdmin.jsp?error=11");
             else if(isEsperto)
                 httpServletResponse.sendRedirect("homeEsperto.jsp?error=11");
             else
                 httpServletResponse.sendRedirect("index.jsp?error=11");
-
+            */
             return;
         }
 
         if((path.contains("colloqui.jsp") || path.contains("corsi.jsp") || path.contains("incontri.jsp") ||
                 path.contains("index.jsp")) && !isUser && !isWithoutAccount) {
 
-            if(isAdmin)
+            httpServletResponse.sendError(401);
+            /*if(isAdmin)
                 httpServletResponse.sendRedirect("homeAdmin.jsp?error=11");
             else
                 httpServletResponse.sendRedirect("homeEsperto.jsp?error=11");
-
+            */
             return;
         }
 
         if(path.contains("index.jsp") && (isAdmin || isEsperto)) {
 
-            httpServletRequest.getSession().invalidate();
+            httpServletResponse.sendError(401);
+            /*httpServletRequest.getSession().invalidate();
             httpServletResponse.sendRedirect("index.jsp?error=16"); //logout forzato
-
+            */
             return;
         }
 
         if(path.contains("sceltaLingua.jsp") && (httpServletRequest.getQueryString()==null || !httpServletRequest.getQueryString().contains("categoria"))){
-            httpServletResponse.sendRedirect("index.jsp?error=17"); //nessuna categoria selezionata
+            //httpServletResponse.sendRedirect("index.jsp?error=17"); //nessuna categoria selezionata
+            httpServletResponse.sendError(401);
             return;
         }
 
         if(path.contains("sceltaLingua.jsp") && httpServletRequest.getQueryString().contains("categoria")){
             String categoria = httpServletRequest.getParameter("categoria");
             if (!categoria.contains("corso") && !categoria.contains("incontro") && !categoria.contains("colloquio")) {
-                httpServletResponse.sendRedirect("index.jsp?error=17");
+                //httpServletResponse.sendRedirect("index.jsp?error=17");
+                httpServletResponse.sendError(401);
                 return;
             }
+        }
+
+        if((path.contains("colloqui.jsp") || path.contains("corsi.jsp") || path.contains("incontri.jsp"))
+                && (httpServletRequest.getQueryString() == null || httpServletRequest.getQueryString().isBlank())){
+            //httpServletResponse.sendRedirect("index.jsp?error=18"); //accesso non negato alla pagina
+            httpServletResponse.sendError(401);
+            return;
         }
 
         if(path.contains("login") && httpServletRequest.getSession(false) != null){

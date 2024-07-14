@@ -55,7 +55,27 @@ function showDropdownContentData() {
         document.getElementById("dropdown-content-data").style.display = "none";
 }
 
-/*se visualizzo il dropdown-content di un filtro quello degli altri va chiuso*/
+function showDropdownContentLivelli(){
+    let dropdowns = document.getElementsByClassName("dropdown");
+    let allCheckboxes = document.getElementsByClassName("dropcheck");
+    let checkbox = document.getElementById("dropcheck-livelli");
+    if (checkbox.checked){
+        let currentDropdown = document.getElementById("dropdown-content-livelli");
+        currentDropdown.style.display = "flex";
+        currentDropdown.style.flexDirection = "column";
+
+        /*se visualizzo il dropdown-content di un filtro quello degli altri va chiuso*/
+        console.log("in questa pagina ci sono "+dropdowns.length+" dropdown");
+        for (let j = 0; j<dropdowns.length; j++){
+            if (dropdowns[j] !== currentDropdown) {
+                dropdowns[j].style.display = "none";
+                allCheckboxes[j].checked = false;
+            }
+        }
+    } else
+        document.getElementById("dropdown-content-livelli").style.display = "none";
+}
+
 
 function selectDeselectAll() {
     var allCheckboxes = document.getElementsByClassName("div-lingua");
@@ -103,5 +123,13 @@ function deselectTutte(currentElement){  //strano ma vero, se passo il codiceISO
 
         if (flag)
             tutte.checked = true;
+    }
+}
+
+function closeAllDropdowns(){
+    let dropdowns = document.getElementsByClassName("dropdown");
+
+    for (let i = 0; i<dropdowns.length; i++){
+        dropdowns[i].style.display = "none";
     }
 }

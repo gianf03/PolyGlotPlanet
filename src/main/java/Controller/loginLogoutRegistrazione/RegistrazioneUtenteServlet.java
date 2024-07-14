@@ -1,4 +1,4 @@
-package Controller;
+package Controller.loginLogoutRegistrazione;
 
 import Model.Bean.Utente;
 import Model.DAO.UtenteDAO;

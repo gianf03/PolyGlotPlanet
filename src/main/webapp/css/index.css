@@ -124,4 +124,9 @@ section {
     .categoria {
         margin-top: 30px;
     }
+
+    #divLinkCat {
+        height: 13%;
+    }
 }
+

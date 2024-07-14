@@ -16,3 +16,5 @@ function checkSelection(max) {
     } else
         y.disabled = true;
 }
+
+//window.load = checkSelection;  //se ricarico pagina filtro si azzera

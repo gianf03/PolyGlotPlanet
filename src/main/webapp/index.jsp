@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Home</title>
     <link type="text/css" href="css/general.css" rel="stylesheet">
     <link type="text/css" href="css/index.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">

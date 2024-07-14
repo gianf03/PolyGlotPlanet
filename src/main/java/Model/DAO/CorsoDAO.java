@@ -56,13 +56,13 @@ public class CorsoDAO{
     }
 
 
-    public List<Corso> doRetrieveByCodISOLingua(String codISOLingua) {
+    public List<Corso> doRetrieveByCodISOLinguaDisponibili(String codISOLingua) {
         try (Connection con = ConPool.getConnection()) {
 
             PreparedStatement ps;
             ps = con.prepareStatement("SELECT * FROM ((Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) " +
                     "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON p.codISOLingua=l.codISOLingua " +
-                    "WHERE l.codISOLingua=?");
+                    "WHERE l.codISOLingua=? AND disponibile=true");
             ps.setString(1, codISOLingua);
 
 
@@ -252,7 +252,7 @@ public class CorsoDAO{
 
             ps = con.prepareStatement("SELECT * FROM ((Prodotto p JOIN Corso c ON p.ID=c.IDProdotto) " +
                     "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON p.codISOLingua=l.codISOLingua " +
-                    "WHERE l.codISOLingua=? AND prezzoAttuale>=? AND prezzoAttuale<? AND livello=?");
+                    "WHERE l.codISOLingua=? AND prezzoAttuale>=? AND prezzoAttuale<? AND livello=? AND disponibile=true");
             ps.setString(1, codISOLingua);
             ps.setInt(2, prezzoMin);
             ps.setInt(3, prezzoMax);

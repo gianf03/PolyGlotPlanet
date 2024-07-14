@@ -17,7 +17,6 @@ create table Esperto(
     passwordHash varchar(50) not null,
     dataNascita date not null,
     genere char(1) not null,
-    valutazione int,
     fotoRiconoscitiva varchar(255) not null
 );
 
@@ -61,7 +60,6 @@ create table Prodotto(
     prezzoAttuale double not null,
     IDCategoria int not null,
     codISOLingua char(2) not null,
-    disponibile boolean default true,
     
 	foreign key (codISOLingua) references Lingua(codISOLingua) on delete cascade on update cascade,
     foreign key (IDCategoria) references Categoria(ID) on delete cascade on update cascade
@@ -83,8 +81,6 @@ create table Incontro(
     civico varchar(10) not null,
     prenotato boolean not null,
     IDEsperto int not null,
-    avvenuto boolean not null,
-    votoUtente int,
     
     foreign key (IDProdotto) references Prodotto(ID) on delete cascade on update cascade,
     foreign key (IDEsperto) references Esperto(ID) on delete cascade on update cascade
@@ -93,11 +89,8 @@ create table Incontro(
 create table Colloquio(
 	IDProdotto int not null,
     dataOra datetime not null,
-    
     prenotato boolean not null,
     IDEsperto int not null,
-    avvenuto boolean not null,
-    votoUtente int,
     
     foreign key (IDProdotto) references Prodotto(ID) on delete cascade on update cascade,
     foreign key (IDEsperto) references Esperto(ID) on delete cascade on update cascade
@@ -108,9 +101,11 @@ create table Corso(
     descrizione varchar(255) not null,
     numeroUnita int not null,
     livello char(5) not null,
+    disponibile boolean default true,
     
     foreign key (IDProdotto) references Prodotto(ID) on delete cascade on update cascade
 );
+
 create table Formazione(
 	IDCarrello int,
     IDProdotto int,

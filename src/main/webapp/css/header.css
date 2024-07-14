@@ -74,8 +74,6 @@ nav .superSubMenu > li {
     height : 48px;
 }
 
-
-
 @media screen and (max-width: 700px) {
     #liBenvenuto {
         display: none;
