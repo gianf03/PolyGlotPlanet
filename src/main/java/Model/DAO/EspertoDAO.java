@@ -14,7 +14,7 @@ public class EspertoDAO {
     public void doSave(Esperto esperto) {
 
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO esperto (nome, cognome, email, passwordHash, dataNascita, genere, fotoRiconoscitiva) VALUES(?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO esperto (nome, cognome, email, passwordHash, dataNascita, genere, fotoRiconoscitiva) VALUES(?,?,?,SHA1(?),?,?,?)");
             ps.setString(1, esperto.getNome());
             ps.setString(2, esperto.getCognome());
             ps.setString(3, esperto.getEmail());
@@ -52,7 +52,7 @@ public class EspertoDAO {
                 esperto.setNome(resultSet.getString("nome"));
                 esperto.setCognome(resultSet.getString("cognome"));
                 esperto.setEmail(resultSet.getString("email"));
-                esperto.setPassword(password);
+                esperto.setPasswordWithEncryption(password);
                 esperto.setDataNascita(resultSet.getDate("dataNascita").toLocalDate());
                 esperto.setGenere(resultSet.getString("genere"));
                 esperto.setValutazione(resultSet.getInt("valutazione"));

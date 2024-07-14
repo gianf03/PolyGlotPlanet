@@ -63,7 +63,9 @@ public class Esperto {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPasswordWithEncryption(String password) {
+
+        //prende la password in chiaro e la memorizza in utente criptata
 
         try {
             MessageDigest digest =
@@ -74,7 +76,10 @@ public class Esperto {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getGenere() {

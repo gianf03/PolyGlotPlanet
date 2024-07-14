@@ -172,8 +172,7 @@ body, html {
 }
 
 .adminSettings {
-    width: 20%;
-    height: 5%;
+    width: 180px;
     background-color: #007253;
     border-radius: 30px;
     align-content: center;
@@ -186,6 +185,7 @@ body, html {
     font-size: 16pt;
     font-weight: bold;
     text-decoration: none;
+    padding: 5px;
 }
 
 #tableUtenti, #tableEsperti, #tableCorsi, #tableOrdini, #tableColloqui, #tableIncontri, #divFiltri {
@@ -231,8 +231,8 @@ tr:nth-child(even) {
 }
 
 #aggiungiCorso, #aggiungiLingua {
-    height: 50vh;
-    width: 35vw;
+    height: 450px;
+    width: 300px;
 }
 
 .aggiungiCorsoItem {

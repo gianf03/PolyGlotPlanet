@@ -79,7 +79,7 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
             utente.setAdmin(admin);
 
             utenteDAO.doSave(utente);
-            address = "loginUtente.jsp";
+            address = "loginUtente.jsp?registration=good";
         }
 
 

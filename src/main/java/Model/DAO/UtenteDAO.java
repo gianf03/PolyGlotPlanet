@@ -14,7 +14,7 @@ public class UtenteDAO {
     public void doSave(Utente utente) {
 
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO utente (nome, cognome, email, passwordHash, dataNascita, genere, admin) VALUES(?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO utente (nome, cognome, email, passwordHash, dataNascita, genere, admin) VALUES(?,?,?,SHA1(?),?,?,?)");
             ps.setString(1, utente.getNome());
             ps.setString(2, utente.getCognome());
             ps.setString(3, utente.getEmail());

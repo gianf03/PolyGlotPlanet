@@ -108,7 +108,7 @@ public class RegistrazioneEspertoServlet extends HttpServlet {
             e.setDataNascita(dataNascita);
 
             espertoDAO.doSave(e);
-            address = "loginEsperto.jsp";
+            address = "loginEsperto.jsp?registration=good";
         }
         resp.sendRedirect(address);
     }

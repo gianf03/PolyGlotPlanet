@@ -11,6 +11,12 @@
 <body>
     <div class="containerOfAll">
         <div id="div-loginUtente">
+
+            <%
+                if(request.getParameter("registration") != null && request.getParameter("registration").equals("good")) {%>
+                    <script>alert("Registrazione andata a buon fine!")</script>
+            <%}%>
+
             <div id="log"><a href="sceltaLingua.jsp"><img id="logo" src="img/logo.png"></a></div>
 
             <%String queryString = request.getQueryString();%>
