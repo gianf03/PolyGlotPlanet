@@ -19,7 +19,7 @@
     <div id="navBarContainer">
         <nav>
             <ul class="mainMenu">
-                <li id="logo">
+                <li id="logo" class="headerElement">
                     <div id="divLogo">
                         <%if(u != null && u.isAdmin()) {%>
                             <a href="homeAdmin.jsp"><img alt="globo sorvolato da un aereo" src="img/logo.png"></a>
@@ -32,7 +32,7 @@
                 </li>
 
                 <%if((u!=null && !u.isAdmin()) || e!=null){ %>
-                    <li id="liBenvenuto">
+                    <li id="liBenvenuto" class="headerElement">
                         <div id="divBenvenuto">
                             <%if(u!=null) {%>
                                 <p id="benvenutoUtente">Ciao, <%=u.getNome()%> ! </p>
@@ -43,13 +43,13 @@
                     </li>
                 <%}%>
                 <%if (e==null && u==null || (u!=null && !u.isAdmin())) {%>
-                    <li>
+                    <li class="headerElement">
                         <a href="">
                             <img alt="carrello stilizzato" src="img/carrello.png">
                         </a>
                     </li>
                 <%}%>
-                <li>
+                <li class="headerElement">
                     <a><img alt="utente stilizzato" src="img/utente.png"></a>
                     <% if(u != null && !u.isAdmin()) {%>
                         <ul class="subMenu">

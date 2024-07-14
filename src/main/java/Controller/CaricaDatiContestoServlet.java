@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import java.util.List;
 
 @WebServlet(value = "/initLingue", loadOnStartup = 0)
-public class CaricaLingueAndPrezziMinMaxServlet extends HttpServlet {
+public class CaricaDatiContestoServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         LinguaDAO linguaDAO = new LinguaDAO();
@@ -29,8 +29,8 @@ public class CaricaLingueAndPrezziMinMaxServlet extends HttpServlet {
         List<Integer> prezziColloqui = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(3);
         getServletContext().setAttribute("prezziColloqui", prezziColloqui);
 
-        //List<Integer> prezziIncontri = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(3);
-        //getServletContext().setAttribute("prezziIncontri", prezziIncontri);
+        List<Integer> prezziIncontri = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(2);
+        getServletContext().setAttribute("prezziIncontri", prezziIncontri);
 
     }
 }

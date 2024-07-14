@@ -1,7 +1,7 @@
-package Controller;
+package Controller.loginLogoutRegistrazione;
 
-import Model.Bean.Utente;
-import Model.DAO.UtenteDAO;
+import Model.DAO.EspertoDAO;
+import Model.Bean.Esperto;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,14 +11,12 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet("/loginAdmin")
-public class LoginAdminServlet extends HttpServlet {
-
+@WebServlet("/loginEsperto")
+public class LoginEspertoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         HttpSession session = null;
-        String address = "loginAdmin.jsp?";
+        String address = "loginEsperto.jsp?";
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
@@ -41,30 +39,22 @@ public class LoginAdminServlet extends HttpServlet {
             address += "error=6&"; //password troppo corta
         }
 
+        EspertoDAO espertoDAO = new EspertoDAO();
+        Esperto esperto = espertoDAO.doRetrieveByEmailAndPassword(email, password);
+        if (esperto == null)
+            address += "error=15&"; //esperto non registrato
 
-        UtenteDAO utenteDAO = new UtenteDAO();
-        Utente utente = utenteDAO.doRetrieveByEmailAndPassword(email, password);
-        if (utente == null || !utente.isAdmin())
-            address += "error=14&"; //utente non registrato
 
         address = address.substring(0, address.length()-1);
 
-        if(!address.contains("error") && utente.isAdmin()) {
+        if(!address.contains("error")) {
             session = req.getSession();
-            session.invalidate(); //se mentre mi sono loggato come utente o esperto tento di loggarmi come admin invalido la sessione con utente o esperto
+            session.invalidate(); //se mentre mi sono loggato come utente o admin tento di loggarmi come esperto invalido la sessione con utente o admin
 
             session = req.getSession();
-            session.setAttribute("utente", utente);
-            address = "homeAdmin.jsp";
+            session.setAttribute("esperto", esperto);
+            address = "homeEsperto.jsp";
         }
-
-
-        /*PrintWriter out = resp.getWriter();
-        out.println("<html><body>");
-        out.println(address);
-        out.println("<br>"+ req.getAttribute("address"));
-        out.println("</body></html>");
-        */
 
         resp.sendRedirect(address);
     }

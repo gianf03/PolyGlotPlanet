@@ -11,14 +11,14 @@ body, html {
     justify-content: center;
 }
 
-#containerColloqui {
+#containerColloqui, #containerIncontri, #containerCorsi {
     clear: both;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.colloquioItem {
+.colloquioItem, .incontroItem, .corsoItem {
     margin : 30px auto 30px auto;
     border : 2px solid black;
     height: 350px;
@@ -34,7 +34,13 @@ body, html {
     margin : 25px 25px 0 25px;
 }
 
-.fotoEsperto {
+.containerFotoLingua {
+    height: 100px;
+    width: 175px;
+    margin: 25px 25px 0 25px;
+}
+
+.fotoEsperto, .fotoLingua {
     height: inherit;
     width: inherit;
     border-radius: 10px;
@@ -84,7 +90,7 @@ body, html {
 
 
 /*filtro lingua*/
-#droplabel-lingue {
+#droplabel-lingue, #droplabel-livelli {
     display: inline-block;
     cursor: pointer;  /*mostra mano anziché freccia quando mouse ci va sopra*/
     height: 50px;
@@ -94,22 +100,22 @@ body, html {
     align-content: center;
 }
 
-#droplabel-lingue:hover {
+#droplabel-lingue:hover, #droplabel-livelli:hover{
     border-color: black;
 }
 
-#filtroLingua {
+#filtroLingua, #filtroLivello {
     background-color: white;
     cursor: pointer;  /*mostra mano anziché freccia quando mouse ci va sopra*/
     display: flex;
     align-content: center;
 }
 
-#dropdown-content-lingue {
+#dropdown-content-lingue, #dropdown-content-livelli {
     margin-top : 100px;
 }
 
-#droplabel-lingue{
+#droplabel-lingue, #droplabel-livelli{
     padding: 20px;
     text-align: center;
 }
@@ -224,12 +230,12 @@ body, html {
     cursor: pointer;
 }
 
-.div-lingua {
+.div-lingua, .div-livello {
     display: inline-block;
     border : 1px solid black;
 }
 
-.div-lingua:hover{
+.div-lingua:hover, .div-livello:hover{
     background-color: aquamarine;
 }
 
@@ -245,27 +251,99 @@ body, html {
     margin : 15px;
 }*/
 
-#droplabel-lingue{
+#droplabel-lingue, #droplabel-livelli{
     padding: 20px;
     text-align: center;
 }
 
-#dropcheck-lingue{
+#dropcheck-lingue, #dropcheck-livelli{
     display: none;
 }
 
-#dropdown-content-lingue {    /*div che contiene tutti i div delle singole lingue*/
+#dropdown-content-lingue, #dropdown-content-livelli {    /*div che contiene tutti i div delle singole lingue*/
     display: none;
     position: absolute;
     font-size:0; /*mi elimina gli spazi bianchi tra div con display:inline-block*/
     z-index: 1;
 }
 
-.div-lingua { /*div che contiene la singola lingua*/
+.div-lingua, .div-livello { /*div che contiene la singola lingua*/
     color: black;
     font-size: 16px;
-    padding: 12px 16px;
+    padding: 0 16px;
     text-align: left;
     background-color: white;
     width : 130px;
+    align-content: center;
+    height: 40px;
+}
+
+.info {
+    margin-left: 10px;
+}
+
+/*da aggiustare, aggiungere anche un altezza */
+@media screen and (max-height: 800px ){
+
+    #dropdown-content-lingue {
+        max-height: 208px;
+        overflow-y: auto;
+    }
+}
+
+@media screen and (max-width: 750px ){
+    #containerFiltri {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .filtro {
+        width: 110px;
+        padding: 0;
+    }
+
+    #f{
+        margin-left: 0;
+    }
+
+    #submit {
+        text-align: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    .div-livello {
+        width: 70px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .corsoItem, .colloquioItem, .incontroItem {
+        flex-direction: column;
+        width: 300px;
+        height: 800px;
+    }
+
+    .containerPrezzoCarrello {
+        margin: 0;
+        align-self: center;
+        width: 250px;
+        height: 300px;
+    }
+
+    .containerfotoLingua, .containerFotoEsperto {
+        align-self: center;
+    }
+
+    .containerInfo {
+        margin: 0;
+        align-self: center;
+        width: 250px;
+        height: 300px;
+    }
+
+    .containerInfo, .containerPrezzoCarrello, .containerFotoLingua, .containerFotoEsperto {
+        margin-bottom: 10px;
+    }
 }

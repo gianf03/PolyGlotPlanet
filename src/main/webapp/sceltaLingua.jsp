@@ -5,7 +5,7 @@
 <html>
 <head>
 
-    <title>Home</title>
+    <title>Scegli lingua</title>
     <link type="text/css" href="css/sceltaLingua.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="JavaScript/chargeAllStates.js"></script>
@@ -15,7 +15,7 @@
 <body>
 <%@ include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
-
+        <%String categoria = request.getParameter("categoria"); %>
         <section id="outer-container">
             <div id="flex-container">
                 <%
@@ -23,21 +23,29 @@
 
                     for(int i = 0; i < 45; i++) { %>
 
-                        <div class="flex-item" id="<%=i+1%>">
-                            <%String categoria = request.getParameter("categoria");
-
-                            if (categoria.contains("corso")){%>
-                                <a class="linkLingua" href='corsi.jsp?codLingua=<%=lingue.get(i).getCodISOLingua()%>'>
-                            <%} else if (categoria.contains("colloquio")){%>
-                                <a class="linkLingua" href='colloqui.jsp?codLingua=<%=lingue.get(i).getCodISOLingua()%>'>
-                            <%} else {%>
-                                <a class="linkLingua" href='incontri.jsp?codLingua=<%=lingue.get(i).getCodISOLingua()%>'>
-                            <%}%>
-
-                            <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
-                            <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
+                        <% if (categoria.equals("corso")){%>
+                            <a class="linkLingua" href='corsi.jsp?codLingua=<%=lingue.get(i).getCodISOLingua()%>&filtro=false'>
+                                <div class="flex-item" id="<%=i+1%>">
+                                    <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
+                                    <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
+                                </div>
                             </a>
-                        </div>
+                        <%} else if (categoria.equals("colloquio")){%>
+                            <a class="linkLingua" href='colloqui.jsp?codLingua=<%=lingue.get(i).getCodISOLingua()%>&filtro=false'>
+                                <div class="flex-item" id="<%=i+1%>">
+                                    <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
+                                    <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
+                                </div>
+                            </a>
+                        <%} else {%>
+                            <a class="linkLingua" href='incontri.jsp?codLingua=<%=lingue.get(i).getCodISOLingua()%>&filtro=false'>
+                                <div class="flex-item" id="<%=i+1%>">
+                                    <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
+                                    <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
+                                </div>
+                            </a>
+                        <%}%>
+
 
                         <% if(i >= 6) {%> <!--parentesi graffa obbligatoria altrimenti è come se l'if non ci fosse-->
                             <script>
@@ -50,6 +58,20 @@
                 <div id="divPlus"><button id="plus" onclick="chargeAllStates(<%=lingue.size()%>, '<%=request.getParameter("categoria")%>')"><img id="imgPlus" src="img/plus_1.png"></button></div>
             </div>
         </section>
+
+        <div id="fondoPagina">
+
+            <p id="indeciso">Indeciso su quale lingua apprendere?</p>
+
+            <% if (categoria.equals("corso")){ %>
+                <a class="mostraTutto" href='corsi.jsp?codLingua=all&filtro=false'>Vedi tutti i corsi</a>
+            <%} else if (categoria.equals("colloquio")){ %>
+                <a class="mostraTutto" href='colloqui.jsp?codLingua=all&filtro=false'>Vedi tutti i colloqui</a>
+            <%} else { %>
+                <a class="mostraTutto" href='incontri.jsp?codLingua=all&filtro=false'>Vedi tutti gli incontri</a>
+            <%}%>
+
+        </div>
     </div>
 <%@ include file="WEB-INF/jsp/footer.jsp"%>
     <!--anche se sottolineato giallo non modificare-->

@@ -1,4 +1,4 @@
-package Controller;
+package Controller.loginLogoutRegistrazione;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

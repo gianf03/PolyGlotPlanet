@@ -1,4 +1,4 @@
-package Controller;
+package Controller.loginLogoutRegistrazione;
 
 import Model.Bean.Utente;
 import Model.DAO.UtenteDAO;
@@ -11,14 +11,14 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet("/loginUtente")
-public class LoginUtenteServlet extends HttpServlet {
+@WebServlet("/loginAdmin")
+public class LoginAdminServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = null;
-        String address = "loginUtente.jsp?";
+        String address = "loginAdmin.jsp?";
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
@@ -44,18 +44,18 @@ public class LoginUtenteServlet extends HttpServlet {
 
         UtenteDAO utenteDAO = new UtenteDAO();
         Utente utente = utenteDAO.doRetrieveByEmailAndPassword(email, password);
-        if (utente == null || utente.isAdmin())
+        if (utente == null || !utente.isAdmin())
             address += "error=14&"; //utente non registrato
 
         address = address.substring(0, address.length()-1);
 
-        if(!address.contains("error") && !utente.isAdmin()) {
+        if(!address.contains("error") && utente.isAdmin()) {
             session = req.getSession();
-            session.invalidate(); //se mentre mi sono loggato come admin o esperto tento di loggarmi come utente invalido la sessione con admin o esperto
+            session.invalidate(); //se mentre mi sono loggato come utente o esperto tento di loggarmi come admin invalido la sessione con utente o esperto
 
             session = req.getSession();
             session.setAttribute("utente", utente);
-            address = "sceltaLingua.jsp";
+            address = "homeAdmin.jsp";
         }
 
 
