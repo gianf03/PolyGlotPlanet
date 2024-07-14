@@ -55,7 +55,6 @@ public class EspertoDAO {
                 esperto.setPasswordWithEncryption(password);
                 esperto.setDataNascita(resultSet.getDate("dataNascita").toLocalDate());
                 esperto.setGenere(resultSet.getString("genere"));
-                esperto.setValutazione(resultSet.getInt("valutazione"));
                 esperto.setFotoRiconoscitiva(resultSet.getString("fotoRiconoscitiva"));
             }
         }  catch (SQLException e) {
@@ -98,7 +97,6 @@ public class EspertoDAO {
                 esperto.setPassword(resultSet.getString("passwordHash"));
                 esperto.setDataNascita(resultSet.getDate("dataNascita").toLocalDate());
                 esperto.setGenere(resultSet.getString("genere"));
-                esperto.setValutazione(resultSet.getDouble("valutazione"));
                 esperto.setFotoRiconoscitiva(resultSet.getString("fotoRiconoscitiva"));
 
                 esperti.add(esperto);

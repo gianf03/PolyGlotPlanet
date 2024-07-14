@@ -1,6 +1,7 @@
 package Model.DAO;
 
 import Model.Bean.Ordine;
+import Model.Bean.Utente;
 import Model.ConPool;
 
 import java.sql.Connection;
@@ -27,9 +28,19 @@ public class OrdineDAO {
             while(rs.next()) {
                 Ordine o = new Ordine();
 
+                Utente u = new Utente();
+                u.setID(IDUtente);
+                u.setNome(rs.getString("nome"));
+                u.setCognome(rs.getString("cognome"));
+                u.setDataNascita(rs.getDate("dataNascita").toLocalDate());
+                u.setEmail(rs.getString("email"));
+                u.setPassword(rs.getString("passwordHash"));
+                u.setGenere(rs.getString("genere"));
+                u.setAdmin(rs.getBoolean("admin"));
+
                 o.setID(rs.getInt("ID"));
-                //o.setIDUtente(IDUtente);
                 o.setPrezzoTotale(rs.getDouble("prezzoTotale"));
+                o.setUtente(u);
             }
 
             return ordini;

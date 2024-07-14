@@ -1,9 +1,11 @@
 package Controller.ajax;
 
 import Model.Bean.Colloquio;
+import Model.Bean.Conoscenza;
 import Model.Bean.Corso;
 import Model.Bean.Lingua;
 import Model.DAO.ColloquioDAO;
+import Model.DAO.ConoscenzaDAO;
 import Model.DAO.CorsoDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -134,15 +136,20 @@ public class MostraColloquiAjaxServlet extends HttpServlet {
             JSONArray colloquiArray = new JSONArray();
 
             for (Colloquio c : colloqui) {
+                ConoscenzaDAO conoscenzaDAO = new ConoscenzaDAO();
+                List<Conoscenza> conoscenze = conoscenzaDAO.doRetrieveByIDEsperto(c.getEsperto().getID());
+                String lingueConosciute = "";
+
+                for (Conoscenza con : conoscenze) {
+                    lingueConosciute += con.getLingua().getNome() + ", ";
+                }
+                lingueConosciute = lingueConosciute.substring(0, lingueConosciute.length()-1);
+
+
                 JSONObject obj = new JSONObject();
 
-                //obj.put("codISOLingua", c.getLingua().getCodISOLingua());
-                //obj.put("lingua", c.getLingua().getNome());
-                //obj.put("fotoStatoLingua", c.getLingua().getFotoStatoOrigine()); non necessario
-                //obj.put("idEsperto", c.getEsperto().getID()); non necessario
                 obj.put("nomeEsperto", c.getEsperto().getNome());
                 obj.put("cognomeEsperto", c.getEsperto().getCognome());
-                //obj.put("emailEsperto", c.getEsperto().getEmail()); non necessario
 
                 DateTimeFormatter dateFormatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 String ddn = c.getEsperto().getDataNascita().format(dateFormatter1);
@@ -156,6 +163,8 @@ public class MostraColloquiAjaxServlet extends HttpServlet {
                 String dataColloquio = c.getDataOra().format(dateFormatter2);
                 obj.put("dataOra", dataColloquio);
                 obj.put("id", c.getID());
+
+                obj.put("lingueConosciute", lingueConosciute);
 
                 colloquiArray.add(obj);
             }

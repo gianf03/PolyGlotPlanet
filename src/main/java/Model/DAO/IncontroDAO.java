@@ -47,7 +47,6 @@ public class IncontroDAO {
                 e.setPassword(rs.getString("e.passwordHash"));
                 e.setDataNascita(rs.getDate("e.dataNascita").toLocalDate());
                 e.setGenere(rs.getString("e.genere"));
-                e.setValutazione(rs.getDouble("e.valutazione"));
                 e.setFotoRiconoscitiva(rs.getString("e.fotoRiconoscitiva"));
 
 
@@ -60,8 +59,6 @@ public class IncontroDAO {
                 i.setEsperto(e);
                 i.setDataOra(Utility.sqlDateTimeToLocalDateTime(rs.getString("dataOra")));
                 i.setPrenotato(rs.getBoolean("prenotato"));
-                i.setAvvenuto(rs.getBoolean("avvenuto"));
-                i.setVotoUtente(rs.getInt("votoUtente"));
                 i.setCAP(rs.getString("CAP"));
                 i.setVia(rs.getString("via"));
                 i.setCivico(rs.getString("civico"));
@@ -112,7 +109,6 @@ public class IncontroDAO {
                 e.setPassword(rs.getString("e.passwordHash"));
                 e.setDataNascita(rs.getDate("e.dataNascita").toLocalDate());
                 e.setGenere(rs.getString("e.genere"));
-                e.setValutazione(rs.getDouble("e.valutazione"));
                 e.setFotoRiconoscitiva(rs.getString("e.fotoRiconoscitiva"));
 
 
@@ -125,8 +121,6 @@ public class IncontroDAO {
                 i.setEsperto(e);
                 i.setDataOra(Utility.sqlDateTimeToLocalDateTime(rs.getString("dataOra")));
                 i.setPrenotato(rs.getBoolean("prenotato"));
-                i.setAvvenuto(rs.getBoolean("avvenuto"));
-                i.setVotoUtente(rs.getInt("votoUtente"));
                 i.setCAP(rs.getString("CAP"));
                 i.setVia(rs.getString("via"));
                 i.setCivico(rs.getString("civico"));
@@ -176,7 +170,6 @@ public class IncontroDAO {
                 e.setPassword(rs.getString("e.passwordHash"));
                 e.setDataNascita(rs.getDate("e.dataNascita").toLocalDate());
                 e.setGenere(rs.getString("e.genere"));
-                e.setValutazione(rs.getDouble("e.valutazione"));
                 e.setFotoRiconoscitiva(rs.getString("e.fotoRiconoscitiva"));
 
 
@@ -189,8 +182,6 @@ public class IncontroDAO {
                 i.setEsperto(e);
                 i.setDataOra(Utility.sqlDateTimeToLocalDateTime(rs.getString("dataOra")));
                 i.setPrenotato(rs.getBoolean("prenotato"));
-                i.setAvvenuto(rs.getBoolean("avvenuto"));
-                i.setVotoUtente(rs.getInt("votoUtente"));
                 i.setCAP(rs.getString("CAP"));
                 i.setVia(rs.getString("via"));
                 i.setCivico(rs.getString("civico"));
@@ -244,7 +235,6 @@ public class IncontroDAO {
                 e.setPassword(rs.getString("e.passwordHash"));
                 e.setDataNascita(rs.getDate("e.dataNascita").toLocalDate());
                 e.setGenere(rs.getString("e.genere"));
-                e.setValutazione(rs.getDouble("e.valutazione"));
                 e.setFotoRiconoscitiva(rs.getString("e.fotoRiconoscitiva"));
 
 
@@ -257,8 +247,6 @@ public class IncontroDAO {
                 i.setEsperto(e);
                 i.setDataOra(Utility.sqlDateTimeToLocalDateTime(rs.getString("dataOra")));
                 i.setPrenotato(rs.getBoolean("prenotato"));
-                i.setAvvenuto(rs.getBoolean("avvenuto"));
-                i.setVotoUtente(rs.getInt("votoUtente"));
                 i.setCAP(rs.getString("CAP"));
                 i.setVia(rs.getString("via"));
                 i.setCivico(rs.getString("civico"));

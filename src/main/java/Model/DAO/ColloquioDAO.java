@@ -50,7 +50,6 @@ public class ColloquioDAO {
                 e.setPassword(rs.getString("e.passwordHash"));
                 e.setDataNascita(rs.getDate("e.dataNascita").toLocalDate());
                 e.setGenere(rs.getString("e.genere"));
-                e.setValutazione(rs.getDouble("e.valutazione"));
                 e.setFotoRiconoscitiva(rs.getString("e.fotoRiconoscitiva"));
 
 
@@ -63,8 +62,6 @@ public class ColloquioDAO {
                 c.setEsperto(e);
                 c.setDataOra(Utility.sqlDateTimeToLocalDateTime(rs.getString("dataOra")));
                 c.setPrenotato(rs.getBoolean("prenotato"));
-                c.setAvvenuto(rs.getBoolean("avvenuto"));
-                c.setVotoUtente(rs.getInt("votoUtente"));
 
                 colloqui.add(c);
             }
@@ -111,7 +108,6 @@ public class ColloquioDAO {
                 e.setPassword(rs.getString("passwordHash"));
                 e.setDataNascita(rs.getDate("dataNascita").toLocalDate());
                 e.setGenere(rs.getString("genere"));
-                e.setValutazione(rs.getDouble("valutazione"));
                 e.setFotoRiconoscitiva(rs.getString("fotoRiconoscitiva"));
 
 
@@ -124,8 +120,6 @@ public class ColloquioDAO {
                 c.setEsperto(e);
                 c.setDataOra(Utility.sqlDateTimeToLocalDateTime(rs.getString("dataOra")));
                 c.setPrenotato(rs.getBoolean("prenotato"));
-                c.setAvvenuto(rs.getBoolean("avvenuto"));
-                c.setVotoUtente(rs.getInt("votoUtente"));
 
                 colloqui.add(c);
             }
@@ -175,7 +169,6 @@ public class ColloquioDAO {
                 e.setPassword(rs.getString("e.passwordHash"));
                 e.setDataNascita(rs.getDate("e.dataNascita").toLocalDate());
                 e.setGenere(rs.getString("e.genere"));
-                e.setValutazione(rs.getDouble("e.valutazione"));
                 e.setFotoRiconoscitiva(rs.getString("e.fotoRiconoscitiva"));
 
 
@@ -188,8 +181,6 @@ public class ColloquioDAO {
                 c.setEsperto(e);
                 c.setDataOra(Utility.sqlDateTimeToLocalDateTime(rs.getString("dataOra")));
                 c.setPrenotato(rs.getBoolean("prenotato"));
-                c.setAvvenuto(rs.getBoolean("avvenuto"));
-                c.setVotoUtente(rs.getInt("votoUtente"));
 
                 colloqui.add(c);
             }
@@ -236,7 +227,6 @@ public class ColloquioDAO {
                 e.setPassword(rs.getString("e.passwordHash"));
                 e.setDataNascita(rs.getDate("e.dataNascita").toLocalDate());
                 e.setGenere(rs.getString("e.genere"));
-                e.setValutazione(rs.getDouble("e.valutazione"));
                 e.setFotoRiconoscitiva(rs.getString("e.fotoRiconoscitiva"));
 
 
@@ -249,8 +239,6 @@ public class ColloquioDAO {
                 c.setEsperto(e);
                 c.setDataOra(Utility.sqlDateTimeToLocalDateTime(rs.getString("dataOra")));
                 c.setPrenotato(rs.getBoolean("prenotato"));
-                c.setAvvenuto(rs.getBoolean("avvenuto"));
-                c.setVotoUtente(rs.getInt("votoUtente"));
 
                 colloqui.add(c);
             }

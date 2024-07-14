@@ -93,6 +93,9 @@ function chargeIncontri() {
                         nomeCompleto.className = "nomeCompleto";
                         nomeCompleto.innerHTML = incontri[i].nomeEsperto + " " + incontri[i].cognomeEsperto;
 
+                        /*indirizzo*/
+                        /*data e ora*/
+
                         let containerPrezzoCarrello = document.createElement("div");
                         incontroItem.appendChild(containerPrezzoCarrello);
                         containerPrezzoCarrello.className = "containerPrezzoCarrello";
