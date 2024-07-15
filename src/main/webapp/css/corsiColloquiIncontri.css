@@ -436,7 +436,7 @@ body, html {
 }
 
 @media screen and (max-width: 550px) {
-    .div-data{
+    #dropdown-content-data{
         right: 15px;
     }
 }
