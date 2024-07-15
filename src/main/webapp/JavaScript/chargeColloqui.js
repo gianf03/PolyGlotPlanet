@@ -71,7 +71,15 @@ function chargeColloqui() {
                 }
 
                 if(colloqui.length === 0){
+                    let nessunRisultato = document.createElement("p");
+                    containerColloqui.appendChild(nessunRisultato);
+                    nessunRisultato.id = "nessunRisultato";
+                    nessunRisultato.innerHTML = "Non ci sono colloqui che soddisfano i tuoi criteri di ricerca";
 
+                    containerColloqui.style.textAlign = "center";
+                    containerColloqui.style.justifyContent = "center";
+                    containerColloqui.style.width = "100%";
+                    containerColloqui.style.height = "300px";
                 } else {
                     for (let i = 0; i < colloqui.length; i++) {
                         let colloquioItem = document.createElement("div");
@@ -95,14 +103,51 @@ function chargeColloqui() {
                         containerInfo.className = "containerInfo";
 
                         /*nome completo esperto*/
-                        let nomeCompleto = document.createElement("h1");
+                        let nomeCompleto = document.createElement("p");
                         containerInfo.appendChild(nomeCompleto);
                         nomeCompleto.className = "nomeCompleto info";
                         nomeCompleto.innerHTML = colloqui[i].nomeEsperto + " " + colloqui[i].cognomeEsperto;
 
+                        /*nome lingua*/
+                        let nomeLingua = document.createElement("p");
+                        containerInfo.appendChild(nomeLingua);
+                        nomeLingua.className = "nomeLingua info";
+
+                        let spanLingua = document.createElement("span");
+                        spanLingua.innerHTML = "Lingua : ";
+
+                        nomeLingua.appendChild(spanLingua);
+                        spanLingua.className = "firstWord";
+                        nomeLingua.appendChild(document.createTextNode(colloqui[i].nomeLingua));
+
+                        /*lingue conosciute dall' esperto*/
+                        let lingueConosciute = document.createElement("p");
+                        containerInfo.appendChild(lingueConosciute);
+                        lingueConosciute.className = "lingueConosciute info";
+
+                        let spanLingueConosciute = document.createElement("span");
+                        spanLingueConosciute.innerHTML = "Parla : ";
+
+                        lingueConosciute.appendChild(spanLingueConosciute);
+                        spanLingueConosciute.className = "firstWord";
+                        lingueConosciute.appendChild(document.createTextNode(colloqui[i].lingueConosciute));
+
                         /*data e ora*/
+                        let dataOra = document.createElement("p");
+                        containerInfo.appendChild(dataOra);
+                        dataOra.className = "dataOra info";
 
+                        let spanDataOra = document.createElement("span");
+                        spanDataOra.innerHTML = "Data e ora : ";
 
+                        dataOra.appendChild(spanDataOra);
+                        spanDataOra.className = "firstWord";
+                        let dataOraStringa;
+                        dataOraStringa = colloqui[i].dataOra.replace(/[-T]/g, function (match) {
+                            if (match === '-') return '/';
+                            if (match === 'T') return ' ';
+                        });
+                        dataOra.appendChild(document.createTextNode(dataOraStringa));
 
                         let containerPrezzoCarrello = document.createElement("div");
                         colloquioItem.appendChild(containerPrezzoCarrello);
@@ -120,7 +165,7 @@ function chargeColloqui() {
                         let carrello = document.createElement("img");
                         divCarrello.appendChild(carrello);
                         carrello.className = "fotoCarrello";
-                        carrello.src = "img/carrello2.png";
+                        carrello.src = "img/carrello.png";
                     }
                 }
             }

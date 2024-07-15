@@ -42,7 +42,7 @@ public class LoginEspertoServlet extends HttpServlet {
         EspertoDAO espertoDAO = new EspertoDAO();
         Esperto esperto = espertoDAO.doRetrieveByEmailAndPassword(email, password);
         if (esperto == null)
-            address += "error=15&"; //esperto non registrato
+            address += "error=14&"; //e-mail o password errata
 
 
         address = address.substring(0, address.length()-1);

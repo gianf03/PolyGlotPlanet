@@ -1,25 +1,61 @@
 footer {
     background-color: darkslategray;
+    height: 100px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
 }
 
-.divSupporto {
-    align-content: center;
-    text-align: center;
-    align-self: center;
-    border-radius: 15px;
-    height: 20px;
-    width: 50px;
-    padding: 15px;
+#contattaci, #pagamento {
+    text-align: left;
     margin-left: 20px;
 }
 
-.divSupporto:hover {
-    background-color: #80B918;
+#contattaci a p {
+    margin: 0;
 }
 
-.divSupporto a {
+#contattaci a {
     color: white;
     text-decoration: none;
+}
+
+#social {
+    margin-right: 30px;
+    margin-left: auto;
+}
+
+#social img {
+    height: 25px;
+    width: 25px;
+}
+
+#pagamento img {
+    height: 25px;
+    width: 35px;
+}
+
+#contattaci>p, #pagamento>p, #social>p {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 500px){
+    footer {
+        flex-direction: column;
+        justify-content: center;
+        height: 300px;
+    }
+
+
+
+    #social {
+        margin-right: 0;
+        margin-left: 20px;
+    }
+
+    footer>div{
+        margin-bottom: 15px;
+    }
 }
 
 

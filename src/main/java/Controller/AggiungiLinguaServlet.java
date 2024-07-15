@@ -35,7 +35,7 @@ public class AggiungiLinguaServlet extends HttpServlet {
 
         if(codISOLingua == null || codISOLingua.isBlank() || codISOLingua.length() > 2 || nome == null
             || nome.isBlank() || numParlanti <= 0 || imgLingua == null) {
-            address += "?error=18"; //caricamento della lingua non avvenuto
+            address += "?error=15"; //caricamento della lingua non avvenuto
         }
 
         if(!address.contains("error")) {

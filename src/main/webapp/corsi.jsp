@@ -92,7 +92,7 @@
             </div>
 
             <div class="filtro" id="submit">
-                <input id="submitFiltro" type="submit" value="submit" onclick="closeAllDropdowns()">
+                <input id="submitFiltro" type="submit" value="Cerca" onclick="closeAllDropdowns()">
             </div>
 
         </form>

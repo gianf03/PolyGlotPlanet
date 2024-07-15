@@ -143,10 +143,12 @@ public class MostraColloquiAjaxServlet extends HttpServlet {
                 for (Conoscenza con : conoscenze) {
                     lingueConosciute += con.getLingua().getNome() + ", ";
                 }
-                lingueConosciute = lingueConosciute.substring(0, lingueConosciute.length()-1);
+                lingueConosciute = lingueConosciute.substring(0, lingueConosciute.length()-2);
 
 
                 JSONObject obj = new JSONObject();
+
+                obj.put("nomeLingua", c.getLingua().getNome());
 
                 obj.put("nomeEsperto", c.getEsperto().getNome());
                 obj.put("cognomeEsperto", c.getEsperto().getCognome());

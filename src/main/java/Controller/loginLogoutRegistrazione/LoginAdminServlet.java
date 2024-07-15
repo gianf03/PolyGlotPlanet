@@ -45,7 +45,7 @@ public class LoginAdminServlet extends HttpServlet {
         UtenteDAO utenteDAO = new UtenteDAO();
         Utente utente = utenteDAO.doRetrieveByEmailAndPassword(email, password);
         if (utente == null || !utente.isAdmin())
-            address += "error=14&"; //utente non registrato
+            address += "error=14&"; //e-mail e/o password errata
 
         address = address.substring(0, address.length()-1);
 

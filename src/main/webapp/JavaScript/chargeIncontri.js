@@ -64,7 +64,15 @@ function chargeIncontri() {
                 }
 
                 if (incontri.length === 0){
-                    ;
+                    let nessunRisultato = document.createElement("p");
+                    containerIncontri.appendChild(nessunRisultato);
+                    nessunRisultato.id = "nessunRisultato";
+                    nessunRisultato.innerHTML = "Non ci sono incontri che soddisfano i tuoi criteri di ricerca";
+
+                    containerIncontri.style.textAlign = "center";
+                    containerIncontri.style.justifyContent = "center";
+                    containerIncontri.style.width = "100%";
+                    containerIncontri.style.height = "300px";
                 } else {
 
                     for (let i = 0; i < incontri.length; i++) {
@@ -88,13 +96,62 @@ function chargeIncontri() {
                         containerInfo.id = "info" + incontri[i].ID;
                         containerInfo.className = "containerInfo";
 
-                        let nomeCompleto = document.createElement("h1");
+                        let nomeCompleto = document.createElement("p");
                         containerInfo.appendChild(nomeCompleto);
                         nomeCompleto.className = "nomeCompleto";
                         nomeCompleto.innerHTML = incontri[i].nomeEsperto + " " + incontri[i].cognomeEsperto;
 
-                        /*indirizzo*/
+                        let nomeLingua = document.createElement("p");
+                        containerInfo.appendChild(nomeLingua);
+                        nomeLingua.className = "nomeLingua info";
+
+                        let spanLingua = document.createElement("span");
+                        spanLingua.innerHTML = "Lingua : ";
+
+                        nomeLingua.appendChild(spanLingua);
+                        spanLingua.className = "firstWord";
+                        nomeLingua.appendChild(document.createTextNode(incontri[i].nomeLingua));
+
+                        /*lingue conosciute dall' esperto*/
+                        let lingueConosciute = document.createElement("p");
+                        containerInfo.appendChild(lingueConosciute);
+                        lingueConosciute.className = "lingueConosciute info";
+
+                        let spanLingueConosciute = document.createElement("span");
+                        spanLingueConosciute.innerHTML = "Parla : ";
+
+                        lingueConosciute.appendChild(spanLingueConosciute);
+                        spanLingueConosciute.className = "firstWord";
+                        lingueConosciute.appendChild(document.createTextNode(incontri[i].lingueConosciute));
+
                         /*data e ora*/
+                        let dataOra = document.createElement("p");
+                        containerInfo.appendChild(dataOra);
+                        dataOra.className = "dataOra info";
+
+                        let spanDataOra = document.createElement("span");
+                        spanDataOra.innerHTML = "Data e ora : ";
+
+                        dataOra.appendChild(spanDataOra);
+                        spanDataOra.className = "firstWord";
+                        let dataOraStringa;
+                        dataOraStringa = incontri[i].dataOra.replace(/[-T]/g, function(match) {
+                            if (match === '-') return '/';
+                            if (match === 'T') return ' ';
+                        });
+                        dataOra.appendChild(document.createTextNode(dataOraStringa));
+
+                        /*indirizzo*/
+                        let indirizzo = document.createElement("p");
+                        containerInfo.appendChild(indirizzo);
+                        indirizzo.className = "indirizzo info";
+
+                        let spanIndirizzo = document.createElement("span");
+                        spanIndirizzo.innerHTML = "Indirizzo : ";
+
+                        indirizzo.appendChild(spanIndirizzo);
+                        spanIndirizzo.className = "firstWord";
+                        indirizzo.appendChild(document.createTextNode(incontri[i].indirizzo));
 
                         let containerPrezzoCarrello = document.createElement("div");
                         incontroItem.appendChild(containerPrezzoCarrello);
@@ -112,7 +169,7 @@ function chargeIncontri() {
                         let carrello = document.createElement("img");
                         divCarrello.appendChild(carrello);
                         carrello.className = "fotoCarrello";
-                        carrello.src = "img/carrello2.png";
+                        carrello.src = "img/carrello.png";
 
                         console.log(incontroItem);
                     }

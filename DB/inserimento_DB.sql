@@ -60,7 +60,7 @@ INSERT INTO Prodotto (prezzoBase, scontoPercentuale, IDCategoria, codISOLingua) 
 	(30.5, 2.5, 1, "PT"),
     (60.75, 15, 1, "PT"),
     (50, 30, 1, "PT"),
-    (70, 5, 1, "ZH"),
+    (70, 5, 1, "JA"),
     (5, 0, 1, "SV");
     
 INSERT INTO Corso (IDProdotto, descrizione, numeroUnita, livello, disponibile) VALUES
@@ -70,7 +70,7 @@ INSERT INTO Corso (IDProdotto, descrizione, numeroUnita, livello, disponibile) V
     Ideale per chi vuole migliorare la fluidità e la comprensione scritta/orale.", 15, "B1-B2", true),
     (3, "Corso avanzato di portoghese: perfeziona la tua fluency, comprensione e abilità comunicative.
     Approfondisci la grammatica, il vocabolario e la cultura lusofona attraverso conversazioni e letture complesse.", 25, "C1-C2", true),
-    (4, "Impara il cinese dalle basi! Questo corso ti introduce alla grammatica, vocabolario e pronuncia essenziale. 
+    (4, "Impara il giapponese dalle basi! Questo corso ti introduce alla grammatica, vocabolario e pronuncia essenziale. 
     Perfetto per principianti, migliorerai le tue abilità di conversazione e comprensione.", 11, "A1-A2", true),
     (5, "Impara lo svedese dalle basi! Questo corso ti introduce alla grammatica, vocabolario e pronuncia essenziale. 
     Perfetto per principianti, migliorerai le tue abilità di conversazione e comprensione.", 11, "A1-A2", true);

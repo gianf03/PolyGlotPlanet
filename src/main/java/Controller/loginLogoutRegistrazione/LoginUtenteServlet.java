@@ -45,7 +45,7 @@ public class LoginUtenteServlet extends HttpServlet {
         UtenteDAO utenteDAO = new UtenteDAO();
         Utente utente = utenteDAO.doRetrieveByEmailAndPassword(email, password);
         if (utente == null || utente.isAdmin())
-            address += "error=14&"; //utente non registrato
+            address += "error=14&"; //e-mail o password errata
 
         address = address.substring(0, address.length()-1);
 
@@ -57,14 +57,6 @@ public class LoginUtenteServlet extends HttpServlet {
             session.setAttribute("utente", utente);
             address = "index.jsp";
         }
-
-
-        /*PrintWriter out = resp.getWriter();
-        out.println("<html><body>");
-        out.println(address);
-        out.println("<br>"+ req.getAttribute("address"));
-        out.println("</body></html>");
-        */
 
         resp.sendRedirect(address);
     }

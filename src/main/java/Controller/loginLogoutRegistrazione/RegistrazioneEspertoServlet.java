@@ -68,8 +68,14 @@ public class RegistrazioneEspertoServlet extends HttpServlet {
         try {
             if (ddn == null){
                 address += "error=8&"; /*nessuna data di nascita*/
-            } else
+            } else {
                 dataNascita = LocalDate.parse(ddn);
+
+                LocalDate oggi18AnniFa = LocalDate.now().minusYears(18);
+
+                if(dataNascita.isAfter(oggi18AnniFa))
+                    address += "error=16&";
+            }
         }
         catch (DateTimeParseException e) {
             address += "error=9&";  //non è una data di nascita

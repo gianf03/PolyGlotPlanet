@@ -66,7 +66,15 @@ function chargeCorsi(){
                 }
 
                 if (!corsi.length) {
-                    ;
+                    let nessunRisultato = document.createElement("p");
+                    containerCorsi.appendChild(nessunRisultato);
+                    nessunRisultato.id = "nessunRisultato";
+                    nessunRisultato.innerHTML = "Non ci sono corsi che soddisfano i tuoi criteri di ricerca";
+
+                    containerCorsi.style.textAlign = "center";
+                    containerCorsi.style.justifyContent = "center";
+                    containerCorsi.style.width = "100%";
+                    containerCorsi.style.height = "300px";
                 } else {
 
                     for (var i = 0; i < corsi.length; i++) {
@@ -94,26 +102,49 @@ function chargeCorsi(){
                         let nomeLingua = document.createElement("p");
                         containerInfo.appendChild(nomeLingua);
                         nomeLingua.className = "nomeLingua info";
-                        nomeLingua.innerHTML = "Lingua : " + corsi[i].nomeLingua;
 
+                        let spanLingua = document.createElement("span");
+                        spanLingua.innerHTML = "Lingua : ";
+
+                        nomeLingua.appendChild(spanLingua);
+                        spanLingua.className = "firstWord";
+                        nomeLingua.appendChild(document.createTextNode(corsi[i].nomeLingua));
 
                         /*numero unita*/
                         let numeroUnita = document.createElement("p");
                         containerInfo.appendChild(numeroUnita);
                         numeroUnita.className = "numeroUnita info";
-                        numeroUnita.innerHTML = "Unità : " + corsi[i].numeroUnita;
+
+                        let spanUnita = document.createElement("span");
+                        spanUnita.innerHTML = "Unità : ";
+
+                        numeroUnita.appendChild(spanUnita);
+                        spanUnita.className = "firstWord";
+                        numeroUnita.appendChild(document.createTextNode(corsi[i].numeroUnita));
 
                         /*livello del corso*/
                         let livello = document.createElement("p");
                         containerInfo.appendChild(livello);
                         livello.className = "livelloCorso info";
-                        livello.innerHTML = "Livello : " + corsi[i].livello;
+
+                        let spanLivello = document.createElement("span");
+                        spanLivello.innerHTML = "Livello : ";
+
+                        livello.appendChild(spanLivello);
+                        spanLivello.className = "firstWord";
+                        livello.appendChild(document.createTextNode(corsi[i].livello));
 
                         /*descrizione */
                         let descrizione = document.createElement("p");
                         containerInfo.appendChild(descrizione);
                         descrizione.className = "descrizione info";
-                        descrizione.innerHTML = "Descrizione : " + corsi[i].descrizione;
+
+                        let spanDescrizione = document.createElement("span");
+                        spanDescrizione.innerHTML = "Descrizione : ";
+
+                        descrizione.appendChild(spanDescrizione);
+                        spanDescrizione.className = "firstWord";
+                        descrizione.appendChild(document.createTextNode(corsi[i].descrizione));
 
                         let containerPrezzoCarrello = document.createElement("div");
                         corsoItem.appendChild(containerPrezzoCarrello);
@@ -131,7 +162,7 @@ function chargeCorsi(){
                         let carrello = document.createElement("img");
                         divCarrello.appendChild(carrello);
                         carrello.className = "fotoCarrello";
-                        carrello.src = "img/carrello2.png";
+                        carrello.src = "img/carrello.png";
                     }
                 }
             }

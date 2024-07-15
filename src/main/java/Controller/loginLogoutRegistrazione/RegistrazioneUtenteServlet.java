@@ -57,8 +57,14 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
         try {
             if (ddn == null || ddn.isEmpty()){
                 address += "error=8&"; /*nessuna data di nascita*/
-            } else
+            } else {
                 dataNascita = LocalDate.parse(ddn);
+
+                LocalDate oggi14AnniFa = LocalDate.now().minusYears(14);
+
+                if(dataNascita.isAfter(oggi14AnniFa))
+                    address += "error=16&";
+            }
         }
         catch (DateTimeParseException e) {
             address += "error=9&";  //non è una data di nascita

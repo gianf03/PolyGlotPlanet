@@ -54,6 +54,10 @@
                     <%if (queryString!=null && (queryString.contains("error=9&") || queryString.endsWith("error=9"))) { %>
                         <p id="error9" class="regError">Ciò che hai inserito non è una data</p>
                     <%}%>
+
+                    <%if (queryString!=null && (queryString.contains("error=16&") || queryString.endsWith("error=16"))) { %>
+                        <p id="error16" class="regError">Devi essere maggiorenne</p>
+                    <%}%>
                 </div>
                 <script>
                     // Funzione per ottenere la data di 18 anni fa dalla data odierna

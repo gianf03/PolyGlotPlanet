@@ -1,9 +1,11 @@
 package Controller.ajax;
 
 import Model.Bean.Colloquio;
+import Model.Bean.Conoscenza;
 import Model.Bean.Incontro;
 import Model.Bean.Lingua;
 import Model.DAO.ColloquioDAO;
+import Model.DAO.ConoscenzaDAO;
 import Model.DAO.IncontroDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -136,15 +138,21 @@ public class MostraIncontriAjaxServlet extends HttpServlet {
             JSONArray incontriArray = new JSONArray();
 
             for (Incontro i : incontri) {
+                ConoscenzaDAO conoscenzaDAO = new ConoscenzaDAO();
+                List<Conoscenza> conoscenze = conoscenzaDAO.doRetrieveByIDEsperto(i.getEsperto().getID());
+                String lingueConosciute = "";
+
+                for (Conoscenza con : conoscenze) {
+                    lingueConosciute += con.getLingua().getNome() + ", ";
+                }
+                lingueConosciute = lingueConosciute.substring(0, lingueConosciute.length()-2);
+
                 JSONObject obj = new JSONObject();
 
-                //obj.put("codISOLingua", i.getLingua().getCodISOLingua());
-                //obj.put("lingua", i.getLingua().getNome());
-                //obj.put("fotoStatoLingua", i.getLingua().getFotoStatoOrigine()); non necessario
-                //obj.put("idEsperto", i.getEsperto().getID()); non necessario
+                obj.put("nomeLingua", i.getLingua().getNome());
+
                 obj.put("nomeEsperto", i.getEsperto().getNome());
                 obj.put("cognomeEsperto", i.getEsperto().getCognome());
-                //obj.put("emailEsperto", i.getEsperto().getEmail()); non necessario
 
                 DateTimeFormatter dateFormatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 String ddn = i.getEsperto().getDataNascita().format(dateFormatter1);
@@ -157,7 +165,11 @@ public class MostraIncontriAjaxServlet extends HttpServlet {
                 DateTimeFormatter dateFormatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
                 String dataColloquio = i.getDataOra().format(dateFormatter2);
                 obj.put("dataOra", dataColloquio);
-                //obj.put("id", c.getID()); non necessario
+
+                obj.put("lingueConosciute", lingueConosciute);
+
+                String indirizzo = i.getVia() + " " + i.getCivico() + ", " + i.getCAP();
+                obj.put("indirizzo", indirizzo);
 
                 incontriArray.add(obj);
             }

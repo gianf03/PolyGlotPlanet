@@ -22,7 +22,7 @@
             <%String queryString = request.getQueryString();%>
 
             <%if (queryString!=null && (queryString.contains("error=14&") || queryString.endsWith("error=14"))) { %>
-                <p id="error14" class="logError">Utente non registrato</p>
+                <p id="error14" class="logError">E-mail e/o password errata</p>
             <%}%>
 
             <form id="form-login" action="loginUtente" method="POST">

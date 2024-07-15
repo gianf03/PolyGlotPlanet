@@ -4,7 +4,6 @@
 <html>
 <head>
     <title>Home</title>
-    <link type="text/css" href="css/general.css" rel="stylesheet">
     <link type="text/css" href="css/index.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -19,7 +18,7 @@
                 <div id="divErrorePermessi">Non disponi dei permessi necessari</div>
         <%}%>
 
-        <div id="selezionaMod">Seleziona una modalità di apprendimento</div>
+        <p id="selezionaMod">Benvenuto su PolyGlotPlanet!<br><br>Seleziona una modalità di apprendimento</p>
 
         <div id="containerCategorie">
             <c:forEach items="${categorie}" var="categoria" >

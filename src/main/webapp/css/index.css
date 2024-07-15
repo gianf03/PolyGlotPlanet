@@ -1,17 +1,25 @@
+body, html {
+    height: 100%;
+    padding: 0;
+    margin : 0;
+}
+
 #containerCategorie {
     display: flex;
-    width: 90%;
     margin: 100px auto;
 }
 
 section {
-    align-content: center;
     align-items: center;
     margin: auto;
     background-color: mediumaquamarine;
     width: 350px;
     height: 350px;
     border-radius: 30px;
+}
+
+section {
+    align-content: center;
 }
 
 .categoria {
@@ -29,7 +37,7 @@ section {
 #divLinkCat {
     margin: 50px auto auto auto;
     width: 60%;
-    height: 10%;
+    height: 30px;
     background-color: #007253;
     border-radius: 15px;
 }
@@ -49,7 +57,7 @@ section {
     color: #007253;
     font-size: 18pt;
     font-weight: bold;
-    width: 30%;
+    width: 500px;
     text-align: center;
     padding: 15px;
     margin: 2% auto;
@@ -63,8 +71,8 @@ section {
 
 .divTextImg {
     display: flex;
-    width: 70%;
-    height: 50vh;
+    width: 600px;
+    min-height: 300px;
     border: 1px solid #007253;
     border-radius: 30px;
     margin: 50px auto 50px auto;
@@ -80,9 +88,10 @@ section {
 
 .divText, .divImg {
     height: 80%;
-    margin: auto;
+    margin: 30px;
     text-align: justify;
     font-size: 12pt;
+    align-self: center;
 }
 
 .divImg {
@@ -121,9 +130,44 @@ section {
     .categoria {
         margin-top: 30px;
     }
+}
 
-    #divLinkCat {
-        height: 13%;
+@media screen and (max-width: 850px) {
+    #divDescrizione {
+        width: auto;
+    }
+
+    .divTextImg:nth-child(even) {
+        margin-right: 10px;
+    }
+
+    .divTextImg:nth-child(odd) {
+        margin-left: 10px;
+    }
+
+    .divText {
+        width: 400px;
+        /*margin: 30px;*/
+    }
+
+    .divTextImg {
+        flex-direction: column;
+        width: 500px;
     }
 }
 
+@media screen and (max-width: 500px) {
+    #selezionaMod {
+        width: 300px;
+    }
+
+    .divText {
+        width: 200px;
+        /*margin: 30px;*/
+    }
+
+    .divTextImg {
+        flex-direction: column;
+        width: 300px;
+    }
+}

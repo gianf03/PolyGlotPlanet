@@ -27,8 +27,8 @@
 
             <%String queryString = request.getQueryString();%>
 
-            <%if (queryString!=null && (queryString.contains("error=15&") || queryString.endsWith("error=15"))) { %>
-                <p id="error15" class="logError">Esperto non registrato</p>
+            <%if (queryString!=null && (queryString.contains("error=14&") || queryString.endsWith("error=14"))) { %>
+                <p id="error15" class="logError">E-mail e/o password errata</p>
             <%}%>
 
             <form id="form-login" action="loginEsperto" method="POST">

@@ -11,7 +11,7 @@ html, body {
     width: 300px;
     border-radius: 30px;
     align-content: center;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(40px);
     border : 2px solid white;
 }
 
@@ -23,10 +23,10 @@ html, body {
     height: 40px;
     width: 250px;
     border-radius: 20px;
-    background-color: #007253;
+    background-color: mediumaquamarine;
     color: white;
     font-size: 12pt;
-    border-color: #007253;
+    border-color: mediumaquamarine;
 }
 
 
@@ -34,7 +34,6 @@ html, body {
     height: 40px;
     width: 250px;
     border-radius: 20px;
-    align-self: center;
     text-align: center;
     border-color: white;
 }
@@ -42,14 +41,6 @@ html, body {
 .credenziali {
     margin: 30px auto 30px auto;
     text-align: center;
-}
-
-
-#log > a {
-    text-decoration: none;
-    color: #007253;
-    font-weight: bold;
-    font-size: 30pt;
 }
 
 #reg, #log {
@@ -67,12 +58,13 @@ html, body {
 
 #div-registrazioneUtente, #div-registrazioneEsperto{
     /*background-color: #80B918;*/
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(40px);
     margin: 70px auto 75px auto;
     height: 900px;
     width: 300px;
     border-radius: 30px;
     align-content: center;
+    border: 2px solid white;
 }
 
 #logoLogin {
@@ -81,13 +73,12 @@ html, body {
 }
 
 .regError, .logError {
-    color : red;
+    color : #fa0000;
     font-weight: bold;
-    align-content: center;
+    font-size: 16pt;
+    text-align: center;
 }
 
-
-/*nuove aggiunte */
 .containerOfAll {
     background-image: url("../img/login9.jpg");
     background-size: 100% 100%;
@@ -108,11 +99,6 @@ html, body {
     border-top : 2px solid white;
 }
 
-#tasto-login, #tasto-registrazione {
-    background-color: mediumaquamarine;
-    border-color: mediumaquamarine;
-}
-
 .credenziali label {
     color: white;
 }
@@ -123,6 +109,7 @@ html, body {
 
 #foto {
     color: white;
+    width: 250px;
 }
 
 @media screen and (max-width: 700px) {
