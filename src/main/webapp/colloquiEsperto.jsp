@@ -20,8 +20,6 @@
                 <th>Data e ora</th>
                 <th>Lingua</th>
                 <th>Prenotato (SI/NO)</th>
-                <th>Avvenuto (SI/NO)</th>
-                <th>Voto utente</th>
                 <th>Prezzo base</th>
                 <th>Sconto percentuale</th>
             </tr>
@@ -32,8 +30,6 @@
                 <td><%=c.getDataOra()%></td>
                 <td><%=c.getLingua().getNome()%></td>
                 <td><%=c.isPrenotato()%></td>
-                <td><%=c.isAvvenuto()%></td>
-                <td><%=c.getVotoUtente()%></td>
                 <td><%=c.getPrezzoBase()%> €</td>
                 <td><%=c.getScontoPercentuale()%> %</td>
             </tr>

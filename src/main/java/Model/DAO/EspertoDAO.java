@@ -1,6 +1,7 @@
 package Model.DAO;
 
 import Model.Bean.Esperto;
+import Model.Bean.Utente;
 import Model.ConPool;
 
 import java.sql.Connection;
@@ -173,5 +174,79 @@ public class EspertoDAO {
         }
 
         return flag;
+    }
+
+    public void doUpdate(int IDEsperto, String nome, String cognome, String newPassword, String imgEsperto) {
+
+        try (Connection con = ConPool.getConnection()) {
+
+            String sql = null;
+
+            if(newPassword.isEmpty()) {
+                sql = "UPDATE Esperto SET nome=?, cognome=?, fotoRiconoscitiva=? WHERE id=?";
+            } else {
+                sql = "UPDATE Esperto SET nome=?, cognome=?, fotoRiconoscitiva=?, passwordHash=SHA1(?) WHERE id=?";
+            }
+
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setString(1, nome);
+            ps.setString(2, cognome);
+            ps.setString(3, imgEsperto);
+
+            if(!newPassword.isEmpty()) {
+                ps.setString(4, newPassword);
+                ps.setInt(5, IDEsperto);
+            } else {
+                ps.setInt(4, IDEsperto);
+            }
+
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("UPDATE error.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Esperto doRetrieveById(int id){
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Esperto esperto = null;
+
+        try (Connection connection = ConPool.getConnection()) {
+            statement = connection.prepareStatement("SELECT * FROM Esperto WHERE ID=?");
+            statement.setInt(1, id);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                esperto = new Esperto();
+                esperto.setID(resultSet.getInt("ID"));
+                esperto.setNome(resultSet.getString("nome"));
+                esperto.setCognome(resultSet.getString("cognome"));
+                esperto.setEmail(resultSet.getString("email"));
+                esperto.setPassword(resultSet.getString("passwordHash"));
+                esperto.setDataNascita(resultSet.getDate("dataNascita").toLocalDate());
+                esperto.setGenere(resultSet.getString("genere"));
+                esperto.setFotoRiconoscitiva(resultSet.getString("fotoRiconoscitiva"));
+            }
+        }  catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return esperto;
     }
 }

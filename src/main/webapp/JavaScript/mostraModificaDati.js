@@ -1,3 +1,3 @@
-function mostraModificaDati() {
-    document.getElementById("containerModificaDati").style.display = "block";
+function mostraModificaDati(id) {
+    document.getElementById(id).style.display = "block";
 }

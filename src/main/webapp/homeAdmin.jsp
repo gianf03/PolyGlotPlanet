@@ -12,16 +12,40 @@
 
         <div id="containerAdmin">
             <div class="adminSettings">
-                <a href="mostraUtenti">Mostra utenti</a>
+                <div class="settingsImg">
+                    <img alt="utente stilizzato" src="img/user.png">
+                </div>
+
+                <div class="settingsLink">
+                    <a href="mostraUtenti">Mostra utenti</a>
+                </div>
             </div>
             <div class="adminSettings">
-                <a href="mostraEsperti">Mostra esperti</a>
+                <div class="settingsImg">
+                    <img alt="insegnante stilizzato" src="img/insegnante.png">
+                </div>
+
+                <div class="settingsLink">
+                    <a href="mostraEsperti">Mostra esperti</a>
+                </div>
             </div>
             <div class="adminSettings">
-                <a href="tuttiCorsi">Mostra corsi</a>
+                <div class="settingsImg">
+                    <img alt="libro stilizzato" src="img/categorie/corso.png">
+                </div>
+
+                <div class="settingsLink">
+                    <a href="tuttiCorsi">Mostra corsi</a>
+                </div>
             </div>
             <div class="adminSettings">
-                <a href="#" onclick="mostraDivAggiungi('aggiungiLingua')">Aggiungi lingua</a>
+                <div class="settingsImg">
+                    <img alt="lingua stilizzata" src="img/lingua.png">
+                </div>
+
+                <div class="settingsLink">
+                    <a href="#" onclick="mostraDivAggiungi('aggiungiLingua')">Aggiungi lingua</a>
+                </div>
             </div>
         </div>
 

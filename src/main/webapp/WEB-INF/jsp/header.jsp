@@ -65,6 +65,7 @@
                     <%} else if(e != null){%>
                         <ul class="subMenu">
                             <li><a href="logout">Logout</a></li>
+                            <li><a href="areaEsperto.jsp">Dati personali</a></li>
                         </ul>
                     <%} else if(u!=null && u.isAdmin()) {%>
                         <ul class="subMenu">
