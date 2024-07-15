@@ -22,8 +22,6 @@
                 <th>Indirizzo</th>
                 <th>Lingua</th>
                 <th>Prenotato (SI/NO)</th>
-                <th>Avvenuto (SI/NO)</th>
-                <th>Voto utente</th>
                 <th>Prezzo base</th>
                 <th>Sconto percentuale</th>
             </tr>
@@ -35,8 +33,6 @@
                 <td><%=i.getVia()%> <%=i.getCivico()%> <%=i.getCAP()%></td>
                 <td><%=i.getLingua().getNome()%></td>
                 <td><%=i.isPrenotato()%></td>
-                <td><%=i.isAvvenuto()%></td>
-                <td><%=i.getVotoUtente()%></td>
                 <td><%=i.getPrezzoBase()%> €</td>
                 <td><%=i.getScontoPercentuale()%> %</td>
             </tr>

@@ -129,24 +129,25 @@ body, html {
 
 
 /*File areaUtente.jsp*/
-#containerAreaUtente {
+#containerAreaUtente, #containerAreaEsperto {
     display: flex;
     height: 100%;
 }
 
-#containerdatiUtente, #containerModificaDati {
+#containerdatiUtente, #containerModificaDati, #containerdatiEsperto, #containerModificaDatiEsperto {
     height: 100%;
     width: 50vw;
     align-content: center;
+    text-align: center;
 }
 
-#tableDatiUtente {
+#tableDatiUtente, #tableDatiEsperto {
     margin: auto;
 }
 
 #divTastoModifica {
     text-align: center;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 #tastoModifica {
@@ -158,20 +159,31 @@ body, html {
     font-weight: bold;
 }
 
-
-/*File homeAdmin.jsp*/
-#containerAdmin {
-    height: 80vh;
-    width: 80vw;
-    margin: auto;
-
-    /*dispone gli elementi del container in modo equidistante verticalmente*/
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+#divImgEsperto {
+    margin-bottom: 20px;
 }
 
-.adminSettings {
+#imgEsperto {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+}
+
+/*File homeAdmin.jsp*/
+#containerAdmin, #containerEsperto {
+    height: 80%;
+    display: flex;
+}
+
+.adminSettings, .espertoSettings {
+    background-color: mediumaquamarine;
+    margin: auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 30px;
+}
+
+.settingsLink {
     width: 180px;
     background-color: #007253;
     border-radius: 30px;
@@ -180,13 +192,39 @@ body, html {
     margin: auto;
 }
 
-.adminSettings > a {
+.settingsLink > a {
     color: white;
     font-size: 16pt;
     font-weight: bold;
     text-decoration: none;
     padding: 5px;
 }
+
+.settingsImg, .settingsLink {
+    align-content: center;
+    text-align: center;
+    margin-top: 50px;
+}
+
+@media screen and (max-width: 500px) {
+
+    #containerAdmin {
+        /*dispone il contenuto verticalmente*/
+        display: flex;
+        flex-direction: column;
+    }
+
+    .adminSettings {
+        width: 250px;
+        margin-top: 50px;
+    }
+
+    .settingsLink {
+        margin-bottom: 30px;
+    }
+}
+
+
 
 #tableUtenti, #tableEsperti, #tableCorsi, #tableOrdini, #tableColloqui, #tableIncontri, #divFiltri {
     margin: auto;
@@ -288,4 +326,10 @@ tr:nth-child(even) {
 
 .dropdown-content a:hover {
     background-color: mediumaquamarine;
+}
+
+/*lingueEsperto.jsp*/
+
+#tableLingue {
+    margin: auto;
 }

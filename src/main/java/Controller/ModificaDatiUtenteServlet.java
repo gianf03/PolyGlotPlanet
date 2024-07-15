@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Bean.Utente;
 import Model.DAO.UtenteDAO;
+import Utils.Utility;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -28,11 +29,11 @@ public class ModificaDatiUtenteServlet extends HttpServlet {
 
         Utente u = (Utente) req.getSession().getAttribute("utente");
 
-        if(nome.isEmpty() || checkIfStringContainsOnlySpaces(nome)) {
+        if(nome.isEmpty() || nome.isBlank()) {
             address = address + "error=1&";
         }
 
-        if (cognome.isEmpty() || checkIfStringContainsOnlySpaces(cognome)) {
+        if (cognome.isEmpty() || cognome.isBlank()) {
             address = address + "error=2&";
         }
 
@@ -66,23 +67,5 @@ public class ModificaDatiUtenteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
-    }
-
-
-    private boolean checkIfStringContainsOnlySpaces(String s) {
-
-        //restituisce true se la stringa s contiene soltanto spazi vuoti
-
-        boolean flag = true;
-
-        for(int i = 0; i < s.length(); i++) {
-
-            if(s.charAt(i) != ' ') {
-                flag = false;
-                break;
-            }
-        }
-
-        return flag;
     }
 }
