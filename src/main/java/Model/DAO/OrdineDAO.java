@@ -4,10 +4,8 @@ import Model.Bean.Ordine;
 import Model.Bean.Utente;
 import Model.ConPool;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +14,7 @@ public class OrdineDAO {
     public List<Ordine> doRetrieveAllByUtente(int IDUtente) {
         try (Connection con = ConPool.getConnection()) {
 
-            String sql = "SELECT o.ID, o.prezzoTotale FROM Utente u JOIN Ordine o ON u.ID=o.IDUtente WHERE u.ID=?";
+            String sql = "SELECT * FROM Utente u JOIN Ordine o ON u.ID=o.IDUtente WHERE u.ID=?";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, IDUtente);
@@ -30,17 +28,67 @@ public class OrdineDAO {
 
                 Utente u = new Utente();
                 u.setID(IDUtente);
-                u.setNome(rs.getString("nome"));
-                u.setCognome(rs.getString("cognome"));
-                u.setDataNascita(rs.getDate("dataNascita").toLocalDate());
-                u.setEmail(rs.getString("email"));
-                u.setPassword(rs.getString("passwordHash"));
-                u.setGenere(rs.getString("genere"));
-                u.setAdmin(rs.getBoolean("admin"));
+                u.setNome(rs.getString("u.nome"));
+                u.setCognome(rs.getString("u.cognome"));
+                u.setDataNascita(rs.getDate("u.dataNascita").toLocalDate());
+                u.setEmail(rs.getString("u.email"));
+                u.setPassword(rs.getString("u.passwordHash"));
+                u.setGenere(rs.getString("u.genere"));
+                u.setAdmin(rs.getBoolean("u.admin"));
 
-                o.setID(rs.getInt("ID"));
+                o.setID(rs.getInt("o.ID"));
                 o.setPrezzoTotale(rs.getDouble("prezzoTotale"));
+                o.setNumeroProdotti(rs.getInt("numeroProdotti"));
+
+                Timestamp timestamp = rs.getTimestamp("dataOra");
+                o.setDataOra(timestamp.toLocalDateTime());
+
                 o.setUtente(u);
+
+                ordini.add(o);
+            }
+
+            return ordini;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Ordine> doRetrieveAll() {
+        try (Connection con = ConPool.getConnection()) {
+
+            String sql = "SELECT * FROM Utente u JOIN Ordine o ON u.ID=o.IDUtente order by o.ID";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            List<Ordine> ordini = new ArrayList<>();
+
+            while(rs.next()) {
+                Ordine o = new Ordine();
+
+                Utente u = new Utente();
+                u.setID(rs.getInt("u.ID"));
+                u.setNome(rs.getString("u.nome"));
+                u.setCognome(rs.getString("u.cognome"));
+                u.setDataNascita(rs.getDate("u.dataNascita").toLocalDate());
+                u.setEmail(rs.getString("u.email"));
+                u.setPassword(rs.getString("u.passwordHash"));
+                u.setGenere(rs.getString("u.genere"));
+                u.setAdmin(rs.getBoolean("u.admin"));
+
+                o.setID(rs.getInt("o.ID"));
+                o.setPrezzoTotale(rs.getDouble("prezzoTotale"));
+                o.setNumeroProdotti(rs.getInt("numeroProdotti"));
+
+                Timestamp timestamp = rs.getTimestamp("dataOra");
+                o.setDataOra(timestamp.toLocalDateTime());
+
+                o.setUtente(u);
+
+                ordini.add(o);
             }
 
             return ordini;

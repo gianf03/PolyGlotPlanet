@@ -333,3 +333,8 @@ tr:nth-child(even) {
 #tableLingue {
     margin: auto;
 }
+
+/*utentiAdmin.jsp*/
+#tuttiOrdini {
+    margin: 30px 0;
+}

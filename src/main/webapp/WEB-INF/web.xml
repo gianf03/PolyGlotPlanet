@@ -8,4 +8,14 @@
         <error-code>401</error-code>
         <location>/errors/unauthorized401.jsp</location>
     </error-page>
+
+    <!-- <error-page>
+        <error-code>404</error-code>
+        <location>/errors/notFound404.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/errors/internalError500.jsp</location>
+    </error-page> -->
 </web-app>

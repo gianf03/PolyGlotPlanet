@@ -1,0 +1,88 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.infoOrdine {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    background-color: #f0f2f2;
+    color: dimgray;
+    width: 700px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.containerOfAll {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.info {
+    margin-right: 20px;
+}
+
+.containerOrdine img {
+    height: 100px;
+    width: auto;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.prodotto{
+    display: flex;
+    flex-direction: row;
+    height: 120px;
+    align-items: center;
+}
+
+.imgContainer {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.prodottiOrdine p {
+    width: 500px;
+}
+
+.infoOrdine p {
+    width: 200px;
+}
+
+.containerOrdine {
+    border: 1px solid darkgrey;
+    border-radius: 15px;
+    margin: 30px 0;
+    align-self: center;
+    width: 700px;
+}
+
+.infoOrdine p {
+    margin-left: 15px;
+}
+
+@media screen and (max-width: 750px) {
+    .infoOrdine {
+        flex-direction: column;
+        width: 300px;
+    }
+
+    .prodotto {
+        flex-direction: column;
+        height: 250px;
+    }
+
+    .containerOrdine {
+        width: 300px;
+    }
+
+    .prodottiOrdine p {
+        text-align: center;
+        width: 300px;
+        margin: 0;
+    }
+}

@@ -80,8 +80,7 @@ a:link, a:visited, a {
 }
 
 
-p {
-    color: white;
+.containerOfAll p, #indeciso {
     font-size: 15pt;
     font-weight: bold;
 }
@@ -96,17 +95,6 @@ p {
     width: 48px;
 }
 
-#divErrorePermessi {
-    background-color: red;
-    color: white;
-    font-weight: bold;
-    width: 18%;
-    text-align: center;
-    padding: 15px;
-    margin-bottom: 3%;
-    border-radius: 15px;
-}
-
 .containerOfAll {
     display: flex;
     flex-direction: column;
@@ -118,7 +106,7 @@ p {
 }
 
 #fondoPagina {
-    border: 2px solid red;
+    /*border: 2px solid red;*/
     width: 350px;
     align-self: center;
 }
@@ -139,6 +127,9 @@ p {
     text-align: center;
 }
 
+#imgPlus {
+    cursor: pointer;
+}
 
 /*quando la larghezza della finestra scende sotto i 900 pixel i bottoni della barra
 di navigazione vengono disposti in verticale */

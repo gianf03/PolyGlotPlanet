@@ -54,6 +54,7 @@ insert into Categoria (nome, foto) values
 
 insert into Utente (nome, cognome, dataNascita, email, passwordHash, genere, admin) values
 ("Sebastiano", "Caliendo", "2000-06-22", "sebcal2@gmail.com", SHA1("albicocca41"), "M", false),
+("Giuseppe", "Falciano", "2003-06-22", "giufal1@gmail.com", SHA1("albicocca41"), "M", false),
 ("Gianfranco", "Vitiello", "2003-03-07", "giavit7@gmail.com", SHA1("ananas12"), "M", true);
 
 INSERT INTO Prodotto (prezzoBase, scontoPercentuale, IDCategoria, codISOLingua) VALUES

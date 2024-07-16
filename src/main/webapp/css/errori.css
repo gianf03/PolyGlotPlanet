@@ -1,0 +1,112 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#logoNome {
+    display: flex;
+    height: 100px;
+    align-items: center;
+    margin-left: 50px;
+}
+
+#container {
+    display: flex;
+    margin-top: 60px;
+}
+
+#container>div {
+    width: 50%;
+}
+
+#imgErrore img {
+    width: 100%;
+    height: auto;
+}
+
+#p1 {
+    font-size: 60pt;
+    font-weight: bold;
+}
+
+#p2 {
+    font-size: 30pt;
+}
+
+#p3 {
+    font-size: 20pt;
+}
+
+#p4, #index {
+    font-size: 16pt;
+}
+
+#contenuto>p, #index {
+    margin: 10px;
+}
+
+#contenuto {
+    margin-left: 70px;
+    text-align: left;
+    /*align-content: center;*/
+}
+
+#p3, #p4 {
+    color: dimgray;
+}
+
+#nome {
+    font-size: 30pt;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+#logo {
+    height: 80px;
+    width: auto;
+}
+
+#imgErrore #stop {
+    width: 80%;
+}
+
+@media screen and (max-width: 950px) {
+    #nome {
+        font-size: 22pt;
+    }
+
+    #container {
+        flex-direction: column;
+    }
+
+     #container div {
+         width: 100%;
+     }
+
+    #imgErrore img {
+        width: 80%;
+        height: auto;
+    }
+
+    #contenuto {
+        margin-left: 0;
+    }
+
+    #p1 {
+        font-size: 40pt;
+    }
+
+    #p2 {
+        font-size: 25pt;
+    }
+
+    #imgErrore {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    #logoNome {
+        margin-left: 20px;
+    }
+}

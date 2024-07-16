@@ -1,12 +1,12 @@
 package Model.Bean;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 
 public class Composizione {
 
     private Ordine ordine;
     private Prodotto prodotto;
-    private LocalDateTime dataOra;
     private double prezzoAcquisto;
 
     public Ordine getOrdine() {
@@ -25,16 +25,9 @@ public class Composizione {
         this.prodotto = prodotto;
     }
 
-    public LocalDateTime getDataOra() {
-        return dataOra;
-    }
-
-    public void setDataOra(LocalDateTime dataOra) {
-        this.dataOra = dataOra;
-    }
-
-    public double getPrezzoAcquisto() {
-        return prezzoAcquisto;
+    public String getPrezzoAcquisto() {
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format(prezzoAcquisto);
     }
 
     public void setPrezzoAcquisto(double prezzoAcquisto) {

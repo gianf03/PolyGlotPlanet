@@ -11,7 +11,7 @@
     <% List<Utente> utenti = (List<Utente>) request.getAttribute("utenti");%>
 
     <%@include file="WEB-INF/jsp/header.jsp"%>
-    <div class="containerOfAll">
+    <div class="containerOfAll" style="text-align: center;">
 
         <table id="tableUtenti">
             <tr class="rigaUtenti">
@@ -35,6 +35,8 @@
                 </tr>
             <%}%>
         </table>
+
+        <button id="tuttiOrdini" onclick="document.location='mostraOrdiniUtente?IDUtente=all'">Mostra tutti gli ordini</button>
     </div>
 </body>
 </html>
