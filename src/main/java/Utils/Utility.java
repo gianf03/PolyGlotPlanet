@@ -31,4 +31,11 @@ public class Utility {
 
         return flag;
     }
+
+    public static String adjustDate(String date){
+        date = date.replace("-", "/");
+        date = date.replace("T", " ");
+
+        return date;
+    }
 }

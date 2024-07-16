@@ -55,9 +55,9 @@ create table Categoria(
 
 create table Prodotto(
 	ID int auto_increment primary key,
-    prezzoBase double not null,
-    scontoPercentuale double not null,
-    prezzoAttuale double not null,
+    prezzoBase decimal(10,2) not null,
+    scontoPercentuale decimal(4,2) not null,
+    prezzoAttuale decimal(10,2) not null,
     IDCategoria int not null,
     codISOLingua char(2) not null,
     
@@ -67,7 +67,9 @@ create table Prodotto(
 
 create table Ordine(
 	ID int auto_increment primary key,
-    prezzoTotale double not null,
+    prezzoTotale decimal(10,2) default 0,
+    numeroProdotti int default 0,
+    dataOra datetime not null,
     IDUtente int not null,
     
     foreign key (IDUtente) references Utente(id) on delete cascade on update cascade
@@ -118,8 +120,7 @@ create table Formazione(
 create table Composizione(
 	IDOrdine int,
     IDProdotto int,
-    dataOra datetime not null,
-    prezzoAcquisto double not null,
+    prezzoAcquisto decimal(10,2) not null,
     
     primary key(IDOrdine, IDProdotto),
     foreign key (IDProdotto) references Prodotto(ID) on delete cascade on update cascade,
@@ -173,3 +174,32 @@ ON SCHEDULE
     STARTS '2024-07-11 10:00:01'
 DO
     CALL elimina_colloqui_non_prenotati();
+
+
+DELIMITER //
+
+CREATE TRIGGER blocca_modifica_prezzoAttuale
+BEFORE UPDATE ON Prodotto
+FOR EACH ROW
+BEGIN
+    IF NEW.prezzoAttuale != OLD.prezzoAttuale THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Modifica diretta del campo "prezzoAttuale" non permessa.';
+    END IF;
+END;
+//
+
+DELIMITER ;
+
+
+DELIMITER //
+CREATE TRIGGER update_numeroProdotti_and_prezzoTotale
+AFTER INSERT ON Composizione
+FOR EACH ROW
+BEGIN
+    UPDATE Ordine
+    SET numeroProdotti = numeroProdotti + 1, prezzoTotale = prezzoTotale + NEW.prezzoAcquisto 
+    WHERE Ordine.ID = NEW.IDOrdine;
+END;
+//
+DELIMITER ;

@@ -377,3 +377,9 @@ tr:nth-child(even) {
     overflow: auto;
 }
 
+
+/*utentiAdmin.jsp*/
+#tuttiOrdini {
+    margin: 30px 0;
+}
+
