@@ -36,7 +36,7 @@
             </table>
 
             <div id="divTastoModifica">
-                <button id="tastoModifica" onclick="mostraModificaDati('containerModificaDati')">Modifica</button>
+                <button id="tastoModifica" onclick="showElemById('containerModificaDati')">Modifica</button>
             </div>
         </div>
 
@@ -92,7 +92,7 @@
 </div>
 <%@include file="WEB-INF/jsp/footer.jsp"%>
 
-<script src="JavaScript/mostraModificaDati.js"></script>
+<script src="JavaScript/showElemById.js"></script>
 <script src="JavaScript/cambiaAltezza.js"></script>
 </body>
 </html>

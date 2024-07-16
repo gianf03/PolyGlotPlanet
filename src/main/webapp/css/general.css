@@ -261,7 +261,7 @@ tr:nth-child(even) {
     height: 40vh;
     width: 25vw;
     border: solid black;
-    background-color: white;
+    background-color: whitesmoke;
 
     border-radius: 30px;
     text-align: center;
@@ -328,8 +328,52 @@ tr:nth-child(even) {
     background-color: mediumaquamarine;
 }
 
-/*lingueEsperto.jsp*/
-
+/*homeEsperto.jsp*/
 #tableLingue {
     margin: auto;
 }
+
+#divListaConoscenze, #divAggiungiLingua {
+    text-align: center;
+    height: 500px;
+    width: 500px;
+    background-color: whitesmoke;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    position: absolute;
+    border-radius: 30px;
+    border: 1px solid grey;
+}
+
+#divAggiungiLingua {
+    height: 100px;
+    width: 350px;
+    display: none;
+    align-content: center;
+}
+
+#btnChiudiLista, #btnAggiungiLingua, #btnConferma, #btnRimuovi {
+    color: white;
+    background-color: #007253;
+    height: 30px;
+    width: 150px;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+#btnRimuovi {
+    height: 20px;
+    width: 80px;
+    border-radius: 10px;
+    margin: auto;
+}
+
+#divListaConoscenze {
+    overflow: auto;
+}
+

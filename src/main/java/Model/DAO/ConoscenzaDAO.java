@@ -5,10 +5,7 @@ import Model.Bean.Esperto;
 import Model.Bean.Lingua;
 import Model.ConPool;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,6 +94,41 @@ public class ConoscenzaDAO {
             return conoscenze;
         } catch (SQLException e) {
             throw new RuntimeException();
+        }
+    }
+
+
+    public void doSave(int IDEsperto, String codISOLingua) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "INSERT INTO Conoscenza (codISOLingua, IDEsperto) VALUES(?,?)");
+
+            ps.setString(1, codISOLingua);
+            ps.setInt(2, IDEsperto);
+
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("INSERT error.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void doUpdate(int IDEsperto, String codISOLingua) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "DELETE FROM Conoscenza WHERE codISOLingua=? AND IDEsperto=?");
+
+            ps.setString(1, codISOLingua);
+            ps.setInt(2, IDEsperto);
+
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("INSERT error.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }

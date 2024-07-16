@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.Bean.Conoscenza;
-import Model.Bean.Lingua;
 import Model.DAO.ConoscenzaDAO;
-import Model.DAO.LinguaDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,10 +9,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 
-@WebServlet("/mostraLingueEsperto")
-public class MostraLingueEspertoServlet extends HttpServlet {
+@WebServlet("/aggiungiRimuoviLinguaEsperto")
+public class AggiungiRimuoviLinguaEspertoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,23 +20,23 @@ public class MostraLingueEspertoServlet extends HttpServlet {
         resp.setContentType("text/html");
 
         int IDEsperto = Integer.parseInt(req.getParameter("IDEsperto"));
-        List<Conoscenza> conoscenzeEsp = null;
+        String codISOLingua = req.getParameter("codISOLingua");
+        String operation = req.getParameter("operation");
 
         String address = "homeEsperto.jsp";
 
-        if(IDEsperto > 0) {
+        if(codISOLingua != null && !codISOLingua.isBlank()) {
+
             ConoscenzaDAO conoscenzaDAO = new ConoscenzaDAO();
-            conoscenzeEsp = conoscenzaDAO.doRetrieveByIDEsperto(IDEsperto);
 
-            LinguaDAO linguaDAO = new LinguaDAO();
-            List<Lingua> lingue = linguaDAO.getlingueNonConosciute(IDEsperto);
-
-            req.setAttribute("lingueNonConosciute", lingue);
-            req.setAttribute("conoscenzeEsp", conoscenzeEsp);
+            if(operation.equals("add")) {
+                conoscenzaDAO.doSave(IDEsperto, codISOLingua);
+            } else if(operation.equals("del")) {
+                conoscenzaDAO.doUpdate(IDEsperto, codISOLingua);
+            }
         }
 
-        RequestDispatcher rd = req.getRequestDispatcher(address);
-        rd.forward(req, resp);
+        resp.sendRedirect(address);
     }
 
     @Override
