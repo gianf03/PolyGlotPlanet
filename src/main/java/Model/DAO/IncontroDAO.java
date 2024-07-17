@@ -202,7 +202,7 @@ public class IncontroDAO {
             ps = con.prepareStatement("SELECT * FROM (((Prodotto p JOIN Incontro i ON p.ID=i.IDProdotto) " +
                     "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON p.codISOLingua=l.codISOLingua) " +
                     "JOIN Esperto e ON i.IDEsperto=e.ID WHERE l.codISOLingua=? AND p.prezzoAttuale>=? " +
-                    "AND p.prezzoAttuale<? AND c.dataOra>=? AND c.prenotato = false");
+                    "AND p.prezzoAttuale<? AND i.dataOra>=? AND i.prenotato = false");
             ps.setString(1, codISOLingua);
             ps.setInt(2, prezzoMin);
             ps.setInt(3, prezzoMax);

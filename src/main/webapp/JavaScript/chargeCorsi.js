@@ -77,6 +77,11 @@ function chargeCorsi(){
                     containerCorsi.style.height = "300px";
                 } else {
 
+                    containerCorsi.style.textAlign = "";
+                    containerCorsi.style.justifyContent = "";
+                    containerCorsi.style.width = "";
+                    containerCorsi.style.height = "";
+
                     for (var i = 0; i < corsi.length; i++) {
                         let corsoItem = document.createElement("div");
                         containerCorsi.appendChild(corsoItem);

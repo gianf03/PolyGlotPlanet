@@ -75,6 +75,11 @@ function chargeIncontri() {
                     containerIncontri.style.height = "300px";
                 } else {
 
+                    containerIncontri.style.textAlign = "";
+                    containerIncontri.style.justifyContent = "";
+                    containerIncontri.style.width = "";
+                    containerIncontri.style.height = "";
+
                     for (let i = 0; i < incontri.length; i++) {
                         let incontroItem = document.createElement("div");
                         containerIncontri.appendChild(incontroItem);

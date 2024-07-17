@@ -7,8 +7,6 @@ function chargeColloqui() {
 
     let url = "mostraColloquiAjax?";
 
-
-
     if(!urlAndQuery.includes("filtro=false")) {
         let languageCheckboxes = document.getElementsByClassName("div-lingua");
         let prezzoMin = document.getElementById("prezzoMin").value;
@@ -24,6 +22,7 @@ function chargeColloqui() {
                     url += "codLingua=" + languageCheckboxes[i].getElementsByTagName("input")[0].id + "&";
                 }
             }
+
         }
 
         if (prezzoMin !== "niente" && prezzoMax !== '') {
@@ -81,6 +80,13 @@ function chargeColloqui() {
                     containerColloqui.style.width = "100%";
                     containerColloqui.style.height = "300px";
                 } else {
+
+                    containerColloqui.style.textAlign = "";
+                    containerColloqui.style.justifyContent = "";
+                    containerColloqui.style.width = "";
+                    containerColloqui.style.height = "";
+
+
                     for (let i = 0; i < colloqui.length; i++) {
                         let colloquioItem = document.createElement("div");
                         containerColloqui.appendChild(colloquioItem);
@@ -158,14 +164,44 @@ function chargeColloqui() {
                         prezzo.className = "prezzoOrario";
                         prezzo.innerHTML = colloqui[i].prezzoOrario + " €/ora";
 
+
+
+                        let hiddenForm = document.createElement("form");
+                        containerPrezzoCarrello.appendChild(hiddenForm);
+                        hiddenForm.method = "GET";
+                        hiddenForm.action = "aggiungiProdottoCarrello";
+                        hiddenForm.target = "frameCarrello";
+
+                        let hiddenInputType = document.createElement("input");
+                        hiddenForm.appendChild(hiddenInputType);
+                        hiddenInputType.type = "text";
+                        hiddenInputType.name = "ID"
+                        hiddenInputType.value = colloqui[i].id;
+                        hiddenInputType.style.display = "none";
+
+                        let button = document.createElement("button");
+                        hiddenForm.appendChild(button);
+                        button.type = "submit";
+                        button.className = "buttonCarrello";
+
+
                         let divCarrello = document.createElement("div");
-                        containerPrezzoCarrello.appendChild(divCarrello);
+                        button.appendChild(divCarrello);
                         divCarrello.className = "divCarrello";
 
                         let carrello = document.createElement("img");
                         divCarrello.appendChild(carrello);
                         carrello.className = "fotoCarrello";
                         carrello.src = "img/carrello.png";
+
+                        /*let divCarrello = document.createElement("div");
+                        containerPrezzoCarrello.appendChild(divCarrello);
+                        divCarrello.className = "divCarrello";
+
+                        let carrello = document.createElement("img");
+                        divCarrello.appendChild(carrello);
+                        carrello.className = "fotoCarrello";
+                        carrello.src = "img/carrello.png";*/
                     }
                 }
             }

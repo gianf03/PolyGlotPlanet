@@ -114,16 +114,35 @@ public class AccessFilter extends HttpFilter {
             }
         }
 
-        if((path.contains("colloqui.jsp") || path.contains("corsi.jsp") || path.contains("incontri.jsp"))
-                && (httpServletRequest.getQueryString() == null || httpServletRequest.getQueryString().isBlank())){
-            //httpServletResponse.sendRedirect("index.jsp?error=18"); //accesso non negato alla pagina
-            httpServletResponse.sendError(401);
-            return;
+        if(path.contains("colloqui.jsp") || path.contains("corsi.jsp") || path.contains("incontri.jsp")){
+            if(httpServletRequest.getQueryString()==null){
+                if(path.contains("colloqui.jsp")) {
+                    httpServletResponse.sendRedirect(getServletContext().getContextPath() +
+                            "/colloqui.jsp?codLingua=all&filtro=false");
+                } else if (path.contains("incontri.jsp")){
+                    httpServletResponse.sendRedirect(getServletContext().getContextPath() +
+                            "/incontri.jsp?codLingua=all&filtro=false");
+                } else {
+                    httpServletResponse.sendRedirect(getServletContext().getContextPath() +
+                            "/corsi.jsp?codLingua=all&filtro=false");
+                }
+                return;
+            } else if (httpServletRequest.getQueryString().isBlank()){
+                httpServletResponse.sendError(401);
+                return;
+            }
         }
 
-        if(path.contains("login") && httpServletRequest.getSession(false) != null){
+
+        /*la sessione contiene eventualmente il carrello. Se io vado su una pagina di login utente,
+         soltanto se sono già loggato come utente o come epserto faccio l'invalidazione altrimenti la sessione corrente mi sta bene
+         se vado su login Admin o login Esperto il carrello non mi serve e quindi invalido a prescindere*/
+        if((path.contains("loginUtente") && (httpServletRequest.getSession(false).getAttribute("utente") != null ||
+                httpServletRequest.getSession(false).getAttribute("esperto") != null)) ||
+                (path.contains("loginAdmin") || path.contains("loginEsperto") && httpServletRequest.getSession(false) != null)){
             httpServletRequest.getSession(false).invalidate(); //non ci vuole return perché mi serve che esegua chain.doFilter()
         }
+
 
         chain.doFilter(req, res); //Se il filtro corrente è l'ultimo nella catena, l'istruzione passa il controllo al servlet o alla risorsa web (come una JSP) designata per gestire la richiesta
     }

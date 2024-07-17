@@ -44,7 +44,7 @@
                 <%}%>
                 <%if (e==null && u==null || (u!=null && !u.isAdmin())) {%>
                     <li class="headerElement">
-                        <a href="">
+                        <a href="carrello.jsp">
                             <img alt="carrello stilizzato" src="img/carrello.png">
                         </a>
                     </li>

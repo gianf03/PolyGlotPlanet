@@ -1,5 +1,6 @@
 package Model.DAO;
 
+import Model.Bean.Lingua;
 import Model.Bean.Ordine;
 import Model.Bean.Utente;
 import Model.ConPool;
@@ -10,6 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrdineDAO {
+    public void doSave(Ordine ordine) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "INSERT INTO Ordine (dataOra, IDUtente) VALUES(?,?)",
+                    Statement.RETURN_GENERATED_KEYS);
+            ps.setTimestamp(1, Timestamp.valueOf(ordine.getDataOra()));
+            ps.setInt(2, ordine.getUtente().getID());
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("INSERT error.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public List<Ordine> doRetrieveAllByUtente(int IDUtente) {
         try (Connection con = ConPool.getConnection()) {

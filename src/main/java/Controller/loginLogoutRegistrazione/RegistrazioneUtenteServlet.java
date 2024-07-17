@@ -88,7 +88,6 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
             address = "loginUtente.jsp?registration=good";
         }
 
-
         resp.sendRedirect(address);
     }
 

@@ -1,6 +1,11 @@
 package Controller.loginLogoutRegistrazione;
 
+import Model.Bean.Carrello;
+import Model.Bean.Formazione;
+import Model.Bean.Prodotto;
 import Model.Bean.Utente;
+import Model.DAO.CarrelloDAO;
+import Model.DAO.FormazioneDAO;
 import Model.DAO.UtenteDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,6 +15,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/loginUtente")
 public class LoginUtenteServlet extends HttpServlet {
@@ -51,11 +58,41 @@ public class LoginUtenteServlet extends HttpServlet {
 
         if(!address.contains("error") && !utente.isAdmin()) {
             session = req.getSession();
-            session.invalidate(); //se mentre mi sono loggato come admin o esperto tento di loggarmi come utente invalido la sessione con admin o esperto
-
-            session = req.getSession();
             session.setAttribute("utente", utente);
             address = "index.jsp";
+
+            List<Prodotto> prodottiCarrelloLogico = (List<Prodotto>) session.getAttribute("carrello");
+            FormazioneDAO formazioneDAO = new FormazioneDAO();
+            CarrelloDAO carrelloDAO = new CarrelloDAO();
+
+            Utente u = (Utente) session.getAttribute("utente");
+            Carrello carrello = carrelloDAO.doRetrieveByIdUtente(u.getID());
+
+            if(prodottiCarrelloLogico!=null){
+
+                if(carrello == null){
+                    carrello = new Carrello();
+                    carrello.setUtente(u);
+                    carrelloDAO.doSave(carrello);
+                }
+
+                for(Prodotto p : prodottiCarrelloLogico){
+                    if(formazioneDAO.doRetrieveByIdProdotto(p.getID()) == null) {
+                        Formazione formazione = new Formazione();
+                        formazione.setProdotto(p);
+                        formazione.setCarrello(carrello);
+
+                        formazioneDAO.doSave(formazione);
+                    }
+                }
+            }
+
+            List<Formazione> formazioni = formazioneDAO.doRetrieveByIdCarrello(carrello.getId());
+            List<Prodotto> prodottiCarrelloFisico = new ArrayList<>();
+            for(Formazione f : formazioni) {
+                prodottiCarrelloFisico.add(f.getProdotto());
+            }
+            session.setAttribute("carrello", prodottiCarrelloFisico);
         }
 
         resp.sendRedirect(address);
