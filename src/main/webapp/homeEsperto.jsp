@@ -6,7 +6,7 @@
 <head>
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" href="css/general.css" rel="stylesheet">
+    <link type="text/css" href="css/esperto.css" rel="stylesheet">
     <script src="JavaScript/showElemById.js"></script>
 </head>
 <body>
@@ -16,7 +16,16 @@
         Esperto esp = (Esperto) session.getAttribute("esperto");
         List<Conoscenza> conoscenze = (List<Conoscenza>) request.getAttribute("conoscenzeEsp");
         List<Lingua> lingueNonConosciute = (List<Lingua>) request.getAttribute("lingueNonConosciute");
-    %>
+
+        String op = request.getParameter("op");
+
+        if(op != null) {
+            if(op.equals("insertion")) { %>
+                <script>alert("Inserimento avvenuto con successo!")</script>
+            <%} else if(op.equals("removal")){ %>
+                <script>alert("Rimozione avvenuta con successo!")</script>
+            <%}
+        }%>
 
     <div class="containerOfAll">
 

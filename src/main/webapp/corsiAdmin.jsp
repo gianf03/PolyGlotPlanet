@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>Lista corsi</title>
-    <link type="text/css" href="css/general.css" rel="stylesheet">
+    <link type="text/css" href="css/admin.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="JavaScript/modificaCorso.js"></script>
 </head>
@@ -14,7 +14,12 @@
     <%
         List<Corso> corsi = (List<Corso>) request.getAttribute("corsi");
         List<Lingua> lingue = (List<Lingua>) application.getAttribute("lingue");
-    %>
+
+        String insertion = request.getParameter("insertion");
+
+        if(insertion != null && insertion.equals("good")) {%>
+            <script>alert("Inserimento avvenuto con successo!")</script>
+    <%}%>
     <%@include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
 
@@ -58,14 +63,14 @@
                         <td><%=c.getScontoPercentuale()%> %</td>
                         <td><%=c.isDisponibile()%></td>
                         <td>
-                            <button onclick="modificaCorso(<%=c.getID()%>,<%=c.getPrezzoBase()%>, <%=c.getScontoPercentuale()%>)">Modifica</button>
+                            <button id="btnModifica" onclick="modificaCorso(<%=c.getID()%>,<%=c.getPrezzoBase()%>, <%=c.getScontoPercentuale()%>)">Modifica</button>
                         </td>
                     </tr>
             <%}%>
         </table>
 
         <div id="divModifica">
-            <form action="modificaProdotto">
+            <form action="modificaCorso">
                 <div class="datiMod">
                     <input type="hidden" name="IDProdotto" id="idProd">
                 </div>
@@ -88,8 +93,10 @@
                 </div>
 
                 <div class="datiMod">
-                    <input type="submit" value="Conferma">
+                    <input class="btnConferma" type="submit" value="Conferma">
                 </div>
+
+                <button class="btnChiudi" onclick="chiudiDivAggiungi('aggiungiCorso')">Chiudi</button>
             </form>
         </div>
 
@@ -131,11 +138,10 @@
                 </div>
 
                 <div class="aggiungiCorsoItem">
-                    <input type="submit" value="Aggiungi">
+                    <button class="btnChiudi" onclick="chiudiDivAggiungi('aggiungiCorso')">Chiudi</button>
+                    <input class="btnAggiungi" type="submit" value="Aggiungi">
                 </div>
             </form>
-
-            <button id="closeBtn" onclick="chiudiDivAggiungi('aggiungiCorso')">Chiudi</button>
         </div>
     </div>
 </body>

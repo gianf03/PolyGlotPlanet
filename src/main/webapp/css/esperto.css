@@ -1,0 +1,168 @@
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#containerEsperto {
+    height: 80%;
+    display: flex;
+}
+
+.espertoSettings {
+    background-color: mediumaquamarine;
+    margin: auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 30px;
+}
+
+.settingsLink {
+    width: 180px;
+    background-color: #007253;
+    border-radius: 30px;
+    align-content: center;
+    text-align: center;
+    margin: auto;
+}
+
+.settingsLink > a {
+    color: white;
+    font-size: 16pt;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.settingsImg, .settingsLink {
+    align-content: center;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#imgLingua {
+    height: 30px;
+    width: 50px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #D6EEEE;
+}
+
+#tableLingue {
+    margin: auto;
+}
+
+#divListaConoscenze, #divAggiungiLingua {
+    text-align: center;
+    height: 500px;
+    width: 500px;
+    background-color: whitesmoke;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    position: absolute;
+    border-radius: 30px;
+    border: 1px solid grey;
+}
+
+#divAggiungiLingua {
+    height: 100px;
+    width: 350px;
+    display: none;
+    align-content: center;
+}
+
+#btnChiudiLista, #btnAggiungiLingua, #btnConferma, #btnRimuovi, #tastoModifica, #tastoConferma {
+    color: white;
+    background-color: #007253;
+    height: 30px;
+    width: 150px;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+#btnRimuovi {
+    height: 20px;
+    width: 80px;
+    border-radius: 10px;
+    margin: auto;
+}
+
+#divListaConoscenze {
+    overflow: auto;
+}
+
+#containerAreaEsperto {
+    display: flex;
+}
+
+#containerDatiEsperto, #containerModificaDatiEsperto {
+    margin: 50px auto 50px auto;
+    text-align: center;
+    align-content: center;
+
+    background-color: whitesmoke;
+    border: 1px solid grey;
+    border-radius: 30px;
+    width: 300px;
+    height: 550px;
+}
+
+#nomeEsp, #cognomeEsp, #newPassEsp, #confNewPassEsp, #dateTime, #capInc, #viaInc, #civicoInc, #linguaInc, #prBaseInc, #scontoInc {
+    height: 30px;
+    width: 200px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.credenziali > input, .aggiungiIncontroItem > input {
+    margin-top: 10px;
+}
+
+.credenziali, .aggiungiIncontroItem {
+    margin-top: 20px;
+}
+
+#divImgEsperto {
+    margin: auto;
+    height: 175px;
+    width: 175px;
+}
+
+#imgEsperto {
+    height: inherit;
+    width: inherit;
+    border-radius: 10px;
+}
+
+#tableDatiEsperto {
+    margin: auto;
+}
+
+#divAggiungiIncontro {
+    display: none;
+    position: absolute; /*sovrappone il container al resto della pagina*/
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /*allinea il container al centro della pagina*/
+
+    height: inherit;
+    width: 300px;
+    border: 1px solid grey;
+    border-radius: 30px;
+
+    background-color: whitesmoke;
+    text-align: center;
+    align-content: center;
+}

@@ -35,9 +35,9 @@ public class AggiungiCorsoServlet extends HttpServlet {
         String address = "corsiAdmin.jsp";
 
         if(codISOLingua == null || codISOLingua.isBlank() || codISOLingua.length() > 2 || descrizione == null
-        || descrizione.isBlank() || descrizione.length() > 255 || numeroUnita <= 0 || livello == null
-        || livello.isBlank() || !livello.contains("-") || livello.length() > 5 || prezzoBase <=0 || scontoPercentuale < 0) {
-            address += "?error=19"; //caricamento nuovo corso fallito
+        || descrizione.isBlank() || numeroUnita <= 0 || livello == null
+        || livello.isBlank() || !livello.contains("-") || prezzoBase <=0 || scontoPercentuale < 0) {
+            address += "?error=17"; //caricamento nuovo corso fallito
         }
 
         CorsoDAO corsoDAO = null;
@@ -73,6 +73,11 @@ public class AggiungiCorsoServlet extends HttpServlet {
             //salvo nel db il nuovo corso associato al prodotto appena creato
             corsoDAO = new CorsoDAO();
             corsoDAO.doSave(c);
+
+            List<Integer> prezziCorsi = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(1);
+            getServletContext().setAttribute("prezziCorsi", prezziCorsi);
+
+            address += "?insertion=good";
         }
 
         List<Corso> corsi = corsoDAO.doRetrieveAll();

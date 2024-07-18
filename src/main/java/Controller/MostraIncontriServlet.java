@@ -2,8 +2,10 @@ package Controller;
 
 import Model.Bean.Colloquio;
 import Model.Bean.Incontro;
+import Model.Bean.Lingua;
 import Model.DAO.ColloquioDAO;
 import Model.DAO.IncontroDAO;
+import Model.DAO.LinguaDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -33,6 +35,14 @@ public class MostraIncontriServlet extends HttpServlet {
             address = "/incontri.jsp";
         } else if(IDEsperto > 0) {
             incontri = incontroDAO.doRetrieveByEsperto(IDEsperto);
+
+            /*inserisco la lista delle lingue conosciute dell'esperto nella request
+            per poter aggiungere un nuovo incontro*/
+            LinguaDAO linguaDAO = new LinguaDAO();
+            List<Lingua> lingueConosciute = linguaDAO.doRetrieveByEsperto(IDEsperto);
+
+            req.setAttribute("lingueConosciute", lingueConosciute);
+
             address = "/incontriEsperto.jsp";
         }
 

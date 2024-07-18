@@ -13,27 +13,29 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/modificaProdotto")
-public class ModificaProdottoServlet extends HttpServlet {
+@WebServlet("/modificaCorso")
+public class ModificaCorsoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
 
-        Boolean disponibile = Boolean.parseBoolean(req.getParameter("disponibile"));
-        Double prezzoBase = Double.parseDouble(req.getParameter("prezzoBase"));
-        Double scontoPercentuale = Double.parseDouble(req.getParameter("scontoPercentuale"));
+        boolean disponibile = Boolean.parseBoolean(req.getParameter("disponibile"));
+        double prezzoBase = Double.parseDouble(req.getParameter("prezzoBase"));
+        double scontoPercentuale = Double.parseDouble(req.getParameter("scontoPercentuale"));
         int IDProdotto = Integer.parseInt(req.getParameter("IDProdotto"));
 
         String address = "corsiAdmin.jsp";
 
-        if(disponibile != null && prezzoBase != null && scontoPercentuale != null && prezzoBase > 0
-                && scontoPercentuale >=0 && IDProdotto > 0) {
+        CorsoDAO corsoDAO = new CorsoDAO();
+
+        if(prezzoBase > 0 && scontoPercentuale >=0) {
             ProdottoDAO prodottoDAO = new ProdottoDAO();
-            prodottoDAO.doUpdate(IDProdotto, disponibile, prezzoBase, scontoPercentuale);
+            prodottoDAO.doUpdate(IDProdotto, prezzoBase, scontoPercentuale);
+
+            corsoDAO.doUpdate(disponibile, IDProdotto);
         }
 
-        CorsoDAO corsoDAO = new CorsoDAO();
         List<Corso> corsi = corsoDAO.doRetrieveAll();
         req.setAttribute("corsi", corsi);
 

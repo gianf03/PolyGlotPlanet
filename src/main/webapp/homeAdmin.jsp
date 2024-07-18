@@ -2,11 +2,19 @@
 <html>
 <head>
     <title>Area admin</title>
-    <link type="text/css" href="css/general.css" rel="stylesheet">
+    <link type="text/css" href="css/admin.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="JavaScript/modificaCorso.js"></script>
 </head>
 <body>
+
+    <%
+        String insertion = request.getParameter("insertion");
+
+        if(insertion != null && insertion.equals("good")) {%>
+    <script>alert("Inserimento avvenuto con successo!")</script>
+    <%}%>
+
 <%@include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
 
@@ -72,11 +80,11 @@
                 </div>
 
                 <div class="aggiungiLinguaItem">
-                    <input type="submit" value="Aggiungi">
+                    <input id="btnAggiungi" type="submit" value="Aggiungi">
                 </div>
             </form>
 
-            <button onclick="chiudiDivAggiungi('aggiungiLingua')">Chiudi</button>
+            <button id="btnChiudi" onclick="chiudiDivAggiungi('aggiungiLingua')">Chiudi</button>
         </div>
     </div>
 </body>

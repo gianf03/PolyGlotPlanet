@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.DAO.ConoscenzaDAO;
+import Model.DAO.ProdottoDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -31,8 +32,10 @@ public class AggiungiRimuoviLinguaEspertoServlet extends HttpServlet {
 
             if(operation.equals("add")) {
                 conoscenzaDAO.doSave(IDEsperto, codISOLingua);
+                address += "?op=insertion";
             } else if(operation.equals("del")) {
                 conoscenzaDAO.doUpdate(IDEsperto, codISOLingua);
+                address += "?op=removal";
             }
         }
 

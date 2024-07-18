@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Lista esperti</title>
-    <link rel="stylesheet" type="text/css" href="css/general.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>

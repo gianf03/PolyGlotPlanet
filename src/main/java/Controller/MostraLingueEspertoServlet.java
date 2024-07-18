@@ -32,7 +32,7 @@ public class MostraLingueEspertoServlet extends HttpServlet {
             conoscenzeEsp = conoscenzaDAO.doRetrieveByIDEsperto(IDEsperto);
 
             LinguaDAO linguaDAO = new LinguaDAO();
-            List<Lingua> lingue = linguaDAO.getlingueNonConosciute(IDEsperto);
+            List<Lingua> lingue = linguaDAO.getLingueNonConosciuteEsperto(IDEsperto);
 
             req.setAttribute("lingueNonConosciute", lingue);
             req.setAttribute("conoscenzeEsp", conoscenzeEsp);

@@ -20,7 +20,7 @@
 
         <table id="tableOrdini">
 
-            <%if(!request.getParameter("IDUtente").equals("all")) {%>
+            <%if(!request.getParameter("IDUtente").equals("all") && !ordini.isEmpty()) {%>
             <tr>
                 <td>Ordini Utente: #<%=ordini.get(0).getUtente().getID()%> <%=ordini.get(0).getUtente().getNome()%>
                     <%=ordini.get(0).getUtente().getCognome()%></td>

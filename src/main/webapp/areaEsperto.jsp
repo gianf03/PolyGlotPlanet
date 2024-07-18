@@ -2,14 +2,14 @@
 <html>
 <head>
     <title>Area Esperto</title>
-    <link type="text/css" href="css/general.css" rel="stylesheet">
+    <link type="text/css" href="css/esperto.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <%@include file="WEB-INF/jsp/header.jsp"%>
 <div class="containerOfAll">
     <div id="containerAreaEsperto">
-        <div id="containerdatiEsperto">
+        <div id="containerDatiEsperto">
 
             <div id="divImgEsperto">
                 <img id="imgEsperto" alt="foto esperto" src="${esperto.fotoRiconoscitiva}">
@@ -48,7 +48,7 @@
         <div id="containerModificaDatiEsperto">
             <form id="formModDatiEsperto" action="modificaDatiEsperto" method="POST" enctype="multipart/form-data">
                 <div class="credenziali">
-                    <label for="nomeEsp">Nome</label>
+                    <label for="nomeEsp">Nome</label><br>
                     <input type="text" id="nomeEsp" name="nomeEsp" value="${esperto.nome}" onclick="removeError('error1')">
 
                     <% if(error != null && error.contains("error=1")) {%>
@@ -56,7 +56,7 @@
                     <%}%>
                 </div>
                 <div class="credenziali">
-                    <label for="cognomeEsp">Cognome</label>
+                    <label for="cognomeEsp">Cognome</label><br>
                     <input type="text" id="cognomeEsp" name="cognomeEsp" value="${esperto.cognome}" onclick="removeError('error2')">
 
                     <% if(error != null && error.contains("error=2")) {%>
@@ -64,7 +64,7 @@
                     <%}%>
                 </div>
                 <div class="credenziali">
-                    <label for="newPassEsp">Nuova password</label>
+                    <label for="newPassEsp">Nuova password</label><br>
                     <input type="password" id="newPassEsp" name="newPassEsp" onclick="removeError('error3')">
 
                     <% if(error != null && error.contains("error=6") ) {%>
@@ -72,7 +72,7 @@
                     <%}%>
                 </div>
                 <div class="credenziali">
-                    <label for="confNewPassEsp">Conferma password</label>
+                    <label for="confNewPassEsp">Conferma password</label><br>
                     <input type="password" id="confNewPassEsp" name="confNewPassEsp" onclick="removeError('error4')">
 
                     <% if(error != null && error.contains("error=10") ) {%>
@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="credenziali">
-                    <label for="fotoEsperto">Seleziona una nuova immagine</label>
+                    <label for="fotoEsperto">Seleziona una nuova immagine</label><br>
                     <input type="file" name="imgEsperto" id="fotoEsperto">
                 </div>
 

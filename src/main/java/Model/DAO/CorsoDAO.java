@@ -313,4 +313,21 @@ public class CorsoDAO{
             throw new RuntimeException(e);
         }
     }
+
+    public void doUpdate(boolean disponibile, int IDProdotto) {
+
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("UPDATE Corso SET disponibile=? WHERE IDProdotto=?");
+
+            ps.setBoolean(1, disponibile);
+            ps.setInt(2, IDProdotto);
+
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("INSERT error.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

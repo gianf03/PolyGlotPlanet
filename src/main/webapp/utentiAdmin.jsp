@@ -1,15 +1,13 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Lista utenti</title>
-    <link type="text/css" href="css/general.css" rel="stylesheet">
+    <link type="text/css" href="css/admin.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-
-    <% List<Utente> utenti = (List<Utente>) request.getAttribute("utenti");%>
-
     <%@include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll" style="text-align: center;">
 
@@ -23,17 +21,17 @@
                 <th>Genere</th>
             </tr>
 
-            <% for(Utente ut : utenti) {%>
+            <c:forEach items="${utenti}" var="utente">
                 <tr class="rigaUtenti">
-                    <td><%=ut.getID()%></td>
-                    <td><%=ut.getNome()%></td>
-                    <td><%=ut.getCognome()%></td>
-                    <td><%=ut.getDataNascita()%></td>
-                    <td><%=ut.getEmail()%></td>
-                    <td><%=ut.getGenere()%></td>
-                    <td><button onclick="document.location='mostraOrdiniUtente?IDUtente=<%=ut.getID()%>'">Mostra ordini</button></td>
+                    <td>${utente.ID}</td>
+                    <td>${utente.nome}</td>
+                    <td>${utente.cognome}</td>
+                    <td>${utente.dataNascita}</td>
+                    <td>${utente.email}</td>
+                    <td>${utente.genere}</td>
+                    <td><button onclick="document.location='mostraOrdiniUtente?IDUtente=${utente.ID}'">Mostra ordini</button></td>
                 </tr>
-            <%}%>
+            </c:forEach>
         </table>
 
         <button id="tuttiOrdini" onclick="document.location='mostraOrdiniUtente?IDUtente=all'">Mostra tutti gli ordini</button>

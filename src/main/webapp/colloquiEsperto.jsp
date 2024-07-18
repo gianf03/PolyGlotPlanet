@@ -4,15 +4,24 @@
 <html>
 <head>
     <title>Colloqui Esperto</title>
-    <link type="text/css" href="css/general.css" rel="stylesheet">
+    <link type="text/css" href="css/admin.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="JavaScript/showElemById.js"></script>
 </head>
 <body>
     <%
         List<Colloquio> colloqui = (List<Colloquio>) request.getAttribute("colloqui");
+        Esperto es = (Esperto) session.getAttribute("esperto");
     %>
     <%@include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
+
+        <%
+            if(es != null) {%>
+                <div id="divFiltri">
+                    <button class="dropbtn" id="btnAggiunta" onclick="mostraDivAggiungi('aggiungiCorso')">Aggiungi colloquio</button>
+                </div>
+        <%}%>
 
         <table id="tableColloqui">
             <tr class="rigaColloqui">
@@ -32,6 +41,13 @@
                 <td><%=c.isPrenotato()%></td>
                 <td><%=c.getPrezzoBase()%> €</td>
                 <td><%=c.getScontoPercentuale()%> %</td>
+
+                <%
+                    if(es != null) {%>
+                        <td>
+                            <button id="btnRimuovi" onclick="document.location='rimuoviColloquiIncontriEsperto?IDProdotto=<%=c.getID()%>'">Rimuovi</button>
+                        </td>
+                <%}%>
             </tr>
             <%}%>
         </table>
