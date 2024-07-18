@@ -5,6 +5,7 @@ import Model.Bean.Formazione;
 import Model.Bean.Prodotto;
 import Model.Bean.Utente;
 import Model.DAO.CarrelloDAO;
+import Model.DAO.ComposizioneDAO;
 import Model.DAO.FormazioneDAO;
 import Model.DAO.UtenteDAO;
 import jakarta.servlet.ServletException;
@@ -15,6 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +58,8 @@ public class LoginUtenteServlet extends HttpServlet {
 
         address = address.substring(0, address.length()-1);
 
+        //PrintWriter out = resp.getWriter();
+
         if(!address.contains("error") && !utente.isAdmin()) {
             session = req.getSession();
             session.setAttribute("utente", utente);
@@ -68,19 +72,29 @@ public class LoginUtenteServlet extends HttpServlet {
             Utente u = (Utente) session.getAttribute("utente");
             Carrello carrello = carrelloDAO.doRetrieveByIdUtente(u.getID());
 
+            if(carrello == null){
+                carrello = new Carrello();
+                carrello.setUtente(u);
+                carrelloDAO.doSave(carrello);
+                /*salvo carrello senza id e poi mi prendo carrello con id */
+                carrello = carrelloDAO.doRetrieveByIdUtente(u.getID());
+            }
+
             if(prodottiCarrelloLogico!=null){
 
-                if(carrello == null){
-                    carrello = new Carrello();
-                    carrello.setUtente(u);
-                    carrelloDAO.doSave(carrello);
-                }
-
+                ComposizioneDAO composizioneDAO = new ComposizioneDAO();
                 for(Prodotto p : prodottiCarrelloLogico){
-                    if(formazioneDAO.doRetrieveByIdProdotto(p.getID()) == null) {
+
+                    /*se il prodotto in questione non fa già parte del carrello o di un ordine*/
+                    if(formazioneDAO.doRetrieveByIdProdottoAndIdCarrello(p.getID(), carrello.getId()) == null  &&
+                            composizioneDAO.doRetrieveByIdProdottoAndIdUtente(p.getID(), u.getID()) == null) {
+                        //out.println(p.getID() + "non appartiene a carrello fisico");
+
                         Formazione formazione = new Formazione();
                         formazione.setProdotto(p);
                         formazione.setCarrello(carrello);
+
+                        //out.println("idCarrello : "+carrello.getId() + "\nidProdtto : "+p.getID()+"\n\n");
 
                         formazioneDAO.doSave(formazione);
                     }

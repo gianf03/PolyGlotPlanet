@@ -16,9 +16,9 @@
         <div id="pagamento">
             <p>Metodi di pagamento:</p>
             <div id="metodiPagamento">
-                <a href=""><img src="img/metodiPagamento/visa.png" alt="visa"></a>
-                <a href=""><img src="img/metodiPagamento/americanExpress.png" alt="mastercard"></a>
-                <a href=""><img src="img/metodiPagamento/mastercard.png" alt="american express"></a>
+                <img src="img/metodiPagamento/visa.png" alt="visa">
+                <img src="img/metodiPagamento/americanExpress.png" alt="mastercard">
+                <img src="img/metodiPagamento/mastercard.png" alt="american express">
             </div>
         </div>
 

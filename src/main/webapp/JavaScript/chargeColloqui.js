@@ -170,7 +170,8 @@ function chargeColloqui() {
                         containerPrezzoCarrello.appendChild(hiddenForm);
                         hiddenForm.method = "GET";
                         hiddenForm.action = "aggiungiProdottoCarrello";
-                        hiddenForm.target = "frameCarrello";
+                        hiddenForm.className = "hiddenForm";
+                        //hiddenForm.target = "frameCarrello";
 
                         let hiddenInputType = document.createElement("input");
                         hiddenForm.appendChild(hiddenInputType);

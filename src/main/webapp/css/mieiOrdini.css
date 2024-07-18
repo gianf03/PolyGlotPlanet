@@ -4,7 +4,7 @@ html, body {
     height: 100%;
 }
 
-.infoOrdine {
+.infoOrdine, .infoCarrello {
     display: flex;
     flex-direction: row;
     align-content: center;
@@ -25,7 +25,7 @@ html, body {
     margin-right: 20px;
 }
 
-.containerOrdine img {
+.containerOrdine img, #containerCarrello img {
     height: 100px;
     width: auto;
     border-radius: 10px;
@@ -45,15 +45,15 @@ html, body {
     justify-content: center;
 }
 
-.prodottiOrdine p {
+.prodottiOrdine p, #prodottiCarrello p {
     width: 500px;
 }
 
-.infoOrdine p {
+.infoOrdine p, .infoCarrello p {
     width: 200px;
 }
 
-.containerOrdine {
+.containerOrdine, #containerCarrello {
     border: 1px solid darkgrey;
     border-radius: 15px;
     margin: 30px 0;
@@ -61,12 +61,42 @@ html, body {
     width: 700px;
 }
 
-.infoOrdine p {
+.infoOrdine p, .infoCarrello p {
     margin-left: 15px;
 }
 
+#nessunRisultato {
+    font-size: 25pt;
+    font-family: system-ui;
+    color: darkgrey;
+}
+
+#ordina {
+    text-align: center;
+    margin: 25px;
+}
+
+#buttonOrdina {
+    height: 50px;
+    width: 200px;
+    background-color: #007253;
+    border: 0;
+    border-radius: 15px;
+    color: white;
+    font-size: 18pt;
+    cursor: pointer;
+}
+
+.rimuovi{
+    cursor: pointer;
+}
+
+.rimuovi:link{
+    color: darkred;
+}
+
 @media screen and (max-width: 750px) {
-    .infoOrdine {
+    .infoOrdine, .infoCarrello {
         flex-direction: column;
         width: 300px;
     }
@@ -76,11 +106,11 @@ html, body {
         height: 250px;
     }
 
-    .containerOrdine {
+    .containerOrdine, #containerCarrello {
         width: 300px;
     }
 
-    .prodottiOrdine p {
+    .prodottiOrdine p, #prodottiCarrello p, #prodottiCarrello a{
         text-align: center;
         width: 300px;
         margin: 0;

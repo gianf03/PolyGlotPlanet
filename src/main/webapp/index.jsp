@@ -11,6 +11,12 @@
 <%@ include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
 
+        <%
+            if(request.getParameter("ordine") != null && request.getParameter("ordine").equals("effettuato")) {%>
+                <script>alert("Ordine effettuato!")</script>
+        <%}%>
+
+
         <p id="selezionaMod">Benvenuto su PolyGlotPlanet!<br><br>Seleziona una modalità di apprendimento</p>
 
         <div id="containerCategorie">

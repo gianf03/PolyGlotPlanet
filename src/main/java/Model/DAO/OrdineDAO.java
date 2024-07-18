@@ -1,9 +1,11 @@
 package Model.DAO;
 
+import Model.Bean.Carrello;
 import Model.Bean.Lingua;
 import Model.Bean.Ordine;
 import Model.Bean.Utente;
 import Model.ConPool;
+import com.oracle.wls.shaded.org.apache.xpath.operations.Or;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -22,6 +24,47 @@ public class OrdineDAO {
                 throw new RuntimeException("INSERT error.");
             }
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Ordine doRetrieveLastOrderByIdUtente(int idUtente) {
+        try (Connection con = ConPool.getConnection()) {
+
+            String sql = "SELECT * FROM Ordine o JOIN Utente u ON o.IDUtente=u.ID WHERE u.ID=? ORDER BY o.ID desc LIMIT 1";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idUtente);
+
+            ResultSet rs = ps.executeQuery();
+
+            Ordine o = null;
+
+            while (rs.next()) {
+                o = new Ordine();
+
+                Utente u = new Utente();
+                u.setID(rs.getInt("u.ID"));
+                u.setNome(rs.getString("u.nome"));
+                u.setCognome(rs.getString("u.cognome"));
+                u.setDataNascita(rs.getDate("u.dataNascita").toLocalDate());
+                u.setEmail(rs.getString("u.email"));
+                u.setPassword(rs.getString("u.passwordHash"));
+                u.setGenere(rs.getString("u.genere"));
+                u.setAdmin(rs.getBoolean("u.admin"));
+
+                o.setID(rs.getInt("o.ID"));
+                o.setPrezzoTotale(rs.getDouble("prezzoTotale"));
+                o.setNumeroProdotti(rs.getInt("numeroProdotti"));
+
+                Timestamp timestamp = rs.getTimestamp("dataOra");
+                o.setDataOra(timestamp.toLocalDateTime());
+
+                o.setUtente(u);
+            }
+
+            return o;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

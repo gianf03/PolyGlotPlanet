@@ -25,6 +25,22 @@ public class FormazioneDAO {
         }
     }
 
+    public void doRemove(Formazione formazione) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "DELETE FROM Formazione WHERE IDCarrello=? AND IDProdotto=?",
+                    Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, formazione.getCarrello().getId());
+            ps.setInt(2, formazione.getProdotto().getID());
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("REMOVE error.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public List<Formazione> doRetrieveByIdCarrello(int idCarrello){
         try (Connection con = ConPool.getConnection()) {
 
@@ -66,10 +82,10 @@ public class FormazioneDAO {
                 Categoria cat = new Categoria();
                 cat.setID(rs.getInt("IDCategoria"));
                 cat.setNome(rs.getString("ca.nome"));
-                cat.setImmagine(rs.getString("foto"));
+                cat.setImmagine(rs.getString("ca.foto"));
 
                 Lingua l = new Lingua();
-                l.setCodISOLingua(rs.getString("codISOLingua"));
+                l.setCodISOLingua(rs.getString("l.codISOLingua"));
                 l.setNome(rs.getString("l.nome"));
                 l.setParlanti(rs.getInt("parlanti"));
                 l.setFotoStatoOrigine(rs.getString("fotoStatoOrigine"));
@@ -157,7 +173,7 @@ public class FormazioneDAO {
         }
     }
 
-    public List<Formazione> doRetrieveByIdProdotto(int idProdotto){
+    public Formazione doRetrieveByIdProdottoAndIdCarrello(int idProdotto, int idCarrello){
         try (Connection con = ConPool.getConnection()) {
 
             String sql = "SELECT * FROM " +
@@ -170,14 +186,15 @@ public class FormazioneDAO {
                     "LEFT JOIN Colloquio ON p.ID=colloquio.IDProdotto " +
                     "LEFT JOIN Incontro ON p.ID=incontro.IDProdotto " +
                     "LEFT JOIN Esperto e ON (e.ID=colloquio.IDEsperto or e.ID=incontro.IDEsperto) " +
-                    "WHERE p.ID=?";
+                    "WHERE p.ID=? AND car.ID=?";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idProdotto);
+            ps.setInt(2, idCarrello);
 
             ResultSet rs = ps.executeQuery();
 
-            List<Formazione> formazioni = new ArrayList<>();
+            Formazione f = null;
 
             while(rs.next()) {
 
@@ -268,7 +285,7 @@ public class FormazioneDAO {
                     }
                 }
 
-                Formazione f = new Formazione();
+                f = new Formazione();
                 f.setCarrello(carrello);
 
                 if(corso != null)
@@ -277,12 +294,9 @@ public class FormazioneDAO {
                     f.setProdotto(incontro);
                 else
                     f.setProdotto(colloquio);
-
-
-                formazioni.add(f);
             }
 
-            return formazioni;
+            return f;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

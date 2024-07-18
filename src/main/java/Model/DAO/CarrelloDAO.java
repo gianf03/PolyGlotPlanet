@@ -22,6 +22,21 @@ public class CarrelloDAO {
         }
     }
 
+    public void doRemove(Carrello carrello) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "DELETE FROM Carrello WHERE ID=?",
+                    Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, carrello.getUtente().getID());
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("REMOVE error.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Carrello doRetrieveByIdUtente(int idUtente) {
         try (Connection con = ConPool.getConnection()) {
 

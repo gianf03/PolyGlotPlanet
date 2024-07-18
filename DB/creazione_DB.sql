@@ -203,3 +203,33 @@ BEGIN
 END;
 //
 DELIMITER ;
+
+
+
+DELIMITER //
+
+CREATE TRIGGER imposta_prenotato_true BEFORE INSERT ON Composizione
+FOR EACH ROW
+BEGIN
+    DECLARE v_categoria INT;
+
+    -- Ottieni la categoria del prodotto
+    SELECT IDCategoria INTO v_categoria
+    FROM Prodotto
+    WHERE ID = NEW.IDProdotto;
+
+    -- Se la categoria è 2, aggiorna la tabella incontro
+    IF v_categoria = 2 THEN
+        UPDATE Incontro
+        SET prenotato = TRUE
+        WHERE IDProdotto = NEW.IDProdotto;
+
+    -- Se la categoria è 3, aggiorna la tabella colloquio
+    ELSEIF v_categoria = 3 THEN
+        UPDATE Colloquio
+        SET prenotato = TRUE
+        WHERE IDProdotto = NEW.IDProdotto;
+    END IF;
+END//
+
+DELIMITER ;

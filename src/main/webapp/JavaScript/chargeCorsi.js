@@ -160,9 +160,34 @@ function chargeCorsi(){
                         prezzo.className = "prezzo";
                         prezzo.innerHTML = corsi[i].prezzo + " €";
 
+
+                        let hiddenForm = document.createElement("form");
+                        containerPrezzoCarrello.appendChild(hiddenForm);
+                        hiddenForm.method = "GET";
+                        hiddenForm.action = "aggiungiProdottoCarrello";
+                        hiddenForm.className = "hiddenForm";
+                        //hiddenForm.target = "frameCarrello";
+
+                        let hiddenInputType = document.createElement("input");
+                        hiddenForm.appendChild(hiddenInputType);
+                        hiddenInputType.type = "text";
+                        hiddenInputType.name = "ID"
+                        hiddenInputType.value = corsi[i].id;
+                        hiddenInputType.style.display = "none";
+
+                        let button = document.createElement("button");
+                        hiddenForm.appendChild(button);
+                        button.type = "submit";
+                        button.className = "buttonCarrello";
+
+
                         let divCarrello = document.createElement("div");
-                        containerPrezzoCarrello.appendChild(divCarrello);
+                        button.appendChild(divCarrello);
                         divCarrello.className = "divCarrello";
+
+                        /*let divCarrello = document.createElement("div");
+                        containerPrezzoCarrello.appendChild(divCarrello);
+                        divCarrello.className = "divCarrello"; */
 
                         let carrello = document.createElement("img");
                         divCarrello.appendChild(carrello);
