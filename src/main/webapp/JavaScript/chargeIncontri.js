@@ -75,6 +75,11 @@ function chargeIncontri() {
                     containerIncontri.style.height = "300px";
                 } else {
 
+                    containerIncontri.style.textAlign = "";
+                    containerIncontri.style.justifyContent = "";
+                    containerIncontri.style.width = "";
+                    containerIncontri.style.height = "";
+
                     for (let i = 0; i < incontri.length; i++) {
                         let incontroItem = document.createElement("div");
                         containerIncontri.appendChild(incontroItem);
@@ -87,13 +92,13 @@ function chargeIncontri() {
 
                         let fotoEsperto = document.createElement("img");
                         containerFoto.appendChild(fotoEsperto);
-                        fotoEsperto.id = "foto" + incontri[i].ID;
+                        fotoEsperto.id = "foto" + incontri[i].id;
                         fotoEsperto.className = "fotoEsperto";
                         fotoEsperto.src = incontri[i].fotoEsperto;
 
                         let containerInfo = document.createElement("div");
                         incontroItem.appendChild(containerInfo);
-                        containerInfo.id = "info" + incontri[i].ID;
+                        containerInfo.id = "info" + incontri[i].id;
                         containerInfo.className = "containerInfo";
 
                         let nomeCompleto = document.createElement("p");
@@ -162,9 +167,34 @@ function chargeIncontri() {
                         prezzo.className = "prezzoOrario";
                         prezzo.innerHTML = incontri[i].prezzoOrario + " €/ora";
 
+
+                        let hiddenForm = document.createElement("form");
+                        containerPrezzoCarrello.appendChild(hiddenForm);
+                        hiddenForm.method = "GET";
+                        hiddenForm.action = "aggiungiProdottoCarrello";
+                        hiddenForm.className = "hiddenForm";
+                        //hiddenForm.target = "frameCarrello";
+
+                        let hiddenInputType = document.createElement("input");
+                        hiddenForm.appendChild(hiddenInputType);
+                        hiddenInputType.type = "text";
+                        hiddenInputType.name = "ID"
+                        hiddenInputType.value = incontri[i].id;
+                        hiddenInputType.style.display = "none";
+
+                        let button = document.createElement("button");
+                        hiddenForm.appendChild(button);
+                        button.type = "submit";
+                        button.className = "buttonCarrello";
+
+
                         let divCarrello = document.createElement("div");
-                        containerPrezzoCarrello.appendChild(divCarrello);
+                        button.appendChild(divCarrello);
                         divCarrello.className = "divCarrello";
+
+                        /*let divCarrello = document.createElement("div");
+                        containerPrezzoCarrello.appendChild(divCarrello);
+                        divCarrello.className = "divCarrello";*/
 
                         let carrello = document.createElement("img");
                         divCarrello.appendChild(carrello);

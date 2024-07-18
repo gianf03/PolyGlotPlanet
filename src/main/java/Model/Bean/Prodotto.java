@@ -52,6 +52,10 @@ public class Prodotto {
         return df.format(prezzoAttuale);
     }
 
+    public double getPrezzoAttualeDouble() {
+        return this.prezzoAttuale;
+    }
+
     public Lingua getLingua() {
         return lingua;
     }

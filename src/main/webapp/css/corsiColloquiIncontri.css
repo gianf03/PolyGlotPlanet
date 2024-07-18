@@ -84,6 +84,7 @@ body, html {
     /*border : 2px solid red;*/
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .corsoItem .containerPrezzoCarrello {
@@ -339,6 +340,18 @@ body, html {
     font-size: 25pt;
     font-family: system-ui;
     color: darkgrey;
+}
+
+.buttonCarrello {
+    width: 90px;
+    height: 50px;
+    padding: 0;
+    border: 0;
+    border-radius: 25px;
+}
+
+.hiddenForm {
+    text-align: center;
 }
 
 /*da aggiustare, aggiungere anche un altezza */

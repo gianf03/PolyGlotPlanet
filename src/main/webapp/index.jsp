@@ -10,13 +10,12 @@
 <body>
 <%@ include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
+
         <%
-            String error = request.getParameter("error");
-
-            if(error != null && error.equals("11")) { %>
-
-                <div id="divErrorePermessi">Non disponi dei permessi necessari</div>
+            if(request.getParameter("ordine") != null && request.getParameter("ordine").equals("effettuato")) {%>
+                <script>alert("Ordine effettuato!")</script>
         <%}%>
+
 
         <p id="selezionaMod">Benvenuto su PolyGlotPlanet!<br><br>Seleziona una modalità di apprendimento</p>
 

@@ -149,6 +149,7 @@ public class MostraIncontriAjaxServlet extends HttpServlet {
 
                 JSONObject obj = new JSONObject();
 
+                obj.put("id", i.getID());
                 obj.put("nomeLingua", i.getLingua().getNome());
 
                 obj.put("nomeEsperto", i.getEsperto().getNome());

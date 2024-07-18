@@ -27,6 +27,10 @@
             <p id="nessunRisultato">
                 Non hai ancora effettuato il tuo primo ordine
             </p>
+
+            <script>
+                document.getElementsByClassName("containerOfAll")[0].style.textAlign = "center";
+            </script>
         <% } else {
                 for (int i = 0; i< ordini.size(); i++) {%>
                     <div class="containerOrdine">

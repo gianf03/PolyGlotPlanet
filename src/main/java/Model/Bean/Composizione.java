@@ -30,6 +30,10 @@ public class Composizione {
         return df.format(prezzoAcquisto);
     }
 
+    public double getPrezzoAcquistoDouble(){
+        return this.prezzoAcquisto;
+    }
+
     public void setPrezzoAcquisto(double prezzoAcquisto) {
         this.prezzoAcquisto = prezzoAcquisto;
     }
