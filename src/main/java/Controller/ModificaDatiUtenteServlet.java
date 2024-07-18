@@ -16,7 +16,6 @@ public class ModificaDatiUtenteServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
 
         String nome = req.getParameter("nome");
         String cognome = req.getParameter("cognome");
@@ -29,18 +28,18 @@ public class ModificaDatiUtenteServlet extends HttpServlet {
 
         Utente u = (Utente) req.getSession().getAttribute("utente");
 
-        if(nome.isEmpty() || nome.isBlank()) {
+        if(nome == null || nome.isBlank()) {
             address = address + "error=1&";
         }
 
-        if (cognome.isEmpty() || cognome.isBlank()) {
+        if (cognome == null || cognome.isBlank()) {
             address = address + "error=2&";
         }
 
         //controllo che la nuova password non sia vuota e abbia almeno 8 caratteri
-        if (!newPassword.isEmpty() && newPassword.length() < 8) {
+        if (newPassword == null || (!newPassword.isEmpty() && newPassword.length() < 8)) {
             address = address + "error=6&";
-        } else if (!confNewPassword.equals(newPassword)) { //controllo che la nuova password e la sua conferma siano uguali
+        } else if (confNewPassword == null || !confNewPassword.equals(newPassword)) { //controllo che la nuova password e la sua conferma siano uguali
             address = address + "error=10&"; //password non coincidono
         }
 

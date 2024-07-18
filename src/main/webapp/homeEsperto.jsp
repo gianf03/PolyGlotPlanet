@@ -75,7 +75,7 @@
                         <td><%=c.getLingua().getNome()%></td>
                         <td><img id="imgLingua" alt="immagine stato origine lingua" src="<%=c.getLingua().getFotoStatoOrigine()%>"></td>
                         <td>
-                            <button id="btnRimuovi" onclick="document.location='aggiungiRimuoviLinguaEsperto?IDEsperto=<%=esp.getID()%>&codISOLingua=<%=c.getLingua().getCodISOLingua()%>&operation=del'">Rimuovi
+                            <button id="btnRimuovi" onclick="document.location='aggiungiRimuoviLinguaEsperto?codISOLingua=<%=c.getLingua().getCodISOLingua()%>&operation=del'">Rimuovi
                             </button>
                         </td>
                     </tr>

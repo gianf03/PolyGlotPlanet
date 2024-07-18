@@ -9,53 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProdottoDAO {
-
-    public Prodotto doRetrieveById(int IDProdotto) {
-        try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps =
-                    con.prepareStatement("SELECT * FROM (Prodotto p JOIN Lingua l ON p.codISOLingua=l.codISOLingua) " +
-                            "JOIN Categoria ca ON p.IDCategoria=ca.ID " +
-                            "WHERE p.ID=?");
-
-            ps.setInt(1, IDProdotto);
-
-            ResultSet rs = ps.executeQuery();
-
-            if(rs.next()) {
-                Prodotto p = new Prodotto();
-
-                Lingua l = new Lingua();
-                l.setCodISOLingua(rs.getString("codISOLingua"));
-                l.setParlanti(rs.getInt("parlanti"));
-                l.setNome(rs.getString("l.nome"));
-                l.setFotoStatoOrigine(rs.getString("fotoStatoOrigine"));
-
-                Categoria cat = new Categoria();
-                cat.setID(rs.getInt("IDCategoria"));
-                cat.setNome(rs.getString("ca.nome"));
-                cat.setImmagine(rs.getString("foto"));
-
-                p.setID(rs.getInt("p.ID"));
-                p.setPrezzoBase(rs.getDouble("prezzoBase"));
-                p.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
-                p.setPrezzoAttuale(rs.getDouble("prezzoAttuale"));
-                p.setLingua(l);
-                p.setCategoria(cat);
-
-                return p;
-            }
-
-            return null;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public void doUpdate(int IDProdotto, double prezzoBase, double scontoPercentuale) {
 
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("UPDATE Prodotto " +
-                    "SET prezzoBase=?, scontoPercentuale=? WHERE IDProdotto=?");
+                    "SET prezzoBase=?, scontoPercentuale=? WHERE ID=?");
 
             ps.setDouble(1, prezzoBase);
             ps.setDouble(2, scontoPercentuale);
@@ -266,6 +224,46 @@ public class ProdottoDAO {
             else
                 return null;
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Prodotto doRetrieveLastProduct() {
+        try (Connection con = ConPool.getConnection()) {
+
+            String sql = "SELECT * FROM (Prodotto p JOIN Categoria ca ON p.IDCategoria=ca.ID) " +
+                    "JOIN Lingua l ON p.codISOLingua=p.codISOLingua ORDER BY p.ID desc LIMIT 1";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            Prodotto p = null;
+
+            while (rs.next()) {
+                p = new Prodotto();
+
+                Categoria cat = new Categoria();
+                cat.setID(rs.getInt("IDCategoria"));
+                cat.setNome(rs.getString("ca.nome"));
+                cat.setImmagine(rs.getString("foto"));
+
+                Lingua l = new Lingua();
+                l.setCodISOLingua(rs.getString("codISOLingua"));
+                l.setNome(rs.getString("l.nome"));
+                l.setParlanti(rs.getInt("parlanti"));
+                l.setFotoStatoOrigine(rs.getString("fotoStatoOrigine"));
+
+                p.setID(rs.getInt("p.ID"));
+                p.setLingua(l);
+                p.setCategoria(cat);
+                p.setPrezzoBase(rs.getDouble("prezzoBase"));
+                p.setScontoPercentuale(rs.getDouble("scontoPercentuale"));
+                p.setPrezzoAttuale(rs.getDouble("prezzoAttuale"));
+            }
+
+            return p;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

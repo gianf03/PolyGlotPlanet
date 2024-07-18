@@ -21,6 +21,9 @@ import java.util.List;
 public class AggiungiProdottoCarrelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        resp.setContentType("text/html");
+
         HttpSession session = req.getSession();
 
         ProdottoDAO prodottoDAO = new ProdottoDAO();

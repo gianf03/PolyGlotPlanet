@@ -28,13 +28,23 @@ public class AggiungiLinguaServlet extends HttpServlet {
 
         String codISOLingua = req.getParameter("codISOLingua");
         String nome = req.getParameter("nomeLingua");
-        int numParlanti = Integer.parseInt(req.getParameter("parlanti"));
+        int numParlanti = 0;
         Part imgLingua = req.getPart("fotoStatoOrigine");
+        boolean isNumber = true;
 
         String address = "homeAdmin.jsp";
 
-        if(codISOLingua == null || codISOLingua.isBlank() || codISOLingua.length() > 2 || nome == null
-            || nome.isBlank() || numParlanti <= 0 || imgLingua == null) {
+        try {
+            numParlanti = Integer.parseInt(req.getParameter("parlanti"));
+        } catch(NumberFormatException e) {
+            isNumber = false;
+        }
+
+        /*codISOLingua è blank se contiene una stringa vuota o solo spazi, è null se nel form che arriva
+        alla servlet non c'è un campo con nome codISOLingua*/
+
+        if(codISOLingua == null || codISOLingua.isBlank() || nome == null || nome.isBlank()
+                || !isNumber || numParlanti <= 0 || imgLingua == null || imgLingua.getSize() == 0) {
             address += "?error=18"; //caricamento della lingua non avvenuto
         }
 

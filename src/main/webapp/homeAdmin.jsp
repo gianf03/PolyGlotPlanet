@@ -5,6 +5,7 @@
     <link type="text/css" href="css/admin.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="JavaScript/modificaCorso.js"></script>
+    <script src="JavaScript/showElemById.js"></script>
 </head>
 <body>
 
@@ -12,7 +13,7 @@
         String insertion = request.getParameter("insertion");
 
         if(insertion != null && insertion.equals("good")) {%>
-    <script>alert("Inserimento avvenuto con successo!")</script>
+            <script>alert("Inserimento avvenuto con successo!")</script>
     <%}%>
 
 <%@include file="WEB-INF/jsp/header.jsp"%>
@@ -52,7 +53,7 @@
                 </div>
 
                 <div class="settingsLink">
-                    <a href="#" onclick="mostraDivAggiungi('aggiungiLingua')">Aggiungi lingua</a>
+                    <a href="#" onclick="showElemById('aggiungiLingua')">Aggiungi lingua</a>
                 </div>
             </div>
         </div>
@@ -80,11 +81,10 @@
                 </div>
 
                 <div class="aggiungiLinguaItem">
-                    <input id="btnAggiungi" type="submit" value="Aggiungi">
+                    <input class="btnAggiungi" type="submit" value="Aggiungi">
+                    <button type="button" class="btnChiudi" onclick="hideElemById('aggiungiLingua')">Chiudi</button>
                 </div>
             </form>
-
-            <button id="btnChiudi" onclick="chiudiDivAggiungi('aggiungiLingua')">Chiudi</button>
         </div>
     </div>
 </body>

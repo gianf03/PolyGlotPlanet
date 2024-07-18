@@ -26,6 +26,8 @@ public class LoginUtenteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        resp.setContentType("text/html");
+
         HttpSession session = null;
         String address = "loginUtente.jsp?";
         String email = req.getParameter("email");

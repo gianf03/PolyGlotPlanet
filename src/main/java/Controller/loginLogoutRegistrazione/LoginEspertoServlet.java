@@ -15,6 +15,9 @@ import java.io.IOException;
 public class LoginEspertoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        resp.setContentType("text/html");
+
         HttpSession session = null;
         String address = "loginEsperto.jsp?";
         String email = req.getParameter("email");

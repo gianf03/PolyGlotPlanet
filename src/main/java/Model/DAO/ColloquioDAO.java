@@ -1,10 +1,7 @@
 package Model.DAO;
 
-import Model.Bean.Categoria;
-import Model.Bean.Colloquio;
+import Model.Bean.*;
 import Model.ConPool;
-import Model.Bean.Esperto;
-import Model.Bean.Lingua;
 import Utils.Utility;
 
 import java.sql.*;
@@ -13,6 +10,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ColloquioDAO {
+
+    public void doSave(Colloquio colloquio) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "INSERT INTO Incontro (IDProdotto, dataOra, IDEsperto) VALUES(?,?,?)");
+
+            ps.setInt(1, colloquio.getID());
+            ps.setTimestamp(2, Timestamp.valueOf(colloquio.getDataOra()));
+            ps.setInt(3, colloquio.getEsperto().getID());
+
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("INSERT error.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public List<Colloquio> doRetrieveByCodISOLingua(String codISOLingua) {
         try (Connection con = ConPool.getConnection()) {

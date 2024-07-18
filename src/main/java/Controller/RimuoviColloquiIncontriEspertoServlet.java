@@ -25,48 +25,52 @@ public class RimuoviColloquiIncontriEspertoServlet extends HttpServlet {
 
         resp.setContentType("text/html");
 
-        int IDProdotto = Integer.parseInt(req.getParameter("IDProdotto"));
+        try {
+            int IDProdotto = Integer.parseInt(req.getParameter("IDProdotto"));
 
-        Esperto e = (Esperto) req.getSession().getAttribute("esperto");
+            Esperto e = (Esperto) req.getSession().getAttribute("esperto");
 
-        ProdottoDAO prodottoDAO = new ProdottoDAO();
-        Prodotto p = prodottoDAO.doRetrieveById(IDProdotto);
+            ProdottoDAO prodottoDAO = new ProdottoDAO();
+            Prodotto p = prodottoDAO.doRetrieveById(IDProdotto);
 
-        String address = null;
-        String catProdotto = null;
+            String address = null;
+            String catProdotto = null;
 
-        if(p != null) {
-            catProdotto = p.getCategoria().getNome();
-        }
+            if(p != null) {
+                catProdotto = p.getCategoria().getNome();
+            }
 
-        List<Colloquio> colloqui = null;
-        List<Incontro> incontri = null;
+            List<Colloquio> colloqui = null;
+            List<Incontro> incontri = null;
 
         /*effettuo questo controllo per evitare che un esperto possa digitare l'ID di un
         prodotto corrispondente ad un corso e quindi cancellarlo*/
-        if(!catProdotto.equals("corso")) {
+            if(!catProdotto.equals("corso")) {
 
-            prodottoDAO.doRemove(IDProdotto);
+                prodottoDAO.doRemove(IDProdotto);
 
-            if(catProdotto.equals("colloquio")) {
-                address = "colloquiEsperto.jsp?removal=good";
+                if(catProdotto.equals("colloquio")) {
+                    address = "colloquiEsperto.jsp?removal=good";
 
-                //ricarico la nuova lista di colloqui nella request senza quello eliminato
-                ColloquioDAO colloquioDAO = new ColloquioDAO();
-                colloqui = colloquioDAO.doRetrieveByEsperto(e.getID());
-                req.setAttribute("colloqui", colloqui);
-            } else {
-                address = "incontriEsperto.jsp?removal=good";
+                    //ricarico la nuova lista di colloqui nella request senza quello eliminato
+                    ColloquioDAO colloquioDAO = new ColloquioDAO();
+                    colloqui = colloquioDAO.doRetrieveByEsperto(e.getID());
+                    req.setAttribute("colloqui", colloqui);
+                } else {
+                    address = "incontriEsperto.jsp?removal=good";
 
-                //ricarico la nuova lista di incontri nella request senza quello eliminato
-                IncontroDAO incontroDAO = new IncontroDAO();
-                incontri = incontroDAO.doRetrieveByEsperto(e.getID());
-                req.setAttribute("incontri", incontri);
+                    //ricarico la nuova lista di incontri nella request senza quello eliminato
+                    IncontroDAO incontroDAO = new IncontroDAO();
+                    incontri = incontroDAO.doRetrieveByEsperto(e.getID());
+                    req.setAttribute("incontri", incontri);
+                }
             }
-        }
 
-        RequestDispatcher rd = req.getRequestDispatcher(address);
-        rd.forward(req, resp);
+            RequestDispatcher rd = req.getRequestDispatcher(address);
+            rd.forward(req, resp);
+        } catch (NumberFormatException e) {
+            resp.sendError(500);
+        }
     }
 
     @Override

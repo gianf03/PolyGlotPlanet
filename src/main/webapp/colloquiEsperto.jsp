@@ -1,5 +1,6 @@
 <%@ page import="Model.Bean.Colloquio" %>
 <%@ page import="java.util.List" %>
+<%@ page import="Model.Bean.Lingua" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -11,6 +12,7 @@
 <body>
     <%
         List<Colloquio> colloqui = (List<Colloquio>) request.getAttribute("colloqui");
+        List<Lingua> lingueConosciute = (List<Lingua>) request.getAttribute("lingueConosciute");
         Esperto es = (Esperto) session.getAttribute("esperto");
     %>
     <%@include file="WEB-INF/jsp/header.jsp"%>
@@ -18,9 +20,16 @@
 
         <%
             if(es != null) {%>
-                <div id="divFiltri">
-                    <button class="dropbtn" id="btnAggiunta" onclick="mostraDivAggiungi('aggiungiCorso')">Aggiungi colloquio</button>
+                 <div id="divFiltri">
+                    <button class="dropbtn" id="btnAggiunta" onclick="showElemById('divAggiungiIncontro')">Aggiungi incontro</button>
                 </div>
+        <%}
+            String insertion = request.getParameter("insertion");
+
+            if(insertion != null && insertion.equals("good")) {%>
+                <script>alert("Inserimento avvenuto con successo!")</script>
+        <%} else if(request.getParameter("error") != null){%>
+                <script>alert("Colloquio non aggiunto!")</script>
         <%}%>
 
         <table id="tableColloqui">
@@ -33,24 +42,81 @@
                 <th>Sconto percentuale</th>
             </tr>
 
-            <% for(Colloquio c : colloqui) {%>
-            <tr class="rigaColloqui">
-                <td><%=c.getID()%></td>
-                <td><%=c.getDataOra()%></td>
-                <td><%=c.getLingua().getNome()%></td>
-                <td><%=c.isPrenotato()%></td>
-                <td><%=c.getPrezzoBase()%> €</td>
-                <td><%=c.getScontoPercentuale()%> %</td>
+            <% if(colloqui != null && !colloqui.isEmpty()) {
+                for(Colloquio c : colloqui) {%>
+                    <tr class="rigaColloqui">
+                        <td><%=c.getID()%></td>
+                        <td><%=c.getDataOra()%></td>
+                        <td><%=c.getLingua().getNome()%></td>
+                        <td><%=c.isPrenotato()%></td>
+                        <td><%=c.getPrezzoBase()%> €</td>
+                        <td><%=c.getScontoPercentuale()%> %</td>
 
-                <%
-                    if(es != null) {%>
-                        <td>
-                            <button id="btnRimuovi" onclick="document.location='rimuoviColloquiIncontriEsperto?IDProdotto=<%=c.getID()%>'">Rimuovi</button>
-                        </td>
-                <%}%>
-            </tr>
-            <%}%>
+                        <%
+                            if(es != null) {%>
+                                <td>
+                                    <button id="btnRimuovi" onclick="document.location='rimuoviColloquiIncontriEsperto?IDProdotto=<%=c.getID()%>'">Rimuovi</button>
+                                </td>
+                        <%}%>
+                    </tr>
+            <%}
+            }%>
         </table>
+
+        <%
+            if(es != null) {%>
+        <div id="divAggiungiColloquio">
+            <form action="aggiungiColloquioEsperto">
+                <div class="aggiungiIncontroItem">
+                    <label for="dateTime">Data e ora</label><br>
+                    <input type="datetime-local" name="dataOra" id="dateTime">
+
+                    <script>
+                        // Funzione per ottenere l'ora successiva a quella attuale
+                        function minDate() {
+                            let today = new Date();
+                            let year = today.getFullYear();
+                            let month = today.getMonth()+1; //i mesi partono da 0
+                            let day = today.getDate();
+                            let hour = today.getHours() + 2;
+                            let minutes = today.getMinutes();
+
+                            if(month<10) month = '0' + month;
+                            if(day<10) day = '0' + day;
+                            if(hour<10) hour = '0' + hour;
+
+                            let date = year + '-' + month + '-' + day + 'T' + hour + ':' + minutes;
+                            return date;
+                        }
+
+                        document.getElementById("dataOra").min = minDate();
+                    </script>
+                </div>
+                <div class="aggiungiIncontroItem">
+                    <label for="linguaInc">Seleziona lingua</label><br>
+                    <select name="codISOLingua" id="linguaInc">
+                        <%
+                            if(lingueConosciute != null && !lingueConosciute.isEmpty()) {
+                                for(Lingua l : lingueConosciute) {%>
+                                    <option value="<%=l.getCodISOLingua()%>"><%=l.getNome()%></option>
+                            <%}
+                        }%>
+                    </select>
+                </div>
+                <div class="aggiungiIncontroItem">
+                    <label for="prBaseInc">Prezzo base</label><br>
+                    <input type="text" name="prezzoBase" id="prBaseInc">
+                </div>
+                <div class="aggiungiIncontroItem">
+                    <label for="scontoInc">Sconto</label><br>
+                    <input type="text" name="sconto" id="scontoInc">
+                </div>
+                <div class="aggiungiIncontroItem">
+                    <input type="submit" value="Aggiungi">
+                </div>
+            </form>
+        </div>
+        <%}%>
     </div>
 </body>
 </html>

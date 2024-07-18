@@ -1,9 +1,11 @@
 package Controller;
 
 import Model.Bean.Colloquio;
+import Model.Bean.Conoscenza;
 import Model.Bean.Incontro;
 import Model.Bean.Lingua;
 import Model.DAO.ColloquioDAO;
+import Model.DAO.ConoscenzaDAO;
 import Model.DAO.IncontroDAO;
 import Model.DAO.LinguaDAO;
 import jakarta.servlet.RequestDispatcher;
@@ -14,6 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/incontro")
@@ -38,8 +41,14 @@ public class MostraIncontriServlet extends HttpServlet {
 
             /*inserisco la lista delle lingue conosciute dell'esperto nella request
             per poter aggiungere un nuovo incontro*/
-            LinguaDAO linguaDAO = new LinguaDAO();
-            List<Lingua> lingueConosciute = linguaDAO.doRetrieveByEsperto(IDEsperto);
+            ConoscenzaDAO conoscenzaDAO = new ConoscenzaDAO();
+            List<Conoscenza> conoscenze = conoscenzaDAO.doRetrieveByIDEsperto(IDEsperto);
+
+            List<Lingua> lingueConosciute = new ArrayList<>();
+
+            for(Conoscenza c : conoscenze) {
+                lingueConosciute.add(c.getLingua());
+            }
 
             req.setAttribute("lingueConosciute", lingueConosciute);
 

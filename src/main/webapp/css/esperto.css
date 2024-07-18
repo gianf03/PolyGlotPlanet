@@ -149,7 +149,7 @@ tr:nth-child(even) {
     margin: auto;
 }
 
-#divAggiungiIncontro {
+#divAggiungiIncontro, #divAggiungiColloquio {
     display: none;
     position: absolute; /*sovrappone il container al resto della pagina*/
 

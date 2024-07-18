@@ -21,6 +21,8 @@ import java.util.List;
 public class RimuoviProdottoCarrelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html");
+
         ProdottoDAO prodottoDAO = new ProdottoDAO();
         int idProdotto;
 

@@ -81,7 +81,7 @@ create table Incontro(
     CAP varchar(20) not null,
     via varchar(50) not null,
     civico varchar(10) not null,
-    prenotato boolean not null,
+    prenotato boolean default false,
     IDEsperto int not null,
     
     foreign key (IDProdotto) references Prodotto(ID) on delete cascade on update cascade,
@@ -91,7 +91,7 @@ create table Incontro(
 create table Colloquio(
 	IDProdotto int not null,
     dataOra datetime not null,
-    prenotato boolean not null,
+    prenotato boolean default false,
     IDEsperto int not null,
     
     foreign key (IDProdotto) references Prodotto(ID) on delete cascade on update cascade,

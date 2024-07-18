@@ -8,6 +8,7 @@
     <link type="text/css" href="css/admin.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="JavaScript/modificaCorso.js"></script>
+    <script src="JavaScript/showElemById.js"></script>
 </head>
 <body>
 
@@ -19,7 +20,11 @@
 
         if(insertion != null && insertion.equals("good")) {%>
             <script>alert("Inserimento avvenuto con successo!")</script>
-    <%}%>
+    <%} else if(request.getParameter("error") != null){%>
+            <script>alert("Corso non aggiunto!")</script>
+    <%}
+    %>
+
     <%@include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
 
@@ -33,7 +38,7 @@
                 </div>
             </div>
 
-            <button class="dropbtn" id="btnAggiunta" onclick="mostraDivAggiungi('aggiungiCorso')">Aggiungi corso</button>
+            <button class="dropbtn" onclick="showElemById('aggiungiCorso')">Aggiungi corso</button>
         </div>
 
 
@@ -94,9 +99,8 @@
 
                 <div class="datiMod">
                     <input class="btnConferma" type="submit" value="Conferma">
+                    <button type="button" class="btnChiudi" onclick="hideElemById('divModifica')">Chiudi</button>
                 </div>
-
-                <button class="btnChiudi" onclick="chiudiDivAggiungi('aggiungiCorso')">Chiudi</button>
             </form>
         </div>
 
@@ -124,7 +128,11 @@
 
                 <div class="aggiungiCorsoItem">
                     <label for="livCorso">Livello</label><br>
-                    <input type="text" name="livello" id="livCorso">
+                    <select name="livello" id="livCorso">
+                        <option value="A1-A2">A1-A2</option>
+                        <option value="B1-B2">B1-B2</option>
+                        <option value="C1-C2">C1-C2</option>
+                    </select>
                 </div>
 
                 <div class="aggiungiCorsoItem">
@@ -138,8 +146,8 @@
                 </div>
 
                 <div class="aggiungiCorsoItem">
-                    <button class="btnChiudi" onclick="chiudiDivAggiungi('aggiungiCorso')">Chiudi</button>
                     <input class="btnAggiungi" type="submit" value="Aggiungi">
+                    <button type="button" class="btnChiudi" onclick="hideElemById('aggiungiCorso')">Chiudi</button>
                 </div>
             </form>
         </div>

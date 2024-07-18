@@ -27,20 +27,30 @@ public class AggiungiCorsoServlet extends HttpServlet {
 
         String codISOLingua = req.getParameter("codISOLingua");
         String descrizione = req.getParameter("descrizione");
-        int numeroUnita = Integer.parseInt(req.getParameter("numeroUnita"));
+        int numeroUnita = 0;
         String livello = req.getParameter("livello");
-        double prezzoBase = Double.parseDouble(req.getParameter("prezzoBase"));
-        double scontoPercentuale = Double.parseDouble(req.getParameter("scontoPercentuale"));
+        double prezzoBase = 0;
+        double scontoPercentuale = -1;
 
         String address = "corsiAdmin.jsp";
+        boolean isNumber = true;
 
-        if(codISOLingua == null || codISOLingua.isBlank() || codISOLingua.length() > 2 || descrizione == null
-        || descrizione.isBlank() || numeroUnita <= 0 || livello == null
-        || livello.isBlank() || !livello.contains("-") || prezzoBase <=0 || scontoPercentuale < 0) {
+        try {
+            numeroUnita = Integer.parseInt(req.getParameter("numeroUnita"));
+            prezzoBase = Double.parseDouble(req.getParameter("prezzoBase"));
+            scontoPercentuale = Double.parseDouble(req.getParameter("scontoPercentuale"));
+        } catch (NumberFormatException e) {
+            isNumber = false;
+        }
+
+        if(codISOLingua == null || codISOLingua.isBlank() || descrizione == null
+                || descrizione.isBlank() || !isNumber || numeroUnita <= 0 || livello == null
+                || (!livello.equals("A1-A2") && !livello.equals("B1-B2") && !livello.equals("C1-C2"))
+                || prezzoBase <=0 || scontoPercentuale < 0) {
             address += "?error=17"; //caricamento nuovo corso fallito
         }
 
-        CorsoDAO corsoDAO = null;
+        CorsoDAO corsoDAO = new CorsoDAO();
 
         if(!address.contains("error")) {
 
@@ -71,7 +81,6 @@ public class AggiungiCorsoServlet extends HttpServlet {
             prodottoDAO.doSave(c);
 
             //salvo nel db il nuovo corso associato al prodotto appena creato
-            corsoDAO = new CorsoDAO();
             corsoDAO.doSave(c);
 
             List<Integer> prezziCorsi = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(1);

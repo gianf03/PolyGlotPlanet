@@ -29,6 +29,7 @@ html, body {
 .settingsLink > a {
     color: white;
     font-size: 16pt;
+    font-family: serif;
     font-weight: bold;
     text-decoration: none;
     padding: 5px;
@@ -164,8 +165,12 @@ tr:nth-child(even) {
     border: none;
 }
 
+#fotoLingua {
+    max-width: 250px;
+}
 
-@media screen and (max-width: 500px) {
+
+@media screen and (max-width: 1300px) {
 
     #containerAdmin {
         /*dispone il contenuto verticalmente*/

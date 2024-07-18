@@ -1,6 +1,10 @@
 package Controller;
 
+import Model.Bean.Conoscenza;
+import Model.Bean.Esperto;
+import Model.Bean.Lingua;
 import Model.DAO.ConoscenzaDAO;
+import Model.DAO.LinguaDAO;
 import Model.DAO.ProdottoDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -20,7 +24,7 @@ public class AggiungiRimuoviLinguaEspertoServlet extends HttpServlet {
 
         resp.setContentType("text/html");
 
-        int IDEsperto = Integer.parseInt(req.getParameter("IDEsperto"));
+        Esperto e = (Esperto) req.getSession().getAttribute("esperto");
         String codISOLingua = req.getParameter("codISOLingua");
         String operation = req.getParameter("operation");
 
@@ -31,10 +35,23 @@ public class AggiungiRimuoviLinguaEspertoServlet extends HttpServlet {
             ConoscenzaDAO conoscenzaDAO = new ConoscenzaDAO();
 
             if(operation.equals("add")) {
-                conoscenzaDAO.doSave(IDEsperto, codISOLingua);
-                address += "?op=insertion";
+
+                LinguaDAO linguaDAO = new LinguaDAO();
+                Lingua l = linguaDAO.doRetrieveById(codISOLingua);
+
+                if(l != null) {
+
+                    Conoscenza conoscenza = new Conoscenza();
+                    conoscenza.setLingua(l);
+                    conoscenza.setEsperto(e);
+
+                    conoscenzaDAO.doSave(conoscenza);
+                    address += "?op=insertion";
+                } else {
+                    address += "?error=21"; //
+                }
             } else if(operation.equals("del")) {
-                conoscenzaDAO.doUpdate(IDEsperto, codISOLingua);
+                conoscenzaDAO.doUpdate(e.getID(), codISOLingua);
                 address += "?op=removal";
             }
         }

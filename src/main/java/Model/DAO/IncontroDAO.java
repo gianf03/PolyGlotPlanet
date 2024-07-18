@@ -11,6 +11,27 @@ import java.util.List;
 
 public class IncontroDAO {
 
+    public void doSave(Incontro incontro) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "INSERT INTO Incontro (IDProdotto, dataOra, CAP, via, civico, IDEsperto) VALUES(?,?,?,?,?,?)");
+
+            ps.setInt(1, incontro.getID());
+            ps.setTimestamp(2, Timestamp.valueOf(incontro.getDataOra()));
+            ps.setString(3, incontro.getCAP());
+            ps.setString(4, incontro.getVia());
+            ps.setString(5, incontro.getCivico());
+            ps.setInt(6, incontro.getEsperto().getID());
+
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("INSERT error.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public List<Incontro> doRetrieveByCodISOLingua(String codISOLingua) {
         try (Connection con = ConPool.getConnection()) {
 

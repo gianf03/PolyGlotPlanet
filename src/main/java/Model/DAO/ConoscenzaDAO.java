@@ -98,13 +98,13 @@ public class ConoscenzaDAO {
     }
 
 
-    public void doSave(int IDEsperto, String codISOLingua) {
+    public void doSave(Conoscenza conoscenza) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO Conoscenza (codISOLingua, IDEsperto) VALUES(?,?)");
 
-            ps.setString(1, codISOLingua);
-            ps.setInt(2, IDEsperto);
+            ps.setString(1, conoscenza.getLingua().getCodISOLingua());
+            ps.setInt(2, conoscenza.getEsperto().getID());
 
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");

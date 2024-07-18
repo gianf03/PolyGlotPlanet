@@ -17,6 +17,8 @@ public class LoginAdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        resp.setContentType("text/html");
+
         HttpSession session = null;
         String address = "loginAdmin.jsp?";
         String email = req.getParameter("email");

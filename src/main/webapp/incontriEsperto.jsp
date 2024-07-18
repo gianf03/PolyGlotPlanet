@@ -25,6 +25,13 @@
                 <div id="divFiltri">
                     <button class="dropbtn" id="btnAggiunta" onclick="showElemById('divAggiungiIncontro')">Aggiungi incontro</button>
                 </div>
+        <%}
+            String insertion = request.getParameter("insertion");
+
+            if(insertion != null && insertion.equals("good")) {%>
+                <script>alert("Inserimento avvenuto con successo!")</script>
+        <%} else if(request.getParameter("error") != null){%>
+                <script>alert("Incontro non aggiunto!")</script>
         <%}%>
 
         <table id="tableIncontri">
@@ -38,34 +45,58 @@
                 <th>Sconto percentuale</th>
             </tr>
 
-            <% for(Incontro i : incontri) {%>
-            <tr class="rigaIncontri">
-                <td><%=i.getID()%></td>
-                <td><%=i.getDataOra()%></td>
-                <td><%=i.getVia()%> <%=i.getCivico()%> <%=i.getCAP()%></td>
-                <td><%=i.getLingua().getNome()%></td>
-                <td><%=i.isPrenotato()%></td>
-                <td><%=i.getPrezzoBase()%> €</td>
-                <td><%=i.getScontoPercentuale()%> %</td>
+            <% if(incontri != null && !incontri.isEmpty()) {
+                for(Incontro i : incontri) {%>
+                    <tr class="rigaIncontri">
+                        <td><%=i.getID()%></td>
+                        <td><%=i.getDataOra()%></td>
+                        <td><%=i.getVia()%> <%=i.getCivico()%> <%=i.getCAP()%></td>
+                        <td><%=i.getLingua().getNome()%></td>
+                        <td><%=i.isPrenotato()%></td>
+                        <td><%=i.getPrezzoBase()%> €</td>
+                        <td><%=i.getScontoPercentuale()%> %</td>
 
-                <%
-                    if(es != null) {%>
-                <td>
-                    <button id="btnRimuovi" onclick="document.location='rimuoviColloquiIncontriEsperto?IDProdotto=<%=i.getID()%>'">Rimuovi</button>
-                </td>
-                <%}%>
-            </tr>
-            <%}%>
+                        <%
+                            if(es != null) {%>
+                        <td>
+                            <button id="btnRimuovi" onclick="document.location='rimuoviColloquiIncontriEsperto?IDProdotto=<%=i.getID()%>'">Rimuovi</button>
+                        </td>
+                        <%}%>
+                    </tr>
+            <%}
+            }%>
         </table>
 
 
         <%
             if(es != null) {%>
                 <div id="divAggiungiIncontro">
-                    <form>
+                    <form action="aggiungiIncontroEsperto">
                         <div class="aggiungiIncontroItem">
                             <label for="dateTime">Data e ora</label><br>
                             <input type="datetime-local" name="dataOra" id="dateTime">
+
+                            <script>
+                                // Funzione per ottenere la data di 18 anni fa dalla data odierna
+                                function minDate() {
+                                    let tomorrow = new Date();
+                                    tomorrow.setDate(tomorrow.getDate() + 1);
+                                    let year = tomorrow.getFullYear();
+                                    let month = tomorrow.getMonth()+1; //i mesi partono da 0
+                                    let day = tomorrow.getDate(); //da capire se funziona
+                                    let hour = tomorrow.getHours()+2;
+                                    let minutes = tomorrow.getMinutes();
+
+                                    if(month<10) month = '0' + month;
+                                    if(day<10) day = '0' + day;
+                                    if(hour<10) hour = '0' + hour;
+
+                                    let date = year + '-' + month + '-' + day + 'T' + hour + ':' + minutes;
+                                    return date;
+                                }
+
+                                document.getElementById("dateTime").min = minDate();
+                            </script>
                         </div>
                         <div class="aggiungiIncontroItem">
                             <label for="capInc">CAP</label><br>
@@ -81,11 +112,13 @@
                         </div>
                         <div class="aggiungiIncontroItem">
                             <label for="linguaInc">Seleziona lingua</label><br>
-                            <select name="lingua" id="linguaInc">
+                            <select name="codISOLingua" id="linguaInc">
                                 <%
-                                    for(Lingua l : lingueConosciute) {%>
-                                        <option value="<%=l.getCodISOLingua()%>"><%=l.getNome()%></option>
-                                <%}%>
+                                    if(lingueConosciute != null && !lingueConosciute.isEmpty()) {
+                                        for(Lingua l : lingueConosciute) {%>
+                                            <option value="<%=l.getCodISOLingua()%>"><%=l.getNome()%></option>
+                                    <%}
+                                }%>
                             </select>
                         </div>
                         <div class="aggiungiIncontroItem">

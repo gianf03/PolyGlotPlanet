@@ -16,6 +16,9 @@ import java.time.format.DateTimeParseException;
 public class RegistrazioneUtenteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        resp.setContentType("text/html");
+
         String address = "registrazioneUtente.jsp?";
         String nome = req.getParameter("nome");
         String cognome = req.getParameter("cognome");

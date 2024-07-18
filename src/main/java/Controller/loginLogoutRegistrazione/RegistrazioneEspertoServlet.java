@@ -26,6 +26,9 @@ public class RegistrazioneEspertoServlet extends HttpServlet {
     private static final String CARTELLA_UPLOAD = "img" + File.separator + "esperti";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        resp.setContentType("text/html");
+
         String address = "registrazioneEsperto.jsp?";
         String nome = req.getParameter("nome");
         String cognome = req.getParameter("cognome");
