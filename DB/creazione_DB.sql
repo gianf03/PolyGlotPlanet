@@ -177,22 +177,6 @@ DO
 
 
 DELIMITER //
-
-CREATE TRIGGER blocca_modifica_prezzoAttuale
-BEFORE UPDATE ON Prodotto
-FOR EACH ROW
-BEGIN
-    IF NEW.prezzoAttuale != OLD.prezzoAttuale THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Modifica diretta del campo "prezzoAttuale" non permessa.';
-    END IF;
-END;
-//
-
-DELIMITER ;
-
-
-DELIMITER //
 CREATE TRIGGER update_numeroProdotti_and_prezzoTotale
 AFTER INSERT ON Composizione
 FOR EACH ROW

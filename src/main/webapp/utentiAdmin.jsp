@@ -29,7 +29,7 @@
                     <td>${utente.dataNascita}</td>
                     <td>${utente.email}</td>
                     <td>${utente.genere}</td>
-                    <td><button onclick="document.location='mostraOrdiniUtente?IDUtente=${utente.ID}'">Mostra ordini</button></td>
+                    <td><button id="btnMostraOrdini" onclick="document.location='mostraOrdiniUtente?IDUtente=${utente.ID}'">Mostra ordini</button></td>
                 </tr>
             </c:forEach>
         </table>

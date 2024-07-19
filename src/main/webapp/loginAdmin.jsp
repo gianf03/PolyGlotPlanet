@@ -49,5 +49,6 @@
             </form>
         </div>
     </div>
+    <script src="JavaScript/cambiaAltezza.js"></script>
 </body>
 </html>

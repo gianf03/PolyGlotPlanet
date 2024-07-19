@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Area Utente</title>
-    <link type="text/css" href="css/general.css" rel="stylesheet">
+    <link type="text/css" href="css/utenteLoggatoEsperto.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -43,9 +43,9 @@
         <% String error = request.getQueryString(); %>
 
         <div id="containerModificaDati">
-            <form id="formModDati" action="modificaDatiUtente">
+            <form id="formModificaDati" action="modificaDatiUtente">
                 <div class="credenziali">
-                    <label for="nome">Nome</label>
+                    <label for="nome">Nome</label><br>
                     <input type="text" id="nome" name="nome" value="${utente.nome}" onclick="removeError('error1')">
 
                     <% if(error != null && error.contains("error=1")) {%>
@@ -53,7 +53,7 @@
                     <%}%>
                 </div>
                 <div class="credenziali">
-                    <label for="cognome">Cognome</label>
+                    <label for="cognome">Cognome</label><br>
                     <input type="text" id="cognome" name="cognome" value="${utente.cognome}" onclick="removeError('error2')">
 
                     <% if(error != null && error.contains("error=2")) {%>
@@ -61,7 +61,7 @@
                     <%}%>
                 </div>
                 <div class="credenziali">
-                    <label for="newPass">Nuova password</label>
+                    <label for="newPass">Nuova password</label><br>
                     <input type="password" id="newPass" name="newPass" onclick="removeError('error3')">
 
                     <% if(error != null && error.contains("error=6") ) {%>
@@ -69,7 +69,7 @@
                     <%}%>
                 </div>
                 <div class="credenziali">
-                    <label for="confNewPass">Conferma password</label>
+                    <label for="confNewPass">Conferma password</label><br>
                     <input type="password" id="confNewPass" name="confNewPass" onclick="removeError('error4')">
 
                     <% if(error != null && error.contains("error=10") ) {%>

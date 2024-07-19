@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Area Esperto</title>
-    <link type="text/css" href="css/esperto.css" rel="stylesheet">
+    <link type="text/css" href="css/utenteLoggatoEsperto.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -39,41 +39,41 @@
             </table>
 
             <div id="divTastoModifica">
-                <button id="tastoModifica" onclick="showElemById('containerModificaDatiEsperto')">Modifica</button>
+                <button id="tastoModifica" onclick="showElemById('containerModificaDati')">Modifica</button>
             </div>
         </div>
 
         <% String error = request.getQueryString(); %>
 
-        <div id="containerModificaDatiEsperto">
-            <form id="formModDatiEsperto" action="modificaDatiEsperto" method="POST" enctype="multipart/form-data">
+        <div id="containerModificaDati">
+            <form id="formModDati" action="modificaDatiEsperto" method="POST" enctype="multipart/form-data">
                 <div class="credenziali">
-                    <label for="nomeEsp">Nome</label><br>
-                    <input type="text" id="nomeEsp" name="nomeEsp" value="${esperto.nome}" onclick="removeError('error1')">
+                    <label for="nome">Nome</label><br>
+                    <input type="text" id="nome" name="nomeEsp" value="${esperto.nome}" onclick="removeError('error1')">
 
                     <% if(error != null && error.contains("error=1")) {%>
                     <p id="error1" class="paragrafiRossi">Nome non consentito</p>
                     <%}%>
                 </div>
                 <div class="credenziali">
-                    <label for="cognomeEsp">Cognome</label><br>
-                    <input type="text" id="cognomeEsp" name="cognomeEsp" value="${esperto.cognome}" onclick="removeError('error2')">
+                    <label for="cognome">Cognome</label><br>
+                    <input type="text" id="cognome" name="cognomeEsp" value="${esperto.cognome}" onclick="removeError('error2')">
 
                     <% if(error != null && error.contains("error=2")) {%>
                     <p id="error2" class="paragrafiRossi">Cognome non consentito</p>
                     <%}%>
                 </div>
                 <div class="credenziali">
-                    <label for="newPassEsp">Nuova password</label><br>
-                    <input type="password" id="newPassEsp" name="newPassEsp" onclick="removeError('error3')">
+                    <label for="newPass">Nuova password</label><br>
+                    <input type="password" id="newPass" name="newPassEsp" onclick="removeError('error3')">
 
                     <% if(error != null && error.contains("error=6") ) {%>
                     <p id="error3" class="paragrafiRossi">Password troppo corta</p>
                     <%}%>
                 </div>
                 <div class="credenziali">
-                    <label for="confNewPassEsp">Conferma password</label><br>
-                    <input type="password" id="confNewPassEsp" name="confNewPassEsp" onclick="removeError('error4')">
+                    <label for="confNewPass">Conferma password</label><br>
+                    <input type="password" id="confNewPass" name="confNewPassEsp" onclick="removeError('error4')">
 
                     <% if(error != null && error.contains("error=10") ) {%>
                     <p id="error4" class="paragrafiRossi">Password non coincidenti</p>
@@ -95,7 +95,7 @@
     <%
         if(error == null || error.isEmpty()) {%>
     <script>
-        document.getElementById("containerModificaDatiEsperto").style.display = "none";
+        document.getElementById("containerModificaDati").style.display = "none";
     </script>
     <%}%>
 </div>

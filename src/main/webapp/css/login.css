@@ -7,7 +7,7 @@ html, body {
 
 #div-loginUtente, #div-loginEsperto, #div-loginAdmin{
     margin: 70px auto 70px auto;
-    height: 600px;
+    height: inherit;
     width: 300px;
     border-radius: 30px;
     align-content: center;
@@ -45,6 +45,8 @@ html, body {
 
 #reg, #log {
     text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 #divAdmin {
@@ -60,7 +62,7 @@ html, body {
     /*background-color: #80B918;*/
     backdrop-filter: blur(40px);
     margin: 70px auto 75px auto;
-    height: 900px;
+    height: inherit;
     width: 300px;
     border-radius: 30px;
     align-content: center;

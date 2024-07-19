@@ -6,7 +6,7 @@
 <head>
     <title>Incontri Esperto</title>
     <link type="text/css" href="css/admin.css" rel="stylesheet">
-    <link type="text/css" href="css/esperto.css" rel="stylesheet">
+    <link type="text/css" href="css/utenteLoggatoEsperto.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="JavaScript/showElemById.js"></script>
 </head>
@@ -43,6 +43,7 @@
                 <th>Prenotato (SI/NO)</th>
                 <th>Prezzo base</th>
                 <th>Sconto percentuale</th>
+                <th>Prezzo attuale</th>
             </tr>
 
             <% if(incontri != null && !incontri.isEmpty()) {
@@ -55,6 +56,7 @@
                         <td><%=i.isPrenotato()%></td>
                         <td><%=i.getPrezzoBase()%> €</td>
                         <td><%=i.getScontoPercentuale()%> %</td>
+                        <td><%=i.getPrezzoAttuale()%> €</td>
 
                         <%
                             if(es != null) {%>
@@ -130,7 +132,8 @@
                             <input type="text" name="sconto" id="scontoInc">
                         </div>
                         <div class="aggiungiIncontroItem">
-                            <input type="submit" value="Aggiungi">
+                            <input type="submit" value="Aggiungi" class="btnAggiungi">
+                            <button type="button" class="btnChiudi" onclick="hideElemById('divAggiungiIncontro')">Chiudi</button>
                         </div>
                     </form>
                 </div>

@@ -6,7 +6,7 @@
 <head>
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" href="css/esperto.css" rel="stylesheet">
+    <link type="text/css" href="css/utenteLoggatoEsperto.css" rel="stylesheet">
     <script src="JavaScript/showElemById.js"></script>
 </head>
 <body>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="settingsLink">
-                    <a href="colloquio?IDEsperto=<%=esp.getID()%>">I miei colloqui</a>
+                    <a href="mostraColloquiAdminEsperto?IDEsperto=<%=esp.getID()%>">I miei colloqui</a>
                 </div>
             </div>
             <div class="espertoSettings">
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="settingsLink">
-                    <a href="incontro?IDEsperto=<%=esp.getID()%>">I miei incontri</a>
+                    <a href="mostraIncontriAdminEsperto?IDEsperto=<%=esp.getID()%>">I miei incontri</a>
                 </div>
             </div>
             <div class="espertoSettings">
@@ -83,7 +83,7 @@
                 </table>
 
                 <button id="btnAggiungiLingua" onclick="showElemById('divAggiungiLingua')">Aggiungi lingua</button>
-                <button id="btnChiudiLista" onclick="hideElemById('divListaConoscenze')">Chiudi</button>
+                <button id="btnChiudiLista" onclick="hideElemById('divListaConoscenze'); hideElemById('divAggiungiLingua');">Chiudi</button>
             </div>
 
             <div id="divAggiungiLingua">

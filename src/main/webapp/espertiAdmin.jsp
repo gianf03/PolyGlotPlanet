@@ -40,8 +40,8 @@
                 <td><%=esp.getEmail()%></td>
                 <td><%=esp.getGenere()%></td>
                 <td><%=esp.getValutazione()%></td>
-                <td><button onclick="document.location='colloquio?IDEsperto=<%=esp.getID()%>'">Mostra colloqui</button></td>
-                <td><button onclick="document.location='incontro?IDEsperto=<%=esp.getID()%>'">Mostra incontri</button></td>
+                <td><button id="btnMostraColloqui" onclick="document.location='mostraColloquiAdminEsperto?IDEsperto=<%=esp.getID()%>'">Mostra colloqui</button></td>
+                <td><button id="btnMostraIncontri" onclick="document.location='mostraIncontriAdminEsperto?IDEsperto=<%=esp.getID()%>'">Mostra incontri</button></td>
             </tr>
             <%}%>
         </table>

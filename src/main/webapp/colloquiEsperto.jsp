@@ -6,6 +6,7 @@
 <head>
     <title>Colloqui Esperto</title>
     <link type="text/css" href="css/admin.css" rel="stylesheet">
+    <link type="text/css" href="css/utenteLoggatoEsperto.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="JavaScript/showElemById.js"></script>
 </head>
@@ -21,7 +22,7 @@
         <%
             if(es != null) {%>
                  <div id="divFiltri">
-                    <button class="dropbtn" id="btnAggiunta" onclick="showElemById('divAggiungiIncontro')">Aggiungi incontro</button>
+                    <button class="dropbtn" id="btnAggiunta" onclick="showElemById('divAggiungiColloquio')">Aggiungi colloquio</button>
                 </div>
         <%}
             String insertion = request.getParameter("insertion");
@@ -40,6 +41,7 @@
                 <th>Prenotato (SI/NO)</th>
                 <th>Prezzo base</th>
                 <th>Sconto percentuale</th>
+                <th>Prezzo attuale</th>
             </tr>
 
             <% if(colloqui != null && !colloqui.isEmpty()) {
@@ -51,6 +53,7 @@
                         <td><%=c.isPrenotato()%></td>
                         <td><%=c.getPrezzoBase()%> €</td>
                         <td><%=c.getScontoPercentuale()%> %</td>
+                        <td><%=c.getPrezzoAttuale()%> €</td>
 
                         <%
                             if(es != null) {%>
@@ -112,7 +115,8 @@
                     <input type="text" name="sconto" id="scontoInc">
                 </div>
                 <div class="aggiungiIncontroItem">
-                    <input type="submit" value="Aggiungi">
+                    <input type="submit" value="Aggiungi" class="btnAggiungi">
+                    <button type="button" class="btnChiudi" onclick="hideElemById('divAggiungiColloquio')">Chiudi</button>
                 </div>
             </form>
         </div>

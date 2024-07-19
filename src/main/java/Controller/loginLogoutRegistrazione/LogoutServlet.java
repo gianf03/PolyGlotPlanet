@@ -16,8 +16,10 @@ public class LogoutServlet extends HttpServlet {
 
         resp.setContentType("text/html");
 
-        HttpSession session = req.getSession();
-        session.invalidate();
+        HttpSession session = req.getSession(false);
+        if(session != null) {
+            session.invalidate();
+        }
         resp.sendRedirect("index.jsp");
     }
 

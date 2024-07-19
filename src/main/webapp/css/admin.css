@@ -155,7 +155,7 @@ tr:nth-child(even) {
     height: 100px;
 }
 
-.btnAggiungi, .btnChiudi, .btnConferma, #btnModifica, #btnRimuovi {
+.btnAggiungi, .btnChiudi, .btnConferma, #btnModifica, #btnRimuovi, #btnMostraOrdini, #tuttiOrdini, #btnMostraIncontri, #btnMostraColloqui{
     height: 30px;
     width: 80px;
     border-radius: 15px;
@@ -163,6 +163,14 @@ tr:nth-child(even) {
     color: white;
     font-weight: bold;
     border: none;
+}
+
+#btnMostraOrdini, #btnMostraColloqui, #btnMostraIncontri {
+    width: 150px;
+}
+
+#tuttiOrdini {
+    width: 200px;
 }
 
 #fotoLingua {

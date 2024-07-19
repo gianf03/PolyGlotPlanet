@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="settingsLink">
-                    <a href="tuttiCorsi">Mostra corsi</a>
+                    <a href="mostraCorsiAdmin">Mostra corsi</a>
                 </div>
             </div>
             <div class="adminSettings">

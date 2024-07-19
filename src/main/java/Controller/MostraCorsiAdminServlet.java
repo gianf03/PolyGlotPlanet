@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.Bean.Corso;
-import Model.Bean.Utente;
 import Model.DAO.CorsoDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -13,8 +12,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/tuttiCorsi")
-public class TuttiCorsiServlet extends HttpServlet {
+@WebServlet("/mostraCorsiAdmin")
+public class MostraCorsiAdminServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,21 +24,13 @@ public class TuttiCorsiServlet extends HttpServlet {
         List<Corso> corsi = corsoDAO.doRetrieveAll();
 
 
-        String address;
+        String address = "corsiAdmin.jsp";
 
-        Utente u = (Utente) req.getSession().getAttribute("utente");
+        String ordPer = req.getParameter("ordPer");
+        String tipo = req.getParameter("tipo");
 
-        if(u!=null && u.isAdmin()) {
-            address = "corsiAdmin.jsp";
-
-            String ordPer = req.getParameter("ordPer");
-            String tipo = req.getParameter("tipo");
-
-            if(ordPer != null && tipo != null) {
-                corsi = corsoDAO.doRetrieveAllSorted(ordPer, tipo);
-            }
-        } else {
-            address = "corsi.jsp";
+        if(ordPer != null && tipo != null) {
+            corsi = corsoDAO.doRetrieveAllSorted(ordPer, tipo);
         }
 
         req.setAttribute("corsi", corsi);

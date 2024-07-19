@@ -41,8 +41,12 @@ public class AccessFilter extends HttpFilter {
             isWithoutAccount = true;
 
 
+        //jsp e servlet solo per l'admin
         if((path.contains("homeAdmin.jsp") || path.contains("corsiAdmin.jsp") || path.contains("espertiAdmin.jsp") ||
-                path.contains("utentiAdmin.jsp") || path.contains("ordiniUtente.jsp")) && !isAdmin) {
+                path.contains("utentiAdmin.jsp") || path.contains("ordiniUtente.jsp")
+                || path.contains("aggiungiCorso") || path.contains("aggiungiLingua")
+                || path.contains("modificaCorso") || path.contains("mostraEsperti")
+                || path.contains("mostraUtenti") || path.contains("mostraCorsiAdmin")) && !isAdmin) {
 
             httpServletResponse.sendError(401);
 
@@ -50,6 +54,7 @@ public class AccessFilter extends HttpFilter {
         }
 
 
+        //jsp e servlet solo per l'esperto
         if((path.contains("homeEsperto.jsp") || path.contains("areaEsperto.jsp") ||
                 path.contains("aggiungiColloquioEsperto") || path.contains("aggiungiIncontroEsperto") ||
                 path.contains("aggiungiRimuoviLinguaEsperto") || path.contains("modificaDatiEsperto") ||
@@ -60,25 +65,32 @@ public class AccessFilter extends HttpFilter {
             return;
         }
 
-        //colloquiEsperto.jsp, incontriEsperto.jsp, mostraColloqui e mostraIncontri sono in comune con l'admin
+        //jsp e servlet in comune tra admin e esperto
         if((path.contains("colloquiEsperto.jsp") || path.contains("incontriEsperto.jsp") ||
-                path.contains("mostraColloqui") || path.contains("mostraIncontri")) &&
+                path.contains("mostraColloquiAdminEsperto") || path.contains("mostraIncontriAdminEsperto")) &&
                 (!isAdmin && !isEsperto)) {
             httpServletResponse.sendError(401);
 
             return;
         }
 
+        //jsp e servlet in comune tra admin e utente loggato
+        if(path.contains("mostraOrdiniUtente") && !isAdmin && !isUser) {
+            httpServletResponse.sendError(401);
 
+            return;
+        }
+
+        //jsp e servlet solo per l'utente loggato
         if((path.contains("areaUtente.jsp") || path.contains("mieiOrdini.jsp") ||
-                path.contains("effettuaOrdine") || path.contains("modificaDatiUtente")
-                || path.contains("mostraOrdiniUtente")) && !isUser) {
+                path.contains("effettuaOrdine") || path.contains("modificaDatiUtente")) && !isUser) {
 
             httpServletResponse.sendError(401);
 
             return;
         }
 
+        //jsp e servlet in comune tra utente loggato e non loggato
         if((path.contains("carrello.jsp") || path.contains("colloqui.jsp") || path.contains("corsi.jsp")
                 || path.contains("incontri.jsp") || path.contains("index.jsp") ||
                 path.contains("sceltaLingua.jsp") || path.contains("aggiungiProdottoCarrello") ||
@@ -91,15 +103,8 @@ public class AccessFilter extends HttpFilter {
             return;
         }
 
-        if(path.contains("index.jsp") && (isAdmin || isEsperto)) {
-
-            httpServletResponse.sendError(401);
-
-            return;
-        }
-
         if(path.contains("sceltaLingua.jsp") && (httpServletRequest.getQueryString()==null || !httpServletRequest.getQueryString().contains("categoria"))){
-            //httpServletResponse.sendRedirect("index.jsp?error=17"); //nessuna categoria selezionata
+            //nessuna categoria selezionata
             httpServletResponse.sendError(401);
             return;
         }
@@ -107,7 +112,6 @@ public class AccessFilter extends HttpFilter {
         if(path.contains("sceltaLingua.jsp") && httpServletRequest.getQueryString().contains("categoria")){
             String categoria = httpServletRequest.getParameter("categoria");
             if (!categoria.contains("corso") && !categoria.contains("incontro") && !categoria.contains("colloquio")) {
-                //httpServletResponse.sendRedirect("index.jsp?error=17");
                 httpServletResponse.sendError(401);
                 return;
             }
@@ -136,9 +140,9 @@ public class AccessFilter extends HttpFilter {
         /*la sessione contiene eventualmente il carrello. Se io vado su una pagina di login utente,
          soltanto se sono già loggato come utente o come epserto faccio l'invalidazione altrimenti la sessione corrente mi sta bene
          se vado su login Admin o login Esperto il carrello non mi serve e quindi invalido a prescindere*/
-        if((path.contains("loginUtente") && (httpServletRequest.getSession(false).getAttribute("utente") != null ||
+        if(((path.contains("loginUtente") || path.contains("registrazioneUtente")) && (httpServletRequest.getSession(false).getAttribute("utente") != null ||
                 httpServletRequest.getSession(false).getAttribute("esperto") != null)) ||
-                (path.contains("loginAdmin") || path.contains("loginEsperto") && httpServletRequest.getSession(false) != null)){
+                (path.contains("loginAdmin") || (path.contains("loginEsperto") || path.contains("registrazioneEsperto")) && httpServletRequest.getSession(false) != null)){
             httpServletRequest.getSession(false).invalidate(); //non ci vuole return perché mi serve che esegua chain.doFilter()
         }
 

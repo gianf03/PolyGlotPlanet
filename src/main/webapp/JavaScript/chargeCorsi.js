@@ -166,7 +166,6 @@ function chargeCorsi(){
                         hiddenForm.method = "GET";
                         hiddenForm.action = "aggiungiProdottoCarrello";
                         hiddenForm.className = "hiddenForm";
-                        //hiddenForm.target = "frameCarrello";
 
                         let hiddenInputType = document.createElement("input");
                         hiddenForm.appendChild(hiddenInputType);

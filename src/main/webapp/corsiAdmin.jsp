@@ -32,9 +32,9 @@
             <div class="dropdown">
                 <button class="dropbtn">Ordina per</button>
                 <div class="dropdown-content">
-                    <a href="tuttiCorsi?ordPer=prezzoBase&tipo=asc">Prezzo crescente</a>
-                    <a href="tuttiCorsi?ordPer=prezzoBase&tipo=desc">Prezzo decrescente</a>
-                    <a href="tuttiCorsi?ordPer=livello&tipo=asc">Livello</a>
+                    <a href="mostraCorsiAdmin?ordPer=prezzoBase&tipo=asc">Prezzo crescente</a>
+                    <a href="mostraCorsiAdmin?ordPer=prezzoBase&tipo=desc">Prezzo decrescente</a>
+                    <a href="mostraCorsiAdmin?ordPer=livello&tipo=asc">Livello</a>
                 </div>
             </div>
 
@@ -51,6 +51,7 @@
                 <th>Livello</th>
                 <th>Prezzo base</th>
                 <th>Sconto percentuale</th>
+                <th>Prezzo attuale</th>
                 <th>Disponibile</th>
             </tr>
 
@@ -66,6 +67,7 @@
                         <td><%=c.getLivello()%></td>
                         <td><%=c.getPrezzoBase()%> €</td>
                         <td><%=c.getScontoPercentuale()%> %</td>
+                        <td><%=c.getPrezzoAttuale()%> €</td>
                         <td><%=c.isDisponibile()%></td>
                         <td>
                             <button id="btnModifica" onclick="modificaCorso(<%=c.getID()%>,<%=c.getPrezzoBase()%>, <%=c.getScontoPercentuale()%>)">Modifica</button>

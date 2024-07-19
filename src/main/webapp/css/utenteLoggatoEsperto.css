@@ -102,11 +102,11 @@ tr:nth-child(even) {
     overflow: auto;
 }
 
-#containerAreaEsperto {
+#containerAreaEsperto, #containerAreaUtente {
     display: flex;
 }
 
-#containerDatiEsperto, #containerModificaDatiEsperto {
+#containerDatiEsperto, #containerModificaDati, #containerdatiUtente {
     margin: 50px auto 50px auto;
     text-align: center;
     align-content: center;
@@ -118,7 +118,7 @@ tr:nth-child(even) {
     height: 550px;
 }
 
-#nomeEsp, #cognomeEsp, #newPassEsp, #confNewPassEsp, #dateTime, #capInc, #viaInc, #civicoInc, #linguaInc, #prBaseInc, #scontoInc {
+#nome, #cognome, #newPass, #confNewPass, #dateTime, #capInc, #viaInc, #civicoInc, #linguaInc, #prBaseInc, #scontoInc {
     height: 30px;
     width: 200px;
     border-radius: 15px;
@@ -145,7 +145,7 @@ tr:nth-child(even) {
     border-radius: 10px;
 }
 
-#tableDatiEsperto {
+#tableDatiEsperto, #tableDatiUtente {
     margin: auto;
 }
 

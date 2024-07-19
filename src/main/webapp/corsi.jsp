@@ -101,6 +101,7 @@
     <div id="containerCorsi">
 
     </div>
+
 </div>
 <%@include file="WEB-INF/jsp/footer.jsp"%>
 
