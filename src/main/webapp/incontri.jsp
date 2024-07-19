@@ -21,7 +21,7 @@
 </head>
 <body>
 <%@include file="WEB-INF/jsp/header.jsp"%>
-<div id="incontri" class="containerOfAll">
+<div id="containerOfAll">
     <%List<Lingua> lingue = (List<Lingua>) application.getAttribute("lingue"); %>
 
     <div id="f">

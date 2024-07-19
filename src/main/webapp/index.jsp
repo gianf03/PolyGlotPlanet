@@ -9,11 +9,13 @@
 </head>
 <body>
 <%@ include file="WEB-INF/jsp/header.jsp"%>
-    <div class="containerOfAll">
+    <div id="containerOfAll">
 
         <%
             if(request.getParameter("ordine") != null && request.getParameter("ordine").equals("effettuato")) {%>
                 <script>alert("Ordine effettuato!")</script>
+        <%} else if (request.getQueryString() != null && request.getQueryString().equals("error=25")) {%>
+                <script>alert("Accesso negato!")</script>
         <%}%>
 
 

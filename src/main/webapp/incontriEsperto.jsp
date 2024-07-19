@@ -18,7 +18,7 @@
         Esperto es = (Esperto) session.getAttribute("esperto");
     %>
     <%@include file="WEB-INF/jsp/header.jsp"%>
-    <div class="containerOfAll">
+    <div id="containerOfAll">
 
         <%
             if(es != null) {%>

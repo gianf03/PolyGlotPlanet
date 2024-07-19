@@ -14,7 +14,7 @@
 </head>
 <body>
 <%@ include file="WEB-INF/jsp/header.jsp"%>
-    <div class="containerOfAll">
+    <div id="containerOfAll">
 
         <h1 id="sceltaLingua">Seleziona una lingua :</h1>
 

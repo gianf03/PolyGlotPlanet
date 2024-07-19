@@ -12,6 +12,8 @@
     <%
         if(request.getQueryString() != null && request.getQueryString().equals("error=24")){%>
             <script>alert("Esperto inesistente!")</script>
+    <%} else if (request.getQueryString() != null && request.getQueryString().equals("error=25")) {%>
+            <script>alert("Utente inesistente")</script>
     <%}
 
         String insertion = request.getParameter("insertion");
@@ -21,7 +23,7 @@
     <%}%>
 
 <%@include file="WEB-INF/jsp/header.jsp"%>
-    <div class="containerOfAll">
+    <div id="containerOfAll">
 
         <div id="containerAdmin">
             <div class="adminSettings">

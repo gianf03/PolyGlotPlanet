@@ -15,7 +15,7 @@
     <script src="JavaScript/registrazione.js"></script>
 </head>
 <body>
-    <div class="containerOfAll">
+    <div id="containerOfAll">
         <div id="div-registrazioneUtente">
             <div id="reg"><a href="index.jsp"><img id="logo" src="img/logo.png"></a></div>
 

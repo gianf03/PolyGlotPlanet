@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <div class="containerOfAll">
+    <div id="containerOfAll">
         <div id="div-loginAdmin">
             <div id="log"><a href="index.jsp"><img id="logo" src="img/logo.png"></a></div>
 

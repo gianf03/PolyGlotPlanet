@@ -29,7 +29,7 @@
     <%}%>
 
     <%@include file="WEB-INF/jsp/header.jsp"%>
-    <div class="containerOfAll">
+    <div id="containerOfAll">
 
         <div id="divFiltri">
             <div class="dropdown">

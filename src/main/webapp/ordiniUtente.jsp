@@ -14,7 +14,7 @@
         List<List<Composizione>> listaComposizioniOrdini = (List<List<Composizione>>) request.getAttribute("listaComposizioniOrdini");
     %>
 
-    <div class="containerOfAll">
+    <div id="containerOfAll">
 
         <%@include file="WEB-INF/jsp/header.jsp"%>
 

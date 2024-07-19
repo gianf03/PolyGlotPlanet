@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <div class="containerOfAll">
+    <div id="containerOfAll">
         <div id="div-registrazioneEsperto">
 
             <div id="reg"><a href="index.jsp"><img id="logo" src="img/logo.png"></a></div>

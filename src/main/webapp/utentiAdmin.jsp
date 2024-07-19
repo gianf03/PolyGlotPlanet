@@ -9,7 +9,7 @@
 </head>
 <body>
     <%@include file="WEB-INF/jsp/header.jsp"%>
-    <div class="containerOfAll" style="text-align: center;">
+    <div id="containerOfAll" style="text-align: center;">
 
         <table id="tableUtenti">
             <tr class="rigaUtenti">

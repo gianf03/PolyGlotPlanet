@@ -34,7 +34,7 @@
     %>
 
     <%@include file="WEB-INF/jsp/header.jsp"%>
-    <div class="containerOfAll">
+    <div id="containerOfAll">
 
         <% if(numeroProdotti==0){ %>
             <p id="nessunRisultato">
@@ -42,7 +42,7 @@
             </p>
 
             <script>
-                document.getElementsByClassName("containerOfAll")[0].style.textAlign = "center";
+                document.getElementById("containerOfAll").style.textAlign = "center";
             </script>
         <%} else {%>
         <div id="containerCarrello">

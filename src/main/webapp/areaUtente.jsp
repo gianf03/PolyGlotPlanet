@@ -8,7 +8,7 @@
 </head>
 <body>
 <%@include file="WEB-INF/jsp/header.jsp"%>
-<div class="containerOfAll">
+<div id="containerOfAll">
     <div id="containerAreaUtente">
         <div id="containerdatiUtente">
 
@@ -49,7 +49,7 @@
                     <input type="text" id="nome" name="nome" value="${utente.nome}" onclick="removeError('error1')">
 
                     <% if(error != null && error.contains("error=1")) {%>
-                    <p id="error1" class="paragrafiRossi">Nome non consentito</p>
+                    <p id="error1" class="paragrafiRossi">Nome assente</p>
                     <%}%>
                 </div>
                 <div class="credenziali">
@@ -57,7 +57,7 @@
                     <input type="text" id="cognome" name="cognome" value="${utente.cognome}" onclick="removeError('error2')">
 
                     <% if(error != null && error.contains("error=2")) {%>
-                    <p id="error2" class="paragrafiRossi">Cognome non consentito</p>
+                    <p id="error2" class="paragrafiRossi">Cognome assente</p>
                     <%}%>
                 </div>
                 <div class="credenziali">
@@ -83,11 +83,10 @@
         </div>
     </div>
 
-    <%
-        if(error == null || error.isEmpty()) {%>
-    <script>
-        document.getElementById("containerModificaDati").style.display = "none";
-    </script>
+    <%if(error == null || error.isEmpty()) {%>
+        <script>
+            document.getElementById("containerModificaDati").style.display = "none";
+        </script>
     <%}%>
 </div>
 <%@include file="WEB-INF/jsp/footer.jsp"%>

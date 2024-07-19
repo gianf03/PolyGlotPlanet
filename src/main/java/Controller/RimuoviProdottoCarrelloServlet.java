@@ -55,28 +55,30 @@ public class RimuoviProdottoCarrelloServlet extends HttpServlet {
                     }
                 }
 
-                if(session.getAttribute("utente") == null) {
-                    if (index==-1)
-                        address += "?error=26"; //impossibile rimuovere elemento dal carrello
-                } else {
-                    Utente u = (Utente) session.getAttribute("utente");
 
-                    CarrelloDAO carrelloDAO = new CarrelloDAO();
-                    FormazioneDAO formazioneDAO = new FormazioneDAO();
+                if(!address.contains("error")) {
+                    if (session.getAttribute("utente") == null) {
+                        if (index == -1) {
+                            address += "?error=26"; //impossibile rimuovere elemento dal carrello
+                        }
+                    } else {
+                        Utente u = (Utente) session.getAttribute("utente");
 
-                    Carrello c = carrelloDAO.doRetrieveByIdUtente(u.getID());
-                    if(c!=null) {
-                        Formazione f = formazioneDAO.doRetrieveByIdProdottoAndIdCarrello(p.getID(), c.getId());
-                        if (f != null) {
-                            formazioneDAO.doRemove(f);
+                        CarrelloDAO carrelloDAO = new CarrelloDAO();
+                        FormazioneDAO formazioneDAO = new FormazioneDAO();
+
+                        Carrello c = carrelloDAO.doRetrieveByIdUtente(u.getID());
+                        if (c != null) {
+                            Formazione f = formazioneDAO.doRetrieveByIdProdottoAndIdCarrello(p.getID(), c.getId());
+                            if (f != null) {
+                                formazioneDAO.doRemove(f);
+                            } else
+                                address += "?error=26"; //impossibile rimuovere elemento dal carrello
                         } else
                             address += "?error=26"; //impossibile rimuovere elemento dal carrello
-                    } else
-                        address += "?error=26"; //impossibile rimuovere elemento dal carrello
+                    }
                 }
             }
-
-
         }
         catch (NumberFormatException e){
             address += "?error=26"; //impossibile rimuovere elemento dal carrello

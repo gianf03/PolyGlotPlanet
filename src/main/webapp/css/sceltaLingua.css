@@ -80,7 +80,7 @@ a:link, a:visited, a {
 }
 
 
-.containerOfAll p, #indeciso {
+#containerOfAll p, #indeciso {
     font-size: 15pt;
     font-weight: bold;
 }
@@ -95,7 +95,7 @@ a:link, a:visited, a {
     width: 48px;
 }
 
-.containerOfAll {
+#containerOfAll {
     display: flex;
     flex-direction: column;
 }

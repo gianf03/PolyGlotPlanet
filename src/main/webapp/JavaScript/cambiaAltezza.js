@@ -1,25 +1,5 @@
-/*function cambiaAltezza() {
-    var container = document.getElementsByClassName("containerOfAll")[0];
-    var footer = document.getElementById("footer");
-    console.log("Altezza container : " + container.offsetHeight);
-    console.log("Altezza finestra : " + window.innerHeight);
-    console.log("Altezza marginTop footer prima : " + window.getComputedStyle(footer).marginTop);
-    //console.log("finestra window : " +window.innerHeight); //window.innerHeight è sempre costante su qualsiasi pagina
-
-    if (container.offsetHeight < window.innerHeight) {
-        console.log((window.innerHeight - container.offsetHeight) + "px");
-        footer.style.marginTop = (window.innerHeight - container.offsetHeight) + "px";
-    }
-
-    console.log("Altezza marginTop footer dopo : " + window.getComputedStyle(footer).marginTop);
-    console.log("Altezza container dopo : "+container.offsetHeight);
-}
-
-window.onload = cambiaAltezza;
-window.onresize = cambiaAltezza;*/
-
 function minHeight(){
-    let container = document.getElementsByClassName("containerOfAll")[0];
+    let container = document.getElementById("containerOfAll");
     let footer = document.getElementById("footer");
     let header = document.getElementById("header");
 

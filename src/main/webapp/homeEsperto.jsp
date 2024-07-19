@@ -32,7 +32,7 @@
             <%}
         }%>
 
-    <div class="containerOfAll">
+    <div id="containerOfAll">
 
         <div id="containerEsperto">
             <div class="espertoSettings">

@@ -17,7 +17,7 @@
 </head>
 <body>
 <%@include file="WEB-INF/jsp/header.jsp"%>
-<div class="containerOfAll">
+<div id="containerOfAll">
 
     <%
         List<Corso> corsi = (List<Corso>) request.getAttribute("corsi");

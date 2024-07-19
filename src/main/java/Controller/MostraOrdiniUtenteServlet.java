@@ -27,8 +27,7 @@ public class MostraOrdiniUtenteServlet extends HttpServlet {
         resp.setContentType("text/html");
 
         String address;
-        HttpSession session = req.getSession(false);
-        Utente u = (Utente) session.getAttribute("utente");
+        Utente u = (Utente) req.getSession().getAttribute("utente"); //c'è per forza un utente nella sessione
 
         if(u.isAdmin()){
             address = "ordiniUtente.jsp";
@@ -39,45 +38,63 @@ public class MostraOrdiniUtenteServlet extends HttpServlet {
         List<Ordine> ordini = null;
         OrdineDAO ordineDAO = new OrdineDAO();;
 
-        if(req.getParameter("IDUtente") != null && !req.getParameter("IDUtente").equals("all")) {
-            int IDUtente = 0;
+        try {
+            int IDUtente;
+            if(!u.isAdmin()){ //semplice utente
+                //se nella request c'è IDUtente e non ha valore "all" tento di trasformarlo in intero
+                if(req.getParameter("IDUtente") != null) {
+                    UtenteDAO utenteDAO = new UtenteDAO();
+                    IDUtente = Integer.parseInt(req.getParameter("IDUtente"));
 
-            try {
-                IDUtente = Integer.parseInt(req.getParameter("IDUtente"));
-
-                if(!u.isAdmin() && IDUtente == u.getID()) {
-                    resp.sendRedirect("index.jsp?error=25"); //utente cerca di accedere ai dati di un altro utente
+                    if (IDUtente == u.getID())
+                        ordini = ordineDAO.doRetrieveAllByUtente(IDUtente);
+                    else {
+                        address = "index.jsp?error=25";
+                    }
                 } else {
-                    //fare controlli sul valore di IDUtente
-                    ordini = ordineDAO.doRetrieveAllByUtente(IDUtente);
+                    address = "index.jsp?error=25";
                 }
-            } catch (NumberFormatException e) {
-                if(u.isAdmin()) {
-                    resp.sendRedirect("homeAdmin.jsp?error=25");
+
+            } else { //admin
+                if(req.getParameter("IDUtente") != null && req.getParameter("IDUtente").equals("all")){
+                    ordini = ordineDAO.doRetrieveAll();
                 } else {
-                    resp.sendRedirect("index.jsp?error=25");
+                    UtenteDAO utenteDAO = new UtenteDAO();
+                    IDUtente = Integer.parseInt(req.getParameter("IDUtente"));
+
+                    if (utenteDAO.doRetrieveById(IDUtente) != null)
+                        ordini = ordineDAO.doRetrieveAllByUtente(IDUtente);
+                    else {
+                        address = "homeAdmin.jsp?error=25";
+                    }
                 }
             }
-        } else if(u.isAdmin()){ /*controllo necessario per evitare che se un utente semplice digita IDUtente=all possa avere accesso agli ordini di tutti gli altri utenti*/
-            address+="?IDUtente=all";
-            ordini = ordineDAO.doRetrieveAll();
-        }
-
-        req.setAttribute("ordini", ordini);
-
-        /*per ogni ordine, ho una lista di composizioni, quindi avrò una lista di liste di composizioni*/
-        ComposizioneDAO composizioneDAO = new ComposizioneDAO();
-        List<List<Composizione>> listaComposizioniOrdini = new ArrayList<>();
-
-        if(ordini != null) {
-            for (Ordine o : ordini) {
-                listaComposizioniOrdini.add(composizioneDAO.doRetrieveAllByOrdine(o.getID()));
+        } catch (NumberFormatException e) {
+            if(u.isAdmin()) {
+                address = "homeAdmin.jsp?error=25";
+            }else{
+                address = "index.jsp?error=25";
             }
         }
-        req.setAttribute("listaComposizioniOrdini", listaComposizioniOrdini);
 
-        RequestDispatcher rd = req.getRequestDispatcher(address);
-        rd.forward(req, resp);
+        if(!address.contains("error")) {
+            req.setAttribute("ordini", ordini);
+
+            /*per ogni ordine, ho una lista di composizioni, quindi avrò una lista di liste di composizioni*/
+            ComposizioneDAO composizioneDAO = new ComposizioneDAO();
+            List<List<Composizione>> listaComposizioniOrdini = new ArrayList<>();
+
+            if(ordini != null) {
+                for (Ordine o : ordini) {
+                    listaComposizioniOrdini.add(composizioneDAO.doRetrieveAllByOrdine(o.getID()));
+                }
+            }
+            req.setAttribute("listaComposizioniOrdini", listaComposizioniOrdini);
+
+            RequestDispatcher rd = req.getRequestDispatcher(address);
+            rd.forward(req, resp);
+        } else
+            resp.sendRedirect(address);
     }
 
     @Override

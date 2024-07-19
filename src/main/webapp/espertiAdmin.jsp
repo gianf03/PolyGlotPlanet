@@ -14,7 +14,7 @@
     %>
 
     <%@include file="WEB-INF/jsp/header.jsp"%>
-    <div class="containerOfAll">
+    <div id="containerOfAll">
 
         <table id="tableEsperti">
             <tr class="rigaEsperti">
