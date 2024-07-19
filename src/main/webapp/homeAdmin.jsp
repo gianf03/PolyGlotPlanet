@@ -10,6 +10,10 @@
 <body>
 
     <%
+        if(request.getQueryString() != null && request.getQueryString().equals("error=24")){%>
+            <script>alert("Esperto inesistente!")</script>
+    <%}
+
         String insertion = request.getParameter("insertion");
 
         if(insertion != null && insertion.equals("good")) {%>

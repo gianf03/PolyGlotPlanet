@@ -14,8 +14,6 @@ public class Esperto {
     private String email;
     private String password;
     private String genere;
-    private double valutazione;
-
     private String fotoRiconoscitiva;
 
 
@@ -88,14 +86,6 @@ public class Esperto {
 
     public void setGenere(String genere) {
         this.genere = genere;
-    }
-
-    public double getValutazione() {
-        return valutazione;
-    }
-
-    public void setValutazione(double valutazione) {
-        this.valutazione = valutazione;
     }
 
     public String getFotoRiconoscitiva() {

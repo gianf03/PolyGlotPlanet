@@ -118,7 +118,7 @@ tr:nth-child(even) {
     height: 550px;
 }
 
-#nome, #cognome, #newPass, #confNewPass, #dateTime, #capInc, #viaInc, #civicoInc, #linguaInc, #prBaseInc, #scontoInc {
+#nome, #cognome, #newPass, #confNewPass, #dataOra, #capInc, #viaInc, #civicoInc, #linguaInc, #prBaseInc, #scontoInc {
     height: 30px;
     width: 200px;
     border-radius: 15px;

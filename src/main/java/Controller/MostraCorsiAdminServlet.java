@@ -29,8 +29,11 @@ public class MostraCorsiAdminServlet extends HttpServlet {
         String ordPer = req.getParameter("ordPer");
         String tipo = req.getParameter("tipo");
 
-        if(ordPer != null && tipo != null) {
+        if(ordPer != null && (ordPer.equals("prezzoBase") || ordPer.equals("livello"))
+                && tipo != null && (tipo.equals("asc") || tipo.equals("desc"))) {
             corsi = corsoDAO.doRetrieveAllSorted(ordPer, tipo);
+        } else if(req.getQueryString() != null){ //se queryString = null ordinati in base a come restituisce il DB
+            address += "?error=25"; //ordinamento non valido
         }
 
         req.setAttribute("corsi", corsi);

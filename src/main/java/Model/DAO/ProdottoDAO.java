@@ -99,28 +99,6 @@ public class ProdottoDAO {
         }
     }
 
-    public int getLastId() {
-        try (Connection con = ConPool.getConnection()) {
-
-            String sql = "SELECT ID FROM Prodotto ORDER BY ID DESC LIMIT 1";
-
-            PreparedStatement ps = con.prepareStatement(sql);
-
-            ResultSet rs = ps.executeQuery();
-
-            int id = 0;
-
-            if(rs.next()) {
-                id = rs.getInt("ID");
-            }
-
-            return (id + 1);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public Prodotto doRetrieveById(int idProdotto) {
         try (Connection con = ConPool.getConnection()) {
 

@@ -25,7 +25,6 @@
                 <th>Data di nascita</th>
                 <th>Email</th>
                 <th>Genere</th>
-                <th>Valutazione</th>
             </tr>
 
             <% for(Esperto esp : esperti) {%>
@@ -39,7 +38,6 @@
                 <td><%=esp.getDataNascita()%></td>
                 <td><%=esp.getEmail()%></td>
                 <td><%=esp.getGenere()%></td>
-                <td><%=esp.getValutazione()%></td>
                 <td><button id="btnMostraColloqui" onclick="document.location='mostraColloquiAdminEsperto?IDEsperto=<%=esp.getID()%>'">Mostra colloqui</button></td>
                 <td><button id="btnMostraIncontri" onclick="document.location='mostraIncontriAdminEsperto?IDEsperto=<%=esp.getID()%>'">Mostra incontri</button></td>
             </tr>

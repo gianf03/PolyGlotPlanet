@@ -13,6 +13,11 @@
 <%@include file="WEB-INF/jsp/header.jsp"%>
 
     <%
+
+        if(request.getQueryString() != null && request.getQueryString().contains("error=24")){%>
+            <script>alert("Non puoi accedere a questa pagina!")</script>
+        <%}
+
         Esperto esp = (Esperto) session.getAttribute("esperto");
         List<Conoscenza> conoscenze = (List<Conoscenza>) request.getAttribute("conoscenzeEsp");
         List<Lingua> lingueNonConosciute = (List<Lingua>) request.getAttribute("lingueNonConosciute");
@@ -54,7 +59,7 @@
                 </div>
 
                 <div class="settingsLink">
-                    <a href="mostraLingueEsperto?IDEsperto=<%=esp.getID()%>">Le mie lingue</a>
+                    <a href="mostraLingueEsperto">Le mie lingue</a>
                 </div>
             </div>
         </div>
@@ -88,7 +93,7 @@
 
             <div id="divAggiungiLingua">
                 <label for="formLingua">Seleziona una lingua:</label>
-                <form id="formLingua" action="aggiungiRimuoviLinguaEsperto?IDEsperto=<%=esp.getID()%>&operation=add" method="POST">
+                <form id="formLingua" action="aggiungiRimuoviLinguaEsperto?operation=add" method="POST">
                     <select name="codISOLingua">
                         <%for(Lingua l : lingueNonConosciute) {%>
                         <option value="<%=l.getCodISOLingua()%>"><%=l.getNome()%></option>

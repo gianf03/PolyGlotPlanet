@@ -48,7 +48,7 @@ public class ModificaDatiUtenteServlet extends HttpServlet {
         un '&' per come ho progettato i controlli*/
         address = address.substring(0, address.length()-1);
 
-        if(address.equals("areaUtente.jsp")) {
+        if(!address.contains("error")) {
             UtenteDAO utenteDAO = new UtenteDAO();
             utenteDAO.doUpdate(u.getID(), nome, cognome, newPassword);
 

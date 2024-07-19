@@ -29,7 +29,7 @@
 
             if(insertion != null && insertion.equals("good")) {%>
                 <script>alert("Inserimento avvenuto con successo!")</script>
-        <%} else if(request.getParameter("error") != null){%>
+        <%} else if(request.getParameter("error") != null && request.getQueryString().contains("error=20")){%>
                 <script>alert("Colloquio non aggiunto!")</script>
         <%}%>
 
@@ -71,8 +71,8 @@
         <div id="divAggiungiColloquio">
             <form action="aggiungiColloquioEsperto">
                 <div class="aggiungiIncontroItem">
-                    <label for="dateTime">Data e ora</label><br>
-                    <input type="datetime-local" name="dataOra" id="dateTime">
+                    <label for="dataOra">Data e ora</label><br>
+                    <input type="datetime-local" name="dataOra" id="dataOra">
 
                     <script>
                         // Funzione per ottenere l'ora successiva a quella attuale

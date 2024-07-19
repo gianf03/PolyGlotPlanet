@@ -17,13 +17,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <%List<Prodotto> prodotti = (List<Prodotto>) session.getAttribute("carrello");
+    <%
+        if(request.getQueryString() != null && request.getQueryString().contains("error=22")) {%>
+            <script>alert("Non è stato possibile inserire il prodotto nel carrello!")</script>
+        <%} else if(request.getQueryString() != null && request.getQueryString().contains("error=26")) {%>
+            <script>alert("Impossibile rimuovere elemento dal carrello!")</script>
+    <%}
+
+        List<Prodotto> prodotti = (List<Prodotto>) session.getAttribute("carrello");
+
         int numeroProdotti;
         if(prodotti == null || prodotti.isEmpty())
             numeroProdotti = 0;
         else
             numeroProdotti = prodotti.size();
     %>
+
     <%@include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
 

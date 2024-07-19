@@ -32,7 +32,6 @@ public class ConoscenzaDAO {
                 e.setPassword(rs.getString("e.passwordHash"));
                 e.setDataNascita(rs.getDate("e.dataNascita").toLocalDate());
                 e.setGenere(rs.getString("e.genere"));
-                e.setValutazione(rs.getDouble("e.valutazione"));
                 e.setFotoRiconoscitiva(rs.getString("e.fotoRiconoscitiva"));
 
                 Lingua l = new Lingua();

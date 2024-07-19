@@ -159,7 +159,6 @@ public class MostraIncontriAjaxServlet extends HttpServlet {
                 String ddn = i.getEsperto().getDataNascita().format(dateFormatter1);
                 obj.put("dataNascitaEsperto", ddn); /*occorre convertire data in stringa altrimenti errore nella lettura del JSON*/
 
-                obj.put("valutazioneEsperto", i.getEsperto().getValutazione());
                 obj.put("fotoEsperto", i.getEsperto().getFotoRiconoscitiva());
                 obj.put("prezzoOrario", i.getPrezzoAttuale());
 

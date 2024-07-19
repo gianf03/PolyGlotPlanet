@@ -43,6 +43,7 @@ public class AggiungiIncontroEspertoServlet extends HttpServlet {
             isNumber = false;
         }
 
+        //si può aggiungere un incontro solo se avverrà tra almeno 26 ore
         LocalDateTime minDate = LocalDateTime.now().plusHours(26);
 
         if(dataOra == null || cap == null || cap.isBlank() || via == null || via.isBlank() || !isNumber ||
@@ -85,6 +86,9 @@ public class AggiungiIncontroEspertoServlet extends HttpServlet {
             incontroDAO.doSave(i);
 
             address += "?insertion=good";
+
+            List<Integer> prezziIncontri = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(2);
+            getServletContext().setAttribute("prezziIncontri", prezziIncontri);
         }
 
         List<Incontro> incontri = incontroDAO.doRetrieveByEsperto(e.getID());
@@ -100,8 +104,6 @@ public class AggiungiIncontroEspertoServlet extends HttpServlet {
 
         req.setAttribute("incontri", incontri);
         req.setAttribute("lingueConosciute", lingueConosciute);
-        List<Integer> prezziIncontri = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(2);
-        getServletContext().setAttribute("prezziIncontri", prezziIncontri);
 
         RequestDispatcher rd = req.getRequestDispatcher(address);
         rd.forward(req, resp);

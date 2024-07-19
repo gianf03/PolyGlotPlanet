@@ -54,8 +54,6 @@ public class EffettuaOrdineServlet extends HttpServlet {
         }
         session.removeAttribute("carrello");
 
-        //carrelloDAO.doRemove(carrello);
-
         resp.sendRedirect("index.jsp?ordine=effettuato");
     }
 }

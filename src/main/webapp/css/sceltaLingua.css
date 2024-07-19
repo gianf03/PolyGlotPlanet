@@ -131,6 +131,14 @@ a:link, a:visited, a {
     cursor: pointer;
 }
 
+#sceltaLingua {
+    margin: 50px 0 0 0;
+    color: #007253;
+    text-align: center;
+    padding: 15px;
+}
+
+
 /*quando la larghezza della finestra scende sotto i 900 pixel i bottoni della barra
 di navigazione vengono disposti in verticale */
 @media screen and (max-width: 900px) {

@@ -14,7 +14,7 @@ public class ColloquioDAO {
     public void doSave(Colloquio colloquio) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Incontro (IDProdotto, dataOra, IDEsperto) VALUES(?,?,?)");
+                    "INSERT INTO Colloquio (IDProdotto, dataOra, IDEsperto) VALUES(?,?,?)");
 
             ps.setInt(1, colloquio.getID());
             ps.setTimestamp(2, Timestamp.valueOf(colloquio.getDataOra()));

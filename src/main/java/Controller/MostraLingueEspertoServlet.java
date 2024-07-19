@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Bean.Conoscenza;
+import Model.Bean.Esperto;
 import Model.Bean.Lingua;
 import Model.DAO.ConoscenzaDAO;
 import Model.DAO.LinguaDAO;
@@ -22,24 +23,24 @@ public class MostraLingueEspertoServlet extends HttpServlet {
 
         resp.setContentType("text/html");
 
-        int IDEsperto = Integer.parseInt(req.getParameter("IDEsperto"));
+        int IDEsperto = ((Esperto) req.getSession().getAttribute("esperto")).getID();
         List<Conoscenza> conoscenzeEsp = null;
 
         String address = "homeEsperto.jsp";
 
-        if(IDEsperto > 0) {
-            ConoscenzaDAO conoscenzaDAO = new ConoscenzaDAO();
-            conoscenzeEsp = conoscenzaDAO.doRetrieveByIDEsperto(IDEsperto);
+        ConoscenzaDAO conoscenzaDAO = new ConoscenzaDAO();
+        conoscenzeEsp = conoscenzaDAO.doRetrieveByIDEsperto(IDEsperto);
 
-            LinguaDAO linguaDAO = new LinguaDAO();
-            List<Lingua> lingue = linguaDAO.getLingueNonConosciuteEsperto(IDEsperto);
+        LinguaDAO linguaDAO = new LinguaDAO();
+        List<Lingua> lingue = linguaDAO.getLingueNonConosciuteEsperto(IDEsperto);
 
-            req.setAttribute("lingueNonConosciute", lingue);
-            req.setAttribute("conoscenzeEsp", conoscenzeEsp);
-        }
+        req.setAttribute("lingueNonConosciute", lingue);
+        req.setAttribute("conoscenzeEsp", conoscenzeEsp);
+
 
         RequestDispatcher rd = req.getRequestDispatcher(address);
         rd.forward(req, resp);
+
     }
 
     @Override

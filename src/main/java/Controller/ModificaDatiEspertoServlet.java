@@ -56,7 +56,7 @@ public class ModificaDatiEspertoServlet extends HttpServlet {
         String pathImgEsperto;
 
         //imgEsperto != null non va bene
-        if(imgEsperto.getSize() != 0) {
+        if(imgEsperto != null && imgEsperto.getSize() != 0) {
             String nomeOriginale = Paths.get(imgEsperto.getSubmittedFileName()).getFileName().toString();
             int lastIndex = nomeOriginale.lastIndexOf('.');
             String estensione = nomeOriginale.substring(lastIndex + 1);
@@ -72,7 +72,7 @@ public class ModificaDatiEspertoServlet extends HttpServlet {
             // crea CARTELLA_UPLOAD, se non esiste
             Files.createDirectories(pathDestinazione.getParent());
 
-            // elimina il il file precedente
+            // elimina il file precedente
             Files.delete(pathDestinazione);
 
             // scrive il nuovo file
@@ -91,7 +91,7 @@ public class ModificaDatiEspertoServlet extends HttpServlet {
         //un '&' per come ho progettato i controlli
         address = address.substring(0, address.length()-1);
 
-        if(address.equals("areaEsperto.jsp")) {
+        if(!address.contains("error")) {
             EspertoDAO espertoDAO = new EspertoDAO();
             espertoDAO.doUpdate(e.getID(), nome, cognome, newPassword, pathImgEsperto);
 

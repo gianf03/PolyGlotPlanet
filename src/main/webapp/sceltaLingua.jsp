@@ -15,6 +15,9 @@
 <body>
 <%@ include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">
+
+        <h1 id="sceltaLingua">Seleziona una lingua :</h1>
+
         <%String categoria = request.getParameter("categoria"); %>
         <section id="outer-container">
             <div id="flex-container">

@@ -60,14 +60,6 @@ public class LoginAdminServlet extends HttpServlet {
             address = "homeAdmin.jsp";
         }
 
-
-        /*PrintWriter out = resp.getWriter();
-        out.println("<html><body>");
-        out.println(address);
-        out.println("<br>"+ req.getAttribute("address"));
-        out.println("</body></html>");
-        */
-
         resp.sendRedirect(address);
     }
 

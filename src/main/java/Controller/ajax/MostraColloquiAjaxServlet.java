@@ -34,8 +34,8 @@ public class MostraColloquiAjaxServlet extends HttpServlet {
         List<Lingua> lingue = (List<Lingua>) getServletContext().getAttribute("lingue");
 
         resp.setContentType("application/json");
-        PrintWriter out = resp.getWriter();
 
+        PrintWriter out = resp.getWriter();
 
         //se la queryString è null oppure vuota, non c'è il parametro filtro oppure se c'è ma non ha valore true o false
         if(req.getQueryString() == null || req.getQueryString().isEmpty() ||
@@ -157,7 +157,6 @@ public class MostraColloquiAjaxServlet extends HttpServlet {
                 String ddn = c.getEsperto().getDataNascita().format(dateFormatter1);
                 obj.put("dataNascitaEsperto", ddn); /*occorre convertire data in stringa altrimenti errore nella lettura del JSON*/
 
-                obj.put("valutazioneEsperto", c.getEsperto().getValutazione());
                 obj.put("fotoEsperto", c.getEsperto().getFotoRiconoscitiva());
                 obj.put("prezzoOrario", c.getPrezzoAttuale());
 

@@ -28,80 +28,91 @@ public class AggiungiProdottoCarrelloServlet extends HttpServlet {
 
         ProdottoDAO prodottoDAO = new ProdottoDAO();
 
-        int idProdotto = Integer.parseInt(req.getParameter("ID"));
+        int idProdotto = 0;
         List<Prodotto> listaProdotti = new ArrayList<>();
         Utente u = null;
 
-        Prodotto p = prodottoDAO.doRetrieveById(idProdotto);
+        try {
+            idProdotto = Integer.parseInt(req.getParameter("ID"));
+            Prodotto p = prodottoDAO.doRetrieveById(idProdotto);
 
-        if(session.getAttribute("utente") != null){
-            u = (Utente) session.getAttribute("utente");
-        }
-
-
-        /*utente loggato o non faccio le stesse operazioni*/
-        if(p!=null) {
-
-            /*solo per utente loggato*/
-            FormazioneDAO formazioneDAO = new FormazioneDAO();
-            CarrelloDAO carrelloDAO = new CarrelloDAO();
-            Carrello carrello = null;
-            if (u != null) {
-
-                /*salvo prodotto nel carrello fisico*/
-                carrello = carrelloDAO.doRetrieveByIdUtente(u.getID());
-
-                /*se l'utente loggato non ha ancora un carrello*/
-                if(carrello == null){
-                    carrello = new Carrello();
-                    carrello.setUtente(u);
-                    carrelloDAO.doSave(carrello);
+            if(p != null) {
+                if(session.getAttribute("utente") != null){
+                    u = (Utente) session.getAttribute("utente");
                 }
 
-                Formazione formazione = formazioneDAO.doRetrieveByIdProdottoAndIdCarrello(p.getID(),carrello.getId());
 
-                if(formazione == null) {
-                    formazione = new Formazione();
-                    formazione.setCarrello(carrello);
-                    formazione.setProdotto(p);
-                    formazioneDAO.doSave(formazione);
+                /*utente loggato oppure no faccio le stesse operazioni*/
+
+                /*solo per utente loggato*/
+                FormazioneDAO formazioneDAO = new FormazioneDAO();
+                CarrelloDAO carrelloDAO = new CarrelloDAO();
+                Carrello carrello = null;
+                if (u != null) {
+
+                    /*salvo prodotto nel carrello fisico*/
+                    carrello = carrelloDAO.doRetrieveByIdUtente(u.getID());
+
+                    /*se l'utente loggato non ha ancora un carrello glielo creo e me lo faccio restituire*/
+                    if(carrello == null){
+                        carrello = new Carrello();
+                        carrello.setUtente(u);
+                        carrelloDAO.doSave(carrello);
+                        carrello = carrelloDAO.doRetrieveByIdUtente(u.getID());
+                    }
+
+                    Formazione formazione = formazioneDAO.doRetrieveByIdProdottoAndIdCarrello(p.getID(),carrello.getId());
+
+                    /*se prodotto non presente nel carrello fisico (formazione == null) lo inserisco
+                    altrimenti lo rimuovo*/
+                    if(formazione == null) {
+                        formazione = new Formazione();
+                        formazione.setCarrello(carrello);
+                        formazione.setProdotto(p);
+                        formazioneDAO.doSave(formazione);
+                    } else {
+                        formazioneDAO.doRemove(formazione);
+                    }
+                }
+
+                /*se carrello logico non presente in sessione ne creo uno vuoto e lo inserisco*/
+                if (session.getAttribute("carrello") == null) {
+                    List<Prodotto> prodotti = new ArrayList<>();
+                    session.setAttribute("carrello", prodotti);
+                }
+
+                listaProdotti = (List<Prodotto>) session.getAttribute("carrello");
+
+
+                int posizione = -1;
+                for (int i = 0; i < listaProdotti.size(); i++) {
+                    if (listaProdotti.get(i).getID() == p.getID()) {
+                        posizione = i;
+                    }
+                }
+
+                if (posizione > -1) {
+                    listaProdotti.remove(posizione);
+                } else
+                    listaProdotti.add(p);
+
+
+                session.setAttribute("carrello", listaProdotti);
+
+                if(p instanceof Colloquio){
+                    resp.sendRedirect("colloqui.jsp");
+                } else if (p instanceof Incontro) {
+                    resp.sendRedirect("incontri.jsp");
+                } else if (p instanceof Corso){
+                    resp.sendRedirect("corsi.jsp");
                 } else {
-                    formazioneDAO.doRemove(formazione);
+                    resp.sendError(404);
                 }
+            } else {
+                resp.sendRedirect("carrello.jsp?error=22"); //prodotto inesistente
             }
-
-
-            if (session.getAttribute("carrello") == null) {
-                List<Prodotto> prodotti = new ArrayList<>();
-                session.setAttribute("carrello", prodotti);
-            }
-
-            listaProdotti = (List<Prodotto>) session.getAttribute("carrello");
-
-            int posizione = -1;
-            for (int i = 0; i < listaProdotti.size(); i++) {
-                if (listaProdotti.get(i).getID() == p.getID()) {
-                    posizione = i;
-                }
-            }
-
-            if (posizione > -1) {
-                listaProdotti.remove(posizione);
-            } else
-                listaProdotti.add(p);
-
-
-            session.setAttribute("carrello", listaProdotti);
-        }
-
-        if(p instanceof Colloquio){
-            resp.sendRedirect("colloqui.jsp");
-        } else if (p instanceof Incontro) {
-            resp.sendRedirect("incontri.jsp");
-        } else if (p instanceof Corso){
-            resp.sendRedirect("corsi.jsp");
-        } else {
-            resp.sendError(404);
+        } catch (NumberFormatException e) {
+            resp.sendRedirect("carrello.jsp?error=22");
         }
     }
 }

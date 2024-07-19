@@ -3,6 +3,7 @@ package Controller;
 import Model.Bean.Categoria;
 import Model.Bean.Corso;
 import Model.Bean.Lingua;
+import Model.Bean.Prodotto;
 import Model.DAO.CategoriaDAO;
 import Model.DAO.CorsoDAO;
 import Model.DAO.LinguaDAO;
@@ -59,26 +60,29 @@ public class AggiungiCorsoServlet extends HttpServlet {
             Lingua l = linguaDAO.doRetrieveById(codISOLingua);
 
             CategoriaDAO categoriaDAO = new CategoriaDAO();
-            Categoria cat = new Categoria();
-            cat = categoriaDAO.doRetrieveByName("corso");
+            Categoria cat = categoriaDAO.doRetrieveByName("corso");
 
             ProdottoDAO prodottoDAO = new ProdottoDAO();
-            int idCorso = prodottoDAO.getLastId();
+
+            Prodotto p = new Prodotto();
+            p.setPrezzoBase(prezzoBase);
+            p.setScontoPercentuale(scontoPercentuale);
+            p.setCategoria(cat);
+            p.setLingua(l);
+
+            prodottoDAO.doSave(p);
+
+            p = prodottoDAO.doRetrieveLastProduct();
+
 
             Corso c = new Corso();
 
-            c.setID(idCorso);
-            c.setPrezzoBase(prezzoBase);
-            c.setScontoPercentuale(scontoPercentuale);
-            c.setLingua(l);
+            c.setID(p.getID());
             c.setDescrizione(descrizione);
             c.setNumeroUnita(numeroUnita);
             c.setLivello(livello);
             c.setCategoria(cat);
 
-
-            //salvo nel db il nuovo prodotto
-            prodottoDAO.doSave(c);
 
             //salvo nel db il nuovo corso associato al prodotto appena creato
             corsoDAO.doSave(c);

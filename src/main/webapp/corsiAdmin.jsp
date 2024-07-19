@@ -20,10 +20,13 @@
 
         if(insertion != null && insertion.equals("good")) {%>
             <script>alert("Inserimento avvenuto con successo!")</script>
-    <%} else if(request.getParameter("error") != null){%>
+    <%} else if(request.getParameter("error") != null && request.getParameter("error").equals("17")){%>
             <script>alert("Corso non aggiunto!")</script>
-    <%}
-    %>
+    <%} else if(request.getParameter("error") != null && request.getParameter("error").equals("23")){%>
+            <script>alert("Corso non modificato!")</script>
+    <%} else if(request.getParameter("error") != null && request.getParameter("error").equals("25")){%>
+            <script>alert("Ordinamento non consentito!")</script>
+    <%}%>
 
     <%@include file="WEB-INF/jsp/header.jsp"%>
     <div class="containerOfAll">

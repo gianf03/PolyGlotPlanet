@@ -1,9 +1,9 @@
 package Controller;
 
-import Model.Bean.Conoscenza;
-import Model.Bean.Incontro;
-import Model.Bean.Lingua;
+import Model.Bean.*;
+import Model.DAO.ColloquioDAO;
 import Model.DAO.ConoscenzaDAO;
+import Model.DAO.EspertoDAO;
 import Model.DAO.IncontroDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -24,27 +24,52 @@ public class MostraIncontriAdminEspertoServlet extends HttpServlet {
         resp.setContentType("text/html");
 
         IncontroDAO incontroDAO = new IncontroDAO();
-        int IDEsperto = Integer.parseInt(req.getParameter("IDEsperto"));
-        List<Incontro> incontri = incontroDAO.doRetrieveByEsperto(IDEsperto);
+        int IDEsperto = 0;
         String address = "/incontriEsperto.jsp";
+        List<Lingua> lingueConosciute = null;
 
+        Esperto e = (Esperto) req.getSession().getAttribute("esperto");
 
-        /*inserisco la lista delle lingue conosciute dell'esperto nella request
-        per poter aggiungere un nuovo incontro*/
-        ConoscenzaDAO conoscenzaDAO = new ConoscenzaDAO();
-        List<Conoscenza> conoscenze = conoscenzaDAO.doRetrieveByIDEsperto(IDEsperto);
+        try {
+            IDEsperto = Integer.parseInt(req.getParameter("IDEsperto"));
 
-        List<Lingua> lingueConosciute = new ArrayList<>();
+            EspertoDAO espertoDAO = new EspertoDAO();
 
-        for(Conoscenza c : conoscenze) {
-            lingueConosciute.add(c.getLingua());
+            if((e != null && e.getID() == IDEsperto) || espertoDAO.doRetrieveById(IDEsperto) != null) {
+
+                /*inserisco la lista delle lingue conosciute dell'esperto nella request
+                per poter aggiungere un nuovo incontro*/
+                ConoscenzaDAO conoscenzaDAO = new ConoscenzaDAO();
+                List<Conoscenza> conoscenze = conoscenzaDAO.doRetrieveByIDEsperto(IDEsperto);
+
+                lingueConosciute = new ArrayList<>();
+
+                for (Conoscenza c : conoscenze) {
+                    lingueConosciute.add(c.getLingua());
+                }
+
+                List<Incontro> incontri = incontroDAO.doRetrieveByEsperto(IDEsperto);
+                req.setAttribute("lingueConosciute", lingueConosciute);
+                req.setAttribute("incontri", incontri);
+
+                RequestDispatcher rd = req.getRequestDispatcher(address);
+                rd.forward(req, resp);
+
+            } else if (e == null && espertoDAO.doRetrieveById(IDEsperto) == null) {
+                address = "homeAdmin.jsp?error=24"; //esperto inesistente
+            } else if(e != null && IDEsperto != e.getID()) {
+                address = "homeEsperto.jsp?error=24"; //esperto inesistente
+            }
+
+        } catch (NumberFormatException ex) {
+            if(e == null) {
+                address = "homeAdmin.jsp?error=24"; //esperto inesistente
+            } else {
+                address = "homeEsperto.jsp?error=24"; //esperto inesistente
+            }
         }
 
-        req.setAttribute("lingueConosciute", lingueConosciute);
-        req.setAttribute("incontri", incontri);
-
-        RequestDispatcher rd = req.getRequestDispatcher(address);
-        rd.forward(req, resp);
+        resp.sendRedirect(address);
     }
 
     @Override

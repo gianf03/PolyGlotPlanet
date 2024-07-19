@@ -28,7 +28,7 @@ public class AggiungiColloquioEspertoServlet extends HttpServlet {
         double prezzoBase = 0;
         double sconto = -1;
 
-        String address = "colloquioEsperto.jsp";
+        String address = "colloquiEsperto.jsp";
         boolean isNumber = true;
 
         try {
@@ -39,6 +39,7 @@ public class AggiungiColloquioEspertoServlet extends HttpServlet {
             isNumber = false;
         }
 
+        //si può aggiungere un colloquio solo se comincia 2 ore dopo il momento in cui lo si sta aggiungendo
         LocalDateTime minDate = LocalDateTime.now().plusHours(2);
 
         if(dataOra == null || lingua == null || lingua.isBlank() || !isNumber || prezzoBase <= 0 || sconto < 0 ||
@@ -77,6 +78,9 @@ public class AggiungiColloquioEspertoServlet extends HttpServlet {
             colloquioDAO.doSave(c);
 
             address += "?insertion=good";
+
+            List<Integer> prezziColloqui = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(3);
+            getServletContext().setAttribute("prezziColloqui", prezziColloqui);
         }
 
         List<Colloquio> colloqui = colloquioDAO.doRetrieveByEsperto(e.getID());
@@ -92,8 +96,6 @@ public class AggiungiColloquioEspertoServlet extends HttpServlet {
 
         req.setAttribute("colloqui", colloqui);
         req.setAttribute("lingueConosciute", lingueConosciute);
-        List<Integer> prezziColloqui = prodottoDAO.doRetrievePrezzoMinMaxByCategoria(3);
-        getServletContext().setAttribute("prezziColloqui", prezziColloqui);
 
         RequestDispatcher rd = req.getRequestDispatcher(address);
         rd.forward(req, resp);

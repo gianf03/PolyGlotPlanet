@@ -75,8 +75,8 @@
                 <div id="divAggiungiIncontro">
                     <form action="aggiungiIncontroEsperto">
                         <div class="aggiungiIncontroItem">
-                            <label for="dateTime">Data e ora</label><br>
-                            <input type="datetime-local" name="dataOra" id="dateTime">
+                            <label for="dataOra">Data e ora</label><br>
+                            <input type="datetime-local" name="dataOra" id="dataOra">
 
                             <script>
                                 // Funzione per ottenere la data di 18 anni fa dalla data odierna
@@ -97,7 +97,7 @@
                                     return date;
                                 }
 
-                                document.getElementById("dateTime").min = minDate();
+                                document.getElementById("dataOra").min = minDate();
                             </script>
                         </div>
                         <div class="aggiungiIncontroItem">

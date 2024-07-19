@@ -26,20 +26,22 @@ public class RimuoviProdottoCarrelloServlet extends HttpServlet {
         ProdottoDAO prodottoDAO = new ProdottoDAO();
         int idProdotto;
 
+        String address = "carrello.jsp";
+
         try{
             idProdotto = Integer.parseInt(req.getParameter("IDProdotto"));
             Prodotto p = prodottoDAO.doRetrieveById(idProdotto);
 
             if (p == null)
-                resp.sendError(404);
+                address += "?error=26"; //impossibile rimuovere elemento dal carrello
             else {
                 HttpSession session = req.getSession();
                 List<Prodotto> prodotti = (List<Prodotto>) session.getAttribute("carrello");
                 int index = -1;
 
-                if (prodotti == null || prodotti.isEmpty())
-                    resp.sendError(404);
-                else {
+                if (prodotti == null || prodotti.isEmpty()) {
+                    address += "?error=26"; //impossibile rimuovere elemento dal carrello
+                } else {
                     for (Prodotto prod : prodotti) {
                         index++;
                         if (prod.getID() == p.getID()) {
@@ -55,7 +57,7 @@ public class RimuoviProdottoCarrelloServlet extends HttpServlet {
 
                 if(session.getAttribute("utente") == null) {
                     if (index==-1)
-                        resp.sendError(404);
+                        address += "?error=26"; //impossibile rimuovere elemento dal carrello
                 } else {
                     Utente u = (Utente) session.getAttribute("utente");
 
@@ -68,16 +70,18 @@ public class RimuoviProdottoCarrelloServlet extends HttpServlet {
                         if (f != null) {
                             formazioneDAO.doRemove(f);
                         } else
-                            resp.sendError(404);
+                            address += "?error=26"; //impossibile rimuovere elemento dal carrello
                     } else
-                        resp.sendError(404);
+                        address += "?error=26"; //impossibile rimuovere elemento dal carrello
                 }
             }
 
-            resp.sendRedirect("carrello.jsp");
+
         }
         catch (NumberFormatException e){
-            resp.sendError(404);
+            address += "?error=26"; //impossibile rimuovere elemento dal carrello
         }
+
+        resp.sendRedirect(address);
     }
 }

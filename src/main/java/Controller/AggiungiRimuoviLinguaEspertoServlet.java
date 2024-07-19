@@ -48,7 +48,7 @@ public class AggiungiRimuoviLinguaEspertoServlet extends HttpServlet {
                     conoscenzaDAO.doSave(conoscenza);
                     address += "?op=insertion";
                 } else {
-                    address += "?error=21"; //
+                    address += "?error=21"; //lingua inesistente
                 }
             } else if(operation.equals("del")) {
                 conoscenzaDAO.doUpdate(e.getID(), codISOLingua);

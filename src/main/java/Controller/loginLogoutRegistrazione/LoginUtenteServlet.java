@@ -84,25 +84,21 @@ public class LoginUtenteServlet extends HttpServlet {
 
             if(prodottiCarrelloLogico!=null){
 
-                ComposizioneDAO composizioneDAO = new ComposizioneDAO();
                 for(Prodotto p : prodottiCarrelloLogico){
 
-                    /*se il prodotto in questione non fa già parte del carrello o di un ordine*/
-                    if(formazioneDAO.doRetrieveByIdProdottoAndIdCarrello(p.getID(), carrello.getId()) == null  &&
-                            composizioneDAO.doRetrieveByIdProdottoAndIdUtente(p.getID(), u.getID()) == null) {
-                        //out.println(p.getID() + "non appartiene a carrello fisico");
+                    /*se il prodotto in questione non fa già parte del carrello fisico glielo aggiungo*/
+                    if(formazioneDAO.doRetrieveByIdProdottoAndIdCarrello(p.getID(), carrello.getId()) == null) {
 
                         Formazione formazione = new Formazione();
                         formazione.setProdotto(p);
                         formazione.setCarrello(carrello);
-
-                        //out.println("idCarrello : "+carrello.getId() + "\nidProdtto : "+p.getID()+"\n\n");
 
                         formazioneDAO.doSave(formazione);
                     }
                 }
             }
 
+            //aggiorno il carrello logico
             List<Formazione> formazioni = formazioneDAO.doRetrieveByIdCarrello(carrello.getId());
             List<Prodotto> prodottiCarrelloFisico = new ArrayList<>();
             for(Formazione f : formazioni) {
