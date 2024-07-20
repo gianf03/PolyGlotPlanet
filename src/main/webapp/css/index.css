@@ -16,9 +16,6 @@ section {
     width: 350px;
     height: 350px;
     border-radius: 30px;
-}
-
-section {
     align-content: center;
 }
 
@@ -37,17 +34,6 @@ section {
     width: 80%;
     height: 30px;
     background-color: #007253;
-    border-radius: 15px;
-}
-
-#divErrorePermessi {
-    background-color: red;
-    color: white;
-    font-weight: bold;
-    width: 18%;
-    text-align: center;
-    padding: 15px;
-    margin: 2% auto;
     border-radius: 15px;
 }
 
@@ -145,7 +131,6 @@ section {
 
     .divText {
         width: 400px;
-        /*margin: 30px;*/
     }
 
     .divTextImg {

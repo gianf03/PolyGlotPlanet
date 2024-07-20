@@ -6,11 +6,8 @@ body, html {
     margin : 0;
 }
 
-#pagesContainer {
-    display: flex;
-    justify-content: center;
-}
 
+/*struttura contenitori prodotti*/
 #containerColloqui, #containerIncontri, #containerCorsi {
     clear: both;
     display: flex;
@@ -21,7 +18,6 @@ body, html {
 .colloquioItem, .incontroItem, .corsoItem {
     margin : 30px auto 30px auto;
     border : 2px solid black;
-/*    height: 350px; */
     width: 800px;
     border-radius: 5px;
     display: flex;
@@ -56,10 +52,8 @@ body, html {
 }
 
 .containerInfo {
-    /*height : 300px;*/
     width: 350px;  /*stiamo a 575 pixel occupati su 800, margini compresi*/
     margin : 25px 25px 0 0;
-    /*border: 2px solid green;*/
     display: flex;
     flex-direction: column;
 }
@@ -72,19 +66,27 @@ body, html {
     height: 200px;
 }
 
+.info {
+    font-family: system-ui;
+    margin: 10px 0 0 0;
+    text-align: justify;
+}
+
+.firstWord {
+    font-weight: bold;
+}
+
 .nomeCompleto {
     font-size: 18pt;
     margin: 0;
 }
 
 .containerPrezzoCarrello {
-    /*height : 300px;*/
     width : 200px;
     margin: 25px 25px 0 0;
-    /*border : 2px solid red;*/
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /*primo elmento allineato a sinistra, ultimo elemento allineato a destra ed elementi intermedi allineati in maniera uniforme*/
 }
 
 .corsoItem .containerPrezzoCarrello {
@@ -107,8 +109,47 @@ body, html {
     border-radius: 5px;
 }
 
+.prezzoOrario, .prezzo {
+    font-weight: bold;
+    text-align: center;
+    margin: 0; /*i paragrafi hanno un margine di default diverso da 0*/
+}
 
-/*filtro lingua*/
+.prezzo {
+    font-size: 40pt;
+}
+
+.prezzoOrario {
+    font-size: 25pt;
+}
+
+.divCarrello {
+    width: inherit;
+    text-align: center;
+}
+
+#nessunRisultato {
+    font-size: 25pt;
+    font-family: system-ui;
+    color: darkgrey;
+}
+
+.buttonCarrello {
+    background-color: #007253;
+    width: 90px;
+    height: 50px;
+    padding: 0;
+    border: 0;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.hiddenForm {
+    text-align: center;
+}
+
+
+/*filtro lingua, filtro livelli*/
 #droplabel-lingue, #droplabel-livelli {
     display: inline-block;
     cursor: pointer;  /*mostra mano anziché freccia quando mouse ci va sopra*/
@@ -117,6 +158,8 @@ body, html {
     border : 2px solid darkgrey;
     border-radius: 5px;
     align-content: center;
+    padding: 20px;
+    text-align: center;
 }
 
 #droplabel-lingue:hover, #droplabel-livelli:hover{
@@ -132,11 +175,36 @@ body, html {
 
 #dropdown-content-lingue, #dropdown-content-livelli {
     margin-top : 100px;
+    display: none;
+    position: absolute;
+    font-size:0; /*mi elimina gli spazi bianchi tra div con display:inline-block*/
+    z-index: 1;
 }
 
 #droplabel-lingue, #droplabel-livelli{
     padding: 20px;
     text-align: center;
+}
+
+.div-lingua:hover, .div-livello:hover{
+    background-color: aquamarine;
+}
+
+#dropcheck-lingue, #dropcheck-livelli{
+    display: none;
+}
+
+.div-lingua, .div-livello { /*div che contiene la singola lingua*/
+    display: inline-block;
+    border : 1px solid black;
+    color: black;
+    font-size: 16px;
+    padding: 0 16px;
+    text-align: left;
+    background-color: white;
+    width : 130px;
+    align-content: center;
+    height: 40px;
 }
 
 /*filtro prezzi*/
@@ -237,6 +305,7 @@ body, html {
 
 .filtro {
     margin : 30px 5px 30px 5px;
+    float : left;
 }
 
 #submitFiltro {
@@ -247,140 +316,6 @@ body, html {
     margin-top: 20px;
     border-color: #007253;
     cursor: pointer;
-}
-
-.div-lingua, .div-livello {
-    display: inline-block;
-    border : 1px solid black;
-}
-
-.div-lingua:hover, .div-livello:hover{
-    background-color: aquamarine;
-}
-
-.filtro{
-    float : left;
-}
-
-/*#filtroIncompleto{
-    background-color: red;
-    align-content: center;
-    color: white;
-    width: 200px;
-    margin : 15px;
-}*/
-
-#droplabel-lingue, #droplabel-livelli{
-    padding: 20px;
-    text-align: center;
-}
-
-#dropcheck-lingue, #dropcheck-livelli{
-    display: none;
-}
-
-#dropdown-content-lingue, #dropdown-content-livelli {    /*div che contiene tutti i div delle singole lingue*/
-    display: none;
-    position: absolute;
-    font-size:0; /*mi elimina gli spazi bianchi tra div con display:inline-block*/
-    z-index: 1;
-}
-
-.div-lingua, .div-livello { /*div che contiene la singola lingua*/
-    color: black;
-    font-size: 16px;
-    padding: 0 16px;
-    text-align: left;
-    background-color: white;
-    width : 130px;
-    align-content: center;
-    height: 40px;
-}
-
-.info {
-    font-family: system-ui;
-    margin: 10px 0 0 0;
-    text-align: justify;
-}
-
-
-.prezzoOrario, .prezzo {
-    font-weight: bold;
-    text-align: center;
-    margin: 0; /*i paragrafi hanno un margine di default diverso da 0*/
-}
-
-.prezzo {
-    font-size: 40pt;
-}
-
-.prezzoOrario {
-    font-size: 25pt;
-}
-
-.divCarrello {
-    width: inherit;
-    text-align: center;
-}
-
-.firstWord {
-    font-weight: bold;
-}
-
-#nessunRisultato {
-    font-size: 25pt;
-    font-family: system-ui;
-    color: darkgrey;
-}
-
-.buttonCarrello {
-    background-color: #007253;
-    width: 90px;
-    height: 50px;
-    padding: 0;
-    border: 0;
-    border-radius: 25px;
-    cursor: pointer;
-}
-
-.hiddenForm {
-    text-align: center;
-}
-
-/*da aggiustare, aggiungere anche un altezza */
-@media screen and (max-height: 800px ){
-
-    #dropdown-content-lingue {
-        max-height: 208px;
-        overflow-y: auto;
-    }
-}
-
-@media screen and (max-width: 750px ){
-    #containerFiltri {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-    }
-
-    .filtro {
-        width: 110px;
-        padding: 0;
-    }
-
-    #f{
-        margin-left: 0;
-    }
-
-    #submit {
-        text-align: center;
-        width: 100%;
-        margin: 0;
-    }
-
-    .div-livello {
-        width: 70px;
-    }
 }
 
 @media screen and (max-width: 850px) {
@@ -438,6 +373,38 @@ body, html {
 
     #nessunRisultato {
         font-size: 20pt;
+    }
+}
+
+@media screen and (max-width: 750px ){
+    #dropdown-content-lingue {
+        max-height: 208px;
+        overflow-y: auto;
+    }
+
+    #containerFiltri {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .filtro {
+        width: 110px;
+        padding: 0;
+    }
+
+    #f{
+        margin-left: 0;
+    }
+
+    #submit {
+        text-align: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    .div-livello {
+        width: 70px;
     }
 }
 
