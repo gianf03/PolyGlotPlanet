@@ -101,13 +101,6 @@ body, html {
     font-size: 18pt;
 }
 
-.divCarrello {
-    height: 50px;
-    width: 50px;
-    align-self: center;
-    margin-top: auto;
-}
-
 .fotoCarrello {
     height: 50px;
     width: 50px;
@@ -326,9 +319,8 @@ body, html {
 }
 
 .divCarrello {
-    width: 90px;
+    width: inherit;
     text-align: center;
-    border-radius: 25px;
 }
 
 .firstWord {

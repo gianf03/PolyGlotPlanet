@@ -24,8 +24,6 @@ section {
 
 .categoria {
     text-align: center;
-    width: 100px;
-    height: 100px;
     display: block;
     text-decoration: none;
     color: white;
@@ -36,7 +34,7 @@ section {
 
 #divLinkCat {
     margin: 50px auto auto auto;
-    width: 60%;
+    width: 80%;
     height: 30px;
     background-color: #007253;
     border-radius: 15px;

@@ -91,7 +91,7 @@ html, body {
     cursor: pointer;
 }
 
-.rimuovi:link{
+.rimuovi:link, .rimuovi:hover, .rimuovi:visited, .rimuovi:active{
     color: darkred;
 }
 

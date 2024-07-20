@@ -25,30 +25,12 @@
                     List<Lingua> lingue = (List<Lingua>) application.getAttribute("lingue");
 
                     for(int i = 0; i < 45; i++) { %>
-
-                        <% if (categoria.equals("corso")){%>
+                        <div class="flex-item" id="<%=i+1%>">
                             <a class="linkLingua" href='corsi.jsp?codLingua=<%=lingue.get(i).getCodISOLingua()%>&filtro=false'>
-                                <div class="flex-item" id="<%=i+1%>">
-                                    <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
-                                    <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
-                                </div>
+                                <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
+                                <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
                             </a>
-                        <%} else if (categoria.equals("colloquio")){%>
-                            <a class="linkLingua" href='colloqui.jsp?codLingua=<%=lingue.get(i).getCodISOLingua()%>&filtro=false'>
-                                <div class="flex-item" id="<%=i+1%>">
-                                    <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
-                                    <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
-                                </div>
-                            </a>
-                        <%} else {%>
-                            <a class="linkLingua" href='incontri.jsp?codLingua=<%=lingue.get(i).getCodISOLingua()%>&filtro=false'>
-                                <div class="flex-item" id="<%=i+1%>">
-                                    <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
-                                    <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
-                                </div>
-                            </a>
-                        <%}%>
-
+                        </div>
 
                         <% if(i >= 6) {%> <!--parentesi graffa obbligatoria altrimenti è come se l'if non ci fosse-->
                             <script>

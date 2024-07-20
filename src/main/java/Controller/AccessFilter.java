@@ -112,7 +112,7 @@ public class AccessFilter extends HttpFilter {
         if(path.contains("sceltaLingua.jsp") && httpServletRequest.getQueryString().contains("categoria")){
             String categoria = httpServletRequest.getParameter("categoria");
             if (!categoria.contains("corso") && !categoria.contains("incontro") && !categoria.contains("colloquio")) {
-                httpServletResponse.sendError(401);
+                httpServletResponse.sendError(404);
                 return;
             }
         }

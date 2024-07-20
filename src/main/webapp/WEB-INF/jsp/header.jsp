@@ -36,9 +36,9 @@
                     <li id="liBenvenuto" class="headerElement">
                         <div id="divBenvenuto">
                             <%if(u!=null) {%>
-                                <p id="benvenutoUtente">Ciao, <%=u.getNome()%> ! </p>
+                                <p id="benvenutoUtente">Ciao, <br><%=u.getNome()%> ! </p>
                             <%} else {%>
-                                <p id="benvenutoEsperto">Ciao, <%=e.getNome()%> ! </p>
+                                <p id="benvenutoEsperto">Ciao, <br><%=e.getNome()%> ! </p>
                             <%}%>
                         </div>
                     </li>

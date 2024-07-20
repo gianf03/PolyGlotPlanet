@@ -178,6 +178,7 @@ function chargeCorsi(){
                         hiddenForm.appendChild(button);
                         button.type = "submit";
                         button.className = "buttonCarrello";
+                        button.id = "button"+corsi[i].id;
 
 
                         let divCarrello = document.createElement("div");

@@ -138,6 +138,11 @@ a:link, a:visited, a {
     padding: 15px;
 }
 
+.linkLingua {
+    display: block;
+    width: inherit;
+    height: inherit;
+}
 
 /*quando la larghezza della finestra scende sotto i 900 pixel i bottoni della barra
 di navigazione vengono disposti in verticale */
