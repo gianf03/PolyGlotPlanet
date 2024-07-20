@@ -58,7 +58,7 @@ public class MostraColloquiAjaxServlet extends HttpServlet {
         } else {
             List<String> params = Arrays.asList(parametri);
             List<String> codiciLingue = new ArrayList<>();
-            List<Integer> prezzi = new ArrayList<>(Arrays.asList(0, 0)); //solo Arrays.asList(0,0) crea array immutabile, così invece è mutabile
+            int prezzoMin=-1, prezzoMax=-1;
             String dataOraStringa = null;
             LocalDateTime dataOra = null;
 
@@ -90,9 +90,17 @@ public class MostraColloquiAjaxServlet extends HttpServlet {
                     } else if (coppia[0].equals("prezzoMin") || coppia[0].equals("prezzoMax")) {
                         try {
                             if(coppia[0].equals("prezzoMin"))
-                                prezzi.add(0, Integer.parseInt(coppia[1]));
+                                prezzoMin = Integer.parseInt(coppia[1]);
                             else
-                                prezzi.add(1, Integer.parseInt(coppia[1]));
+                                prezzoMax = Integer.parseInt(coppia[1]);
+
+                            if(prezzoMin>=0 && prezzoMax>0 && prezzoMax <= prezzoMin) {
+                                JSONObject obj = new JSONObject();
+                                obj.put("filtro", "incompleto");
+                                out.print(obj.toJSONString());
+                                out.flush();
+                                return;
+                            }
                         }
                         catch (NumberFormatException e) {
                             JSONObject obj = new JSONObject();
@@ -107,12 +115,6 @@ public class MostraColloquiAjaxServlet extends HttpServlet {
                 }
 
                 JSONObject obj = new JSONObject();
-
-                if(prezzi.get(1) <= prezzi.get(0)) {
-                    obj.put("filtro", "incompleto");
-                    out.print(obj.toJSONString());
-                    out.flush();
-                }
 
                 try {
                     dataOra = LocalDateTime.parse(dataOraStringa);
@@ -138,7 +140,7 @@ public class MostraColloquiAjaxServlet extends HttpServlet {
                 }
 
                 for (String cod : codiciLingue) {
-                    List<Colloquio> c1 = colloquioDAO.doRetrieveByCodISOLinguaPrezzoMinMaxAndDataOra(cod, prezzi.get(0), prezzi.get(1), dataOra);
+                    List<Colloquio> c1 = colloquioDAO.doRetrieveByCodISOLinguaPrezzoMinMaxAndDataOra(cod, prezzoMin, prezzoMax, dataOra);
                     colloqui.addAll(c1);
                 }
             }

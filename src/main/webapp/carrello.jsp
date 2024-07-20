@@ -35,7 +35,6 @@
 
     <%@include file="WEB-INF/jsp/header.jsp"%>
     <div id="containerOfAll">
-
         <% if(numeroProdotti==0){ %>
             <p id="nessunRisultato">
                 Nessun prodotto nel carrello

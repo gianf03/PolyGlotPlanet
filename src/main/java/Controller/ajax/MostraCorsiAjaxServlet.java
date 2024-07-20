@@ -52,7 +52,7 @@ public class MostraCorsiAjaxServlet extends HttpServlet {
         } else {
             List<String> params = Arrays.asList(parametri);
             List<String> codiciLingue = new ArrayList<>();
-            List<Integer> prezzi = new ArrayList<>(Arrays.asList(0, 0));;
+            int prezzoMin=-1, prezzoMax=-1;
             List<String> livelli = new ArrayList<>();
 
 
@@ -82,9 +82,17 @@ public class MostraCorsiAjaxServlet extends HttpServlet {
                     } else if (coppia[0].equals("prezzoMin") || coppia[0].equals("prezzoMax")) {
                         try {
                             if(coppia[0].equals("prezzoMin"))
-                                prezzi.add(0, Integer.parseInt(coppia[1]));
+                                prezzoMin = Integer.parseInt(coppia[1]);
                             else
-                                prezzi.add(1, Integer.parseInt(coppia[1]));
+                                prezzoMax = Integer.parseInt(coppia[1]);
+
+                            if(prezzoMin>=0 && prezzoMax>0 && prezzoMax <= prezzoMin) {
+                                JSONObject obj = new JSONObject();
+                                obj.put("filtro", "incompleto");
+                                out.print(obj.toJSONString());
+                                out.flush();
+                                return;
+                            }
                         }
                         catch (NumberFormatException e) {
                             JSONObject obj = new JSONObject();
@@ -92,13 +100,6 @@ public class MostraCorsiAjaxServlet extends HttpServlet {
                             out.print(obj.toJSONString());
                             out.flush();
                             return;
-                        }
-
-                        if(prezzi.get(1) <= prezzi.get(0)) {
-                            JSONObject obj = new JSONObject();
-                            obj.put("filtro", "incompleto");
-                            out.print(obj.toJSONString());
-                            out.flush();
                         }
                     } else if (coppia[0].equals("livello"))
                         livelli.add(coppia[1]);
@@ -111,10 +112,10 @@ public class MostraCorsiAjaxServlet extends HttpServlet {
                         codiciLingue.add(l.getCodISOLingua());
                 }
 
-                /*aggiungere check disponibile a true nel DAO*/
+
                 for (String cod : codiciLingue) {
                     for (String liv : livelli) {
-                        List<Corso> c1 = corsoDAO.doRetrieveByCodISOLinguaPrezzoMinMaxAndLivello(cod, prezzi.get(0), prezzi.get(1), liv);
+                        List<Corso> c1 = corsoDAO.doRetrieveByCodISOLinguaPrezzoMinMaxAndLivello(cod, prezzoMin, prezzoMax, liv);
                         corsi.addAll(c1);
                     }
                 }

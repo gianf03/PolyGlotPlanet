@@ -50,7 +50,7 @@
 
                 <div id="divPlus">
                     <label for="plus"></label>
-                    <button id="plus" onclick="chargeAllStates(<%=lingue.size()%>, '<%=request.getParameter("categoria")%>')">
+                    <button id="plus" onclick="chargeAllStates('<%=request.getParameter("categoria")%>')">
                         <img id="imgPlus" src="img/plus_1.png" alt="mostra più lingue">
                     </button>
                 </div>

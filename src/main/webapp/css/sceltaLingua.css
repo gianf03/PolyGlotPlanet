@@ -1,17 +1,13 @@
-html {
+html, body {
     height : 100%; /* se non faccio così il footer non si espande su tutto lo spazio assegnato*/
-    width : 100%;
-}
-
-
-
-body {
-    margin: 0; /* estende il body all'intera pagina sovrascrivendo i margini predefiniti dal browser*/
+    margin: 0;
+    padding: 0;
 }
 
 #flex-container { /* elemento griglia contenente celle */
-    height: 480px; /*altezza del grid-container*/
     width: 800px;
+    height: inherit;
+
     justify-content: center;
 
     border-width: 1px;

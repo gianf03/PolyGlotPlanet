@@ -7,10 +7,7 @@ function hideElemById(id) {
 }
 
 function removeError(error) {
-
     var p = document.getElementById(error);
-
-    if(p) {
+    if(p)
         p.style.display = "none";
-    }
 }
