@@ -104,6 +104,13 @@ public class MostraColloquiAjaxServlet extends HttpServlet {
                 }
 
                 JSONObject obj = new JSONObject();
+
+                if(prezzi.get(1) <= prezzi.get(0)) {
+                    obj.put("filtro", "incompleto");
+                    out.print(obj.toJSONString());
+                    out.flush();
+                }
+
                 try {
                     dataOra = LocalDateTime.parse(dataOraStringa);
                     LocalDateTime now = LocalDateTime.now();

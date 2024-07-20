@@ -27,7 +27,7 @@
                     for(int i = 0; i < 45; i++) { %>
                         <div class="flex-item" id="<%=i+1%>">
                             <a class="linkLingua" href='corsi.jsp?codLingua=<%=lingue.get(i).getCodISOLingua()%>&filtro=false'>
-                                <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>">
+                                <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>" alt="<%=lingue.get(i).getNome()%>">
                                 <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
                             </a>
                         </div>
@@ -40,7 +40,12 @@
 
                 <%}%>
 
-                <div id="divPlus"><button id="plus" onclick="chargeAllStates(<%=lingue.size()%>, '<%=request.getParameter("categoria")%>')"><img id="imgPlus" src="img/plus_1.png"></button></div>
+                <div id="divPlus">
+                    <label for="plus"></label>
+                    <button id="plus" onclick="chargeAllStates(<%=lingue.size()%>, '<%=request.getParameter("categoria")%>')">
+                        <img id="imgPlus" src="img/plus_1.png" alt="mostra più lingue">
+                    </button>
+                </div>
             </div>
         </section>
 

@@ -7,7 +7,7 @@
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" href="css/utenteLoggatoEsperto.css" rel="stylesheet">
-    <script src="JavaScript/showElemById.js"></script>
+    <script src="JavaScript/utility.js"></script>
 </head>
 <body>
 <%@include file="WEB-INF/jsp/header.jsp"%>
@@ -19,6 +19,10 @@
         <%}
 
         Esperto esp = (Esperto) session.getAttribute("esperto");
+
+        /*conoscenze è valorizzato solo quando l'esperto clicca su le mie lingue (viene richiamata la servlet mostraLingueEsperto)
+        altrimenti è null (la servlet restituisce almeno una lista con size 0 anzichè null)*/
+
         List<Conoscenza> conoscenze = (List<Conoscenza>) request.getAttribute("conoscenzeEsp");
         List<Lingua> lingueNonConosciute = (List<Lingua>) request.getAttribute("lingueNonConosciute");
 
@@ -32,7 +36,7 @@
             <%}
         }%>
 
-    <div id="containerOfAll">
+    <div id="containerOfAll" class="containerOfAllHomeEsperto">
 
         <div id="containerEsperto">
             <div class="espertoSettings">
@@ -64,7 +68,8 @@
             </div>
         </div>
 
-        <%if(conoscenze != null) { %>
+
+        <%if(request.getQueryString() != null && request.getQueryString().contains("lingue=open")) { %>
 
             <div id="divListaConoscenze">
 
@@ -80,26 +85,26 @@
                         <td><%=c.getLingua().getNome()%></td>
                         <td><img id="imgLingua" alt="immagine stato origine lingua" src="<%=c.getLingua().getFotoStatoOrigine()%>"></td>
                         <td>
-                            <button id="btnRimuovi" onclick="document.location='aggiungiRimuoviLinguaEsperto?codISOLingua=<%=c.getLingua().getCodISOLingua()%>&operation=del'">Rimuovi
+                            <button class="btn" id="btnRimuovi" onclick="document.location='aggiungiRimuoviLinguaEsperto?codISOLingua=<%=c.getLingua().getCodISOLingua()%>&operation=del'">Rimuovi
                             </button>
                         </td>
                     </tr>
                     <%}%>
                 </table>
 
-                <button id="btnAggiungiLingua" onclick="showElemById('divAggiungiLingua')">Aggiungi lingua</button>
-                <button id="btnChiudiLista" onclick="hideElemById('divListaConoscenze'); hideElemById('divAggiungiLingua');">Chiudi</button>
+                <button class="btn" id="btnAggiungiLingua" onclick="showElemById('divAggiungiLingua')">Aggiungi lingua</button>
+                <button class="btn" id="btnChiudiLista" onclick="hideElemById('divListaConoscenze'); hideElemById('divAggiungiLingua');">Chiudi</button>
             </div>
 
             <div id="divAggiungiLingua">
-                <label for="formLingua">Seleziona una lingua:</label>
                 <form id="formLingua" action="aggiungiRimuoviLinguaEsperto?operation=add" method="POST">
+                    <label for="formLingua">Seleziona una lingua:</label><br>
                     <select name="codISOLingua">
                         <%for(Lingua l : lingueNonConosciute) {%>
                         <option value="<%=l.getCodISOLingua()%>"><%=l.getNome()%></option>
                         <%}%>
                     </select>
-                    <input id="btnConferma" type="submit" value="Conferma">
+                    <input class="btn" id="btnConferma" type="submit" value="Conferma">
                 </form>
             </div>
 

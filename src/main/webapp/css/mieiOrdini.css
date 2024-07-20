@@ -89,6 +89,7 @@ html, body {
 
 .rimuovi{
     cursor: pointer;
+    display: block;
 }
 
 .rimuovi:link, .rimuovi:hover, .rimuovi:visited, .rimuovi:active{

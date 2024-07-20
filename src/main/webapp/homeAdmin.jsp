@@ -5,7 +5,7 @@
     <link type="text/css" href="css/admin.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="JavaScript/modificaCorso.js"></script>
-    <script src="JavaScript/showElemById.js"></script>
+    <script src="JavaScript/utility.js"></script>
 </head>
 <body>
 
@@ -14,6 +14,8 @@
             <script>alert("Esperto inesistente!")</script>
     <%} else if (request.getQueryString() != null && request.getQueryString().equals("error=25")) {%>
             <script>alert("Utente inesistente")</script>
+    <%} else if(request.getParameter("error") != null && request.getParameter("error").equals("18")){%>
+            <script>alert("Lingua non inserita!")</script>
     <%}
 
         String insertion = request.getParameter("insertion");
@@ -87,8 +89,8 @@
                 </div>
 
                 <div class="aggiungiLinguaItem">
-                    <input class="btnAggiungi" type="submit" value="Aggiungi">
-                    <button type="button" class="btnChiudi" onclick="hideElemById('aggiungiLingua')">Chiudi</button>
+                    <input class="btnAggiungi btn" type="submit" value="Aggiungi">
+                    <button type="button" class="btnChiudi btn" onclick="hideElemById('aggiungiLingua')">Chiudi</button>
                 </div>
             </form>
         </div>

@@ -11,30 +11,32 @@
     <%@include file="WEB-INF/jsp/header.jsp"%>
     <div id="containerOfAll" style="text-align: center;">
 
-        <table id="tableUtenti">
-            <tr class="rigaUtenti">
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Cognome</th>
-                <th>Data di nascita</th>
-                <th>Email</th>
-                <th>Genere</th>
-            </tr>
-
-            <c:forEach items="${utenti}" var="utente">
+        <div id="containerOfTable">
+            <table id="tableUtenti">
                 <tr class="rigaUtenti">
-                    <td>${utente.ID}</td>
-                    <td>${utente.nome}</td>
-                    <td>${utente.cognome}</td>
-                    <td>${utente.dataNascita}</td>
-                    <td>${utente.email}</td>
-                    <td>${utente.genere}</td>
-                    <td><button id="btnMostraOrdini" onclick="document.location='mostraOrdiniUtente?IDUtente=${utente.ID}'">Mostra ordini</button></td>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Data di nascita</th>
+                    <th>Email</th>
+                    <th>Genere</th>
                 </tr>
-            </c:forEach>
-        </table>
 
-        <button id="tuttiOrdini" onclick="document.location='mostraOrdiniUtente?IDUtente=all'">Mostra tutti gli ordini</button>
+                <c:forEach items="${utenti}" var="utente">
+                    <tr class="rigaUtenti">
+                        <td>${utente.ID}</td>
+                        <td>${utente.nome}</td>
+                        <td>${utente.cognome}</td>
+                        <td>${utente.dataNascita}</td>
+                        <td>${utente.email}</td>
+                        <td>${utente.genere}</td>
+                        <td><button class="btn" id="btnMostraOrdini" onclick="document.location='mostraOrdiniUtente?IDUtente=${utente.ID}'">Mostra ordini</button></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+
+        <button class="btn" id="tuttiOrdini" onclick="document.location='mostraOrdiniUtente?IDUtente=all'">Mostra tutti gli ordini</button>
     </div>
 </body>
 </html>

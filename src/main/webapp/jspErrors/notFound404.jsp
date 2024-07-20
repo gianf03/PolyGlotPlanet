@@ -25,7 +25,7 @@
             <p id="p2">Non riesco a trovare la pagina che stai cercando</p>
             <p id="p3">Error code : 404</p>
             <p id="p4">Puoi sempre tornare alla home :</p>
-            <a id="index" href="index.jsp">Home</a>
+            <a id="index" href="logout">Home</a>
         </div>
 
         <div id="imgErrore">

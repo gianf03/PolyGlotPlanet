@@ -15,34 +15,35 @@
 
     <%@include file="WEB-INF/jsp/header.jsp"%>
     <div id="containerOfAll">
+        <div id="containerOfTable">
+            <table id="tableEsperti">
+                <tr class="rigaEsperti">
+                    <th>ID</th>
+                    <th>Foto</th>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Data di nascita</th>
+                    <th>Email</th>
+                    <th>Genere</th>
+                </tr>
 
-        <table id="tableEsperti">
-            <tr class="rigaEsperti">
-                <th>ID</th>
-                <th>Foto</th>
-                <th>Nome</th>
-                <th>Cognome</th>
-                <th>Data di nascita</th>
-                <th>Email</th>
-                <th>Genere</th>
-            </tr>
-
-            <% for(Esperto esp : esperti) {%>
-            <tr class="rigaEsperti">
-                <td><%=esp.getID()%></td>
-                <td>
-                    <img id="imgEsperto" alt="foto esperto" src="<%=esp.getFotoRiconoscitiva()%>">
-                </td>
-                <td><%=esp.getNome()%></td>
-                <td><%=esp.getCognome()%></td>
-                <td><%=esp.getDataNascita()%></td>
-                <td><%=esp.getEmail()%></td>
-                <td><%=esp.getGenere()%></td>
-                <td><button id="btnMostraColloqui" onclick="document.location='mostraColloquiAdminEsperto?IDEsperto=<%=esp.getID()%>'">Mostra colloqui</button></td>
-                <td><button id="btnMostraIncontri" onclick="document.location='mostraIncontriAdminEsperto?IDEsperto=<%=esp.getID()%>'">Mostra incontri</button></td>
-            </tr>
-            <%}%>
-        </table>
+                <% for(Esperto esp : esperti) {%>
+                <tr class="rigaEsperti">
+                    <td><%=esp.getID()%></td>
+                    <td>
+                        <img id="imgEsperto" alt="foto esperto" src="<%=esp.getFotoRiconoscitiva()%>">
+                    </td>
+                    <td><%=esp.getNome()%></td>
+                    <td><%=esp.getCognome()%></td>
+                    <td><%=esp.getDataNascita()%></td>
+                    <td><%=esp.getEmail()%></td>
+                    <td><%=esp.getGenere()%></td>
+                    <td><button class="btn" id="btnMostraColloqui" onclick="document.location='mostraColloquiAdminEsperto?IDEsperto=<%=esp.getID()%>'">Mostra colloqui</button></td>
+                    <td><button class="btn" id="btnMostraIncontri" onclick="document.location='mostraIncontriAdminEsperto?IDEsperto=<%=esp.getID()%>'">Mostra incontri</button></td>
+                </tr>
+                <%}%>
+            </table>
+        </div>
     </div>
 </body>
 </html>

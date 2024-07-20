@@ -5,7 +5,6 @@ html, body {
 }
 
 #containerEsperto {
-    height: 80%;
     display: flex;
 }
 
@@ -171,8 +170,48 @@ tr:nth-child(even) {
     color : red;
 }
 
+.btn {
+    cursor: pointer;
+}
+
+.containerOfAllHomeEsperto {
+    align-content: center;
+}
+
+#containerOfTable {
+    overflow-x: auto;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+
 @media screen and (max-width: 850px){
     #containerAreaEsperto, #containerAreaUtente {
         flex-direction: column;
     }
+
+    #containerEsperto {
+        /*dispone il contenuto verticalmente*/
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+
+    .espertoSettings {
+        width: 250px;
+        margin-top: 50px;
+    }
+
+    .settingsLink {
+        margin-bottom: 30px;
+    }
 }
+
+@media screen and (max-width: 550px) {
+
+    #divListaConoscenze {
+        width: 350px;
+    }
+}
+
+

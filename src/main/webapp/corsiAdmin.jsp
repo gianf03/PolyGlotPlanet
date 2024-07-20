@@ -8,7 +8,7 @@
     <link type="text/css" href="css/admin.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="JavaScript/modificaCorso.js"></script>
-    <script src="JavaScript/showElemById.js"></script>
+    <script src="JavaScript/utility.js"></script>
 </head>
 <body>
 
@@ -33,7 +33,7 @@
 
         <div id="divFiltri">
             <div class="dropdown">
-                <button class="dropbtn">Ordina per</button>
+                <button class="dropbtn btn">Ordina per</button>
                 <div class="dropdown-content">
                     <a href="mostraCorsiAdmin?ordPer=prezzoBase&tipo=asc">Prezzo crescente</a>
                     <a href="mostraCorsiAdmin?ordPer=prezzoBase&tipo=desc">Prezzo decrescente</a>
@@ -41,43 +41,44 @@
                 </div>
             </div>
 
-            <button class="dropbtn" onclick="showElemById('aggiungiCorso')">Aggiungi corso</button>
+            <button class="dropbtn btn" onclick="showElemById('aggiungiCorso')">Aggiungi corso</button>
         </div>
 
+        <div id="containerOfTable">
+            <table id="tableCorsi">
+                <tr id="rigaCorsi">
+                    <th>ID</th>
+                    <th>Lingua</th>
+                    <th>Descrizione</th>
+                    <th>Numero unità</th>
+                    <th>Livello</th>
+                    <th>Prezzo base</th>
+                    <th>Sconto percentuale</th>
+                    <th>Prezzo attuale</th>
+                    <th>Disponibile</th>
+                </tr>
 
-        <table id="tableCorsi">
-            <tr id="rigaCorsi">
-                <th>ID</th>
-                <th>Lingua</th>
-                <th>Descrizione</th>
-                <th>Numero unità</th>
-                <th>Livello</th>
-                <th>Prezzo base</th>
-                <th>Sconto percentuale</th>
-                <th>Prezzo attuale</th>
-                <th>Disponibile</th>
-            </tr>
-
-            <%for(Corso c : corsi) {%>
-                    <tr class="rigaCorsi">
-                        <td><%=c.getID()%></td>
-                        <td>
-                            <%=c.getLingua().getNome()%>
-                            <img id="imgLingua" alt="immagine stato origine lingua" src="<%=c.getLingua().getFotoStatoOrigine()%>">
-                        </td>
-                        <td><%=c.getDescrizione()%></td>
-                        <td><%=c.getNumeroUnita()%></td>
-                        <td><%=c.getLivello()%></td>
-                        <td><%=c.getPrezzoBase()%> €</td>
-                        <td><%=c.getScontoPercentuale()%> %</td>
-                        <td><%=c.getPrezzoAttuale()%> €</td>
-                        <td><%=c.isDisponibile()%></td>
-                        <td>
-                            <button id="btnModifica" onclick="modificaCorso(<%=c.getID()%>,<%=c.getPrezzoBase()%>, <%=c.getScontoPercentuale()%>)">Modifica</button>
-                        </td>
-                    </tr>
-            <%}%>
-        </table>
+                <%for(Corso c : corsi) {%>
+                        <tr class="rigaCorsi">
+                            <td><%=c.getID()%></td>
+                            <td>
+                                <%=c.getLingua().getNome()%>
+                                <img id="imgLingua" alt="immagine stato origine lingua" src="<%=c.getLingua().getFotoStatoOrigine()%>">
+                            </td>
+                            <td><%=c.getDescrizione()%></td>
+                            <td><%=c.getNumeroUnita()%></td>
+                            <td><%=c.getLivello()%></td>
+                            <td><%=c.getPrezzoBase()%> €</td>
+                            <td><%=c.getScontoPercentuale()%> %</td>
+                            <td><%=c.getPrezzoAttuale()%> €</td>
+                            <td><%=c.isDisponibile()%></td>
+                            <td>
+                                <button class="btn" id="btnModifica" onclick="modificaCorso(<%=c.getID()%>,<%=c.getPrezzoBase()%>, <%=c.getScontoPercentuale()%>)">Modifica</button>
+                            </td>
+                        </tr>
+                <%}%>
+            </table>
+        </div>
 
         <div id="divModifica">
             <form action="modificaCorso">
@@ -103,8 +104,8 @@
                 </div>
 
                 <div class="datiMod">
-                    <input class="btnConferma" type="submit" value="Conferma">
-                    <button type="button" class="btnChiudi" onclick="hideElemById('divModifica')">Chiudi</button>
+                    <input class="btnConferma btn" type="submit" value="Conferma">
+                    <button type="button" class="btnChiudi btn" onclick="hideElemById('divModifica')">Chiudi</button>
                 </div>
             </form>
         </div>
@@ -151,8 +152,8 @@
                 </div>
 
                 <div class="aggiungiCorsoItem">
-                    <input class="btnAggiungi" type="submit" value="Aggiungi">
-                    <button type="button" class="btnChiudi" onclick="hideElemById('aggiungiCorso')">Chiudi</button>
+                    <input class="btnAggiungi btn" type="submit" value="Aggiungi">
+                    <button type="button" class="btnChiudi btn" onclick="hideElemById('aggiungiCorso')">Chiudi</button>
                 </div>
             </form>
         </div>

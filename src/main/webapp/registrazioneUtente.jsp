@@ -12,12 +12,12 @@
 
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="JavaScript/registrazione.js"></script>
+    <script src="JavaScript/utility.js"></script>
 </head>
 <body>
     <div id="containerOfAll">
         <div id="div-registrazioneUtente">
-            <div id="reg"><a href="index.jsp"><img id="logo" src="img/logo.png"></a></div>
+            <div id="reg"><a href="index.jsp" title="logo"><img id="logo" src="img/logo.png" alt="logo"></a></div>
 
             <% String queryString = request.getQueryString(); %>
 

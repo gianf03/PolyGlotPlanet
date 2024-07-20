@@ -1,7 +1,6 @@
 function chargeColloqui() {
 
 
-    //history.replaceState({}, '', urlOriginale); /*request.getURL restituisce URL senza queryString*/
 
     let urlAndQuery = window.location.href;
 
@@ -99,13 +98,14 @@ function chargeColloqui() {
 
                         let fotoEsperto = document.createElement("img");
                         containerFoto.appendChild(fotoEsperto);
-                        fotoEsperto.id = "foto" + colloqui[i].ID;
+                        fotoEsperto.id = "foto" + colloqui[i].id;
                         fotoEsperto.className = "fotoEsperto";
                         fotoEsperto.src = colloqui[i].fotoEsperto;
+                        fotoEsperto.alt = colloqui[i].nomeEsperto + " " + colloqui[i].cognomeEsperto;
 
                         let containerInfo = document.createElement("div");
                         colloquioItem.appendChild(containerInfo);
-                        containerInfo.id = "info" + colloqui[i].ID;
+                        containerInfo.id = "info" + colloqui[i].id;
                         containerInfo.className = "containerInfo";
 
                         /*nome completo esperto*/
@@ -194,15 +194,7 @@ function chargeColloqui() {
                         divCarrello.appendChild(carrello);
                         carrello.className = "fotoCarrello";
                         carrello.src = "img/carrello.png";
-
-                        /*let divCarrello = document.createElement("div");
-                        containerPrezzoCarrello.appendChild(divCarrello);
-                        divCarrello.className = "divCarrello";
-
-                        let carrello = document.createElement("img");
-                        divCarrello.appendChild(carrello);
-                        carrello.className = "fotoCarrello";
-                        carrello.src = "img/carrello.png";*/
+                        carrello.alt = "carrello";
                     }
                 }
             }

@@ -38,10 +38,12 @@ function chargeAllStates(numLingue, categoria) {
     newAnchor = document.createElement("a");
     newAnchor.setAttribute("id", "linkMinus");
     newAnchor.setAttribute("href", "sceltaLingua.jsp?categoria="+categoria);   //creo anchor che conterrà un img
+    newAnchor.setAttribute("title", "mostra meno lingue");
 
     minus = document.createElement("img");
     minus.setAttribute("id", "imgMinus");
     minus.setAttribute("src", "img/meno_1.png");
+    minus.setAttribute("alt", "mostra meno lingue");
 
     newAnchor.appendChild(minus);
 

@@ -97,6 +97,7 @@ function chargeCorsi(){
                         fotoLingua.id = "fotoLingua" + corsi[i].id;
                         fotoLingua.className = "fotoLingua";
                         fotoLingua.src = corsi[i].fotoLingua;
+                        fotoLingua.alt = corsi[i].nomeLingua;
 
                         let containerInfo = document.createElement("div");
                         corsoItem.appendChild(containerInfo);
@@ -193,6 +194,7 @@ function chargeCorsi(){
                         divCarrello.appendChild(carrello);
                         carrello.className = "fotoCarrello";
                         carrello.src = "img/carrello.png";
+                        carrello.alt = "carrello";
                     }
                 }
             }

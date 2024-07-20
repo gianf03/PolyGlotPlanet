@@ -4,6 +4,7 @@
     <title>Area Esperto</title>
     <link type="text/css" href="css/utenteLoggatoEsperto.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="JavaScript/utility.js"></script>
 </head>
 <body>
 <%@include file="WEB-INF/jsp/header.jsp"%>
@@ -39,11 +40,11 @@
             </table>
 
             <div id="divTastoModifica">
-                <button id="tastoModifica" onclick="showElemById('containerModificaDati')">Modifica</button>
+                <button class="btn" id="tastoModifica" onclick="showElemById('containerModificaDati')">Modifica</button>
             </div>
         </div>
 
-        <% String error = request.getQueryString(); %>
+        <% String queryString = request.getQueryString(); %>
 
         <div id="containerModificaDati">
             <form id="formModDati" action="modificaDatiEsperto" method="POST" enctype="multipart/form-data">
@@ -51,7 +52,7 @@
                     <label for="nome">Nome</label><br>
                     <input type="text" id="nome" name="nomeEsp" value="${esperto.nome}" onclick="removeError('error1')">
 
-                    <% if(error != null && error.contains("error=1")) {%>
+                    <% if(queryString!=null && (queryString.contains("error=1&") || queryString.endsWith("error=1"))) {%>
                     <p id="error1" class="paragrafiRossi">Nome assente</p>
                     <%}%>
                 </div>
@@ -59,24 +60,24 @@
                     <label for="cognome">Cognome</label><br>
                     <input type="text" id="cognome" name="cognomeEsp" value="${esperto.cognome}" onclick="removeError('error2')">
 
-                    <% if(error != null && error.contains("error=2")) {%>
+                    <% if(queryString!=null && (queryString.contains("error=2&") || queryString.endsWith("error=2"))) {%>
                     <p id="error2" class="paragrafiRossi">Cognome assente</p>
                     <%}%>
                 </div>
                 <div class="credenziali">
                     <label for="newPass">Nuova password</label><br>
-                    <input type="password" id="newPass" name="newPassEsp" onclick="removeError('error3')">
+                    <input type="password" id="newPass" name="newPassEsp" onclick="removeError('error6')">
 
-                    <% if(error != null && error.contains("error=6") ) {%>
-                    <p id="error3" class="paragrafiRossi">Password troppo corta</p>
+                    <% if(queryString!=null && (queryString.contains("error=6&") || queryString.endsWith("error=6"))) {%>
+                    <p id="error6" class="paragrafiRossi">Password troppo corta</p>
                     <%}%>
                 </div>
                 <div class="credenziali">
                     <label for="confNewPass">Conferma password</label><br>
-                    <input type="password" id="confNewPass" name="confNewPassEsp" onclick="removeError('error4')">
+                    <input type="password" id="confNewPass" name="confNewPassEsp" onclick="removeError('error10')">
 
-                    <% if(error != null && error.contains("error=10") ) {%>
-                    <p id="error4" class="paragrafiRossi">Password non coincidenti</p>
+                    <% if(queryString!=null && (queryString.contains("error=10&") || queryString.endsWith("error=10"))) {%>
+                    <p id="error10" class="paragrafiRossi">Password non coincidenti</p>
                     <%}%>
                 </div>
 
@@ -86,13 +87,14 @@
                 </div>
 
                 <div class="credenziali">
-                    <input id="tastoConferma" type="submit" value="Conferma">
+                    <input class="btn" id="tastoConferma" type="submit" value="Conferma">
                 </div>
             </form>
         </div>
     </div>
 
-    <%if(error == null || error.isEmpty()) {%>
+    <!--nella queryString se presente possono esserci solo errori-->
+    <%if(queryString == null || queryString.isEmpty()) {%>
         <script>
             document.getElementById("containerModificaDati").style.display = "none";
         </script>
@@ -100,7 +102,6 @@
 </div>
 <%@include file="WEB-INF/jsp/footer.jsp"%>
 
-<script src="JavaScript/showElemById.js"></script>
 <script src="JavaScript/cambiaAltezza.js"></script>
 </body>
 </html>

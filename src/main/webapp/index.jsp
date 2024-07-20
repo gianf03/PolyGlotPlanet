@@ -24,7 +24,7 @@
         <div id="containerCategorie">
             <c:forEach items="${categorie}" var="categoria" >
                 <section>
-                    <img class="categoria" src="${categoria.immagine}">
+                    <img class="categoria" src="${categoria.immagine}" alt="${categoria.nome} stilizzato">
                     <a class="categoria" href="sceltaLingua.jsp?categoria=${categoria.nome}">
                         <div id="divLinkCat">
                             ${categoria.nome}

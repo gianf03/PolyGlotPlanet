@@ -102,8 +102,6 @@ tr:nth-child(even) {
 
 
 .dropbtn {
-    height: 5vh;
-    width: 15vw;
     background-color: #007253;
     font-weight: bold;
     border: none;
@@ -176,6 +174,19 @@ tr:nth-child(even) {
 #fotoLingua {
     max-width: 250px;
 }
+
+.btn {
+    cursor: pointer;
+    height: 30px;
+    width: 140px;
+}
+
+#containerOfTable {
+    overflow-x: auto;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
 
 
 @media screen and (max-width: 1300px) {

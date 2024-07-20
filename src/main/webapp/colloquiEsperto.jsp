@@ -8,7 +8,7 @@
     <link type="text/css" href="css/admin.css" rel="stylesheet">
     <link type="text/css" href="css/utenteLoggatoEsperto.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="JavaScript/showElemById.js"></script>
+    <script src="JavaScript/utility.js"></script>
 </head>
 <body>
     <%
@@ -22,7 +22,7 @@
         <%
             if(es != null) {%>
                  <div id="divFiltri">
-                    <button class="dropbtn" id="btnAggiunta" onclick="showElemById('divAggiungiColloquio')">Aggiungi colloquio</button>
+                    <button class="dropbtn btn" id="btnAggiunta" onclick="showElemById('divAggiungiColloquio')">Aggiungi colloquio</button>
                 </div>
         <%}
             String insertion = request.getParameter("insertion");
@@ -33,38 +33,40 @@
                 <script>alert("Colloquio non aggiunto!")</script>
         <%}%>
 
-        <table id="tableColloqui">
-            <tr class="rigaColloqui">
-                <th>ID</th>
-                <th>Data e ora</th>
-                <th>Lingua</th>
-                <th>Prenotato (SI/NO)</th>
-                <th>Prezzo base</th>
-                <th>Sconto percentuale</th>
-                <th>Prezzo attuale</th>
-            </tr>
+        <div id="containerOfTable">
+            <table id="tableColloqui">
+                <tr class="rigaColloqui">
+                    <th>ID</th>
+                    <th>Data e ora</th>
+                    <th>Lingua</th>
+                    <th>Prenotato (SI/NO)</th>
+                    <th>Prezzo base</th>
+                    <th>Sconto percentuale</th>
+                    <th>Prezzo attuale</th>
+                </tr>
 
-            <% if(colloqui != null && !colloqui.isEmpty()) {
-                for(Colloquio c : colloqui) {%>
-                    <tr class="rigaColloqui">
-                        <td><%=c.getID()%></td>
-                        <td><%=c.getDataOra()%></td>
-                        <td><%=c.getLingua().getNome()%></td>
-                        <td><%=c.isPrenotato()%></td>
-                        <td><%=c.getPrezzoBase()%> €</td>
-                        <td><%=c.getScontoPercentuale()%> %</td>
-                        <td><%=c.getPrezzoAttuale()%> €</td>
+                <% if(colloqui != null && !colloqui.isEmpty()) {
+                    for(Colloquio c : colloqui) {%>
+                        <tr class="rigaColloqui">
+                            <td><%=c.getID()%></td>
+                            <td><%=c.getDataOra()%></td>
+                            <td><%=c.getLingua().getNome()%></td>
+                            <td><%=c.isPrenotato()%></td>
+                            <td><%=c.getPrezzoBase()%> €</td>
+                            <td><%=c.getScontoPercentuale()%> %</td>
+                            <td><%=c.getPrezzoAttuale()%> €</td>
 
-                        <%
-                            if(es != null) {%>
-                                <td>
-                                    <button id="btnRimuovi" onclick="document.location='rimuoviColloquiIncontriEsperto?IDProdotto=<%=c.getID()%>'">Rimuovi</button>
-                                </td>
-                        <%}%>
-                    </tr>
-            <%}
-            }%>
-        </table>
+                            <%
+                                if(es != null) {%>
+                                    <td>
+                                        <button class="btn" id="btnRimuovi" onclick="document.location='rimuoviColloquiIncontriEsperto?IDProdotto=<%=c.getID()%>'">Rimuovi</button>
+                                    </td>
+                            <%}%>
+                        </tr>
+                <%}
+                }%>
+            </table>
+        </div>
 
         <%
             if(es != null) {%>
@@ -115,8 +117,8 @@
                     <input type="text" name="sconto" id="scontoInc">
                 </div>
                 <div class="aggiungiIncontroItem">
-                    <input type="submit" value="Aggiungi" class="btnAggiungi">
-                    <button type="button" class="btnChiudi" onclick="hideElemById('divAggiungiColloquio')">Chiudi</button>
+                    <input type="submit" value="Aggiungi" class="btnAggiungi btn">
+                    <button type="button" class="btnChiudi btn" onclick="hideElemById('divAggiungiColloquio')">Chiudi</button>
                 </div>
             </form>
         </div>

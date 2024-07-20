@@ -5,3 +5,12 @@ function showElemById(id) {
 function hideElemById(id) {
     document.getElementById(id).style.display = "none";
 }
+
+function removeError(error) {
+
+    var p = document.getElementById(error);
+
+    if(p) {
+        p.style.display = "none";
+    }
+}

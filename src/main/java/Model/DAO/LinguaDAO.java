@@ -99,33 +99,4 @@ public class LinguaDAO {
             throw new RuntimeException(e);
         }
     }
-
-    public List<Lingua> getLingueNonConosciuteEsperto(int IDEsperto) {
-        try (Connection con = ConPool.getConnection()) {
-            String sql = "SELECT * FROM Lingua l WHERE l.codISOLingua " +
-                    "NOT IN (SELECT l.codISOLingua FROM Conoscenza c JOIN Lingua l " +
-                    "ON c.codISOLingua=l.codISOLingua WHERE c.IDEsperto=?)";
-
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, IDEsperto);
-
-            ResultSet rs = ps.executeQuery();
-
-            List<Lingua> lingue = new ArrayList<>();
-
-            while(rs.next()){
-                Lingua l = new Lingua();
-                l.setCodISOLingua(rs.getString("codISOLingua"));
-                l.setParlanti(rs.getInt("parlanti"));
-                l.setNome(rs.getString("nome"));
-                l.setFotoStatoOrigine(rs.getString("fotoStatoOrigine"));
-
-                lingue.add(l);
-            }
-
-            return lingue;
-        } catch (SQLException e) {
-            throw new RuntimeException();
-        }
-    }
 }

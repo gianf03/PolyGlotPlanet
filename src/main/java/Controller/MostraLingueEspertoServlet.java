@@ -26,13 +26,12 @@ public class MostraLingueEspertoServlet extends HttpServlet {
         int IDEsperto = ((Esperto) req.getSession().getAttribute("esperto")).getID();
         List<Conoscenza> conoscenzeEsp = null;
 
-        String address = "homeEsperto.jsp";
+        String address = "homeEsperto.jsp?lingue=open";
 
         ConoscenzaDAO conoscenzaDAO = new ConoscenzaDAO();
         conoscenzeEsp = conoscenzaDAO.doRetrieveByIDEsperto(IDEsperto);
 
-        LinguaDAO linguaDAO = new LinguaDAO();
-        List<Lingua> lingue = linguaDAO.getLingueNonConosciuteEsperto(IDEsperto);
+        List<Lingua> lingue = conoscenzaDAO.doRetrieveLingueNonConosciuteByIdEsperto(IDEsperto);
 
         req.setAttribute("lingueNonConosciute", lingue);
         req.setAttribute("conoscenzeEsp", conoscenzeEsp);

@@ -90,6 +90,13 @@ public class MostraCorsiAjaxServlet extends HttpServlet {
                             out.flush();
                             return;
                         }
+
+                        if(prezzi.get(1) <= prezzi.get(0)) {
+                            JSONObject obj = new JSONObject();
+                            obj.put("filtro", "incompleto");
+                            out.print(obj.toJSONString());
+                            out.flush();
+                        }
                     } else if (coppia[0].equals("livello"))
                         livelli.add(coppia[1]);
 

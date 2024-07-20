@@ -95,6 +95,7 @@ function chargeIncontri() {
                         fotoEsperto.id = "foto" + incontri[i].id;
                         fotoEsperto.className = "fotoEsperto";
                         fotoEsperto.src = incontri[i].fotoEsperto;
+                        fotoEsperto.alt = incontri[i].nomeEsperto + " " + incontri[i].cognomeEsperto;
 
                         let containerInfo = document.createElement("div");
                         incontroItem.appendChild(containerInfo);
@@ -192,14 +193,12 @@ function chargeIncontri() {
                         button.appendChild(divCarrello);
                         divCarrello.className = "divCarrello";
 
-                        /*let divCarrello = document.createElement("div");
-                        containerPrezzoCarrello.appendChild(divCarrello);
-                        divCarrello.className = "divCarrello";*/
 
                         let carrello = document.createElement("img");
                         divCarrello.appendChild(carrello);
                         carrello.className = "fotoCarrello";
                         carrello.src = "img/carrello.png";
+                        carrello.alt = "carrello";
 
                         console.log(incontroItem);
                     }

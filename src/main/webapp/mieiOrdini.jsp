@@ -56,7 +56,7 @@
                             <%if (c.getProdotto().getCategoria().getID() == 1) {
                                 Corso corso = (Corso) c.getProdotto(); %>
                                 <div class="imgContainer">
-                                    <img src="<%=corso.getLingua().getFotoStatoOrigine()%>">
+                                    <img src="<%=corso.getLingua().getFotoStatoOrigine()%>" alt="<%=corso.getLingua().getNome()%>">
                                 </div>
 
                                 <div>
@@ -70,7 +70,7 @@
                             <%} else if(c.getProdotto().getCategoria().getID() == 2) {
                                 Incontro incontro = (Incontro) c.getProdotto();%>
                                 <div class="imgContainer">
-                                    <img src="<%=incontro.getEsperto().getFotoRiconoscitiva()%>">
+                                    <img src="<%=incontro.getEsperto().getFotoRiconoscitiva()%>" alt="<%=incontro.getEsperto().getNome()%> <%=incontro.getEsperto().getCognome()%>">
                                 </div>
 
                                 <div>
@@ -86,7 +86,7 @@
                             <%} else {
                                 Colloquio colloquio = (Colloquio) c.getProdotto(); %>
                                 <div class="imgContainer">
-                                    <img src="<%=colloquio.getEsperto().getFotoRiconoscitiva()%>">
+                                    <img src="<%=colloquio.getEsperto().getFotoRiconoscitiva()%>" alt="<%=colloquio.getEsperto().getNome()%> <%=colloquio.getEsperto().getCognome()%>">
                                 </div>
 
                                 <div>
