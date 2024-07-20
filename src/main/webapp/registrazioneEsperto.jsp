@@ -25,7 +25,7 @@
             <form id="form-registrazione" action="registrazioneEsperto" method="POST" enctype="multipart/form-data">
                 <div class="credenziali">
                     <label id="labelNome" for="nome">Nome : </label><br>
-                    <input type="text" id = "nome" name = "nome" placeholder="es.:Marco" required onclick="removeError('error1')">
+                    <input type="text" id = "nome" name = "nome" placeholder="es.:Marco" required onclick="hideElemById('error1')">
 
                     <%if (queryString!=null && (queryString.contains("error=1&") || queryString.endsWith("error=1"))) { %>
                         <p id="error1" class="regError">Nome assente</p>
@@ -34,7 +34,7 @@
 
                 <div class="credenziali">
                     <label id="labelCognome" for="cognome">Cognome : </label><br>
-                    <input type="text" id = "cognome" name = "cognome" placeholder="es.:Rossi" required onclick="removeError('error2')">
+                    <input type="text" id = "cognome" name = "cognome" placeholder="es.:Rossi" required onclick="hideElemById('error2')">
 
                     <%if (queryString!=null && (queryString.contains("error=2&") || queryString.endsWith("error=2"))) { %>
                         <p id="error2" class="regError">Cognome assente</p>
@@ -45,7 +45,7 @@
                 <!-- l'esperto deve avere almeno 18 anni -->
                 <div class="credenziali">
                     <label id="labelDdn">Data di nascita : </label><br>
-                    <input type="date" id = "ddn" name = "ddn" required onclick="removeError('error8'); removeError('error9')">
+                    <input type="date" id = "ddn" name = "ddn" required onclick="hideElemById('error8'); hideElemById('error9')">
 
                     <%if (queryString!=null && (queryString.contains("error=8&") || queryString.endsWith("error=8"))) { %>
                         <p id="error8" class="regError">Data nascita non impostata</p>
@@ -79,7 +79,7 @@
 
                 <div class="credenziali">
                     <label id="labelEmail" for="email">E-mail : </label><br>
-                    <input type="email" id="email" name = "email" placeholder="es.:marcorossi2@gmail.com" required onclick="removeError('error3'); removeError('error4'); removeError('error12')">
+                    <input type="email" id="email" name = "email" placeholder="es.:marcorossi2@gmail.com" required onclick="hideElemById('error3'); hideElemById('error4'); hideElemById('error12')">
 
                     <%if (queryString!=null && (queryString.contains("error=3&") || queryString.endsWith("error=3"))) { %>
                         <p id="error3" class="regError">Email assente</p>
@@ -96,7 +96,7 @@
 
                 <div class="credenziali">
                     <label id="labelPassword" for="password">Password : </label><br>
-                    <input type="password" id="password" name="password" placeholder="almeno 8 caratteri" required onclick="removeError('error5'); removeError('error6')">
+                    <input type="password" id="password" name="password" placeholder="almeno 8 caratteri" required onclick="hideElemById('error5'); hideElemById('error6')">
 
                     <%if (queryString!=null && (queryString.contains("error=5&") || queryString.endsWith("error=5"))) { %>
                         <p id="error5" class="regError">Password assente</p>
@@ -109,9 +109,9 @@
 
                 <div class="credenziali">
                     <label>Sesso :</label><br>
-                    <input type="radio" class="sesso" id="male" name="sesso" value="M" onclick="removeError('error7')">
+                    <input type="radio" class="sesso" id="male" name="sesso" value="M" onclick="hideElemById('error7')">
                     <label for="male">Maschio</label><br>
-                    <input type="radio" class="sesso" id="female" name="sesso" value="F" onclick="removeError('error7')">
+                    <input type="radio" class="sesso" id="female" name="sesso" value="F" onclick="hideElemById('error7')">
                     <label for="female">Femmina</label><br><br>
 
                     <%if (queryString!=null && (queryString.contains("error=7&") || queryString.endsWith("error=7"))) { %>
@@ -121,7 +121,7 @@
 
                 <div class="credenziali">
                     <label id="labelFoto">Foto profilo : </label>
-                    <input type="file" id="foto" name="foto" required onclick="removeError('error13')">
+                    <input type="file" id="foto" name="foto" required onclick="hideElemById('error13')">
 
                     <%if (queryString!=null && (queryString.contains("error=13&") || queryString.endsWith("error=13"))) { %>
                     <p id="error13" class="regError">Foto assente</p>

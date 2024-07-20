@@ -28,7 +28,7 @@
             <form id="form-login" action="loginUtente" method="POST">
                 <div class="credenziali">
                     <label id="labelEmail" for="email">E-mail : </label><br>
-                    <input type="email" id="email" name = "email" placeholder="es.:marcorossi@gmail.com" required onclick="removeError('error3'); removeError('error4'); removeError('error14')">
+                    <input type="email" id="email" name = "email" placeholder="es.:marcorossi@gmail.com" required onclick="hideElemById('error3'); hideElemById('error4'); hideElemById('error14')">
                     <%if (queryString!=null && (queryString.contains("error=3&") || queryString.endsWith("error=3"))) { %>
                         <p id="error3" class="logError">Email assente</p>
                     <%}%>
@@ -40,7 +40,7 @@
 
                 <div class="credenziali">
                     <label id="labelPassword" for="password">Password : </label><br>
-                    <input type="password" id="password" name = "password" placeholder="almeno 8 caratteri" required onclick="removeError('error5'); removeError('error6'); removeError('error14')">
+                    <input type="password" id="password" name = "password" placeholder="almeno 8 caratteri" required onclick="hideElemById('error5'); hideElemById('error6'); hideElemById('error14')">
 
                     <%if (queryString!=null && (queryString.contains("error=5&") || queryString.endsWith("error=5"))) { %>
                         <p id="error5" class="logError">Password assente</p>
