@@ -58,7 +58,7 @@ public class MostraColloquiAjaxServlet extends HttpServlet {
         } else {
             List<String> params = Arrays.asList(parametri);
             List<String> codiciLingue = new ArrayList<>();
-            List<Integer> prezzi = new ArrayList<>();
+            List<Integer> prezzi = new ArrayList<>(Arrays.asList(0, 0)); //solo Arrays.asList(0,0) crea array immutabile, così invece è mutabile
             String dataOraStringa = null;
             LocalDateTime dataOra = null;
 
@@ -89,7 +89,10 @@ public class MostraColloquiAjaxServlet extends HttpServlet {
                         codiciLingue.add(coppia[1]);
                     } else if (coppia[0].equals("prezzoMin") || coppia[0].equals("prezzoMax")) {
                         try {
-                            prezzi.add(Integer.parseInt(coppia[1]));
+                            if(coppia[0].equals("prezzoMin"))
+                                prezzi.add(0, Integer.parseInt(coppia[1]));
+                            else
+                                prezzi.add(1, Integer.parseInt(coppia[1]));
                         }
                         catch (NumberFormatException e) {
                             JSONObject obj = new JSONObject();

@@ -52,7 +52,7 @@ public class MostraCorsiAjaxServlet extends HttpServlet {
         } else {
             List<String> params = Arrays.asList(parametri);
             List<String> codiciLingue = new ArrayList<>();
-            List<Integer> prezzi = new ArrayList<>();
+            List<Integer> prezzi = new ArrayList<>(Arrays.asList(0, 0));;
             List<String> livelli = new ArrayList<>();
 
 
@@ -81,7 +81,10 @@ public class MostraCorsiAjaxServlet extends HttpServlet {
                         codiciLingue.add(coppia[1]);
                     } else if (coppia[0].equals("prezzoMin") || coppia[0].equals("prezzoMax")) {
                         try {
-                            prezzi.add(Integer.parseInt(coppia[1]));
+                            if(coppia[0].equals("prezzoMin"))
+                                prezzi.add(0, Integer.parseInt(coppia[1]));
+                            else
+                                prezzi.add(1, Integer.parseInt(coppia[1]));
                         }
                         catch (NumberFormatException e) {
                             JSONObject obj = new JSONObject();
