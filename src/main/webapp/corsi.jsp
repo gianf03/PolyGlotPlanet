@@ -104,7 +104,6 @@
 
 </div>
 <%@include file="WEB-INF/jsp/footer.jsp"%>
-
 <script src="JavaScript/cambiaAltezza.js"></script>
 </body>
 </html>

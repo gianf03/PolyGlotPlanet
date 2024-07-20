@@ -24,9 +24,17 @@
                 <%
                     List<Lingua> lingue = (List<Lingua>) application.getAttribute("lingue");
 
-                    for(int i = 0; i < 45; i++) { %>
+                    for(int i = 0; i < 45; i++) {
+                        String address;
+                        if (request.getParameter("categoria").equals("corso"))
+                            address = "corsi.jsp";
+                        else if (request.getParameter("categoria").equals("incontro"))
+                            address = "incontri.jsp";
+                        else
+                            address = "colloqui.jsp";
+                    %>
                         <div class="flex-item" id="<%=i+1%>">
-                            <a class="linkLingua" href='corsi.jsp?codLingua=<%=lingue.get(i).getCodISOLingua()%>&filtro=false'>
+                            <a class="linkLingua" href='<%=address%>?codLingua=<%=lingue.get(i).getCodISOLingua()%>&filtro=false'>
                                 <img class="foto-lingue" src="<%=lingue.get(i).getFotoStatoOrigine()%>" alt="<%=lingue.get(i).getNome()%>">
                                 <p class="nomeLingua"><%= lingue.get(i).getNome()%></p>
                             </a>

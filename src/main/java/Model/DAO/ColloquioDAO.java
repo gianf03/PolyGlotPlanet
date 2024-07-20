@@ -152,7 +152,7 @@ public class ColloquioDAO {
             ps = con.prepareStatement("SELECT * FROM (((Prodotto p JOIN Colloquio c ON p.ID=c.IDProdotto) " +
                     "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON p.codISOLingua=l.codISOLingua) " +
                     "JOIN Esperto e ON c.IDEsperto=e.ID WHERE l.codISOLingua=? AND p.prezzoAttuale>=? " +
-                    "AND p.prezzoAttuale<? AND c.dataOra>=? AND c.prenotato = false");
+                    "AND p.prezzoAttuale<? AND c.dataOra>=? AND c.prenotato = false ORDER BY p.ID");
             ps.setString(1, codISOLingua);
             ps.setInt(2, prezzoMin);
             ps.setInt(3, prezzoMax);
@@ -212,7 +212,7 @@ public class ColloquioDAO {
             PreparedStatement ps;
             ps = con.prepareStatement("SELECT * FROM (((Prodotto p JOIN Colloquio c ON p.ID=c.IDProdotto) " +
                     "JOIN Categoria ca ON p.IDCategoria=ca.ID) JOIN Lingua l ON p.codISOLingua=l.codISOLingua) " +
-                    "JOIN Esperto e ON c.IDEsperto=e.ID WHERE l.codISOLingua=? AND prenotato=false");
+                    "JOIN Esperto e ON c.IDEsperto=e.ID WHERE l.codISOLingua=? AND prenotato=false ORDER BY p.ID");
             ps.setString(1, codISOLingua);
 
 
