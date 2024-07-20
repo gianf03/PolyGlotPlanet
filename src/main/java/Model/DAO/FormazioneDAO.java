@@ -41,6 +41,21 @@ public class FormazioneDAO {
         }
     }
 
+    public void doRemoveByIdCorso(int idCorso) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "DELETE FROM Formazione WHERE IDProdotto=?",
+                    Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, idCorso);
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("REMOVE error.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public List<Formazione> doRetrieveByIdCarrello(int idCarrello){
         try (Connection con = ConPool.getConnection()) {
 

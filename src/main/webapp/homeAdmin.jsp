@@ -4,7 +4,6 @@
     <title>Area admin</title>
     <link type="text/css" href="css/admin.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="JavaScript/modificaCorso.js"></script>
     <script src="JavaScript/utility.js"></script>
 </head>
 <body>

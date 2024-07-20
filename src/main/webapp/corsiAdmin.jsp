@@ -73,7 +73,7 @@
                             <td><%=c.getPrezzoAttuale()%> €</td>
                             <td><%=c.isDisponibile()%></td>
                             <td>
-                                <button class="btn" id="btnModifica" onclick="modificaCorso(<%=c.getID()%>,<%=c.getPrezzoBase()%>, <%=c.getScontoPercentuale()%>)">Modifica</button>
+                                <button class="btn" id="btnModifica" onclick="modificaCorso(<%=c.getID()%>, <%=c.getPrezzoBase()%>, <%=c.getScontoPercentuale()%>)">Modifica</button>
                             </td>
                         </tr>
                 <%}%>

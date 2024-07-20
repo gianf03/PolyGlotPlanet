@@ -3,6 +3,7 @@ package Controller;
 import Model.Bean.Corso;
 import Model.Bean.Prodotto;
 import Model.DAO.CorsoDAO;
+import Model.DAO.FormazioneDAO;
 import Model.DAO.ProdottoDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -44,8 +45,12 @@ public class ModificaCorsoServlet extends HttpServlet {
             if(prezzoBase > 0 && scontoPercentuale >=0 && p != null && p.getCategoria().getID() == 1) {
 
                 prodottoDAO.doUpdate(IDProdotto, prezzoBase, scontoPercentuale);
-
                 corsoDAO.doUpdate(disponibile, IDProdotto);
+
+                if(disponibile == false) {
+                    FormazioneDAO formazioneDAO = new FormazioneDAO();
+                    formazioneDAO.doRemoveByIdCorso(IDProdotto);
+                }
             } else {
                 address += "?error=23"; //corso non modificato
             }
