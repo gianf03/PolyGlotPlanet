@@ -47,6 +47,7 @@ public class ModificaCorsoServlet extends HttpServlet {
                 prodottoDAO.doUpdate(IDProdotto, prezzoBase, scontoPercentuale);
                 corsoDAO.doUpdate(disponibile, IDProdotto);
 
+                /*se l'admin imposta che un corso non è disponibile, procedo ad eliminarlo da tutti i carrelli in cui eventualmente si trovava*/
                 if(disponibile == false) {
                     FormazioneDAO formazioneDAO = new FormazioneDAO();
                     formazioneDAO.doRemoveByIdCorso(IDProdotto);
