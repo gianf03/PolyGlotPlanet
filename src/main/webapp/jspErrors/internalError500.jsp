@@ -1,4 +1,5 @@
-<%--
+<%@ page import="Model.Bean.Utente" %>
+<%@ page import="Model.Bean.Esperto" %><%--
   Created by IntelliJ IDEA.
   User: utente
   Date: 16/07/2024
@@ -14,6 +15,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+    <% String address;
+        Utente u = (Utente) session.getAttribute("utente");
+        Esperto e = (Esperto) session.getAttribute("esperto");
+        if(u == null && e == null)
+            address = "index.jsp";
+        else
+            address = "logout";
+    %>
     <div id="logoNome">
         <img id="logo" src="img/logoNero.png" alt="logo">
         <span id="nome">PolyGlotPlanet</span>
@@ -25,7 +34,7 @@
             <p id="p2">Si è verificato un problema interno al server</p>
             <p id="p3">Error code : 500</p>
             <p id="p4">Puoi sempre tornare alla home :</p>
-            <a id="index" href="logout">Home</a>
+            <a id="index" href="<%=address%>">Home</a>
         </div>
 
         <div id="imgErrore">
