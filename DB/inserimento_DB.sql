@@ -55,6 +55,14 @@ insert into Categoria (nome, foto) values
 insert into Utente (nome, cognome, dataNascita, email, passwordHash, genere, admin) values
 ("Sebastiano", "Caliendo", "2000-06-22", "sebcal2@gmail.com", SHA1("albicocca41"), "M", false),
 ("Giuseppe", "Falciano", "2003-06-22", "giufal1@gmail.com", SHA1("albicocca41"), "M", false),
+("Stanislao", "Pakosz", "1991-02-24", "stapak@gmail.com", SHA1("albicocca41"), "M", false),
+("Vladimir", "Dugin", "1992-10-26", "vladug@gmail.com", SHA1("albicocca41"), "M", false),
+("Boris", "Johnson", "1993-06-25", "borjoh@gmail.com", SHA1("albicocca41"), "M", false),
+("Donald", "Trump", "1994-12-04", "dontru@gmail.com", SHA1("albicocca41"), "M", false),
+("Giorgia", "Califano", "1995-04-29", "giocal@gmail.com", SHA1("albicocca41"), "F", false),
+("Drusilla", "Pepe", "1996-02-24", "drupep@gmail.com", SHA1("albicocca41"), "F", false),
+("Maria", "Rosato", "1997-01-06", "marros@gmail.com", SHA1("albicocca41"), "F", false),
+("Ugo", "Ugonotto", "1996-01-20", "ugougo@gmail.com", SHA1("albicocca41"), "M", false),
 ("Gianfranco", "Vitiello", "2003-03-07", "giavit7@gmail.com", SHA1("ananas12"), "M", true);
 
 INSERT INTO Prodotto 
@@ -705,4 +713,62 @@ VALUES
     (214, '2024-09-06 12:30:00', '34129', 'Via dei Lecci', '106', 1),
     (215, '2024-11-15 13:00:00', '34130', 'Via dei Noci', '107', 4);
 
-	
+insert into Ordine (IDUtente, dataOra) values (1, '2024-07-10 14:30:00');
+
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 1, p.ID, p.prezzoAttuale from Prodotto p where id=1;
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 1, p.ID, p.prezzoAttuale from Prodotto p where id=110;
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 1, p.ID, p.prezzoAttuale from Prodotto p where id=176;
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 1, p.ID, p.prezzoAttuale from Prodotto p where id=136;
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 1, p.ID, p.prezzoAttuale from Prodotto p where id=200;
+
+insert into Ordine (IDUtente, dataOra) values (1, '2024-07-11 12:35:00');
+
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 2, p.ID, p.prezzoAttuale from Prodotto p where id=2;
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 2, p.ID, p.prezzoAttuale from Prodotto p where id=211;
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 2, p.ID, p.prezzoAttuale from Prodotto p where id=144;
+
+insert into Ordine (IDUtente, dataOra) values (1, '2024-07-12 21:30:57');
+
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 3, p.ID, p.prezzoAttuale from Prodotto p where id=133;
+
+
+insert into Ordine (IDUtente, dataOra) values (2, '2024-07-13 00:30:52');
+
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 4, p.ID, p.prezzoAttuale from Prodotto p where id=4;
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 4, p.ID, p.prezzoAttuale from Prodotto p where id=114;
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 4, p.ID, p.prezzoAttuale from Prodotto p where id=180;
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 4, p.ID, p.prezzoAttuale from Prodotto p where id=140;
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 4, p.ID, p.prezzoAttuale from Prodotto p where id=204;	
+    
+    
+insert into Ordine (IDUtente, dataOra) values (2, '2024-07-14 03:30:52');
+
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 5, p.ID, p.prezzoAttuale from Prodotto p where id=207;
+
+
+insert into Ordine (IDUtente, dataOra) values (3, '2024-07-15 03:30:52');
+
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 6, p.ID, p.prezzoAttuale from Prodotto p where id=206;
+
+insert into Ordine (IDUtente, dataOra) values (1, '2024-07-15 03:30:52');
+
+insert into Composizione (IDOrdine, IDProdotto, prezzoAcquisto)
+select 7, p.ID, p.prezzoAttuale from Prodotto p where id=213;
+
+
