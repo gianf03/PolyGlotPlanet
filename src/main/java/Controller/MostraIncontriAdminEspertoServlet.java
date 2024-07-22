@@ -25,7 +25,7 @@ public class MostraIncontriAdminEspertoServlet extends HttpServlet {
 
         IncontroDAO incontroDAO = new IncontroDAO();
         int IDEsperto = 0;
-        String address = "/incontriEsperto.jsp";
+        String address = "incontriEsperto.jsp";
         List<Lingua> lingueConosciute = null;
 
         Esperto e = (Esperto) req.getSession().getAttribute("esperto");
@@ -69,7 +69,8 @@ public class MostraIncontriAdminEspertoServlet extends HttpServlet {
             }
         }
 
-        resp.sendRedirect(address);
+        if (address.contains("error"))  /*necessario altrimenti IllegalStateException : non posso chiamare sendRedirect dopo un forward*/
+            resp.sendRedirect(address);
     }
 
     @Override
