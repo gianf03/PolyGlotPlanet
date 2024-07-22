@@ -187,6 +187,10 @@ tr:nth-child(even) {
     margin-right: 30px;
 }
 
+#imgEsperto {
+    width: 150px;
+    height: 150px;
+}
 
 
 @media screen and (max-width: 1300px) {

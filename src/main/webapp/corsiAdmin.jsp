@@ -62,7 +62,7 @@
                         <tr class="rigaCorsi">
                             <td><%=c.getID()%></td>
                             <td>
-                                <%=c.getLingua().getNome()%>
+                                <%=c.getLingua().getNome()%><br>
                                 <img id="imgLingua" alt="immagine stato origine lingua" src="<%=c.getLingua().getFotoStatoOrigine()%>">
                             </td>
                             <td><%=c.getDescrizione()%></td>
