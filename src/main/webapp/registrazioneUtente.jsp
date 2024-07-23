@@ -43,7 +43,7 @@
 
                 <div class="credenziali">
                     <label id="labelDdn">Data di nascita : </label><br>
-                    <input type="date" id = "ddn" name = "ddn" placeholder="data di nascita" required onclick="hideElemById('error8'); hideElemById('error9')">
+                    <input type="date" id = "ddn" name = "ddn" placeholder="data di nascita" required onclick="hideElemById('error8'); hideElemById('error9'); hideElemById('error16')">
 
                     <%if (queryString!=null && (queryString.contains("error=8&") || queryString.endsWith("error=8"))) { %>
                         <p id="error8" class="regError">Data nascita non impostata</p>

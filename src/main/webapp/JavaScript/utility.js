@@ -3,5 +3,9 @@ function showElemById(id) {
 }
 
 function hideElemById(id) {
-    document.getElementById(id).style.display = "none";
+
+    let elem = document.getElementById(id);
+
+    if(elem)
+        elem.style.display = "none";
 }

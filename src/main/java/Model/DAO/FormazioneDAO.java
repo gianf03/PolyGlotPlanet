@@ -47,9 +47,6 @@ public class FormazioneDAO {
                     "DELETE FROM Formazione WHERE IDProdotto=?",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, idCorso);
-            if (ps.executeUpdate() != 1) {
-                throw new RuntimeException("REMOVE error.");
-            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

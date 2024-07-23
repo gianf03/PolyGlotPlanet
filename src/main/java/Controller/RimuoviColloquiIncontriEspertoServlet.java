@@ -1,10 +1,8 @@
 package Controller;
 
-import Model.Bean.Colloquio;
-import Model.Bean.Esperto;
-import Model.Bean.Incontro;
-import Model.Bean.Prodotto;
+import Model.Bean.*;
 import Model.DAO.ColloquioDAO;
+import Model.DAO.ConoscenzaDAO;
 import Model.DAO.IncontroDAO;
 import Model.DAO.ProdottoDAO;
 import jakarta.servlet.RequestDispatcher;
@@ -15,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/rimuoviColloquiIncontriEsperto")
@@ -80,9 +79,21 @@ public class RimuoviColloquiIncontriEspertoServlet extends HttpServlet {
                 }
             }
 
+
+            ConoscenzaDAO conoscenzaDAO = new ConoscenzaDAO();
+            List<Conoscenza> conoscenze = conoscenzaDAO.doRetrieveByIDEsperto(e.getID());
+
+            List<Lingua> lingueConosciute = new ArrayList<>();
+
+            for(Conoscenza c : conoscenze) {
+                lingueConosciute.add(c.getLingua());
+            }
+
+            req.setAttribute("lingueConosciute", lingueConosciute);
+
             RequestDispatcher rd = req.getRequestDispatcher(address);
             rd.forward(req, resp);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException ex) {
             resp.sendError(500);
         }
     }
