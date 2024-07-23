@@ -143,7 +143,7 @@ public class ConoscenzaDAO {
         }
     }
 
-    public void doUpdate(int IDEsperto, String codISOLingua) {
+    public void doRemove(int IDEsperto, String codISOLingua) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "DELETE FROM Conoscenza WHERE codISOLingua=? AND IDEsperto=?");
@@ -151,8 +151,8 @@ public class ConoscenzaDAO {
             ps.setString(1, codISOLingua);
             ps.setInt(2, IDEsperto);
 
-            if (ps.executeUpdate() != 1) {
-                throw new RuntimeException("INSERT error.");
+            if (ps.executeUpdate() != 1 || ps.executeUpdate() != 0) {
+                throw new RuntimeException("DELETE error.");
             }
 
         } catch (SQLException e) {
