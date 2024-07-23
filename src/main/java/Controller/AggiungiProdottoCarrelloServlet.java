@@ -50,17 +50,8 @@ public class AggiungiProdottoCarrelloServlet extends HttpServlet {
                 Carrello carrello = null;
                 if (u != null) {
 
-                    /*salvo prodotto nel carrello fisico*/
+                    /*salvo prodotto nel carrello fisico che sicuramente già c'è perché creato al primo login*/
                     carrello = carrelloDAO.doRetrieveByIdUtente(u.getID());
-
-                    /*se l'utente loggato non ha ancora un carrello glielo creo e me lo faccio restituire*/
-                    if(carrello == null){
-                        carrello = new Carrello();
-                        carrello.setUtente(u);
-                        carrelloDAO.doSave(carrello);
-                        carrello = carrelloDAO.doRetrieveByIdUtente(u.getID());
-                    }
-
                     Formazione formazione = formazioneDAO.doRetrieveByIdProdottoAndIdCarrello(p.getID(),carrello.getId());
 
                     /*se prodotto non presente nel carrello fisico (formazione == null) lo inserisco
