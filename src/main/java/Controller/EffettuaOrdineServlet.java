@@ -42,18 +42,22 @@ public class EffettuaOrdineServlet extends HttpServlet {
         Carrello carrello = carrelloDAO.doRetrieveByIdUtente(u.getID());
         List<Formazione> formazioniCarrello = formazioneDAO.doRetrieveByIdCarrello(carrello.getId());
 
-        for (Formazione f : formazioniCarrello){
-            Composizione c = new Composizione();
+        if(formazioniCarrello != null) {
+            for (Formazione f : formazioniCarrello) {
+                Composizione c = new Composizione();
 
-            c.setOrdine(ordine);
-            c.setProdotto(f.getProdotto());
-            c.setPrezzoAcquisto(f.getProdotto().getPrezzoAttualeDouble());
+                c.setOrdine(ordine);
+                c.setProdotto(f.getProdotto());
+                c.setPrezzoAcquisto(f.getProdotto().getPrezzoAttualeDouble());
 
-            composizioneDAO.doSave(c);
-            formazioneDAO.doRemove(f);
+                composizioneDAO.doSave(c);
+                formazioneDAO.doRemove(f);
+            }
+            session.removeAttribute("carrello");
+
+            resp.sendRedirect("index.jsp?ordine=effettuato");
+        } else {
+            resp.sendRedirect("index.jsp?error=28"); //ordine non effettuato per mancanza di prodotti nel carrello
         }
-        session.removeAttribute("carrello");
-
-        resp.sendRedirect("index.jsp?ordine=effettuato");
     }
 }

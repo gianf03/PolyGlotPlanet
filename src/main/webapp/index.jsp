@@ -16,7 +16,10 @@
                 <script>alert("Ordine effettuato!")</script>
         <%} else if (request.getQueryString() != null && request.getQueryString().equals("error=25")) {%>
                 <script>alert("Accesso negato!")</script>
+        <%} else if (request.getQueryString() != null && request.getQueryString().equals("error=28")) {%>
+                <script>alert("Ordine non effettuato per mancanza di prodotti nel carrello!")</script>
         <%}%>
+
 
 
         <p id="selezionaMod">Benvenuto su PolyGlotPlanet!<br><br>Seleziona una modalità di apprendimento</p>
