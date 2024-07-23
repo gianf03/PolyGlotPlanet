@@ -47,17 +47,31 @@ public class RimuoviColloquiIncontriEspertoServlet extends HttpServlet {
         prodotto corrispondente ad un corso e quindi cancellarlo*/
             if(!catProdotto.equals("corso")) {
 
-                prodottoDAO.doRemove(IDProdotto);
-
                 if(catProdotto.equals("colloquio")) {
-                    address = "colloquiEsperto.jsp?removal=good";
+
+                    Colloquio c = (Colloquio) p;
+
+                    if(!c.isPrenotato()) {
+                        prodottoDAO.doRemove(IDProdotto);
+                        address = "colloquiEsperto.jsp?removal=good";
+                    } else {
+                        address = "colloquiEsperto.jsp?error=27"; //impossibile rimuovere prodotto perchè prenotato
+                    }
 
                     //ricarico la nuova lista di colloqui nella request senza quello eliminato
                     ColloquioDAO colloquioDAO = new ColloquioDAO();
                     colloqui = colloquioDAO.doRetrieveByEsperto(e.getID());
                     req.setAttribute("colloqui", colloqui);
                 } else {
-                    address = "incontriEsperto.jsp?removal=good";
+
+                    Incontro i = (Incontro) p;
+
+                    if(!i.isPrenotato()) {
+                        prodottoDAO.doRemove(IDProdotto);
+                        address = "incontriEsperto.jsp?removal=good";
+                    } else {
+                        address = "incontriEsperto.jsp?error=27"; //impossibile rimuovere prodotto perchè prenotato
+                    }
 
                     //ricarico la nuova lista di incontri nella request senza quello eliminato
                     IncontroDAO incontroDAO = new IncontroDAO();

@@ -30,8 +30,10 @@
 
             if(insertion != null && insertion.equals("good")) {%>
                 <script>alert("Inserimento avvenuto con successo!")</script>
-        <%} else if(request.getParameter("error") != null){%>
+        <%} else if(request.getQueryString() != null && request.getQueryString().contains("error=19")){%>
                 <script>alert("Incontro non aggiunto!")</script>
+        <%} else if(request.getQueryString() != null && request.getQueryString().contains("error=27")){%>
+                <script>alert("Prodotto non rimovibile perchè prenotato!")</script>
         <%}%>
 
         <div id="containerOfTable">
@@ -60,7 +62,7 @@
                             <td><%=i.getPrezzoAttuale()%> €</td>
 
                             <%
-                                if(es != null) {%>
+                                if(es != null && !i.isPrenotato()) {%>
                             <td>
                                 <button class="btn" id="btnRimuovi" onclick="document.location='rimuoviColloquiIncontriEsperto?IDProdotto=<%=i.getID()%>'">Rimuovi</button>
                             </td>
